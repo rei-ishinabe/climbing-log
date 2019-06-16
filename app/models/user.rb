@@ -4,5 +4,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  mount_uploader :image, PhotoUploader
+  has_many :logs
+  has_many :gyms, through: :logs
 end
