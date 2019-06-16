@@ -6,4 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :logs
   has_many :gyms, through: :logs
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+  validates :admin, presence: true
+  validates :is_public, presence: true
 end
