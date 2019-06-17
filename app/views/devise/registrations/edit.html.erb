@@ -6,6 +6,9 @@
       <%= f.error_notification %>
 
       <div class="form-inputs">
+        <%= f.input :nickname, autofocus: true %>
+        <%= f.input :image %>
+        <%= f.input :image_cache, as: :hidden %>
         <%= f.input :email, required: true, autofocus: true %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

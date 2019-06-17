@@ -6,6 +6,11 @@ class GymsController < ApplicationController
   end
 
   def show
+    @markers =
+      {
+        lat: @gym.latitude,
+        lng: @gym.longitude
+      }
   end
 
   def new
@@ -41,6 +46,6 @@ class GymsController < ApplicationController
   end
 
   def gym_params
-    params.require(:gym).permit(:name, :name_katakana, :name_alphabet, :address)
+    params.require(:gym).permit(:name, :name_katakana, :name_alphabet, :address, :latitude, :longitude)
   end
 end

@@ -7,5 +7,4 @@ class User < ApplicationRecord
   has_many :logs
   has_many :gyms, through: :logs
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
 end
