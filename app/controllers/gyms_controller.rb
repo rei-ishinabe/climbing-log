@@ -1,5 +1,5 @@
 class GymsController < ApplicationController
-  before_action :set_gym, only: [:show, :edit, :update]
+  before_action :set_gym, only: [:show, :edit, :update, :destroy]
 
   def index
     @gyms = policy_scope(Gym).all
@@ -20,6 +20,7 @@ class GymsController < ApplicationController
 
   def create
     @gym = Gym.new(gym_params)
+    authorize @gym
     if @gym.save
       redirect_to gym_path(@gym)
     else
@@ -33,6 +34,14 @@ class GymsController < ApplicationController
   def update
     if @gym.update(gym_params)
       redirect_to gym_path(@gym)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @gym.destroy
+      redirect_to gyms_path
     else
       render :edit
     end

@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get 'gyms/show'
   devise_for :users
   root to: 'pages#home'
-  resources :gyms, only: [:index, :show, :new, :create, :edit, :update]
+  resources :gyms
   resources :logs, only: [:index, :show, :new, :create, :edit, :update]
 end

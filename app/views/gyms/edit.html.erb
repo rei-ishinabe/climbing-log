@@ -1,4 +1,5 @@
 <div class="container mt-3">
   <h1>ジム情報更新</h1>
   <%= render 'form' %>
+  <%= link_to '削除', gym_path(@gym), method: :delete, data: { confirm: '本当に削除してよいですか？' }, class:'mt-5'  %>
 </div>
