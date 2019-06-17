@@ -1,0 +1,9 @@
+<div class="container mt-3">
+  <h1>ジム情報一覧</h1>
+  <ul>
+    <% @gyms.each do |gym| %>
+      <li><%= link_to gym.name, gym_path(gym) %></li>
+    <% end %>
+  </ul>
+</div>
+

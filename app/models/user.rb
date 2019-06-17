@@ -8,6 +8,4 @@ class User < ApplicationRecord
   has_many :gyms, through: :logs
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
-  validates :admin, presence: true
-  validates :is_public, presence: true
 end

@@ -1,0 +1,11 @@
+<div class="container mt-3">
+  <h1><%= @gym.name %></h1>
+  <% if current_user.admin %>
+    <p><%= @gym.name_katakana %></p>
+    <p><%= @gym.name_alphabet %></p>
+    <p><%= @gym.longitude %></p>
+    <p><%= @gym.latitude %></p>
+    <%= link_to 'ジム情報変更', edit_gym_path(@gym), class:'btn btn-primary' %>
+  <% end %>
+</div>
+
