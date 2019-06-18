@@ -7,10 +7,10 @@ class GymsController < ApplicationController
 
   def show
     @markers =
-      {
+      [{
         lat: @gym.latitude,
         lng: @gym.longitude
-      }
+      }]
   end
 
   def new
