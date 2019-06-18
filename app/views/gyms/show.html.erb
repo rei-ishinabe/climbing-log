@@ -9,6 +9,7 @@
         <p><%= @gym.latitude %></p>
         <%= link_to 'ジム情報変更', edit_gym_path(@gym), class:'btn btn-primary' %>
       <% end %>
+      <%= link_to '新規ログ登録', new_gym_log_path(@gym), class:'btn btn-secondary' %>
     </div>
     <div class="col-6">
       <div
@@ -18,6 +19,17 @@
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       ></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <% @gym.logs.each do |log| %>
+        <p>
+          <%= log.id %>
+          <%= log.date %>
+          <%= log.category %>
+        </p>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,0 +1,15 @@
+<div class="container mt-3">
+  <h1><%= @gym.name %>でのクライミングログ登録</h1>
+  <%= simple_form_for [@gym, @log] do |f| %>
+    <%= f.input :date %>
+    <%= f.input :category %>
+    <%= f.input :route_type %>
+    <%= f.input :route_name %>
+    <%= f.input :grade %>
+    <%= f.input :sub_grade %>
+    <%= f.input :status %>
+    <%= f.input :comment %>
+    <%= f.submit class:'btn btn-primary' %>
+  <% end %>
+</div>
+
