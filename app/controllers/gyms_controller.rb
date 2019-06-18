@@ -2,7 +2,13 @@ class GymsController < ApplicationController
   before_action :set_gym, only: [:show, :edit, :update, :destroy]
 
   def index
-    @gyms = policy_scope(Gym).all
+    @gyms = policy_scope(Gym).all.order(:name)
+    @markers = @gyms.map do |gym|
+      {
+        lat: gym.latitude,
+        lng: gym.longitude
+      }
+    end
   end
 
   def show
