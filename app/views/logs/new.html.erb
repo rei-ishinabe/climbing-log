@@ -1,15 +1,28 @@
 <div class="container mt-3">
-  <h1><%= @gym.name %>でのクライミングログ登録</h1>
+  <h1><%= @gym.name %>での新規クライミングログ</h1>
   <%= simple_form_for [@gym, @log] do |f| %>
-    <%= f.input :date %>
-    <%= f.input :category %>
-    <%= f.input :route_type %>
-    <%= f.input :route_name %>
+    <%= f.input :date, label: false %>
+    <%= f.input :category,
+           label: false,
+          prompt: 'カテゴリーを選択',
+      collection: ['ボルダー', 'リード', 'トップロープ', 'ナガモノ'] %>
+    <%= f.input :route_type,
+           label: false,
+          prompt: 'タイプを選択',
+      collection: ['スラブ', '垂壁', '前傾壁', '強傾斜壁', 'ルーフ'] %>
     <%= f.input :grade %>
     <%= f.input :sub_grade %>
-    <%= f.input :status %>
-    <%= f.input :comment %>
-    <%= f.submit class:'btn btn-primary' %>
+    <%= f.input :status,
+           label: false,
+          prompt: '完登ステータス',
+      collection: ['オンサイト', 'フラッシュ', 'レッドポイント', '未完登'] %>
+    <%= f.input :route_name,
+           label: false,
+     placeholder: 'ルート名など(オプション)' %>
+    <%= f.input :comment,
+           label: false,
+     placeholder: 'コメント(オプション)' %>
+    <%= f.submit '登録', class:'btn btn-primary btn-block' %>
   <% end %>
 </div>
 
