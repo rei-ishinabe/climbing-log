@@ -7,10 +7,10 @@
 
       <div class="form-inputs">
         <%= f.input :nickname, autofocus: true %>
+        <%= cl_image_tag current_user.image, height: 100, crop: :fill %>
         <%= f.input :image %>
         <%= f.input :image_cache, as: :hidden %>
         <%= f.input :email, required: true, autofocus: true %>
-
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
@@ -31,13 +31,13 @@
                     input_html: { autocomplete: "current-password" } %>
       </div>
       <div class="form-actions">
-        <%= f.button :submit, "更新する" %>
+        <%= f.button :submit, "更新する", class:'btn btn-primary' %>
       </div>
     <% end %>
 
-    <h3>アカウントを削除する</h3>
+    <h3 class='mt-5 mb-3'>アカウントを削除する</h3>
 
-    <p>退会すると今までの履歴はすべて削除されます <%= link_to "退会する", registration_path(resource_name), data: { confirm: "今までの履歴がすべて削除されますが、よろしいですか?" }, method: :delete %></p>
+    <p>退会すると今までの履歴はすべて削除されます <%= link_to "退会する", registration_path(resource_name), data: { confirm: "今までの履歴がすべて削除されますが、よろしいですか?" }, method: :delete, class:'btn btn-warning' %></p>
 
     <%= link_to "戻る", :back %>
   </div>
