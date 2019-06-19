@@ -9,7 +9,9 @@
         <p><%= @gym.latitude %></p>
         <%= link_to 'ジム情報変更', edit_gym_path(@gym)%>
       <% end %>
-      <p>累計本数：<%= @gym.logs.where('user_id = ?', current_user).count %></p>
+      <p>累計クライミング本数：<%= @gym.logs.where('user_id = ?', current_user).count %></p>
+      <p>ボルダー最高グレード：<%= %></p>
+      <p>リード最高グレード：<%=  %></p>
       <%= link_to '新規ログ登録', new_gym_log_path(@gym), class:'btn btn-secondary' %>
     </div>
     <div class="col-12 col-md-6">

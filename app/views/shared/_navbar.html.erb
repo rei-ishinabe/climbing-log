@@ -14,10 +14,10 @@
         <li class="nav-item active">
           <%= link_to "ホーム", "/", class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item ml-3">
           <%= link_to "ジム一覧", gyms_path , class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown ml-3">
           <%= cl_image_tag current_user.image, height: 40, crop: :fill,  class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "マイプロファイル", edit_user_registration_path, class: "dropdown-item" %>
