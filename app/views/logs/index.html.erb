@@ -3,7 +3,7 @@
   <div class="mb-2">今日 | 今週 | 今月 | 今年 | <strong>全期間</strong> | 期間を指定</div>
   <div>ボルダー最高グレード: </div>
   <div>リード最高グレード: </div>
-  <div>累計クライミング日数: <%= current_user.climbing_days %></div>
+  <div>累計クライミング日数: <%= current_user.logs.group("date").count.count %></div>
   <% @logs.each do |log| %>
     <div>
       <%= log.date %>
