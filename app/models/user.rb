@@ -7,8 +7,4 @@ class User < ApplicationRecord
   has_many :logs
   has_many :gyms, through: :logs
   validates :email, presence: true, uniqueness: true
-
-  def climbing_days
-    logs.group("date").count.count
-  end
 end
