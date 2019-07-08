@@ -1,34 +1,22 @@
 <div class="container mt-3">
-  <h1><%= @gym.name %></h1>
   <div class="row">
     <div class="col-12 col-md-6">
+      <h4><%= @gym.name %></h4>
       <% if current_user.admin %>
-        <p><%= @gym.name_katakana %></p>
-        <p><%= @gym.name_alphabet %></p>
-        <p><%= @gym.longitude %></p>
-        <p><%= @gym.latitude %></p>
-        <%= link_to 'ジム情報変更', edit_gym_path(@gym)%>
+        <%= link_to 'ジム情報変更', edit_gym_path(@gym) %>
       <% end %>
-      <p>累計クライミング本数：<%= @gym.logs.where('user_id = ?', current_user).count %></p>
-      <p>ボルダー最高グレード：<%= %></p>
-      <p>リード最高グレード：<%=  %></p>
-      <%= link_to '新規ログ登録', new_gym_log_path(@gym), class:'btn btn-secondary' %>
-    </div>
-    <div class="col-12 col-md-6">
-      <div
-      id="map"
-      style="width: 100%;
-      height: 300px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      class="rounded shadow my-3"
-      ></div>
+      <div>完登本数：<%= @gym.logs.where('user_id = ?', current_user).count %></div>
+      <div>訪問日数：<%= %></div>
+      <div>ボルダー最高グレード：<%= %></div>
+      <div class="mb-1">リード最高グレード：<%=  %></div>
+      <%= link_to '新規ログ登録', new_gym_log_path(@gym), class:'btn btn-primary btn-block' %>
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 mt-3">
+      <div class="mb-3">今日 | 今週 | 今月 | 今年 | 全期間 | 期間を指定</div>
       <% @gym.logs.where('user_id = ?', current_user).each do |log| %>
-        <p>
+        <div>
           <%= log.date %>
           <%= log.category %>
           <%= log.route_type %>
@@ -36,7 +24,7 @@
           <%= log.status %>
           <%= log.route_name %>
           <%= log.comment %>
-        </p>
+        </div>
       <% end %>
     </div>
   </div>

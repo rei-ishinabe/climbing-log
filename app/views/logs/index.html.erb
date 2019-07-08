@@ -1,2 +1,20 @@
-<h1>Logs#index</h1>
-<p>Find me in app/views/logs/index.html.erb</p>
+<div class="container mt-3">
+  <h4><%= current_user.nickname %>さん</h4>
+  <div class="mb-2">今日 | 今週 | 今月 | 今年 | <strong>全期間</strong> | 期間を指定</div>
+  <div>ボルダー最高グレード: </div>
+  <div>リード最高グレード: </div>
+  <div>累計クライミング日数: <%= current_user.climbing_days %></div>
+  <% @logs.each do |log| %>
+    <div>
+      <%= log.date %>
+      <%= log.category %>
+      <%= log.route_type %>
+      <%= "#{log.grade}#{log.sub_grade}" %>
+      <%= log.status %>
+      <%= log.route_name %>
+      <%= log.comment %>
+    </div>
+  <% end %>
+</div>
+
+

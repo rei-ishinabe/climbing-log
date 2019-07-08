@@ -1,25 +1,18 @@
 <div class="container mt-3">
-  <h1>ジム情報一覧</h1>
   <div class="row">
-    <div class="col-6">
+    <div class="col-12 col-md-6">
+      <h4>ジム検索</h4>
+      <div>現在地から検索</div>
+      <div>行ったことのあるジム</div>
+      <div>最終訪問日 | 訪問日数</div>
       <ul>
         <% @gyms.each do |gym| %>
           <li><%= link_to gym.name, gym_path(gym) %></li>
         <% end %>
       </ul>
       <% if current_user.admin? %>
-        <%= link_to "新規ジム登録", new_gym_path, class: "btn btn-primary" %>
+        <%= link_to "新規ジム登録", new_gym_path, class: "btn btn-primary btn-block" %>
       <% end %>
-    </div>
-    <div class="col-6">
-      <div
-      class="rounded shadow"
-      id="map"
-      style="width: 100%;
-      height: 400px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
     </div>
   </div>
 </div>

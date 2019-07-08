@@ -1,4 +1,9 @@
 class LogsController < ApplicationController
+
+  def index
+    @logs = policy_scope(Log).where('user_id = ?', current_user.id)
+  end
+
   def new
     @gym = Gym.find(params[:gym_id])
     @log = Log.new
@@ -19,9 +24,6 @@ class LogsController < ApplicationController
   end
 
   def edit
-  end
-
-  def index
   end
 
   private

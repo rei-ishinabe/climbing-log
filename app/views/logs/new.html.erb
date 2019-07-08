@@ -1,36 +1,41 @@
 <div class="container mt-3">
-  <h1><%= @gym.name %>での新規クライミングログ</h1>
-  <%= simple_form_for [@gym, @log] do |f| %>
-    <%= f.input :date, label: false %>
-    <%= f.input :category,
-           label: false,
-          prompt: 'カテゴリーを選択',
-      collection: ['ボルダー', 'リード', 'トップロープ', 'ナガモノ'] %>
-    <%= f.input :route_type,
-           label: false,
-          prompt: 'タイプを選択',
-      collection: ['スラブ', '垂壁', '前傾壁', '強傾斜壁', 'ルーフ'] %>
-    <%= f.input :grade,
-           label: false,
-            as: :select,
-          prompt: 'グレードを選択' %>
-    <%= f.input :sub_grade,
-           label: false,
-            as: :select,
-          prompt: 'サブグレードを選択' %>
-    <%= f.input :status,
-           label: false,
-          prompt: '完登ステータス',
-      collection: ['オンサイト', 'フラッシュ', 'レッドポイント', '未完登'] %>
-    <%= f.input :route_name,
-           label: false,
-     placeholder: 'ルート名など(オプション)' %>
-    <%= f.input :comment,
-           label: false,
-     placeholder: 'コメント(オプション)' %>
-    <%= f.submit '登録', class:'btn btn-primary btn-block' %>
-  <% end %>
-</div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <h4><%= @gym.name %></h4>
+      <%= simple_form_for [@gym, @log] do |f| %>
+        <%= f.input :date, label: false %>
+        <%= f.input :category,
+               label: false,
+              prompt: 'カテゴリー',
+          collection: ['ボルダー', 'リード', 'トップロープ', 'ナガモノ'] %>
+        <%= f.input :route_type,
+               label: false,
+              prompt: 'タイプ',
+          collection: ['スラブ', '垂壁', '前傾壁', '強傾斜壁', 'ルーフ'] %>
+        <%= f.input :grade,
+               label: false,
+                as: :select,
+              prompt: 'グレード' %>
+        <%= f.input :sub_grade,
+               label: false,
+                as: :select,
+              prompt: 'サブグレード' %>
+        <%= f.input :status,
+               label: false,
+              prompt: '完登ステータス',
+          collection: ['オンサイト', 'フラッシュ', 'レッドポイント', '未完登'] %>
+        <%= f.input :route_name,
+               label: false,
+         placeholder: 'ルート名など(オプション)' %>
+        <%= f.input :comment,
+               label: false,
+         placeholder: 'コメント(オプション)' %>
+        <%= f.submit '登録', class:'btn btn-primary btn-block mb-5' %>
+      <% end %>
+    </div>
+
+    </div>
+  </div>
 
 <script>
   const category = document.getElementById("log_category");
