@@ -1,6 +1,6 @@
 class Log < ApplicationRecord
-  belongs_to :user
-  belongs_to :gym
-  validates :category_id, presence: true
+  belongs_to :routes
+  has_many :users, through: :routes
+  has_many :gyms, through: :routes
   validates :status, presence: true
 end

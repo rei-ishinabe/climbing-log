@@ -4,7 +4,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :logs
-  has_many :gyms, through: :logs
+  has_many :routes
+  has_many :logs, through: :routes
+  has_many :gyms, through: :routes
   validates :email, presence: true, uniqueness: true
 end

@@ -4,4 +4,5 @@ class Route < ApplicationRecord
   belongs_to :sub_grade
   belongs_to :user
   belongs_to :gym
+  has_many :logs
 end
