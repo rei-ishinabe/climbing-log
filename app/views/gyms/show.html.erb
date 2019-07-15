@@ -18,9 +18,8 @@
       <% @gym.logs.where('user_id = ?', current_user).each do |log| %>
         <div>
           <%= log.date %>
-          <%= log.category %>
+          <%= Category.find_by(id:log.category_id).category %>
           <%= log.route_type %>
-          <%= "#{log.grade}#{log.sub_grade}" %>
           <%= log.status %>
           <%= log.route_name %>
           <%= log.comment %>

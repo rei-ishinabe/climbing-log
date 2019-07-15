@@ -17,6 +17,7 @@ class LogsController < ApplicationController
     authorize @log
     @log.gym = @gym
     @log.user = current_user
+    binding.pry
     if @log.save
       redirect_to gym_path(@log.gym)
     else
@@ -30,6 +31,6 @@ class LogsController < ApplicationController
   private
 
   def log_params
-    params.require(:log).permit(:date, :category, :route_type, :route_name, :grade, :sub_grade, :status, :comment, :image)
+    params.require(:log).permit(:date, :category_id, :route_type, :route_name, :status, :comment, :image)
   end
 end
