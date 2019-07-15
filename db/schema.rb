@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_15_141422) do
+ActiveRecord::Schema.define(version: 2019_07_15_141707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,13 @@ ActiveRecord::Schema.define(version: 2019_07_15_141422) do
     t.bigint "gym_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.bigint "grade_id"
+    t.bigint "sub_grade_id"
+    t.index ["category_id"], name: "index_logs_on_category_id"
+    t.index ["grade_id"], name: "index_logs_on_grade_id"
     t.index ["gym_id"], name: "index_logs_on_gym_id"
+    t.index ["sub_grade_id"], name: "index_logs_on_sub_grade_id"
     t.index ["user_id"], name: "index_logs_on_user_id"
   end
 
@@ -83,7 +89,10 @@ ActiveRecord::Schema.define(version: 2019_07_15_141422) do
   end
 
   add_foreign_key "grades", "categories"
+  add_foreign_key "logs", "categories"
+  add_foreign_key "logs", "grades"
   add_foreign_key "logs", "gyms"
+  add_foreign_key "logs", "sub_grades"
   add_foreign_key "logs", "users"
   add_foreign_key "sub_grades", "categories"
 end
