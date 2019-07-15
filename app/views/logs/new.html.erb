@@ -4,22 +4,17 @@
       <h4><%= @gym.name %></h4>
       <%= simple_form_for [@gym, @log] do |f| %>
         <%= f.input :date, label: false %>
-        <%= f.input :category,
+        <%= f.input :category_id,
                label: false,
               prompt: 'カテゴリー',
-          collection: ['ボルダー', 'リード', 'トップロープ', 'ナガモノ'] %>
+          collection: @categories,
+        label_method: :category,
+        value_method: :id,
+       include_blank: false %>
         <%= f.input :route_type,
                label: false,
               prompt: 'タイプ',
           collection: ['スラブ', '垂壁', '前傾壁', '強傾斜壁', 'ルーフ'] %>
-        <%= f.input :grade,
-               label: false,
-                as: :select,
-              prompt: 'グレード' %>
-        <%= f.input :sub_grade,
-               label: false,
-                as: :select,
-              prompt: 'サブグレード' %>
         <%= f.input :status,
                label: false,
               prompt: '完登ステータス',

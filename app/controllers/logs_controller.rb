@@ -6,6 +6,7 @@ class LogsController < ApplicationController
 
   def new
     @gym = Gym.find(params[:gym_id])
+    @categories = Category.all
     @log = Log.new
     authorize @log
   end
