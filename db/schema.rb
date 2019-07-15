@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_15_141707) do
+ActiveRecord::Schema.define(version: 2019_07_15_231851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,23 +44,30 @@ ActiveRecord::Schema.define(version: 2019_07_15_141707) do
 
   create_table "logs", force: :cascade do |t|
     t.date "date"
-    t.string "route_type"
-    t.string "route_name"
     t.string "status"
     t.string "comment"
     t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.string "route_type"
+    t.string "image"
+    t.string "route_name"
+    t.string "comment"
+    t.bigint "category_id"
+    t.bigint "grade_id"
+    t.bigint "sub_grade_id"
     t.bigint "user_id"
     t.bigint "gym_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id"
-    t.bigint "grade_id"
-    t.bigint "sub_grade_id"
-    t.index ["category_id"], name: "index_logs_on_category_id"
-    t.index ["grade_id"], name: "index_logs_on_grade_id"
-    t.index ["gym_id"], name: "index_logs_on_gym_id"
-    t.index ["sub_grade_id"], name: "index_logs_on_sub_grade_id"
-    t.index ["user_id"], name: "index_logs_on_user_id"
+    t.index ["category_id"], name: "index_routes_on_category_id"
+    t.index ["grade_id"], name: "index_routes_on_grade_id"
+    t.index ["gym_id"], name: "index_routes_on_gym_id"
+    t.index ["sub_grade_id"], name: "index_routes_on_sub_grade_id"
+    t.index ["user_id"], name: "index_routes_on_user_id"
   end
 
   create_table "sub_grades", force: :cascade do |t|
@@ -89,10 +96,10 @@ ActiveRecord::Schema.define(version: 2019_07_15_141707) do
   end
 
   add_foreign_key "grades", "categories"
-  add_foreign_key "logs", "categories"
-  add_foreign_key "logs", "grades"
-  add_foreign_key "logs", "gyms"
-  add_foreign_key "logs", "sub_grades"
-  add_foreign_key "logs", "users"
+  add_foreign_key "routes", "categories"
+  add_foreign_key "routes", "grades"
+  add_foreign_key "routes", "gyms"
+  add_foreign_key "routes", "sub_grades"
+  add_foreign_key "routes", "users"
   add_foreign_key "sub_grades", "categories"
 end
