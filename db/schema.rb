@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_16_124815) do
+ActiveRecord::Schema.define(version: 2019_07_15_140936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "gyms", force: :cascade do |t|
     t.string "name"
@@ -28,11 +35,8 @@ ActiveRecord::Schema.define(version: 2019_06_16_124815) do
 
   create_table "logs", force: :cascade do |t|
     t.date "date"
-    t.string "category"
     t.string "route_type"
     t.string "route_name"
-    t.string "grade"
-    t.string "sub_grade"
     t.string "status"
     t.string "comment"
     t.string "image"
