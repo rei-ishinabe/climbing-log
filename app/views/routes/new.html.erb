@@ -1,0 +1,38 @@
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <h4><%= @gym.name %></h4>
+      <%= simple_form_for [@gym, @route] do |f| %>
+        <%= f.input :route_name,
+               label: false,
+         placeholder: '課題名など' %>
+        <%= f.input :category_id,
+               label: false,
+              prompt: 'カテゴリー',
+          collection: @categories,
+          label_method: :category,
+          value_method: :id %>
+        <%= f.input :grade_id,
+               label: false,
+              prompt: 'グレード',
+          collection: @grades,
+          label_method: :grade,
+          value_method: :id %>
+       <%= f.input :sub_grade_id,
+               label: false,
+              prompt: 'サブグレード(オプション)',
+          collection: @sub_grades,
+          label_method: :sub_grade,
+          value_method: :id %>
+        <%= f.input :route_type,
+               label: false,
+              prompt: 'タイプ',
+          collection: ['スラブ', '垂壁', '前傾壁', '強傾斜壁', 'ルーフ'] %>
+        <%= f.input :comment,
+               label: false,
+         placeholder: 'コメント(オプション)' %>
+        <%= f.submit '登録', class:'btn btn-primary btn-block mb-5' %>
+      <% end %>
+    </div>
+  </div>
+</div>

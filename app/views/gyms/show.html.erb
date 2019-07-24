@@ -5,24 +5,24 @@
       <% if current_user.admin %>
         <%= link_to 'ジム情報変更', edit_gym_path(@gym) %>
       <% end %>
-      <div>完登本数：<%= @gym.logs.where('user_id = ?', current_user).count %></div>
-      <div>累計訪問日数：<%= @gym.logs.group("date").count.count %></div>
+      <div>完登本数：<%= @gym.routes.where('user_id = ?', current_user).count %></div>
+      <div>累計訪問日数：<%=  %></div>
       <div>ボルダー最高グレード：<%= %></div>
       <div class="mb-1">リード最高グレード：<%=  %></div>
-      <%= link_to '新規ログ登録', new_gym_log_path(@gym), class:'btn btn-primary btn-block' %>
+      <%= link_to '新規課題登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block' %>
     </div>
   </div>
   <div class="row">
     <div class="col-12 mt-3">
       <div class="mb-3">今日 | 今週 | 今月 | 今年 | 全期間 | 期間を指定</div>
-      <% @gym.logs.where('user_id = ?', current_user).each do |log| %>
+      <% @gym.routes.where('user_id = ?', current_user).each do |route| %>
         <div>
-          <%= log.date %>
-          <%= Category.find_by(id:log.category_id).category %>
-          <%= log.route_type %>
-          <%= log.status %>
-          <%= log.route_name %>
-          <%= log.comment %>
+          <%= Category.find_by(id:route.category_id).category %>
+          <%= route.route_name %>
+          <%= Grade.find_by(id:route.grade_id).grade %>
+          <%= SubGrade.find_by(id:route.sub_grade_id).sub_grade %>
+          <%= route.route_type %>
+          <%= route.comment %>
         </div>
       <% end %>
     </div>
