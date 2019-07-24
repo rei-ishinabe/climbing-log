@@ -128,7 +128,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="663" y="181" name="grades">
+<table x="677" y="207" name="grades">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -138,15 +138,14 @@
 <row name="order" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="category_id" null="1" autoincrement="0">
+<row name="grade_type" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="categories" row="id" />
-</row>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="631" y="328" name="sub_grades">
+<table x="626" y="372" name="sub_grades">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -156,10 +155,9 @@
 <row name="order" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="category_id" null="1" autoincrement="0">
+<row name="grade_type" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="categories" row="id" />
-</row>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -205,4 +203,5 @@
 </key>
 </table>
 </sql>
+
 
