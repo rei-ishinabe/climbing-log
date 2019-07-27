@@ -20,7 +20,7 @@
           <%= Category.find_by(id:route.category_id).category %>
           <%= route.route_name %>
           <%= Grade.find_by(id:route.grade_id).grade %>
-          <%= SubGrade.find_by(id:route.sub_grade_id).sub_grade %>
+          <%= SubGrade.find_by(id:route.sub_grade_id).sub_grade unless route.sub_grade_id.nil? %>
           <%= route.route_type %>
           <%= route.comment %>
         </div>
