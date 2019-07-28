@@ -23,6 +23,7 @@
           <%= SubGrade.find_by(id:route.sub_grade_id).sub_grade unless route.sub_grade_id.nil? %>
           <%= route.route_type %>
           <%= route.comment %>
+          <%= link_to '詳細', route_path(route) %>
         </div>
       <% end %>
     </div>

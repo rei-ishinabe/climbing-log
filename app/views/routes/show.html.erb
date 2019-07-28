@@ -1,0 +1,16 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <div>
+        <%= @route.gym.name %>
+        <%= Category.find_by(id:@route.category_id).category %>
+        <%= @route.route_name %>
+        <%= Grade.find_by(id:@route.grade_id).grade %>
+        <%= SubGrade.find_by(id:@route.sub_grade_id).sub_grade unless @route.sub_grade_id.nil? %>
+        <%= @route.route_type %>
+        <%= @route.comment %>
+        <%= link_to '新規ログ登録', new_route_log_path(@route), class:'btn btn-primary btn-block' %>
+      </div>
+    </div>
+  </div>
+</div>

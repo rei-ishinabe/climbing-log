@@ -5,21 +5,18 @@ class LogsController < ApplicationController
   end
 
   def new
-    @gym = Gym.find(params[:gym_id])
-    @categories = Category.all
+    @route = Route.find(params[:route_id])
     @log = Log.new
     authorize @log
   end
 
   def create
-    @gym = Gym.find(params[:gym_id])
+    @route = Route.find(params[:route_id])
     @log = Log.new(log_params)
     authorize @log
-    @log.gym = @gym
-    @log.user = current_user
-    binding.pry
+    @log.route = @route
     if @log.save
-      redirect_to gym_path(@log.gym)
+      redirect_to route_path(@log.route)
     else
       render :new
     end
@@ -31,6 +28,6 @@ class LogsController < ApplicationController
   private
 
   def log_params
-    params.require(:log).permit(:date, :category_id, :route_type, :route_name, :status, :comment, :image)
+    params.require(:log).permit(:date, :status, :comment, :image)
   end
 end

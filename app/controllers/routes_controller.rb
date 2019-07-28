@@ -19,10 +19,15 @@ class RoutesController < ApplicationController
     @route.gym = @gym
     @route.user = current_user
     if @route.save
-      redirect_to gym_path(@route.gym)
+      redirect_to route_path(@route)
     else
       render :new
     end
+  end
+
+  def show
+    @route = Route.find(params[:id])
+    authorize @route
   end
 
   def edit

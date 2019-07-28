@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   resources :gyms do
     resources :routes, only: [:new, :create, :edit, :update]
   end
+  resources :routes do
+    resources :logs, only: [:new, :create, :edit, :update]
+  end
   resources :routes, only: [:index, :show, :destroy]
 end

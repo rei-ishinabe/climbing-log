@@ -1,34 +1,18 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
     <div class="col-12 col-md-6">
-      <h4><%= @gym.name %></h4>
-      <%= simple_form_for [@gym, @log] do |f| %>
+      <h4><%= @route.gym.name %></h4>
+      <%= simple_form_for [@route, @log] do |f| %>
         <%= f.input :date, label: false %>
-        <%= f.input :category_id,
-               label: false,
-              prompt: 'カテゴリー',
-          collection: @categories,
-        label_method: :category,
-        value_method: :id,
-       include_blank: false %>
-        <%= f.input :route_type,
-               label: false,
-              prompt: 'タイプ',
-          collection: ['スラブ', '垂壁', '前傾壁', '強傾斜壁', 'ルーフ'] %>
         <%= f.input :status,
                label: false,
-              prompt: '完登ステータス',
+              prompt: 'ステータスを選択',
           collection: ['オンサイト', 'フラッシュ', 'レッドポイント', '未完登'] %>
-        <%= f.input :route_name,
-               label: false,
-         placeholder: 'ルート名など(オプション)' %>
         <%= f.input :comment,
                label: false,
          placeholder: 'コメント(オプション)' %>
         <%= f.submit '登録', class:'btn btn-primary btn-block mb-5' %>
       <% end %>
-    </div>
-
     </div>
   </div>
 

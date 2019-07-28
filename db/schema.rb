@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_24_232018) do
+ActiveRecord::Schema.define(version: 2019_07_28_002909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2019_07_24_232018) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "route_id"
+    t.index ["route_id"], name: "index_logs_on_route_id"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -93,6 +95,7 @@ ActiveRecord::Schema.define(version: 2019_07_24_232018) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "logs", "routes"
   add_foreign_key "routes", "categories"
   add_foreign_key "routes", "grades"
   add_foreign_key "routes", "gyms"
