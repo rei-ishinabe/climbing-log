@@ -6,7 +6,7 @@
         <%= link_to 'ジム情報変更', edit_gym_path(@gym) %>
       <% end %>
       <div>最終訪問日：
-        <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date %>
+        <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if @routes.exists? %>
       </div>
       <div>完登本数：
         <% sent_count = 0 %>
@@ -16,17 +16,15 @@
         <%= sent_count %>
       </div>
       <div>累計訪問日数：
-        <%= @gym.routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') %>
+        <%= @gym.routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') if @gym.routes.exists? %>
       </div>
       <div>ボルダー最高グレード：
-        <% boulder =  @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 9, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first %>
-        <%= boulder.combined_grade %>
-        (<%= boulder.logs.where('status_id < ?', 4).first.date %>)
+        <% boulder =  @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 9, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
+        <%= "#{boulder.combined_grade} (#{boulder.logs.where('status_id < ?', 4).first.date})" unless boulder.nil?  %>
         </div>
       <div class="mb-1">リード最高グレード：
-        <% lead = @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 10, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first %>
-        <%= lead.combined_grade %>
-        (<%= lead.logs.where('status_id < ?', 4).first.date %>)
+        <% lead = @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 10, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
+        <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})" unless lead.nil?  %>
        </div>
       <%= link_to '新規課題登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block' %>
     </div>
