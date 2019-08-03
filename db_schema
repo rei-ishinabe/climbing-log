@@ -100,9 +100,9 @@
 <row name="date" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="state_id" null="1" autoincrement="0">
+<row name="status_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default><relation table="status" row="id" />
+<default>NULL</default><relation table="statuses" row="id" />
 </row>
 <row name="comment" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -203,11 +203,11 @@
 <part>id</part>
 </key>
 </table>
-<table x="612" y="56" name="status">
+<table x="612" y="56" name="statuses">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="state" null="1" autoincrement="0">
+<row name="status" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="order" null="1" autoincrement="0">
