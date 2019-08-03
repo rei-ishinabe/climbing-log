@@ -19,10 +19,14 @@
         <%= @gym.routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') %>
       </div>
       <div>ボルダー最高グレード：
-        <%= @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 9, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first.combined_grade %>
+        <% boulder =  @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 9, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first %>
+        <%= boulder.combined_grade %>
+        (<%= boulder.logs.where('status_id < ?', 4).first.date %>)
         </div>
       <div class="mb-1">リード最高グレード：
-        <%= @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 10, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first.combined_grade %>
+        <% lead = @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 10, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first %>
+        <%= lead.combined_grade %>
+        (<%= lead.logs.where('status_id < ?', 4).first.date %>)
        </div>
       <%= link_to '新規課題登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block' %>
     </div>
