@@ -17,6 +17,7 @@ class GymsController < ApplicationController
         lat: @gym.latitude,
         lng: @gym.longitude
       }]
+    @routes = @gym.routes.where('user_id = ?', current_user)
   end
 
   def new

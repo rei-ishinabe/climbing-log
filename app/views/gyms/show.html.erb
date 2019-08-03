@@ -5,9 +5,12 @@
       <% if current_user.admin %>
         <%= link_to 'ジム情報変更', edit_gym_path(@gym) %>
       <% end %>
+      <div>最終訪問日：
+        <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date %>
+      </div>
       <div>完登本数：
         <% sent_count = 0 %>
-        <% @gym.routes.where('user_id = ?', current_user).each do |route| %>
+        <% @routes.each do |route| %>
           <% sent_count += 1 if route.sent %>
         <% end %>
         <%= sent_count %>
