@@ -5,10 +5,22 @@
       <% if current_user.admin %>
         <%= link_to 'ジム情報変更', edit_gym_path(@gym) %>
       <% end %>
-      <div>完登本数：<%= @gym.routes.where('user_id = ?', current_user).count %></div>
-      <div>累計訪問日数：<%=  %></div>
-      <div>ボルダー最高グレード：<%= %></div>
-      <div class="mb-1">リード最高グレード：<%=  %></div>
+      <div>完登本数：
+        <% sent_count = 0 %>
+        <% @gym.routes.where('user_id = ?', current_user).each do |route| %>
+          <% sent_count += 1 if route.sent %>
+        <% end %>
+        <%= sent_count %>
+      </div>
+      <div>累計訪問日数：
+        <%= @gym.routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') %>
+      </div>
+      <div>ボルダー最高グレード：
+        <%= @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 9, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first.combined_grade %>
+        </div>
+      <div class="mb-1">リード最高グレード：
+        <%= @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 10, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first.combined_grade %>
+       </div>
       <%= link_to '新規課題登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block' %>
     </div>
   </div>
@@ -19,11 +31,12 @@
         <div>
           <%= Category.find_by(id:route.category_id).category %>
           <%= route.route_name %>
-          <%= Grade.find_by(id:route.grade_id).grade %><%= SubGrade.find_by(id:route.sub_grade_id).sub_grade unless route.sub_grade_id.nil? %>
+          <%= route.combined_grade %>
           <%= route.route_type %>
           <%= route.comment %>
           <%= route.logs.count %>トライ
           <%= route.latest_log_date if route.logs.exists? %>
+          <%= route.best_status %>
           <%= link_to '詳細', route_path(route) %>
         </div>
       <% end %>

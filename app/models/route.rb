@@ -6,6 +6,22 @@ class Route < ApplicationRecord
   has_many :logs
 
   def latest_log_date
-    self.logs.order(date: "DESC").first.date
+    logs.order(date: 'DESC').first.date
+  end
+
+  def best_status
+    if logs.exists?
+      Status.find_by(id: logs.order(status_id: 'ASC').first.status_id).status
+    end
+  end
+
+  def sent
+    if logs.exists?
+      Status.find_by(id: logs.order(status_id: 'ASC').first.status_id).id < 4
+    end
+  end
+
+  def combined_grade
+    "#{Grade.find_by(id: grade_id).grade}#{SubGrade.find_by(id: sub_grade_id).sub_grade.to_s unless sub_grade_id.nil?}"
   end
 end
