@@ -68,3 +68,24 @@ Gym.create(name:'パンプ川口', name_katakana:'パンプカワグチ', name_a
 Gym.create(name:'ロッキー新宿曙橋', name_katakana:'ロッキーシンジュクアケボノバシ', name_alphabet:'Rocky Shinjuku', address:'', latitude:'', longitude:'')
 puts 'added gyms'
 
+puts 'adding statuses'
+Status.delete_all
+Status.create(status:'オンサイト', order: 0)
+Status.create(status:'フラッシュ', order: 1)
+Status.create(status:'レッドポイント', order: 2)
+Status.create(status:'1テン', order: 3)
+Status.create(status:'2テン', order: 4)
+Status.create(status:'3テン', order: 5)
+Status.create(status:'テン山', order: 6)
+Status.create(status:'途中敗退', order: 6)
+Status.create(status:'トライ中', order: 7)
+puts 'added statuses'
+
+puts 'adding users'
+User.delete_all
+User.create(email: 'admin@test.com', password: 'test1234', admin: true)
+User.create(email: 'test@test.com', password: 'test1234')
+puts 'added users'
+
+
+

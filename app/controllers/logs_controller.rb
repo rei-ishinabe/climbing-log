@@ -6,6 +6,7 @@ class LogsController < ApplicationController
 
   def new
     @route = Route.find(params[:route_id])
+    @statuses = Status.all
     @log = Log.new
     authorize @log
   end
@@ -28,6 +29,6 @@ class LogsController < ApplicationController
   private
 
   def log_params
-    params.require(:log).permit(:date, :status, :comment, :image)
+    params.require(:log).permit(:date, :status_id, :comment, :image)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_28_002909) do
+ActiveRecord::Schema.define(version: 2019_08_03_135940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,13 +43,14 @@ ActiveRecord::Schema.define(version: 2019_07_28_002909) do
 
   create_table "logs", force: :cascade do |t|
     t.date "date"
-    t.string "status"
     t.string "comment"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "route_id"
+    t.bigint "status_id"
     t.index ["route_id"], name: "index_logs_on_route_id"
+    t.index ["status_id"], name: "index_logs_on_status_id"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -69,6 +70,13 @@ ActiveRecord::Schema.define(version: 2019_07_28_002909) do
     t.index ["gym_id"], name: "index_routes_on_gym_id"
     t.index ["sub_grade_id"], name: "index_routes_on_sub_grade_id"
     t.index ["user_id"], name: "index_routes_on_user_id"
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "status"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sub_grades", force: :cascade do |t|
@@ -96,6 +104,7 @@ ActiveRecord::Schema.define(version: 2019_07_28_002909) do
   end
 
   add_foreign_key "logs", "routes"
+  add_foreign_key "logs", "statuses"
   add_foreign_key "routes", "categories"
   add_foreign_key "routes", "grades"
   add_foreign_key "routes", "gyms"

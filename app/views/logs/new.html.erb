@@ -4,10 +4,12 @@
       <h4><%= @route.gym.name %></h4>
       <%= simple_form_for [@route, @log] do |f| %>
         <%= f.input :date, label: false %>
-        <%= f.input :status,
+        <%= f.input :status_id,
                label: false,
               prompt: 'ステータスを選択',
-          collection: ['オンサイト', 'フラッシュ', 'レッドポイント', '未完登'] %>
+          collection: @statuses,
+          label_method: :status,
+          value_method: :id %>
         <%= f.input :comment,
                label: false,
          placeholder: 'コメント(オプション)' %>

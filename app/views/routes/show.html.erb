@@ -19,7 +19,7 @@
       <% @route.logs.each do |log| %>
         <div>
           <%= log.date %>
-          <%= log.status %>
+          <%= Status.find_by(id:log.status_id).status %>
           <%= log.comment %>
         </div>
       <% end %>
