@@ -4,4 +4,8 @@ class Route < ApplicationRecord
   belongs_to :user
   belongs_to :gym
   has_many :logs
+
+  def latest_log_date
+    self.logs.order(date: "DESC").first.date
+  end
 end

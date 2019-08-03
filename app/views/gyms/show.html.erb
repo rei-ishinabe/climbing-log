@@ -15,14 +15,15 @@
   <div class="row">
     <div class="col-12 mt-3">
       <div class="mb-3">今日 | 今週 | 今月 | 今年 | 全期間 | 期間を指定</div>
-      <% @gym.routes.where('user_id = ?', current_user).each do |route| %>
+      <% @gym.routes.where('user_id = ?', current_user).order(id: "DESC").each do |route| %>
         <div>
           <%= Category.find_by(id:route.category_id).category %>
           <%= route.route_name %>
-          <%= Grade.find_by(id:route.grade_id).grade %>
-          <%= SubGrade.find_by(id:route.sub_grade_id).sub_grade unless route.sub_grade_id.nil? %>
+          <%= Grade.find_by(id:route.grade_id).grade %><%= SubGrade.find_by(id:route.sub_grade_id).sub_grade unless route.sub_grade_id.nil? %>
           <%= route.route_type %>
           <%= route.comment %>
+          <%= route.logs.count %>トライ
+          <%= route.latest_log_date if route.logs.exists? %>
           <%= link_to '詳細', route_path(route) %>
         </div>
       <% end %>
