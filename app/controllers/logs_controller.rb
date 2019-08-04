@@ -24,6 +24,18 @@ class LogsController < ApplicationController
   end
 
   def edit
+    @log = Log.find(params[:id])
+    authorize @log
+  end
+
+  def destroy
+    @log = Log.find(params[:id])
+    authorize @log
+    if @log.destroy
+      redirect_to route_path(@log.route)
+    else
+      render :show
+    end
   end
 
   private

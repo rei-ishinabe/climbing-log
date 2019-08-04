@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :logs, only: [:new, :create, :edit, :update]
   end
   resources :routes, only: [:index, :show, :destroy]
+  resources :logs, only: [:destroy]
 end

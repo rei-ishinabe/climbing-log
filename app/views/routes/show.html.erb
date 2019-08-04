@@ -15,13 +15,13 @@
   </div>
   <div class="row">
     <div class="col-12 mt-3">
-      <div class="mb-3">今日 | 今週 | 今月 | 今年 | 全期間 | 期間を指定</div>
       <% @route.logs.each do |log| %>
         <div>
           <%= log.date %>
           <%= Status.find_by(id:log.status_id).status %>
           <%= log.comment %>
-        </div>
+          <%= link_to '編集', edit_route_log_path(log) %>
+          <%= link_to '削除', log_path(log), method: :delete %>
       <% end %>
     </div>
   </div>
