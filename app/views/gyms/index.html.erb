@@ -1,7 +1,14 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-12 col-md-6">
-      <h4>ジム検索</h4>
+      <%= form_tag gyms_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "ジム名を入力"
+        %>
+        <%= submit_tag "検索", class: "btn btn-primary btn-block my-1" %>
+      <% end %>
       <div>現在地から検索</div>
       <div>行ったことのあるジム</div>
       <div>最終訪問日 | 訪問日数</div>
@@ -12,7 +19,7 @@
         </div>
         <% end %>
       <% if current_user.admin? %>
-        <%= link_to "新規ジム登録", new_gym_path, class: "btn btn-primary btn-block" %>
+        <%= link_to "新規ジム登録", new_gym_path %>
       <% end %>
     </div>
   </div>
