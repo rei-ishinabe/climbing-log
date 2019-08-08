@@ -1,27 +1,35 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-12 col-md-6">
+      <h4>行ったことのあるジム</h4>
+      <% @gyms.each do |gym| %>
+        <div>
+          <% if gym.last_visit_date(current_user).present? %>
+            <%= link_to gym.name, gym_path(gym) %>
+            <%= gym.last_visit_date(current_user) %>
+          <% end %>
+        </div>
+      <% end %>
       <%= form_tag gyms_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
-          class: "form-control",
+          class: "form-control mt-3",
           placeholder: "ジム名を入力"
         %>
         <%= submit_tag "検索", class: "btn btn-primary btn-block my-1" %>
       <% end %>
       <div>現在地から検索</div>
-      <div>行ったことのあるジム</div>
-      <div>最終訪問日 | 訪問日数</div>
-        <% @gyms.each do |gym| %>
-        <div>
-          <%= link_to gym.name, gym_path(gym) %>
-          <%= gym.routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if gym.routes.exists? %>
-        </div>
+
+      <% if @gyms_searched.present? %>
+        <% @gyms_searched.each do |gym| %>
+          <div>
+            <%= link_to gym.name, gym_path(gym) %>
+          </div>
         <% end %>
+      <% end %>
       <% if current_user.admin? %>
         <%= link_to "新規ジム登録", new_gym_path %>
       <% end %>
     </div>
   </div>
 </div>
-

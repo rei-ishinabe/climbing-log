@@ -2,17 +2,10 @@ class GymsController < ApplicationController
   before_action :set_gym, only: [:show, :edit, :update, :destroy]
 
   def index
+    @gyms = policy_scope(Gym).all
     if params[:query].present?
       sql_query = "name ILIKE :query OR name_katakana ILIKE :query OR name_alphabet ILIKE :query"
-      @gyms = policy_scope(Gym).all.where(sql_query, query:"%#{params[:query]}%").order(:name)
-    else
-      @gyms = policy_scope(Gym).all.order(:name)
-    end
-    @markers = @gyms.map do |gym|
-      {
-        lat: gym.latitude,
-        lng: gym.longitude
-      }
+      @gyms_searched = @gyms.where(sql_query, query:"%#{params[:query]}%").order(:name)
     end
   end
 
