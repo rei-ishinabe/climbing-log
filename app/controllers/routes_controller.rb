@@ -33,6 +33,8 @@ class RoutesController < ApplicationController
   def edit
   end
 
+  private
+
   def route_params
     params.require(:route).permit(:route_type, :image, :route_name, :comment, :category_id, :grade_id, :sub_grade_id, :gym_id)
   end

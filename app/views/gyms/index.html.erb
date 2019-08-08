@@ -5,11 +5,12 @@
       <div>現在地から検索</div>
       <div>行ったことのあるジム</div>
       <div>最終訪問日 | 訪問日数</div>
-      <ul>
         <% @gyms.each do |gym| %>
-          <li><%= link_to gym.name, gym_path(gym) %></li>
+        <div>
+          <%= link_to gym.name, gym_path(gym) %>
+          <%= gym.routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if gym.routes.exists? %>
+        </div>
         <% end %>
-      </ul>
       <% if current_user.admin? %>
         <%= link_to "新規ジム登録", new_gym_path, class: "btn btn-primary btn-block" %>
       <% end %>

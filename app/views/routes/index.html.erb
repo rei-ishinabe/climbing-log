@@ -1,2 +1,43 @@
-<h1>Routes#index</h1>
-<p>Find me in app/views/routes/index.html.erb</p>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div><%= current_user.nickname %>さんのクライミングログ</div>
+      <div>最終クライミング日：
+        <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if @routes.exists? %>
+      </div>
+      <div>完登本数：
+        <% sent_count = 0 %>
+        <% @routes.each do |route| %>
+          <% sent_count += 1 if route.sent %>
+        <% end %>
+        <%= sent_count %>
+      </div>
+      <div>累計クライミング日数：
+        <%= @routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') if @routes.exists? %>
+      </div>
+      <div>ボルダー最高グレード：
+        <% boulder =  @routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 9, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @routes.exists? %>
+        <%= "#{boulder.combined_grade} (#{boulder.logs.where('status_id < ?', 4).first.date})" unless boulder.nil?  %>
+        </div>
+      <div class="mb-1">リード最高グレード：
+        <% lead = @routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 10, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @routes.exists? %>
+        <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})" unless lead.nil?  %>
+      </div>
+      <% @routes.each do |route| %>
+        <div>
+          <%= route.gym.name %>
+          <%= Category.find_by(id:route.category_id).category %>
+          <%= route.route_name %>
+          <%= route.combined_grade %>
+          <%= route.route_type %>
+          <%= route.comment %>
+          <%= route.logs.count %>トライ
+          <%= route.latest_log_date if route.logs.exists? %>
+          <%= route.best_status %>
+          <%= link_to '詳細', route_path(route) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
