@@ -16,20 +16,17 @@
           class: "form-control mt-3",
           placeholder: "ジム名を入力"
         %>
-        <%= submit_tag 検索", class: "btn btn-primary btn-block my-1" %>
+        <%= submit_tag "絞り込み検索", class: "btn btn-primary btn-block my-1" %>
       <% end %>
-      <% if params[:query].present? %>
-        <% if @gyms_searched.present? %>
-          <% @gyms_searched.each do |gym| %>
+        <% if @gyms.present? %>
+          <% @gyms.each do |gym| %>
             <div>
               <%= link_to gym.name, gym_path(gym) %>
             </div>
           <% end %>
               <% else %>
           <div>検索条件に合致するジムがみつかりませんでした。</div>
-          <div>文字数を減らして検索するか、カタカナ、アルファベットなど別のキーワードでの検索をお試しください。</div>
         <% end %>
-      <% end %>
       <% if current_user.admin? %>
         <%= link_to "新規ジム登録", new_gym_path %>
       <% end %>

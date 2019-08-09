@@ -18,7 +18,7 @@
             <% end %>
             <%= sent_count %>
           </div>
-          <div>累計クライミング日数：
+          <div>クライミング日数：
             <%= @routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') if @routes.exists? %>
           </div>
           <div>ボルダー最高グレード：
