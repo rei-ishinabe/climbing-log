@@ -15,17 +15,13 @@
           <%= link_to "ホーム", "/", class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "ジム選択", gyms_path , class: "nav-link" %>
+          <%= link_to "ジム検索/選択", gyms_path , class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "ログ一覧", routes_path , class: "nav-link" %>
+          <%= link_to "アカウント設定", edit_user_registration_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <%= cl_image_tag current_user.image, height: 40, crop: :fill,  class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "マイプロファイル", edit_user_registration_path, class: "dropdown-item" %>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete , class: "nav-link" %>
         </li>
       <% else %>
         <li class="nav-item">
