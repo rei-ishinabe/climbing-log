@@ -9,19 +9,19 @@
         <%= f.input :category_id,
                label: false,
               prompt: 'カテゴリーを選択',
-          collection: @categories,
+          collection: Category.all,
           label_method: :category,
           value_method: :id %>
         <%= f.input :grade_id,
                label: false,
               prompt: 'グレードを選択',
-          collection: @grades,
+          collection: Grade.all,
           label_method: :grade,
           value_method: :id %>
        <%= f.input :sub_grade_id,
                label: false,
               prompt: 'サブグレードを選択(任意)',
-          collection: @sub_grades,
+          collection: SubGrade.all,
           label_method: :sub_grade,
           value_method: :id %>
         <%= f.input :route_type,
