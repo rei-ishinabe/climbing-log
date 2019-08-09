@@ -24,6 +24,7 @@ class LogsController < ApplicationController
   end
 
   def edit
+    @route = Route.find(params[:route_id])
     @log = Log.find(params[:id])
     authorize @log
   end

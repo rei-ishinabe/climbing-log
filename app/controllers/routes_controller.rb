@@ -31,6 +31,9 @@ class RoutesController < ApplicationController
   end
 
   def edit
+    @route = Route.find(params[:id])
+    @gym = @route.gym
+    authorize @route
   end
 
   def destroy
