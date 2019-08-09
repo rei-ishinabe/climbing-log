@@ -2,6 +2,9 @@
   <div class="row">
     <div class="col-12 mt-3">
       <div>
+        <% unless @route.image.blank? %>
+          <%= cl_image_tag @route.image, height: 120, width: 120, crop: :fill, class:"rounded" %>
+        <% end %>
         <%= link_to @route.gym.name, gym_path(@route.gym) %>
         <%= Category.find_by(id:@route.category_id).category %>
         <%= @route.route_name %>

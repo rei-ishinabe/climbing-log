@@ -31,6 +31,8 @@
         <%= f.input :comment,
                label: false,
          placeholder: 'コメント(任意)' %>
+        <%= f.input :image %>
+        <%= f.input :image_cache, as: :hidden %>
         <%= f.submit '登録', class:'btn btn-primary btn-block mb-5' %>
       <% end %>
     </div>
