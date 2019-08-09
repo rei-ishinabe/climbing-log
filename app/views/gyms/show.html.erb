@@ -1,50 +1,52 @@
 <div class="container mt-3">
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-12 col-md-6">
       <h4><%= @gym.name %></h4>
       <% if current_user.admin %>
         <%= link_to 'ジム情報変更', edit_gym_path(@gym) %>
       <% end %>
-      <div>最終訪問日：
-        <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if @routes.exists? %>
-      </div>
-      <div>完登本数：
-        <% sent_count = 0 %>
-        <% @routes.each do |route| %>
-          <% sent_count += 1 if route.sent %>
-        <% end %>
-        <%= sent_count %>
-      </div>
-      <div>累計訪問日数：
-        <%= @gym.routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') if @gym.routes.exists? %>
-      </div>
-      <div>ボルダー最高グレード：
-        <% boulder =  @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 9, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
-        <%= "#{boulder.combined_grade} (#{boulder.logs.where('status_id < ?', 4).first.date})" unless boulder.nil?  %>
+      <div class="card px-2 py-1 mt-1">
+        <div>最終訪問日：
+          <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if @routes.exists? %>
         </div>
-      <div class="mb-1">リード最高グレード：
-        <% lead = @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 10, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
-        <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})" unless lead.nil?  %>
-       </div>
+        <div>完登本数：
+          <% sent_count = 0 %>
+          <% @routes.each do |route| %>
+            <% sent_count += 1 if route.sent %>
+          <% end %>
+          <%= sent_count %>
+        </div>
+        <div>累計訪問日数：
+          <%= @gym.routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') if @gym.routes.exists? %>
+        </div>
+        <div>ボルダー最高グレード：
+          <% boulder =  @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 9, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
+          <%= "#{boulder.combined_grade} (#{boulder.logs.where('status_id < ?', 4).first.date})" unless boulder.nil?  %>
+          </div>
+        <div class="mb-1">リード最高グレード：
+          <% lead = @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 10, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
+          <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})" unless lead.nil?  %>
+        </div>
+      </div>
       <%= link_to '新規課題登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block mt-3' %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 mt-3">
-      <div class="mb-3">今日 | 今週 | 今月 | 今年 | 全期間 | 期間を指定</div>
-      <% @gym.routes.where('user_id = ?', current_user).order(id: "DESC").each do |route| %>
-        <div>
-          <%= Category.find_by(id:route.category_id).category %>
-          <%= route.route_name %>
-          <%= route.combined_grade %>
-          <%= route.route_type %>
-          <%= route.comment %>
-          <%= route.logs.count %>トライ
-          <%= route.latest_log_date if route.logs.exists? %>
-          <%= route.best_status %>
-          <%= link_to '詳細', route_path(route) %>
-        </div>
-      <% end %>
+      <div class="my-3">今日 | 今週 | 今月 | 今年 | 全期間 | 期間を指定</div>
+        <% @gym.routes.where('user_id = ?', current_user).order(id: "DESC").each do |route| %>
+          <div class="card p-1 my-1">
+            <div>
+              <%= Category.find_by(id:route.category_id).category %>
+              <%= route.route_name %>
+              <%= route.combined_grade %>
+              <%= route.route_type %>
+            </div>
+            <div>
+              <%= route.logs.count %>トライ
+              <%= route.latest_log_date if route.logs.exists? %>
+              <%= route.best_status %>
+              <%= link_to '詳細', route_path(route) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
