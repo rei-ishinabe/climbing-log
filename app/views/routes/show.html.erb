@@ -9,7 +9,7 @@
         <%= SubGrade.find_by(id:@route.sub_grade_id).sub_grade unless @route.sub_grade_id.nil? %>
         <%= @route.route_type %>
         <%= @route.comment %>
-        <%= link_to '新規ログ登録', new_route_log_path(@route), class:'btn btn-primary btn-block mt-3' %>
+        <%= link_to 'ログを追加', new_route_log_path(@route), class:'btn btn-primary btn-block mt-3' %>
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
           <%= Status.find_by(id:log.status_id).status %>
           <%= log.comment %>
           <%= link_to '編集', edit_route_log_path(log) %>
-          <%= link_to '削除', log_path(log), method: :delete %>
+          <%= link_to '削除', log_path(log), method: :delete, data: {confirm: "本当に削除しますか?"}  %>
       <% end %>
     </div>
   </div>

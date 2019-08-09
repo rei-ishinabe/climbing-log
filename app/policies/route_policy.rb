@@ -16,4 +16,8 @@ class RoutePolicy < ApplicationPolicy
   def update?
     record.user == user || user.admin?
   end
+
+  def destroy?
+    record.user == user
+  end
 end

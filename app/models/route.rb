@@ -3,7 +3,7 @@ class Route < ApplicationRecord
   belongs_to :grade
   belongs_to :user
   belongs_to :gym
-  has_many :logs
+  has_many :logs, :dependent => :destroy
   validates :route_type, presence: true
   validates :category_id, presence: true
   validates :grade_id, presence: true

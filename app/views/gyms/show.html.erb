@@ -7,7 +7,7 @@
       <% end %>
       <div class="card px-2 py-1 mt-1">
         <div>最終訪問日：
-          <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if @routes.exists? %>
+          <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if @routes.exists? & @routes.joins(:logs).exists? %>
         </div>
         <div>完登本数：
           <% sent_count = 0 %>
@@ -28,7 +28,7 @@
           <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})" unless lead.nil?  %>
         </div>
       </div>
-      <%= link_to '新規課題登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block mt-3' %>
+      <%= link_to '課題を登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block mt-3' %>
       <div class="my-3">今日 | 今週 | 今月 | 今年 | 全期間 | 期間を指定</div>
         <% @gym.routes.where('user_id = ?', current_user).order(id: "DESC").each do |route| %>
           <div class="card p-1 my-1">
@@ -43,6 +43,8 @@
               <%= route.latest_log_date if route.logs.exists? %>
               <%= route.best_status %>
               <%= link_to '詳細', route_path(route) %>
+              <%= link_to 'ログ追加', new_route_log_path(route) %>
+              <%= link_to '削除', route_path(route), method: :delete, data: {confirm: "課題を削除すると、この課題のログもすべて削除されます。本当に削除しますか?"} %>
             </div>
           </div>
         <% end %>

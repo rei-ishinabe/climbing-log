@@ -19,7 +19,7 @@ class RoutesController < ApplicationController
     @route.gym = @gym
     @route.user = current_user
     if @route.save
-      redirect_to route_path(@route)
+      redirect_to gym_path(@gym)
     else
       render :new
     end
@@ -31,6 +31,16 @@ class RoutesController < ApplicationController
   end
 
   def edit
+  end
+
+  def destroy
+    @route = Route.find(params[:id])
+    authorize @route
+    if @route.destroy
+      redirect_to gym_path(@route.gym_id)
+    else
+      render :show
+    end
   end
 
   private
