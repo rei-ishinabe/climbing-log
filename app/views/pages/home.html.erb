@@ -1,7 +1,55 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url(<%= asset_path 'bouldering-climber-climbing-9606.jpg' %>);">
-  <div class="container text-center">
-    <h1 style="font-size: 48px;" class="mb-5">クラログα</h1>
-    <p class="mb-5">クライミングジム、ボルダリングジムで登った記録をつけて、どんどんレベルアップ！</p>
-    <a class="btn btn-primary" href="/users/sign_up">無料アカウント登録</a>
+<% if user_signed_in? %>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <% if current_user.nickname.present? %>
+          <div>ようこそ、<%= current_user.nickname %>さん</div>
+        <% else %>
+           <div>クラログへようこそ！</div>
+        <% end %>
+        <% if @routes.exists? %>
+          <div>最終クライミング日：
+            <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if @routes.exists? %>
+          </div>
+          <div>完登本数：
+            <% sent_count = 0 %>
+            <% @routes.each do |route| %>
+              <% sent_count += 1 if route.sent %>
+            <% end %>
+            <%= sent_count %>
+          </div>
+          <div>累計クライミング日数：
+            <%= @routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') if @routes.exists? %>
+          </div>
+          <div>ボルダー最高グレード：
+            <% boulder =  @routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 9, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @routes.exists? %>
+            <%= "#{boulder.combined_grade} (#{boulder.logs.where('status_id < ?', 4).first.date})" unless boulder.nil?  %>
+            </div>
+          <div class="mb-1">リード最高グレード：
+            <% lead = @routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 10, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @routes.exists? %>
+            <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})" unless lead.nil?  %>
+          </div>
+        <% else %>
+          <h4>かんたん3ステップ、クラログαの使い方</h4>
+          <p>Step 1: ジムを検索・選択</p>
+          <p>クラログに登録されている日本全国のジムをジム名で検索して選択します。</p>
+          <p>Step 2: 課題を登録</p>
+          <p>ジムを選択したら、課題名やグレードなどを登録します。</p>
+          <p>Step 3: ログを追加</p>
+          <p>登録した課題にトライしたログを登録します。</p>
+          <p>さぁ、やってみよう！</p>
+          <%= link_to "ジム選択画面へ進む", gyms_path , class: "btn btn-primary btn-block" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.1)), url(<%= asset_path 'bouldering-climber-climbing-9606.jpg' %>);">
+    <div class="container text-center">
+      <h1 style="font-size: 48px;" class="mb-5">クラログα</h1>
+      <p class="mb-5">クライミングジム、ボルダリングジムで登った記録をつけて、どんどんレベルアップ！</p>
+      <p><a class="btn btn-primary" href="/users/sign_up">無料アカウント登録</a></p>
+      <p><a href="/users/sign_in" style="font-size: 14px; color: white;">ログイン</a></p>
+    </div>
+  </div>
+<% end %>
