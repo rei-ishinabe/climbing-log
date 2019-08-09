@@ -9,6 +9,7 @@
         <%= SubGrade.find_by(id:@route.sub_grade_id).sub_grade unless @route.sub_grade_id.nil? %>
         <%= @route.route_type %>
         <%= @route.comment %>
+        <%= link_to '課題を削除', route_path(@route), method: :delete, data: {confirm: "課題を削除すると、この課題のログもすべて削除されます。本当に削除しますか?"}  %>
         <%= link_to 'ログを追加', new_route_log_path(@route), class:'btn btn-primary btn-block mt-3' %>
       </div>
     </div>

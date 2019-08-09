@@ -42,9 +42,8 @@
               <%= route.logs.count %>トライ
               <%= route.latest_log_date if route.logs.exists? %>
               <%= route.best_status %>
-              <%= link_to '詳細', route_path(route) %>
               <%= link_to 'ログ追加', new_route_log_path(route) %>
-              <%= link_to '削除', route_path(route), method: :delete, data: {confirm: "課題を削除すると、この課題のログもすべて削除されます。本当に削除しますか?"} %>
+              <%= link_to '詳細', route_path(route) %>
             </div>
           </div>
         <% end %>

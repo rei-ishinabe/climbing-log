@@ -17,7 +17,7 @@ class LogsController < ApplicationController
     authorize @log
     @log.route = @route
     if @log.save
-      redirect_to route_path(@log.route)
+      redirect_to gym_path(@log.route.gym)
     else
       render :new
     end
