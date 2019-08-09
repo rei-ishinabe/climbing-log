@@ -4,6 +4,10 @@ class Route < ApplicationRecord
   belongs_to :user
   belongs_to :gym
   has_many :logs
+  validates :route_type, presence: true
+  validates :category_id, presence: true
+  validates :grade_id, presence: true
+
 
   def latest_log_date
     logs.order(date: 'DESC').first.date
