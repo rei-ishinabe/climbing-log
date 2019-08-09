@@ -1,6 +1,11 @@
 <div class="footer">
   <div class="footer-links">
-    <div><%= link_to '課題一覧', routes_path %></div>
-    <div><%= link_to 'ジム検索/選択', gyms_path %></div>
+    <% if user_signed_in? %>
+      <div><%= link_to '課題一覧', routes_path %></div>
+      <div><%= link_to 'ジム検索/選択', gyms_path %></div>
+    <% else %>
+      <div><%= link_to 'クラログαについて', routes_path %></div>
+      <div><%= link_to '利用規約', gyms_path %></div>
+    <% end %>
   </div>
 </div>
