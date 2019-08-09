@@ -26,7 +26,7 @@
         <% lead = @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 10, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
         <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})" unless lead.nil?  %>
        </div>
-      <%= link_to '新規課題登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block' %>
+      <%= link_to '新規課題登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block mt-3' %>
     </div>
   </div>
   <div class="row">

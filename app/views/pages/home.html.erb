@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12 col-md-6">
         <% if current_user.nickname.present? %>
-          <div>ようこそ、<%= current_user.nickname %>さん</div>
+          <div class="text-right">ようこそ、<%= current_user.nickname %>さん</div>
         <% else %>
            <div>クラログへようこそ！</div>
         <% end %>
@@ -30,15 +30,22 @@
             <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})" unless lead.nil?  %>
           </div>
         <% else %>
-          <h4>かんたん3ステップ、クラログαの使い方</h4>
-          <p>Step 1: ジムを検索・選択</p>
-          <p>クラログに登録されている日本全国のジムをジム名で検索して選択します。</p>
-          <p>Step 2: 課題を登録</p>
-          <p>ジムを選択したら、課題名やグレードなどを登録します。</p>
-          <p>Step 3: ログを追加</p>
-          <p>登録した課題にトライしたログを登録します。</p>
-          <p>さぁ、やってみよう！</p>
-          <%= link_to "ジム選択画面へ進む", gyms_path , class: "btn btn-primary btn-block" %>
+          <h4 class="text-center my-4">使い方</h4>
+          <div class="card p-2 mb-3">
+            <h5 class="font-weight-bold"><i class="fas fa-search"></i> Step 1 - ジムを検索/選択 </h5>
+            <div>クラログαに登録されている日本全国のジムを、ジム名などで検索して選択します。</div>
+          </div>
+          <div class="card p-1 mb-3">
+            <h5><i class="fas fa-plus-circle"></i> Step 2 - 課題を登録 </h5>
+            <div>ジムを選択したら、課題名やグレードなどを登録します。</div>
+          </div>
+          <div class="card p-1 mb-5">
+            <h5><i class="fas fa-tasks"></i> Step 3 - ログを追加 </h5>
+            <div>登録した課題に、トライしたログを追加します。</div>
+          </div>
+          <%= link_to  gyms_path, class: "btn btn-primary btn-block" do %>
+            <i class="fas fa-search"></i> ジム検索/選択画面へ進む
+          <% end %>
         <% end %>
       </div>
     </div>
