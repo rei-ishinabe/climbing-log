@@ -87,5 +87,18 @@ User.create(email: 'admin@test.com', password: 'test1234', admin: true)
 User.create(email: 'test@test.com', password: 'test1234')
 puts 'added users'
 
+puts 'adding status'
+Status.delete_all
+Status.create(status: 'オンサイト', order: 0)
+Status.create(status: 'フラッシュ', order: 1)
+Status.create(status: 'レッドポイント', order: 2)
+Status.create(status: '1テン', order: 3)
+Status.create(status: '2テン', order: 4)
+Status.create(status: '3テン', order: 5)
+Status.create(status: 'テン山', order: 6)
+Status.create(status: '途中敗退', order: 7)
+Status.create(status: 'トライ中', order: 8)
+puts 'added users'
+
 
 
