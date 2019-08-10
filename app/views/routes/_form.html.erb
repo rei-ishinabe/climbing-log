@@ -1,11 +1,8 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
     <div class="col-12 col-md-6">
-      <h4 class="mb-3"><%= @gym.name %></h4>
+      <h4><%= link_to @gym.name, gym_path(@gym) %></h4>
       <%= simple_form_for [@gym, @route] do |f| %>
-        <%= f.input :route_name,
-               label: false,
-         placeholder: '課題名などを入力' %>
         <%= f.input :category_id,
                label: false,
               prompt: 'カテゴリーを選択',
@@ -28,10 +25,13 @@
                label: false,
               prompt: 'タイプを選択',
           collection: ['スラブ', '垂壁', '前傾壁', '強傾斜壁', 'ルーフ'] %>
+        <%= f.input :route_name,
+               label: false,
+         placeholder: '課題名(例：奥壁赤テープ)などを入力(オプション)' %>
         <%= f.input :comment,
                label: false,
-         placeholder: 'コメント(任意)' %>
-        <%= f.input :image %>
+         placeholder: 'コメント(オプション)' %>
+        <%= f.input :image, label: false %>
         <%= f.input :image_cache, as: :hidden %>
         <%= f.submit '登録', class:'btn btn-primary btn-block mb-5' %>
       <% end %>

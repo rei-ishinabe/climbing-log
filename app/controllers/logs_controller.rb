@@ -29,6 +29,17 @@ class LogsController < ApplicationController
     authorize @log
   end
 
+  def update
+    @route = Route.find(params[:route_id])
+    @log = Log.find(params[:id])
+    authorize @log
+    if @log.update(log_params)
+      redirect_to gym_path(@log.route.gym)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @log = Log.find(params[:id])
     authorize @log

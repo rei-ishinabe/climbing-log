@@ -1,33 +1,39 @@
 <div class="container mt-3">
-  <div class="row">
-    <div class="col-12 mt-3">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
       <div>
+        <h4><%= link_to @route.gym.name, gym_path(@route.gym) %></h4>
         <% unless @route.image.blank? %>
-          <%= cl_image_tag @route.image, height: 120, width: 120, crop: :fill, class:"rounded" %>
+          <div class="mb-3">
+            <%= cl_image_tag @route.image, height: 120, width: 120, crop: :fill, class:"rounded" %>
+          </div>
         <% end %>
-        <%= link_to @route.gym.name, gym_path(@route.gym) %>
-        <%= Category.find_by(id:@route.category_id).category %>
-        <%= @route.route_name %>
-        <%= Grade.find_by(id:@route.grade_id).grade %>
-        <%= SubGrade.find_by(id:@route.sub_grade_id).sub_grade unless @route.sub_grade_id.nil? %>
+        <span style="font-size: 1.1rem;">
+          <%= Category.find_by(id:@route.category_id).category %>
+          <%= @route.combined_grade %>
+        </span>
         <%= @route.route_type %>
+        <%= @route.route_name %>
         <%= @route.comment %>
         <%= link_to '編集', edit_route_path(@route) %>
         <%= link_to '削除', route_path(@route), method: :delete, data: {confirm: "課題を削除すると、この課題のログもすべて削除されます。本当に削除しますか?"}  %>
-        <%= link_to 'ログを追加', new_route_log_path(@route), class:'btn btn-primary btn-block mt-3' %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 mt-3">
-      <% @route.logs.each do |log| %>
-        <div>
-          <%= log.date %>
-          <%= Status.find_by(id:log.status_id).status %>
-          <%= log.comment %>
-          <%= link_to '編集', edit_route_log_path(log.route, log) %>
-          <%= link_to '削除', log_path(log), method: :delete, data: {confirm: "本当に削除しますか?"}  %>
+        <%= link_to 'ログを追加', new_route_log_path(@route), class:'btn btn-primary btn-block btn-lg my-3' %>
+        <% @route.logs.each do |log| %>
+        <div class="card p-1 my-1">
+          <div>
+            <span style="font-size: 1.1rem"><%= log.date %></span>
+            <%= Status.find_by(id:log.status_id).status %>
+          </div>
+          <div>
+            <%= log.comment %>
+          </div>
+          <div class="text-right">
+            <%= link_to '編集', edit_route_log_path(log.route, log) %>
+            <%= link_to '削除', log_path(log), method: :delete, data: {confirm: "本当に削除しますか?"}  %>
+          </div>
+        </div>
       <% end %>
+      </div>
     </div>
   </div>
 </div>

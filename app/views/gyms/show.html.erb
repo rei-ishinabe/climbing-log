@@ -33,17 +33,19 @@
         <% @gym.routes.where('user_id = ?', current_user).order(id: "DESC").each do |route| %>
           <div class="card p-1 my-1">
             <div>
-              <%= Category.find_by(id:route.category_id).category %>
-              <%= route.route_name %>
-              <%= route.combined_grade %>
+              <span style="font-size: 1.1rem;">
+                <%= Category.find_by(id:route.category_id).category %>
+                <%= route.combined_grade %>
+              </span>
               <%= route.route_type %>
+              <%= route.route_name %>
+              <%= link_to '詳細', route_path(route) %>
             </div>
             <div>
-              <%= route.logs.count %>トライ
+              トライ数：<%= route.logs.count %>
               <%= route.latest_log_date if route.logs.exists? %>
               <%= route.best_status %>
               <%= link_to 'ログ追加', new_route_log_path(route) %>
-              <%= link_to '詳細', route_path(route) %>
             </div>
           </div>
         <% end %>
