@@ -36,9 +36,7 @@
           </div>
         <% else %>
           <h4 class="text-center my-2">クラログαとは？</h4>
-          <div class="card p-2 mb-3">
             <div>日々、ボルダリングジム、クライミングジムで登った記録をカンタンに保存・管理できるツールです。登った本数やグレードの推移などもひと目で確認できます。</div>
-          </div>
           <h4 class="text-center mt-3 mb-3">使い方</h4>
           <div class="card p-2 mb-3">
             <h5><i class="fas fa-search"></i> Step 1 - ジムを検索/選択 </h5>
@@ -52,7 +50,7 @@
             <h5><i class="fas fa-tasks"></i> Step 3 - ログを追加 </h5>
             <div>登録した課題に、トライしたログを追加します。</div>
           </div>
-          <%= link_to  gyms_path, class: "btn btn-primary btn-block" do %>
+          <%= link_to  gyms_path, class: "btn btn-primary btn-block btn-lg" do %>
             <i class="fas fa-search"></i> Step 1 - ジム検索/選択画面へ進む
           <% end %>
         <% end %>
