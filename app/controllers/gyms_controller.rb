@@ -8,6 +8,12 @@ class GymsController < ApplicationController
     else
       @gyms = policy_scope(Gym).all.order(:name)
     end
+
+    @gyms_visited = []
+    current_user.routes.each do |route|
+      @gyms_visited << route.gym_id
+    end
+    @gyms_visited = @gyms_visited.uniq
   end
 
   def show

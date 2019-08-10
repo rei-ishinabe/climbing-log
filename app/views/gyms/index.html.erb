@@ -3,8 +3,9 @@
     <div class="col-12 col-md-6">
       <% if current_user.routes.exists? %>
         <h4>最近訪問したジム</h4>
-        <% @gyms.each do |gym| %>
+        <% @gyms_visited.each do |gym| %>
           <div>
+            <% gym = Gym.find(gym) %>
             <% if gym.last_visit_date(current_user).present? %>
               <%= link_to gym.name, gym_path(gym) %>
               <%= gym.last_visit_date(current_user) %>
