@@ -1,4 +1,6 @@
 class RoutesController < ApplicationController
+  before_action :set_route, only: [:show, :edit, :update, :destroy]
+
   def index
     @routes = policy_scope(Route).where('user_id = ?', current_user.id)
   end
@@ -26,27 +28,34 @@ class RoutesController < ApplicationController
   end
 
   def show
-    @route = Route.find(params[:id])
-    authorize @route
   end
 
   def edit
-    @route = Route.find(params[:id])
-    @gym = @route.gym
-    authorize @route
+  end
+
+  def update
+    if @route.update(route_params)
+      redirect_to gym_path(@gym)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @route = Route.find(params[:id])
-    authorize @route
     if @route.destroy
-      redirect_to gym_path(@route.gym_id)
+      redirect_to gym_path(@gym)
     else
       render :show
     end
   end
 
   private
+
+  def set_route
+    @route = Route.find(params[:id])
+    authorize @route
+    @gym = @route.gym
+  end
 
   def route_params
     params.require(:route).permit(:route_type, :image, :route_name, :comment, :category_id, :grade_id, :sub_grade_id, :gym_id)

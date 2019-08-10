@@ -28,7 +28,7 @@
           <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})" unless lead.nil?  %>
         </div>
       </div>
-      <%= link_to '課題を登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block mt-3' %>
+      <%= link_to '課題を登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block btn-lg mt-3' %>
       <div class="my-3">今日 | 今週 | 今月 | 今年 | 全期間 | 期間を指定</div>
         <% @gym.routes.where('user_id = ?', current_user).order(id: "DESC").each do |route| %>
           <div class="card p-1 my-1">
