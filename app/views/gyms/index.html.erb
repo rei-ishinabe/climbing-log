@@ -1,6 +1,7 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
     <div class="col-12 col-md-6">
+      <h3 class="text-center">ジム検索/選択</h3>
       <% if current_user.routes.exists? %>
         <h4>最近訪問したジム</h4>
         <% @gyms_visited.each do |gym| %>
@@ -17,7 +18,7 @@
         <%= text_field_tag :query,
           params[:query],
           class: "form-control mt-3",
-          placeholder: "ジム名の一部を入力"
+          placeholder: "ジム名(漢字、カタカナ、アルファベット)の一部を入力"
         %>
         <%= submit_tag "絞り込み検索", class: "btn btn-primary btn-block mt-3 mb-3" %>
       <% end %>
@@ -25,16 +26,16 @@
           <% @gyms.each do |gym| %>
             <div>
               <%= link_to gym_path(gym) do %>
-                <%= gym.name %> | <%= gym.address[0,3] %>
+                <span style="font-size: 1.2em"><%= gym.name %></span>  - <%= gym.address[0,3] %>
               <% end %>
             </div>
           <% end %>
               <% else %>
           <div>検索条件に合致するジムがみつかりませんでした。</div>
+          <% if current_user.admin? %>
+            <%= link_to "新規ジム登録(管理者用)", new_gym_path, class:"btn btn-outline-primary btn-block my-3" %>
+          <% end %>
         <% end %>
-      <% if current_user.admin? %>
-        <%= link_to "新規ジム登録", new_gym_path %>
-      <% end %>
     </div>
   </div>
 </div>
