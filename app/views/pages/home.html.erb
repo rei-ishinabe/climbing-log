@@ -1,11 +1,19 @@
 <% if user_signed_in? %>
   <div class="container mt-3 ">
     <div class="row justify-content-center">
-      <div class="col-12 col-md-6">
-        <% if @routes.exists? %>
-          <div class="card  px-2 py-1 mt-1">
+      <div class="col-12 col-md-8">
+        <% if current_user.logs.exists? %>
+          <h4>
+            <%= link_to edit_user_registration_path do %>
+              <%= current_user.nickname.blank? ? 'ニックネーム未設定' : current_user.nickname %>
+            <% end %>さんのクライミングログ
+          </h4>
+          <% if current_user.nickname.blank? %>
+            <div class="mb-3">ニックネームは<%= link_to 'アカウント設定', edit_user_registration_path %>から設定/変更できます。</div>
+          <% end %>
+          <div class="card px-2 pt-2 mt-1">
             <div>最後に登った日：
-              <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if @routes.exists? %>
+              <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if @routes.exists? & current_user.logs.exists? %>
             </div>
             <div>完登本数：
               <% sent_count = 0 %>
@@ -15,7 +23,7 @@
               <%= sent_count %>
             </div>
             <div>クライミング日数：
-              <%= @routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') if @routes.exists? %>
+              <%= @routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') if @routes.exists? & current_user.logs.exists? %>
             </div>
             <div>ボルダー最高グレード：
               <% boulder =  @routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 1, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @routes.exists? %>
@@ -62,8 +70,8 @@
     <div class="container text-center">
       <h1 style="font-size: 48px;" class="mb-5">クラログα</h1>
       <p class="mb-5">クライミングジム、ボルダリングジムで登った記録をつけて、どんどんレベルアップ！</p>
-      <p><a class="btn btn-primary" href="/users/sign_up">無料アカウント登録</a></p>
-      <p><a href="/users/sign_in" style="font-size: 14px; color: white;">ログイン</a></p>
+      <p><a class="btn btn-primary btn-block btn-lg" href="/users/sign_up">アカウント登録(無料)</a></p>
+      <p><a href="/users/sign_in" style="font-size: 16px; color: white;">ログイン</a></p>
     </div>
   </div>
 <% end %>

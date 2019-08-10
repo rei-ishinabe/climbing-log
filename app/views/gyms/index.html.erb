@@ -1,8 +1,8 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-8">
       <h3 class="text-center">ジム検索/選択</h3>
-      <% if current_user.routes.exists? %>
+      <% if current_user.logs.exists? %>
         <h4>最近訪問したジム</h4>
         <% @gyms_visited.each do |gym| %>
           <div>

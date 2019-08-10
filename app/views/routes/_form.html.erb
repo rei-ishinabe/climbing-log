@@ -1,6 +1,6 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-8">
       <h4><%= link_to @gym.name, gym_path(@gym) %></h4>
       <%= simple_form_for [@gym, @route] do |f| %>
         <%= f.input :category_id,

@@ -1,15 +1,17 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-6">
-      <h4><%= @route.gym.name %></h4>
-      <div class="mb-3">
-        <span style="font-size: 1.1rem;">
-          <%= Category.find_by(id:@route.category_id).category %>
-          <%= @route.combined_grade %>
-        </span>
-        <%= @route.route_type %>
-        <%= @route.route_name %>
-      </div>
+    <div class="col-12 col-md-8">
+      <h4><%= link_to @route.gym.name, gym_path(@route.gym) %></h4>
+      <%= link_to route_path(@route) do %>
+        <div class="mb-3">
+          <span style="font-size: 1.1rem;">
+            <%= Category.find_by(id:@route.category_id).category %>
+            <%= @route.combined_grade %>
+          </span>
+          <%= @route.route_type %>
+          <%= @route.route_name %>
+        </div>
+      <% end %>
       <%= simple_form_for [@route, @log] do |f| %>
         <%= f.input :date, label: false %>
         <%= f.input :status_id,
