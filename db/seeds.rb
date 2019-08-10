@@ -64,8 +64,126 @@ puts 'added route sub grades'
 
 puts 'adding gyms'
 Gym.delete_all
-Gym.create(name:'パンプ川口', name_katakana:'パンプカワグチ', name_alphabet:'Pump Kawaguchi', address:'', latitude:'', longitude:'')
-Gym.create(name:'ロッキー新宿曙橋', name_katakana:'ロッキーシンジュクアケボノバシ', name_alphabet:'Rocky Shinjuku', address:'', latitude:'', longitude:'')
+Gym.create(name:'PUMP1 川口',
+           name_katakana:'パンプ1 カワグチ',
+           name_alphabet:'PUMP1 Kawaguchi',
+           address:'埼玉県川口市元郷2-3-12',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'PUMP2 川崎',
+           name_katakana:'パンプ2 カワサキ',
+           name_alphabet:'PUMP2 Kawasaki',
+           address:'神奈川県川崎市多摩区中野島2-9-30',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'PUMP 大阪',
+           name_katakana:'パンプ オオサカ',
+           name_alphabet:'PUMP Osaka',
+           address:'大阪府大阪市西淀川区中島1-13-23',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'B-PUMP TOKYO 秋葉原',
+           name_katakana:'ビーパンプ トウキョウ アキハバラ',
+           name_alphabet:'B-PUMP TOKYO AKIHABARA',
+           address:'東京都文京区湯島1-1-8',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'B-PUMP 荻窪',
+           name_katakana:'ビーパンプ オギクボ',
+           name_alphabet:'B-PUMP OGIKUBO',
+           address:'東京都杉並区上荻1-10-12 荻窪東亜会館3F',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'B-PUMP 横浜',
+           name_katakana:'ビーパンプ ヨコハマ',
+           name_alphabet:'B-PUMP YOKOHAMA',
+           address:'神奈川県横浜市西区平沼1-8-1  ',
+           latitude:'',
+           longitude:'')
+Gym.create(name:"PUMP CLIMBER'S ACADEMY 新宿",
+           name_katakana:'パンプクライマーズアカデミー シンジュク',
+           name_alphabet:"PUMP CLIMBER'S ACADEMY SHINJUKU",
+           address:'東京都新宿区新宿2-8-5 新宿第1ビル',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'ROCKY 新宿曙橋',
+           name_katakana:'ロッキー シンジュクアケボノバシ',
+           name_alphabet:'Rocky Shinjuku Akebonobashi',
+           address:'東京都新宿区市谷台町14-6　信川ハイツB1',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'ROCKY 品川',
+           name_katakana:'ロッキー シナガワ',
+           name_alphabet:'Rocky Shinagawa',
+           address:'東京都港区港南5-4-38　松岡品川埠頭ビル103',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'ROCKY 印西',
+           name_katakana:'ロッキー インザイ',
+           name_alphabet:'Rocky Inzai',
+           address:'千葉県印西市原1-2BIGHOPモール棟 2F',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'ROCKY つくば阿見',
+           name_katakana:'ロッキー ツクバアミ',
+           name_alphabet:'Rocky Tsukuba Ami',
+           address:'茨城県稲敷郡阿見町本郷3-1-1',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'ROCKY 船橋',
+           name_katakana:'ロッキー フナバシ',
+           name_alphabet:'Rocky Funabashi',
+           address:'千葉県船橋市海神町2-225-1',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'NOBOROCK 渋谷',
+           name_katakana:'ノボロック シブヤ',
+           name_alphabet:'NOBOROCK Shibuya',
+           address:'東京都渋谷区桜丘町9 桜丘町9-1ビアンクォードビルB1',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'NOBOROCK 池袋',
+           name_katakana:'ノボロック イケブクロ',
+           name_alphabet:'NOBOROCK Ikebukuro',
+           address:'東京都豊島区西池袋5-13-12MKビルB1',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'NOBOROCK 町田',
+           name_katakana:'ノボロック マチダ',
+           name_alphabet:'NOBOROCK Machida',
+           address:'東京都町田市森野 1-25-19 3F',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'NOBOROCK 溝の口',
+           name_katakana:'ノボロック ミゾノクチ',
+           name_alphabet:'NOBOROCK Mizonokuchi',
+           address:'神奈川県川崎市高津区溝口2丁目10-22',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'NOBOROCK 大宮',
+           name_katakana:'ノボロック オオミヤ',
+           name_alphabet:'NOBOROCK Omiya',
+           address:'埼玉県さいたま市大宮区仲町1-54-3 ビジョナリーⅢ B1',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'Base Camp 入間',
+           name_katakana:'ベースキャンプ イルマ',
+           name_alphabet:'Base Camp Iruma',
+           address:'埼玉県入間市東町7-1-7',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'Base Camp Tokyo 小竹向原',
+           name_katakana:'ベースキャンプ トウキョウ コタケムカイハラ',
+           name_alphabet:'Base Camp Tokyo Kotake Mukaihara',
+           address:'東京都板橋区向原3-10-15',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'Base Camp 飯能',
+           name_katakana:'ベースキャンプ ハンノウ',
+           name_alphabet:'Base Camp Hanno',
+           address:'埼玉県飯能市緑町3-2',
+           latitude:'',
+           longitude:'')
 puts 'added gyms'
 
 puts 'adding statuses'
@@ -85,19 +203,6 @@ puts 'adding users'
 User.delete_all
 User.create(email: 'admin@test.com', password: 'test1234', admin: true)
 User.create(email: 'test@test.com', password: 'test1234')
-puts 'added users'
-
-puts 'adding status'
-Status.delete_all
-Status.create(status: 'オンサイト', order: 0)
-Status.create(status: 'フラッシュ', order: 1)
-Status.create(status: 'レッドポイント', order: 2)
-Status.create(status: '1テン', order: 3)
-Status.create(status: '2テン', order: 4)
-Status.create(status: '3テン', order: 5)
-Status.create(status: 'テン山', order: 6)
-Status.create(status: '途中敗退', order: 7)
-Status.create(status: 'トライ中', order: 8)
 puts 'added users'
 
 

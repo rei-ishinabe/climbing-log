@@ -20,11 +20,11 @@
           <%= @gym.routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') if @gym.routes.exists? %>
         </div>
         <div>ボルダー最高グレード：
-          <% boulder =  @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 9, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
+          <% boulder =  @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 1, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
           <%= "#{boulder.combined_grade} (#{boulder.logs.where('status_id < ?', 4).first.date})" unless boulder.nil?  %>
           </div>
         <div class="mb-1">リード最高グレード：
-          <% lead = @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 10, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
+          <% lead = @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 2, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
           <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})" unless lead.nil?  %>
         </div>
       </div>
