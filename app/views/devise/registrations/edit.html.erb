@@ -22,11 +22,15 @@
                     label: false,
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
-        <% unless current_user.image.blank? %>
-          <%= cl_image_tag current_user.image, height: 100, width: 100, crop: :fill, class:'rounded' %>
-        <% end %>
-        <%= f.input :image, label: false %>
-        <%= f.input :image_cache, as: :hidden %>
+        <div class="d-flex mb-3 align-items-center">
+          <% if current_user.image.blank? %>
+            <%= image_tag 'no_profile_image_logo.png', size:'100x100', class:'rounded-circle mr-3' %>
+          <% else %>
+            <%= cl_image_tag current_user.image, height: 100, width: 100, crop: :fill, class:'rounded-circle mr-3' %>
+          <% end %>
+          <%= f.input :image, label: false %>
+          <%= f.input :image_cache, as: :hidden %>
+        </div>
         <%= f.input :current_password,
                     label: false,
                     placeholder: '現在のパスワード(変更を保存するために入力が必要です)',
