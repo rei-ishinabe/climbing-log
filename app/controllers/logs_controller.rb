@@ -34,7 +34,7 @@ class LogsController < ApplicationController
     @log = Log.find(params[:id])
     authorize @log
     if @log.update(log_params)
-      redirect_to gym_path(@log.route.gym)
+      redirect_to route_path(@log.route)
     else
       render :edit
     end

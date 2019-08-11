@@ -2,14 +2,26 @@
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
       <h4><%= link_to @route.gym.name, gym_path(@route.gym) %></h4>
+
       <%= link_to route_path(@route) do %>
-        <div class="mb-3">
-          <span style="font-size: 1.1rem;">
-            <%= Category.find_by(id:@route.category_id).category %>
-            <%= @route.combined_grade %>
-          </span>
-          <%= @route.route_type %>
-          <%= @route.route_name %>
+        <div class="d-flex mb-3 align-items-center">
+          <div>
+            <% if @route.image.blank? %>
+              <%= link_to edit_route_path(@route) do %>
+                <%= image_tag 'no_image_logo.png', size:'120x120', class:'rounded mr-3' %>
+              <% end %>
+            <% else %>
+              <%= cl_image_tag @route.image, height: 120, width: 120, crop: :fill, class:"rounded mr-3" %>
+            <% end %>
+          </div>
+          <div>
+            <span style="font-size: 1.1rem;">
+              <%= Category.find_by(id:@route.category_id).category %>
+              <%= @route.combined_grade %>
+            </span>
+            <%= @route.route_type %>
+            <%= @route.route_name %>
+          </div>
         </div>
       <% end %>
       <%= simple_form_for [@route, @log] do |f| %>

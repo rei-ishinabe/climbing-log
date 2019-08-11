@@ -31,21 +31,37 @@
       <%= link_to '課題を登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block btn-lg mt-3' %>
       <div class="my-3">今日 | 今週 | 今月 | 今年 | 全期間 | 期間を指定</div>
         <% @gym.routes.where('user_id = ?', current_user).order(id: "DESC").each do |route| %>
-          <div class="card p-1 my-1">
-            <div>
-              <span style="font-size: 1.1rem;">
-                <%= Category.find_by(id:route.category_id).category %>
-                <%= route.combined_grade %>
-              </span>
-              <%= route.route_type %>
-              <%= route.route_name %>
-              <%= link_to '詳細', route_path(route) %>
-            </div>
-            <div>
-              トライ数：<%= route.logs.count %>
-              <%= route.latest_log_date if route.logs.exists? %>
-              <%= route.best_status %>
-              <%= link_to 'ログ追加', new_route_log_path(route) %>
+          <div class="card my-2">
+            <div class="d-flex align-items-center">
+              <div>
+                <% if route.image.blank? %>
+                  <%= link_to edit_route_path(route) do %>
+                    <%= image_tag 'no_image_logo.png', size:'80x80', class:'rounded mr-3' %>
+                  <% end %>
+                <% else %>
+                  <%= cl_image_tag route.image, height: 80, width: 80, crop: :fill, class:"rounded mr-3" %>
+                <% end %>
+              </div>
+              <div>
+                <div>
+                  <span style="font-size: 1.1rem;">
+                    <%= Category.find_by(id:route.category_id).category %>
+                    <%= route.combined_grade %>
+                  </span>
+                  <%= route.route_type %>
+                  <%= route.route_name %>
+                  <%= link_to '詳細', route_path(route) %>
+                </div>
+                <div>
+                  <%= route.comment %>
+                </div>
+                <div>
+                  トライ数：<%= route.logs.count %>
+                  <%= route.latest_log_date if route.logs.exists? %>
+                  <%= route.best_status %>
+                  <%= link_to 'ログ追加', new_route_log_path(route) %>
+                </div>
+              </div>
             </div>
           </div>
         <% end %>
