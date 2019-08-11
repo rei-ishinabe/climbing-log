@@ -1,10 +1,8 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
-      <h4><%= link_to @route.gym.name, gym_path(@route.gym) %></h4>
-
       <%= link_to route_path(@route) do %>
-        <div class="d-flex mb-3 align-items-center">
+        <div class="d-flex mb-3">
           <div>
             <% if @route.image.blank? %>
               <%= link_to edit_route_path(@route) do %>
@@ -15,12 +13,15 @@
             <% end %>
           </div>
           <div>
-            <span style="font-size: 1.1rem;">
+            <h4><%= link_to @route.gym.name, gym_path(@route.gym) %></h4>
+            <div style="font-size: 1.1rem;">
               <%= Category.find_by(id:@route.category_id).category %>
               <%= @route.combined_grade %>
-            </span>
-            <%= @route.route_type %>
-            <%= @route.route_name %>
+            </div>
+            <div>
+              <%= @route.route_type %>
+              <%= @route.route_name %>
+            </div>
           </div>
         </div>
       <% end %>
@@ -35,7 +36,10 @@
         <%= f.input :comment,
                label: false,
          placeholder: 'コメント(オプション)' %>
-        <%= f.submit 'ログを登録', class:'btn btn-primary btn-block mb-5' %>
+        <%= f.submit 'ログを登録', class:'btn btn-primary btn-lg btn-block mb-3' %>
+      <% end %>
+      <% unless @log.id.nil? %>
+        <%= link_to 'ログを削除', route_path(@route), method: :delete, data: {confirm: "課題を削除すると、この課題のログもすべて削除されます。本当に削除しますか?"}, class:'btn btn-outline-danger btn-lg btn-block mb-3' %>
       <% end %>
     </div>
   </div>

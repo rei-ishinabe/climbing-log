@@ -1,6 +1,6 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-8 mb-5">
       <h4><%= @gym.name %></h4>
       <% if current_user.admin %>
         <%= link_to 'ジム情報変更', edit_gym_path(@gym) %>
@@ -28,7 +28,6 @@
           <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})" unless lead.nil?  %>
         </div>
       </div>
-      <%= link_to '課題を登録', new_gym_route_path(@gym), class:'btn btn-primary btn-block btn-lg mt-3' %>
       <div class="my-3">今日 | 今週 | 今月 | 今年 | 全期間 | 期間を指定</div>
         <% @gym.routes.where('user_id = ?', current_user).order(id: "DESC").each do |route| %>
           <div class="card my-2">
@@ -66,6 +65,13 @@
           </div>
         <% end %>
       </div>
+    </div>
+  </div>
+</div>
+<div class="container fixed-bottom">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <%= link_to '課題を追加', new_gym_route_path(@gym), class:'btn btn-primary btn-lg btn-block mb-3' %>
     </div>
   </div>
 </div>
