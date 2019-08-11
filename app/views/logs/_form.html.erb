@@ -39,7 +39,7 @@
         <%= f.submit 'ログを登録', class:'btn btn-primary btn-lg btn-block mb-3' %>
       <% end %>
       <% unless @log.id.nil? %>
-        <%= link_to 'ログを削除', route_path(@route), method: :delete, data: {confirm: "課題を削除すると、この課題のログもすべて削除されます。本当に削除しますか?"}, class:'btn btn-outline-danger btn-lg btn-block mb-3' %>
+        <%= link_to 'ログを削除', log_path(@log), method: :delete, data: {confirm: "本当に削除しますか?"}, class:'btn btn-outline-warning btn-lg btn-block mb-3' %>
       <% end %>
     </div>
   </div>

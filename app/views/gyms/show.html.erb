@@ -1,6 +1,6 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
-    <div class="col-12 col-md-8 mb-5">
+    <div class="col-12 col-md-8 mb-5 pb-3">
       <h4><%= @gym.name %></h4>
       <% if current_user.admin %>
         <%= link_to 'ジム情報変更', edit_gym_path(@gym) %>
@@ -31,7 +31,7 @@
       <div class="my-3">今日 | 今週 | 今月 | 今年 | 全期間 | 期間を指定</div>
         <% @gym.routes.where('user_id = ?', current_user).order(id: "DESC").each do |route| %>
           <div class="card my-2">
-            <div class="d-flex align-items-center">
+            <div class="d-flex">
               <div>
                 <% if route.image.blank? %>
                   <%= link_to edit_route_path(route) do %>
@@ -55,10 +55,9 @@
                   <%= route.comment %>
                 </div>
                 <div>
-                  トライ数：<%= route.logs.count %>
                   <%= route.latest_log_date if route.logs.exists? %>
                   <%= route.best_status %>
-                  <%= link_to 'ログ追加', new_route_log_path(route) %>
+                  <%= route.logs.count %>トライ
                 </div>
               </div>
             </div>

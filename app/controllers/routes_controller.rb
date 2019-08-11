@@ -21,7 +21,7 @@ class RoutesController < ApplicationController
     @route.gym = @gym
     @route.user = current_user
     if @route.save
-      redirect_to gym_path(@gym)
+      redirect_to route_path(@route)
     else
       render :new
     end

@@ -1,7 +1,7 @@
 class LogsController < ApplicationController
 
   def index
-    @logs = policy_scope(Log).where('user_id = ?', current_user.id)
+    @logs = policy_scope(Log).where('user_id = ?', current_user.id).order(date: "DESC")
   end
 
   def new

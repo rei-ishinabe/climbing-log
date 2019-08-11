@@ -14,9 +14,12 @@
           </div>
           <div>
             <h4><%= link_to @route.gym.name, gym_path(@route.gym) %></h4>
-            <div style="font-size: 1.1rem;">
-              <%= Category.find_by(id:@route.category_id).category %>
-              <%= @route.combined_grade %>
+            <div>
+              <span style="font-size: 1.1rem;">
+                <%= Category.find_by(id:@route.category_id).category %>
+                <%= @route.combined_grade %>
+              </span>
+              <%= link_to '編集', edit_route_path(@route) %>
             </div>
             <div>
               <%= @route.route_type %>
@@ -25,24 +28,22 @@
             <div>
               <%= @route.comment %>
             </div>
-            <div>
-              <%= link_to '編集', edit_route_path(@route) %>
-            </div>
           </div>
         </div>
         <% if @route.logs.exists? %>
-          <% @route.logs.each do |log| %>
+          <% @route.logs.order(date: 'DESC').each do |log| %>
             <div class="card p-1 my-1">
-              <div>
-                <span style="font-size: 1.1rem"><%= log.date %></span>
-                <%= Status.find_by(id:log.status_id).status %>
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <span style="font-size: 1.1rem"><%= log.date %></span>
+                  <%= Status.find_by(id:log.status_id).status %>
+                </div>
+                <div>
+                  <%= link_to '編集', edit_route_log_path(log.route, log) %>
+                </div>
               </div>
               <div>
                 <%= log.comment %>
-              </div>
-              <div class="text-right">
-                <%= link_to '編集', edit_route_log_path(log.route, log) %>
-                <%= link_to '削除', log_path(log), method: :delete, data: {confirm: "本当に削除しますか?"}  %>
               </div>
             </div>
           <% end %>
