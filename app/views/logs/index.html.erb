@@ -58,7 +58,8 @@
             points: false,
             colors: ["#167FFB", "#666"],
             dataset: {borderWidth: 0},
-            library: {scales: {yAxes: [{ticks: { suggestedMax: 15, stepSize: 5 }}]}},
+            library: {scales: {yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]}},
+                        height: "200px",
             messages: {empty: "データがありません"} %>
       </div>
 
@@ -74,7 +75,12 @@
             points: false,
             colors: ["#167FFB", "#666"],
             dataset: {borderWidth: 0},
-            library: {scales: {xAxes: [{ticks: { suggestedMax: 10, stepSize: 1 }}]}},
+           library: {scales: {
+                        xAxes: [{ticks: {suggestedMax: 10, stepSize: 1}}],
+                        yAxes: [{gridLines: {display:false}}]
+                        }
+                      },
+            height: "200px",
             messages: {empty: "データがありません"} %>
       </div>
 
@@ -90,7 +96,12 @@
             points: false,
             colors: ["#167FFB", "#666"],
             dataset: {borderWidth: 0},
-            library: {scales: {xAxes: [{ticks: { suggestedMax: 10, stepSize: 1 }}]}},
+            library: {scales: {
+                        xAxes: [{ticks: {suggestedMax: 10, stepSize: 1}}],
+                        yAxes: [{gridLines: {display:false}}]
+                        }
+                      },
+            height: "200px",
             messages: {empty: "データがありません"} %>
       </div>
     </div>
