@@ -4,59 +4,23 @@
       <div class="col-12 col-md-8">
         <% if current_user.logs.exists? %>
           <div class="d-flex mb-3 align-items-center">
-          <% if current_user.image.blank? %>
-            <%= link_to edit_user_registration_path do %>
-              <%= image_tag 'no_profile_image_logo.png', size:'100x100', class:'rounded-circle mr-3' %>
+            <% if current_user.image.blank? %>
+              <%= link_to edit_user_registration_path do %>
+                <%= image_tag 'no_profile_image_logo.png', size:'100x100', class:'rounded-circle mr-3' %>
+              <% end %>
+            <% else %>
+              <%= cl_image_tag current_user.image, height: 100, width: 100, crop: :fill, class:'rounded-circle mr-3' %>
             <% end %>
-          <% else %>
-            <%= cl_image_tag current_user.image, height: 100, width: 100, crop: :fill, class:'rounded-circle mr-3' %>
-          <% end %>
             <div>
               <h4>
                 <%= link_to edit_user_registration_path do %>
                   <%= current_user.nickname.blank? ? 'ニックネーム未設定' : current_user.nickname %>
-                <% end %>さんのクライミングログ
+                <% end %>
               </h4>
               <% if current_user.nickname.blank? %>
                 <div class="mb-3">ニックネームは<%= link_to 'アカウント設定', edit_user_registration_path %>から設定/変更できます。</div>
               <% end %>
             </div>
-          </div>
-
-
-          <div class="card px-2 pt-2 mt-1">
-            <div>最後に登った日：
-              <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if @routes.exists? & current_user.logs.exists? %>
-            </div>
-            <div>完登本数：
-              <% sent_count = 0 %>
-              <% @routes.each do |route| %>
-                <% sent_count += 1 if route.sent %>
-              <% end %>
-              <%= sent_count %>
-            </div>
-            <div>クライミング日数：
-              <%= @routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') if @routes.exists? & current_user.logs.exists? %>
-            </div>
-            <div>ボルダー最高グレード：
-              <% boulder =  @routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 1, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @routes.exists? %>
-              <% unless boulder.nil? %>
-                <%= link_to route_path(boulder) do %>
-                <%= "#{boulder.combined_grade} (#{boulder.logs.where('status_id < ?', 4).first.date} #{boulder.gym.name})" %>
-                <% end %>
-              <% end %>
-              </div>
-            <div class="mb-1">リード最高グレード：
-              <% lead = @routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 2, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @routes.exists? %>
-              <% unless lead.nil? %>
-                <%= link_to route_path(lead) do %>
-                  <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date} #{lead.gym.name})" %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-          <div class="my-3">
-            <%= line_chart current_user.routes.joins(:logs).group_by_day(:date).count %>
           </div>
         <% else %>
           <h4 class="text-center my-2">クラログαとは？</h4>
