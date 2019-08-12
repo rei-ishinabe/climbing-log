@@ -13,7 +13,7 @@
           <h4 class="mb-0">
             <%= link_to edit_user_registration_path do %>
               <%= current_user.nickname.blank? ? 'ニックネーム未設定' : current_user.nickname %>
-            <% end %>さんのクライミングログ
+            <% end %>さんのクラログ
           </h4>
           <% if current_user.nickname.blank? %>
             <div class="mb-3">ニックネームは<%= link_to 'アカウント設定', edit_user_registration_path %>から設定/変更できます。</div>
