@@ -13,9 +13,11 @@ gem 'redis'
 
 gem 'autoprefixer-rails'
 gem 'carrierwave', '~> 1.2'
+gem "chartkick"
 gem 'cloudinary', '~> 1.9.1'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'geocoder'
+gem 'groupdate'
 gem 'pundit'
 gem 'sassc-rails'
 gem 'simple_form'

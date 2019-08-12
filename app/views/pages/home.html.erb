@@ -55,6 +55,9 @@
               <% end %>
             </div>
           </div>
+          <div class="my-3">
+            <%= line_chart current_user.routes.joins(:logs).group_by_day(:date).count %>
+          </div>
         <% else %>
           <h4 class="text-center my-2">クラログαとは？</h4>
             <div>ボルダリングジム、クライミングジムで登った記録をカンタンに保存・管理できるツールです。登った本数やグレードの推移などもひと目で確認できます。</div>
