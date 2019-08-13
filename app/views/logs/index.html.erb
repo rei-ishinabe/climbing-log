@@ -30,7 +30,7 @@
         <%= active_link_to '全期間', logs_path %>
       </div>
 
-      <div class="card px-2 py-3 mt-1">
+      <div class="card px-2 pt-1 pb-0 mt-1">
         <div>完登本数：
           <%= @logs.where('status_id < ?', 4).count %>
         </div>

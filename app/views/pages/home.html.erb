@@ -4,11 +4,9 @@
       <div class="col-12 col-md-8">
         <% if current_user.logs.exists? %>
           <h5 class="mb-3">おかえりなさい、<%= current_user.nickname %>さん </h5>
-          <div class="d-flex mb-3 align-items-center">
-            <div class="card p-3 text-center" style="width: 50%;"><h5>ジム検索/選択</h5></div>
-            <div class="card ml-3 p-3 text-center" style="width: 50%;"><h5>マイページ</h5></div>
-          </div>
-          <div class="card p-3 text-center" style="width: 100%;"><h5>アカウント設定</h5></div>
+          <%= link_to 'ダッシュボード', gyms_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
+          <%= link_to 'ジム検索/選択', gyms_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
+          <%= link_to 'アカウント設定', edit_user_registration_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
         <% else %>
           <h4 class="text-center my-2">クラログαとは？</h4>
             <div>ボルダリングジム、クライミングジムで登った記録をカンタンに保存・管理できるツールです。登った本数やグレードの推移などもひと目で確認できます。</div>
