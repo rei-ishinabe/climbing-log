@@ -1,14 +1,35 @@
 class LogsController < ApplicationController
 
   def index
-    if params[:period]
-      period = params[:period]
-      case period
-      when 'today' then
-        @logs = policy_scope(Log).joins(:route).where('logs.date = ? AND routes.user_id = ?', Date.today, current_user.id)
-      end
+    case params[:period]
+    when 'today' then
+      @from_date = Date.today
+      @to_date = Date.today
+      @logs = policy_scope(Log).joins(:route).where('logs.date = ? AND routes.user_id = ?', @from_date, current_user.id)
+    when 'thisweek' then
+      @from_date = Date.today.beginning_of_week
+      @to_date = Date.today.end_of_week
+      @logs = policy_scope(Log).joins(:route).where('logs.date BETWEEN ? AND ? AND routes.user_id = ?', @from_date, @to_date, current_user.id)
+    when 'thismonth' then
+      @from_date = Date.today.beginning_of_month
+      @to_date = Date.today.end_of_month
+      @logs = policy_scope(Log).joins(:route).where('logs.date BETWEEN ? AND ? AND routes.user_id = ?', @from_date, @to_date, current_user.id)
+    when 'thisyear' then
+      @from_date = Date.today.beginning_of_year
+      @to_date = Date.today.end_of_year
+      @logs = policy_scope(Log).joins(:route).where('logs.date BETWEEN ? AND ? AND routes.user_id = ?', @from_date, @to_date, current_user.id)
+    when 'lastyear' then
+      @from_date = Date.today.prev_year.beginning_of_year
+      @to_date = Date.today.prev_year.end_of_year
+      @logs = policy_scope(Log).joins(:route).where('logs.date BETWEEN ? AND ? AND routes.user_id = ?', @from_date, @to_date, current_user.id)
     else
       @logs = policy_scope(Log).joins(:route).where('routes.user_id = ?', current_user.id)
+      if @logs.first.nil?
+        @from_date = Date.today
+      else
+        @from_date = @logs.order(date: 'ASC').first.date
+      end
+      @to_date = Date.today
     end
   end
 
