@@ -23,12 +23,15 @@
       <div>
 
       </div>
-      <div class="my-3 date_select_menu">
-        <%= active_link_to '全期間', logs_path, active: :exact, class:'date_select_menu'  %>
-        <%= active_link_to '昨年', logs_path(period: 'lastyear'), active: :exact %>
-        <%= active_link_to '今年', logs_path(period: 'thisyear'), active: :exact %>
-        <%= active_link_to '今月', logs_path(period: 'thismonth'), active: :exact %>
-        <%= active_link_to '今週', logs_path(period: 'thisweek'), active: :exact %>
+      <div class="my-3 date_select_menu text-center">
+        <%= active_link_to '全期間', logs_path, active: :exact, class:'date_select_menu'  %>|
+        <%= active_link_to '昨年', logs_path(period: 'lastyear'), active: :exact %>|
+        <%= active_link_to '今年', logs_path(period: 'thisyear'), active: :exact %>|
+        <%= active_link_to '先月', logs_path(period: 'lastmonth'), active: :exact %>|
+        <%= active_link_to '今月', logs_path(period: 'thismonth'), active: :exact %>|
+        <%= active_link_to '先週', logs_path(period: 'lastweek'), active: :exact %>|
+        <%= active_link_to '今週', logs_path(period: 'thisweek'), active: :exact %>|
+        <%= active_link_to '昨日', logs_path(period: 'yesterday'), active: :exact %>|
         <%= active_link_to '今日', logs_path(period: 'today'), active: :exact %>
       </div>
 

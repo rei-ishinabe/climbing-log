@@ -2,13 +2,25 @@ class LogsController < ApplicationController
 
   def index
     case params[:period]
+    when 'yesterday' then
+      @from_date = Date.yesterday
+      @to_date = Date.yesterday
+      @logs = policy_scope(Log).joins(:route).where('logs.date = ? AND routes.user_id = ?', @from_date, current_user.id)
     when 'today' then
       @from_date = Date.today
       @to_date = Date.today
       @logs = policy_scope(Log).joins(:route).where('logs.date = ? AND routes.user_id = ?', @from_date, current_user.id)
+    when 'lastweek' then
+      @from_date = Date.today.prev_week.beginning_of_week
+      @to_date = Date.today.prev_week.end_of_week
+      @logs = policy_scope(Log).joins(:route).where('logs.date BETWEEN ? AND ? AND routes.user_id = ?', @from_date, @to_date, current_user.id)
     when 'thisweek' then
       @from_date = Date.today.beginning_of_week
       @to_date = Date.today.end_of_week
+      @logs = policy_scope(Log).joins(:route).where('logs.date BETWEEN ? AND ? AND routes.user_id = ?', @from_date, @to_date, current_user.id)
+    when 'lastmonth' then
+      @from_date = Date.today.prev_month.beginning_of_month
+      @to_date = Date.today.prev_month.end_of_month
       @logs = policy_scope(Log).joins(:route).where('logs.date BETWEEN ? AND ? AND routes.user_id = ?', @from_date, @to_date, current_user.id)
     when 'thismonth' then
       @from_date = Date.today.beginning_of_month
