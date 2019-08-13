@@ -1,8 +1,15 @@
 class LogsController < ApplicationController
 
   def index
-    @routes = policy_scope(Route).where('user_id = ?', current_user.id)
-    @period = params[:period]
+    if params[:period]
+      period = params[:period]
+      case period
+      when 'today' then
+        @logs = policy_scope(Log).joins(:route).where('logs.date = ? AND routes.user_id = ?', Date.today, current_user.id)
+      end
+    else
+      @logs = policy_scope(Log).joins(:route).where('routes.user_id = ?', current_user.id)
+    end
   end
 
   def new
