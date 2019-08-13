@@ -11,6 +11,7 @@ gem 'rails', '5.2.3'
 gem 'rails-i18n', '~> 5.1'
 gem 'redis'
 
+gem 'active_link_to'
 gem 'autoprefixer-rails'
 gem 'carrierwave', '~> 1.2'
 gem "chartkick"

@@ -2,6 +2,7 @@ class LogsController < ApplicationController
 
   def index
     @routes = policy_scope(Route).where('user_id = ?', current_user.id)
+    @period = params[:period]
   end
 
   def new
@@ -53,6 +54,6 @@ class LogsController < ApplicationController
   private
 
   def log_params
-    params.require(:log).permit(:date, :status_id, :comment, :image)
+    params.require(:log).permit(:date, :status_id, :comment, :image, :period)
   end
 end

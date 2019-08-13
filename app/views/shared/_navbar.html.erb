@@ -12,26 +12,26 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "ホーム", "/", class: "nav-link" %>
+          <%= active_link_to "ホーム", root_path, active: :exact, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "ジム検索/選択", gyms_path , class: "nav-link" %>
+          <%= active_link_to "ジム検索/選択", gyms_path , class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "ログページ", logs_path , class: "nav-link" %>
+          <%= active_link_to "ログページ", logs_path , class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "アカウント設定", edit_user_registration_path, class: "nav-link" %>
+          <%= active_link_to "アカウント設定", edit_user_registration_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete , class: "nav-link" %>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "アカウント登録(無料)", new_user_registration_path, class: "nav-link" %>
+          <%= active_link_to "アカウント登録(無料)", new_user_registration_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+          <%= active_link_to "ログイン", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>
