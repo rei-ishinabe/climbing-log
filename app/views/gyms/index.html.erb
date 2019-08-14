@@ -30,7 +30,10 @@
               <% end %>
             </div>
           <% end %>
-              <% else %>
+          <div class="mb-3 text-center">
+            <%= paginate @gyms %>
+          </div>
+        <% else %>
           <div>検索条件に合致するジムがみつかりませんでした。</div>
           <% if current_user.admin? %>
             <%= link_to "新規ジム登録(管理者用)", new_gym_path, class:"btn btn-outline-primary btn-block my-3" %>

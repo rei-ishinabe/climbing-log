@@ -6,7 +6,7 @@ class GymsController < ApplicationController
       sql_query = "name ILIKE :query OR name_katakana ILIKE :query OR name_alphabet ILIKE :query"
       @gyms = policy_scope(Gym).all.where(sql_query, query:"%#{params[:query]}%").order(:name)
     else
-      @gyms = policy_scope(Gym).all.order(:name)
+      @gyms = policy_scope(Gym).order(:name).page(params[:page]).per(10)
     end
 
     @gyms_visited = []
