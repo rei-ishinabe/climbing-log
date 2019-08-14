@@ -36,15 +36,17 @@
           <% end %>
         </div>
       </div>
-      <div class="my-3 date_select_menu text-center">
-        <%= active_link_to '全期間', gym_path(@gym), active: :exact, class:'date_select_menu'  %>|
-        <%= active_link_to '今年', gym_path(@gym, period: 'thisyear'), active: :exact %>|
-        <%= active_link_to '先月', gym_path(@gym, period: 'lastmonth'), active: :exact %>|
-        <%= active_link_to '今月', gym_path(@gym, period: 'thismonth'), active: :exact %>|
-        <%= active_link_to '今週', gym_path(@gym, period: 'thisweek'), active: :exact %>|
-        <%= active_link_to '今日', gym_path(@gym, period: 'today'), active: :exact %>
-
+      <div class="mt-1 date_select_menu text-left">
+        <%= active_link_to '全期間', gym_path(@gym),  active: :exact, class:'date_select_menu' %>|
+        <%= active_link_to '今年', gym_path(@gym, from: Date.today.beginning_of_year, to: Date.today.end_of_year), active: :exact %>|
+        <%= active_link_to '今月', gym_path(@gym, from: Date.today.beginning_of_month, to: Date.today.end_of_month), active: :exact %>|
+        <%= active_link_to '今週', gym_path(@gym, from: Date.today.beginning_of_week, to: Date.today.end_of_week), active: :exact %>|
+        <%= active_link_to '今日', gym_path(@gym, from: Date.today, to: Date.today), active: :exact %>
       </div>
+      <div class="text-left mb-1">
+        <%= @from.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@from.wday]})") %> 〜 <%= @to.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@to.wday]})")  %>
+      </div>
+      <div>
         <% @routes.each do |route| %>
           <div class="card my-2">
             <div class="d-flex">
