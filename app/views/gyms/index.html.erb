@@ -7,8 +7,9 @@
         <% @last_five_gyms_visited.each do |gym| %>
           <div>
             <% visited_gym = Gym.find(gym[0]) %>
+            <% last_visit = visited_gym.last_visit_date(current_user).to_date %>
             <%= link_to gym_path(visited_gym) do %>
-              <span style="font-size: 1.2em"><%=  visited_gym.name %></span> - <%= visited_gym.last_visit_date(current_user) %>
+              <span style="font-size: 1.2em"><%=  visited_gym.name %></span> - <%= last_visit.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[last_visit.wday]})") %>
             <% end %>
           </div>
         <% end %>
