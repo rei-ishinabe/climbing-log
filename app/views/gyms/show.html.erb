@@ -7,11 +7,11 @@
       <% end %>
       <div class="card px-2 py-1 mt-1">
         <div>最終訪問日：
-          <%= @routes.joins(:logs).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if @routes.exists? & @routes.joins(:logs).exists? %>
+          <%= @gym.routes.joins(:logs).where('user_id = ?', current_user).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if current_user.logs %>
         </div>
         <div>完登本数：
           <% sent_count = 0 %>
-          <% @routes.each do |route| %>
+          <% @gym.routes.where('user_id = ?', current_user).each do |route| %>
             <% sent_count += 1 if route.sent %>
           <% end %>
           <%= sent_count %>
@@ -21,15 +21,31 @@
         </div>
         <div>ボルダー最高グレード：
           <% boulder =  @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 1, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
-          <%= "#{boulder.combined_grade} (#{boulder.logs.where('status_id < ?', 4).first.date})" unless boulder.nil?  %>
+          <% unless boulder.nil? %>
+            <%= link_to route_path(boulder) do %>
+              <%= "#{boulder.combined_grade} (#{boulder.logs.where('status_id < ?', 4).first.date})" unless boulder.nil?  %>
+            <% end %>
+          <% end %>
           </div>
         <div class="mb-1">リード最高グレード：
           <% lead = @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 2, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
-          <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})" unless lead.nil?  %>
+          <% unless lead.nil? %>
+            <%= link_to route_path(lead) do %>
+              <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})"%>
+            <% end %>
+          <% end %>
         </div>
       </div>
-      <div class="my-3">今日 | 今週 | 今月 | 今年 | 全期間 | 期間を指定</div>
-        <% @gym.routes.where('user_id = ?', current_user).order(id: "DESC").each do |route| %>
+      <div class="my-3 date_select_menu text-center">
+        <%= active_link_to '全期間', gym_path(@gym), active: :exact, class:'date_select_menu'  %>|
+        <%= active_link_to '今年', gym_path(@gym, period: 'thisyear'), active: :exact %>|
+        <%= active_link_to '先月', gym_path(@gym, period: 'lastmonth'), active: :exact %>|
+        <%= active_link_to '今月', gym_path(@gym, period: 'thismonth'), active: :exact %>|
+        <%= active_link_to '今週', gym_path(@gym, period: 'thisweek'), active: :exact %>|
+        <%= active_link_to '今日', gym_path(@gym, period: 'today'), active: :exact %>
+
+      </div>
+        <% @routes.each do |route| %>
           <div class="card my-2">
             <div class="d-flex">
               <div>

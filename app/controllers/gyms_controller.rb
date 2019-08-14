@@ -19,6 +19,49 @@ class GymsController < ApplicationController
         lng: @gym.longitude
       }]
     @routes = @gym.routes.where('user_id = ?', current_user)
+
+    case params[:period]
+    when 'yesterday' then
+      @from_date = Date.yesterday
+      @to_date = Date.yesterday
+      @routes = @gym.routes.joins(:logs).where('logs.date = ? AND routes.user_id = ?', @from_date, current_user.id)
+    when 'today' then
+      @from_date = Date.today
+      @to_date = Date.today
+      @routes = @gym.routes.joins(:logs).where('logs.date = ? AND routes.user_id = ?', @from_date, current_user.id)
+    when 'lastweek' then
+      @from_date = Date.today.prev_week.beginning_of_week
+      @to_date = Date.today.prev_week.end_of_week
+      @routes = @gym.routes.joins(:logs).where('logs.date = ? AND routes.user_id = ?', @from_date, current_user.id)
+    when 'thisweek' then
+      @from_date = Date.today.beginning_of_week
+      @to_date = Date.today.end_of_week
+      @routes = @gym.routes.joins(:logs).where('logs.date = ? AND routes.user_id = ?', @from_date, current_user.id)
+    when 'lastmonth' then
+      @from_date = Date.today.prev_month.beginning_of_month
+      @to_date = Date.today.prev_month.end_of_month
+      @routes = @gym.routes.joins(:logs).where('logs.date = ? AND routes.user_id = ?', @from_date, current_user.id)
+    when 'thismonth' then
+      @from_date = Date.today.beginning_of_month
+      @to_date = Date.today.end_of_month
+      @routes = @gym.routes.joins(:logs).where('logs.date = ? AND routes.user_id = ?', @from_date, current_user.id)
+    when 'thisyear' then
+      @from_date = Date.today.beginning_of_year
+      @to_date = Date.today.end_of_year
+      @routes = @gym.routes.joins(:logs).where('logs.date = ? AND routes.user_id = ?', @from_date, current_user.id)
+    when 'lastyear' then
+      @from_date = Date.today.prev_year.beginning_of_year
+      @to_date = Date.today.prev_year.end_of_year
+      @routes = @gym.routes.joins(:logs).where('logs.date = ? AND routes.user_id = ?', @from_date, current_user.id)
+    else
+      @routes = @gym.routes.joins(:logs).where('routes.user_id = ?', current_user.id)
+      if @routes.first.nil?
+        @from_date = Date.today
+      else
+        @from_date = @gym.logs.joins(:route).where('routes.user_id = ?', current_user.id).order(date: 'ASC').first.date
+      end
+      @to_date = Date.today
+    end
   end
 
   def new
