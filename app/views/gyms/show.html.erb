@@ -7,7 +7,7 @@
       <% end %>
       <div class="card px-2 py-1 mt-1">
         <div>最終訪問日：
-          <%= @gym.routes.joins(:logs).where('user_id = ?', current_user).order(date: 'DESC').first.logs.order(date: 'DESC').first.date if current_user.logs %>
+          <%= @gym.last_visit_date(current_user) %>
         </div>
         <div>完登本数：
           <% sent_count = 0 %>
@@ -46,36 +46,49 @@
       <div class="text-left mb-1">
         <%= @from.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@from.wday]})") %> 〜 <%= @to.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@to.wday]})")  %>
       </div>
+      <div class="btn-group btn-group-toggle d-flex mb-3" data-toggle="buttons">
+        <label class="btn btn-outline-primary btn-sm active">
+          <input type="radio" name="options" id="showAll" autocomplete="off" checked class="flex-fill"> All
+        </label>
+        <label class="btn btn-outline-primary btn-sm">
+          <input type="radio" name="options" id="sentsOnly" autocomplete="off" class="flex-fill"> 完登分のみ
+        </label>
+        <label class="btn btn-outline-primary btn-sm">
+          <input type="radio" name="options" id="unsentsOnly" autocomplete="off" class="flex-fill"> 未完登分のみ
+        </label>
+      </div>
       <div>
         <% @routes.each do |route| %>
-          <div class="card my-2">
-            <div class="d-flex">
-              <div>
-                <% if route.image.blank? %>
-                  <%= link_to edit_route_path(route) do %>
-                    <%= image_tag 'no_image_logo.png', size:'80x80', class:'rounded mr-3' %>
+          <div class="<%= route.sent ? 'sent' : 'unsent' %>">
+            <div class="card my-2">
+              <div class="d-flex">
+                <div>
+                  <% if route.image.blank? %>
+                    <%= link_to edit_route_path(route) do %>
+                      <%= image_tag 'no_image_logo.png', size:'80x80', class:'rounded mr-3' %>
+                    <% end %>
+                  <% else %>
+                    <%= cl_image_tag route.image, height: 80, width: 80, crop: :fill, class:"rounded mr-3" %>
                   <% end %>
-                <% else %>
-                  <%= cl_image_tag route.image, height: 80, width: 80, crop: :fill, class:"rounded mr-3" %>
-                <% end %>
-              </div>
-              <div>
-                <div>
-                  <span style="font-size: 1.1rem;">
-                    <%= Category.find_by(id:route.category_id).category %>
-                    <%= route.combined_grade %>
-                  </span>
-                  <%= route.route_type %>
-                  <%= route.route_name %>
-                  <%= link_to '詳細', route_path(route) %>
                 </div>
                 <div>
-                  <%= route.comment %>
-                </div>
-                <div>
-                  <%= route.latest_log_date if route.logs.exists? %>
-                  <%= route.best_status %>
-                  <%= route.logs.count %>トライ
+                  <div>
+                    <span style="font-size: 1.1rem;">
+                      <%= Category.find_by(id:route.category_id).category %>
+                      <%= route.combined_grade %>
+                    </span>
+                    <%= route.route_type %>
+                    <%= route.route_name %>
+                    <%= link_to '詳細', route_path(route) %>
+                  </div>
+                  <div>
+                    <%= route.comment %>
+                  </div>
+                  <div>
+                    <%= route.latest_log_date if route.logs.exists? %>
+                    <%= route.best_status %>
+                    <%= route.logs.count %>トライ
+                  </div>
                 </div>
               </div>
             </div>
@@ -92,4 +105,38 @@
     </div>
   </div>
 </div>
+
+<script>
+  const sents = document.querySelectorAll('.sent');
+  const unsents = document.querySelectorAll('.unsent');
+  const showAll = document.getElementById('showAll');
+  const sentsOnly = document.getElementById('sentsOnly');
+  const unsentsOnly = document.getElementById('unsentsOnly');
+  showAll.addEventListener('focus',(event) => {
+    sents.forEach((sent) => {
+      sent.classList.remove('d-none');
+    });
+    unsents.forEach((unsent) => {
+      unsent.classList.remove('d-none');
+    });
+  });
+  sentsOnly.addEventListener('focus',(event) => {
+    sents.forEach((sent) => {
+      sent.classList.remove('d-none');
+    });
+  unsents.forEach((unsent) => {
+      unsent.classList.add('d-none');
+    });
+  });
+  unsentsOnly.addEventListener('focus',(event) => {
+    sents.forEach((sent) => {
+      sent.classList.add('d-none');
+    });
+  unsents.forEach((unsent) => {
+      unsent.classList.remove('d-none');
+    });
+  });
+
+
+</script>
 
