@@ -3,8 +3,13 @@
     <div class="row justify-content-center">
       <div class="col-12 col-md-8">
         <% if current_user.logs.exists? %>
-          <h5 class="mb-3">おかえりなさい、<%= current_user.nickname %>さん </h5>
-          <%= link_to 'ダッシュボード', gyms_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
+          <h4 class="mb-0">
+            おかえりなさい、
+            <%= link_to edit_user_registration_path do %>
+              <%= current_user.nickname.blank? ? 'ニックネーム未設定' : current_user.nickname %>
+            <% end %>さん
+          </h4>
+          <%= link_to 'ダッシュボード', logs_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
           <%= link_to 'ジム検索/選択', gyms_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
           <%= link_to 'アカウント設定', edit_user_registration_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
         <% else %>
