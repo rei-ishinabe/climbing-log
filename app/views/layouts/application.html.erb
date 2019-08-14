@@ -15,9 +15,6 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <% unless user_signed_in? %>
-     <%= render 'shared/footer' %>
-    <% end %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
