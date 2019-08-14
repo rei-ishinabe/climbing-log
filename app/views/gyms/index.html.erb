@@ -4,12 +4,11 @@
       <h3 class="text-center">ジム検索/選択</h3>
       <% if current_user.logs.exists? %>
         <h4>最近訪問したジム</h4>
-        <% @gyms_visited.each do |gym| %>
+        <% @last_five_gyms_visited.each do |gym| %>
           <div>
-            <% gym = Gym.find(gym) %>
-            <% if gym.last_visit_date(current_user).present? %>
-              <%= link_to gym.name, gym_path(gym) %>
-              <%= gym.last_visit_date(current_user) %>
+            <% visited_gym = Gym.find(gym[0]) %>
+            <%= link_to gym_path(visited_gym) do %>
+              <span style="font-size: 1.2em"><%=  visited_gym.name %></span> - <%= visited_gym.last_visit_date(current_user) %>
             <% end %>
           </div>
         <% end %>

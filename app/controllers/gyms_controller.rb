@@ -9,11 +9,7 @@ class GymsController < ApplicationController
       @gyms = policy_scope(Gym).order(:name).page(params[:page]).per(20)
     end
 
-    @gyms_visited = []
-    current_user.routes.each do |route|
-      @gyms_visited << route.gym_id
-    end
-    @gyms_visited = @gyms_visited.uniq
+    @last_five_gyms_visited = current_user.logs.joins(:route).select('routes.gym_id').group('routes.gym_id').maximum('logs.date').sort_by{|gym_id, date| date}.reverse.first(5)
   end
 
   def show
