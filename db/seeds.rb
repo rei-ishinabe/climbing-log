@@ -64,6 +64,129 @@ puts 'added route sub grades'
 
 puts 'adding gyms'
 Gym.delete_all
+
+# Hokkaido
+Gym.create(name:'シグナルクライミングジム',
+           name_katakana:'シグナルクライミングジム',
+           name_alphabet:'Signal Climbing Gym',
+           address:'北海道札幌市西区西町南12丁目1-41',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'RED POINT',
+           name_katakana:'レッドポイント',
+           name_alphabet:'RED POINT',
+           address:'北海道中川郡池田町大通4丁目11',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'HOMIE redbrick warehouse',
+           name_katakana:'ホーミーレッドブリックウェアハウス',
+           name_alphabet:'HOMIE redbrick warehouse',
+           address:'北海道函館市入舟町1-22',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'GRAVITY RESEARCH 札幌',
+           name_katakana:'グラビティリサーチサッポロ',
+           name_alphabet:'GRAVITY RESEARCH SAPPORO',
+           address:'北海道札幌市中央区北2条東4丁目サッポロファクトリー1条館1F',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'Whipper Snapper Gym',
+           name_katakana:'ウィッパースナッパージム',
+           name_alphabet:'Whipper Snapper Gym',
+           address:'北海道札幌市手稲区新発寒5条1-5-26',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'ボルダリングジム エクストリーム',
+           name_katakana:'ボルダリングジム エクストリーム',
+           name_alphabet:'Bouldering Gym Extreme',
+           address:'北海道函館市亀田町8−44',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'GUTs WALL',
+           name_katakana:'ガッツウォール',
+           name_alphabet:'GUTs WALL',
+           address:'北海道旭川市新星町3-1-95',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'スポーツクライミングジム十勝',
+           name_katakana:'スポーツクライミングジムトカチ',
+           name_alphabet:'Sport Climbing Gym Tokachi',
+           address:'北海道中川郡幕別町字依田523-3',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'NAC札幌クライミングジム',
+           name_katakana:'ナックサッポロクライミングジム',
+           name_alphabet:'NAC Sapporo Climbing Gym',
+           address:'北海道札幌市白石区東札幌3条1-1-1 イーアス札幌Aタウン1F',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'ノースケイブジム',
+           name_katakana:'ノースケイブジム',
+           name_alphabet:'North Cave Gym',
+           address:'北海道札幌市東区北27条東20丁目',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'スポーツクライミングジム レインボークリフ',
+           name_katakana:'スポーツクライミングジム レインボークリフ',
+           name_alphabet:'Sport Climbing Gym Rainbow Cliff',
+           address:'北海道札幌市白石区東札幌2条2-3-26',
+           latitude:'',
+           longitude:'')
+
+# Aomori
+Gym.create(name:'クライミングジム ノースロック',
+           name_katakana:'クライミングジム ノースロック',
+           name_alphabet:'Climbing Gym North Rock',
+           address:'青森県三戸郡階上町蒼前東2-9-1851',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'Bouldering gym 2nd-Wally',
+           name_katakana:'ボルダリングジム セカンド ウォーリー',
+           name_alphabet:'Bouldering gym 2nd-Wally',
+           address:'青森県八戸市石堂2-1-14',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'RAT青森ボルダー',
+           name_katakana:'ラットアオモリボルダー',
+           name_alphabet:'RAT Aomori Boulder',
+           address:'青森県青森市牛館岡部13-1',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'フリークライミングジム ラットウォール',
+           name_katakana:'フリークライミングジム ラットウォール',
+           name_alphabet:'Free Climbing Gym RAT Wall',
+           address:'青森県弘前市外崎2-6-9',
+           latitude:'',
+           longitude:'')
+
+# Iwate
+Gym.create(name:'Crager’s奥州水沢',
+           name_katakana:'クレイガーズ オウシュウミズサワ',
+           name_alphabet:'Crager’s Oshu Mizusawa',
+           address:'岩手県奥州市水沢区横町99',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'クラムボン クライミング',
+           name_katakana:'クラムボン クライミング',
+           name_alphabet:'Clambon Climbing',
+           address:'岩手県北上市村崎野14-457-4 2F',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'THE STONE SESSION JAZZYSPORT',
+           name_katakana:'ザ ストーンセッション ジャジースポート',
+           name_alphabet:'THE STONE SESSION JAZZYSPORT',
+           address:'岩手県盛岡市厨川5-13-48-4',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'Climbing Spot ONE MOVE',
+           name_katakana:'クライミングスポット ワンムーブ',
+           name_alphabet:'Climbing Spot ONE MOVE',
+           address:'岩手県盛岡市上鹿妻田貝13',
+           latitude:'',
+           longitude:'')
+
+
+
 Gym.create(name:'PUMP1 川口',
            name_katakana:'パンプ1 カワグチ',
            name_alphabet:'PUMP1 Kawaguchi',

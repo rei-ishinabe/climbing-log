@@ -3,7 +3,7 @@ class GymsController < ApplicationController
 
   def index
     if params[:query].present?
-      sql_query = "name ILIKE :query OR name_katakana ILIKE :query OR name_alphabet ILIKE :query"
+      sql_query = "name ILIKE :query OR name_katakana ILIKE :query OR name_alphabet ILIKE :query OR address ILIKE :query"
       @gyms = policy_scope(Gym).all.where(sql_query, query:"%#{params[:query]}%").order(:name).page(params[:page]).per(10)
     else
       @gyms = policy_scope(Gym).order(:name).page(params[:page]).per(20)
