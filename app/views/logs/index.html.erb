@@ -124,7 +124,7 @@
 </div>
 
 
-<% best_boulder_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:date).maximum('routes.grade_id') %>
+<%= best_boulder_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:date).order(:date).maximum('routes.grade_id') %>
 <% @labels = best_boulder_grade_by_date.keys %>
 <% @datas = best_boulder_grade_by_date.values %>
 
@@ -135,7 +135,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: <%= @labels.to_json.html_safe %>,
         datasets: [{
-            label: "サンプル",
+            label: "グレード",
             data: <%= @datas.to_json.html_safe %>,
             backgroundColor: 'rgba(22, 127, 251, 0.6)',
             borderColor: 'rgba(22, 127, 251, 0.6)',
@@ -152,41 +152,48 @@ var myChart = new Chart(ctx, {
         scales: {
             xAxes: [{
                 type: 'time',
+                time: {unit: 'day',
+                      displayFormats: {
+                        day: 'YYYY-MM-DD'
+                        }
+                      },
                 distribution: 'linear',
                 gridLines: {display:false}
             }],
             yAxes: [{
                 ticks: {
-                    // Include a dollar sign in the ticks
+                    stepSize: 1,
+                    min: 0,
+                    max: 15,
                     callback: function(value, index, values) {
                         switch(value) {
-                          case 0:
-                            return '9級';
                           case 1:
-                            return '8級';
+                            return '9級';
                           case 2:
-                            return '7級';
+                            return '8級';
                           case 3:
-                            return '6級';
+                            return '7級';
                           case 4:
-                            return '5級';
+                            return '6級';
                           case 5:
-                            return '4級';
+                            return '5級';
                           case 6:
-                            return '3級';
+                            return '4級';
                           case 7:
-                            return '2級';
+                            return '3級';
                           case 8:
-                            return '1級';
+                            return '2級';
                           case 9:
-                            return '初段';
+                            return '1級';
                           case 10:
-                            return '2段';
+                            return '初段';
                           case 11:
-                            return '3段';
+                            return '2段';
                           case 12:
-                            return '4段';
+                            return '3段';
                           case 13:
+                            return '4段';
+                          case 14:
                             return '5段';
                         }
                     }
