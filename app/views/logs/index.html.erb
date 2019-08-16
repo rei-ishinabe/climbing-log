@@ -118,19 +118,25 @@
             messages: {empty: "データがありません"} %>
       </div>
       <h5 class="mt-3 pl-1 mb-1">日別ボルダー最高グレード</h5>
-      <canvas id="myChart" width="400" height="150"></canvas>
+      <canvas id="best_boulder_grade_by_date" width="400" height="150"></canvas>
+      <h5 class="mt-3 pl-1 mb-1">タイプ別ボルダー最高グレード</h5>
+      <canvas id="best_boulder_grade_by_type" width="400" height="150"></canvas>
     </div>
   </div>
 </div>
 
 
-<%= best_boulder_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:date).order(:date).maximum('routes.grade_id') %>
+<% best_boulder_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:date).order(:date).maximum('routes.grade_id') %>
 <% @labels = best_boulder_grade_by_date.keys %>
 <% @datas = best_boulder_grade_by_date.values %>
 
+<%= best_boulder_grade_by_type = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:route_type).maximum('routes.grade_id') %>
+<%= @route_types = best_boulder_grade_by_type.keys %>
+<%= @best_grades = best_boulder_grade_by_type.values %>
+
 <script>
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
+var ctx = document.getElementById("best_boulder_grade_by_date").getContext('2d');
+var best_boulder_grade_by_date = new Chart(ctx, {
     type: 'line',
     data: {
         labels: <%= @labels.to_json.html_safe %>,
@@ -152,8 +158,8 @@ var myChart = new Chart(ctx, {
         scales: {
             xAxes: [{
                 type: 'time',
-                time: {unit: 'day',
-                      displayFormats: {
+                time: {minUnit: 'day',
+                       displayFormats: {
                         day: 'YYYY-MM-DD'
                         }
                       },
@@ -199,6 +205,68 @@ var myChart = new Chart(ctx, {
                     }
                 }
             }]
+        }
+    }
+});
+
+var ctx = document.getElementById("best_boulder_grade_by_type").getContext('2d');
+var best_boulder_grade_by_type = new Chart(ctx, {
+    type: 'radar',
+    data: {
+        labels: <%= @route_types.to_json.html_safe %>,
+        datasets: [{
+            label: "グレード",
+            data: <%= @best_grades.to_json.html_safe %>,
+            backgroundColor: 'rgba(22, 127, 251, 0.6)',
+            borderColor: 'rgba(22, 127, 251, 0.6)',
+            fill: false
+        }]
+    },
+    options: {
+        title:  {
+          display: false,
+        },
+        legend: {
+          display: false //凡例の削除 → 全てのグラフ
+        },
+        scales: {
+            ticks: {
+                stepSize: 1,
+                min: 0,
+                max: 15,
+                callback: function(a, index, values) {
+                    switch(a) {
+                      case 1:
+                        return '9級';
+                      case 2:
+                        return '8級';
+                      case 3:
+                        return '7級';
+                      case 4:
+                        return '6級';
+                      case 5:
+                        return '5級';
+                      case 6:
+                        return '4級';
+                      case 7:
+                        return '3級';
+                      case 8:
+                        return '2級';
+                      case 9:
+                        return '1級';
+                      case 10:
+                        return '初段';
+                      case 11:
+                        return '2段';
+                      case 12:
+                        return '3段';
+                      case 13:
+                        return '4段';
+                      case 14:
+                        return '5段';
+                    }
+                }
+            }
         }
     }
 });
