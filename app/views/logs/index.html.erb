@@ -21,11 +21,11 @@
 
       </div>
       <div class="mt-1 date_select_menu text-left">
-        <%= active_link_to '全期間', logs_path, active: :exact, class:'date_select_menu' %>|
-        <%= active_link_to '今年', logs_path(from: Date.today.beginning_of_year, to: Date.today.end_of_year), active: :exact %>|
-        <%= active_link_to '今月', logs_path(from: Date.today.beginning_of_month, to: Date.today.end_of_month), active: :exact %>|
-        <%= active_link_to '今週', logs_path(from: Date.today.beginning_of_week, to: Date.today.end_of_week), active: :exact %>|
-        <%= active_link_to '今日', logs_path(from: Date.today, to: Date.today), active: :exact %>
+          <%= active_link_to '全期間', logs_path, active: :exact %>|
+          <%= active_link_to '今年', logs_path(from: Date.today.beginning_of_year, to: Date.today.end_of_year), active: :exact %>|
+          <%= active_link_to '今月', logs_path(from: Date.today.beginning_of_month, to: Date.today.end_of_month), active: :exact %>|
+          <%= active_link_to '今週', logs_path(from: Date.today.beginning_of_week, to: Date.today.end_of_week), active: :exact %>|
+          <%= active_link_to '今日', logs_path(from: Date.today, to: Date.today), active: :exact %>
       </div>
       <div class="text-left mb-1">
         <%= @from.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@from.wday]})") %> 〜 <%= @to.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@to.wday]})")  %>
@@ -61,7 +61,8 @@
             points: false,
             colors: ["#167FFB", "#666"],
             dataset: {borderWidth: 0},
-            library: {scales: {xAxes: [{ticks: {padding: 8},
+            library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                      scales: {xAxes: [{ticks: {padding: 8},
                                         gridLines: {drawTicks: false}}],
                                yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
                               }
@@ -83,7 +84,8 @@
             points: false,
             colors: ["#167FFB", "#666"],
             dataset: {borderWidth: 0},
-           library: {scales: {
+            library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                      scales: {
                         xAxes: [{ticks: {suggestedMax: 10, stepSize: 5, padding: 8}, gridLines: {drawTicks: false}}],
                         yAxes: [{gridLines: {display:false}}]
                         }
@@ -105,12 +107,30 @@
             points: false,
             colors: ["#167FFB", "#666"],
             dataset: {borderWidth: 0},
-            library: {scales: {
+            library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                      scales: {
                         xAxes: [{ticks: {suggestedMax: 10, stepSize: 5, padding: 8}, gridLines: {drawTicks: false}}],
                         yAxes: [{gridLines: {display:false}}]
                         }
                       },
             suffix: "本",
+            height: "200px",
+            messages: {empty: "データがありません"} %>
+      </div>
+      <h5 class="mt-3 pl-1 mb-1">日別ボルダー最高グレード</h5>
+      <div>
+        <%= best_boulder_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:date).maximum('routes.grade_id') %>
+          <%= line_chart best_boulder_grade_by_date,
+            points: false,
+            colors: ["#167FFB", "#666"],
+            dataset: {borderWidth: 0},
+            library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                      scales: {
+                        xAxes: [{ticks: {suggestedMax: 10, stepSize: 1, padding: 8}, gridLines: {drawTicks: false}}],
+                        yAxes: [{gridLines: {display:false}
+                                }]
+                              }
+                      },
             height: "200px",
             messages: {empty: "データがありません"} %>
       </div>
