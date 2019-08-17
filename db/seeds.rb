@@ -245,6 +245,32 @@ Gym.create(name:'ガラパカ クライミングジム',
            longitude:'')
 
 #Yamagata
+Gym.create(name:'bouldering.house.358',
+           name_katakana:'ボルダリングハウス サンゴーハチ',
+           name_alphabet:"bouldering.house.358",
+           address:'山形県山形市千歳1-15-43',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'FLAT BOULDERING',
+           name_katakana:'フラットボルダリング',
+           name_alphabet:"FLAT BOULDERING",
+           address:'山形県山形市北町2-1-30',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'ボルダリングジム キイストーン',
+           name_katakana:'Bouldering Gym Key Stone',
+           name_alphabet:"ボルダリングジム キイストーン",
+           address:'山形県酒田市両羽町3-9',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'ボルダリングジム キイストーン三川',
+           name_katakana:'Bouldering Gym Key Stone Mikawa',
+           name_alphabet:"ボルダリングジム キイストーン三川",
+           address:'山形県東田川郡三川町猪子字和田庫126-1イオンモール三川内',
+           latitude:'',
+           longitude:'')
+
+#Fukushima
 
 
 
