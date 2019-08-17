@@ -31,8 +31,9 @@
         <%= f.input :comment,
                label: false,
          placeholder: 'コメント(オプション)' %>
-        <div class="d-flex align-items-center mb-3">
-          <div>
+<!--         <div class="d-flex align-items-center mb-3"> -->
+<!-- hiding image upload for routes for now -->
+<!--           <div>
             <% if @route.image.blank? %>
               <%= image_tag 'no_image_logo.png', size:'120x120', class:'rounded mr-3' %>
             <% else %>
@@ -43,9 +44,9 @@
             <%= f.input :image, label: false %>
             <%= f.input :image_cache, as: :hidden %>
           </div>
-        </div>
+        </div> -->
         <%= f.submit '登録', class:'btn btn-primary btn-lg btn-block mb-3' %>
-      <% end %>
+<!--       <% end %> -->
       <% unless @route.id.nil? %>
         <%= link_to '課題を削除', route_path(@route), method: :delete, data: {confirm: "課題を削除すると、この課題のログもすべて削除されます。本当に削除しますか?"}, class:'btn btn-outline-warning btn-lg btn-block mb-3' %>
       <% end %>

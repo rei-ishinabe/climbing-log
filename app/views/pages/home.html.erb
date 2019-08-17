@@ -9,6 +9,13 @@
               <%= current_user.nickname.blank? ? 'ニックネーム未設定' : current_user.nickname %>
             <% end %>さん
           </h4>
+          <div class='mt-3'>
+            <% last_climbed_date = current_user.logs.order(date: 'DESC').first.date %>
+            最後に登った日：
+            <span style="font-size: 1.2rem;">
+              <%= last_climbed_date.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[last_climbed_date.wday]})") %>
+            </span>
+          </div>
           <%= link_to 'ダッシュボード', logs_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
           <%= link_to 'ジム検索/選択', gyms_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
           <%= link_to 'アカウント設定', edit_user_registration_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
