@@ -21,7 +21,7 @@ class GymsController < ApplicationController
 
     @from = params[:from].to_date unless params[:from].nil?
     @to = params[:to].to_date unless params[:to].nil?
-    @routes = @gym.routes.where('routes.user_id = ?', current_user.id)
+    @routes = @gym.routes.where('routes.user_id = ?', current_user.id).order(id: 'DESC')
     unless @from.nil? | @to.nil?
       @routes = @routes.joins(:logs).where('logs.date BETWEEN ? AND ?', @from, @to )
     else
