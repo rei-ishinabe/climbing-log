@@ -185,6 +185,71 @@ Gym.create(name:'Climbing Spot ONE MOVE',
            latitude:'',
            longitude:'')
 
+#Miyagi
+Gym.create(name:'Climbing&Café　McKINLEY',
+           name_katakana:'クライミングアンドカフェ マッキンリー',
+           name_alphabet:'Climbing&Café　McKINLEY',
+           address:'宮城県名取市愛島郷1丁目1番地1',
+           latitude:'',
+           longitude:'')
+Gym.create(name "B'nuts 大崎古川店",
+           name_katakana:'ビーナッツ オオサキフルカワテン',
+           name_alphabet:"B'nuts Osaki Furukawa",
+           address:'宮城県大崎市古川栄町14-14',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'クライミングジム BOLZ',
+           name_katakana:'クライミングジム ボルズ',
+           name_alphabet:'CLIMBING GYM BOLZ',
+           address:'宮城県仙台市宮城野区萩野町2-18-10',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'モーメント・アーバンクライミングスペース',
+           name_katakana:'モーメント・アーバンクライミングスペース',
+           name_alphabet:'Moment Urban Climbing Space',
+           address:'宮城県仙台市泉区将監3-2-18',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'うみかぜクライミングパーク Sea Monkey(Z)',
+           name_katakana:'ウミカゼクライミングパーク　シーモンキー ゼッド',
+           name_alphabet:'Umikaze Climbing Park Sea Monkey Z',
+           address:'宮城県石巻市貞山1-9-25',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'Climbing & Bouldering ズィーボックス',
+           name_katakana:'クライミングアンドボルダリング ズィーボックス',
+           name_alphabet:'Climbing and Bouldering Zi;BOX',
+           address:'宮城県仙台市若林区荒井字畑中31-1',
+           latitude:'',
+           longitude:'')
+Gym.create(name:'クライミングジム ビーナッツ',
+           name_katakana:'クライミングジム ビーナッツ',
+           name_alphabet:"Climbing Gym B'nuts",
+           address:'宮城県仙台市青葉区国分町3-3-5 リスズビル1F',
+           latitude:'',
+           longitude:'')
+
+#Akita
+Gym.create(name:'Climbing&Cafe Warehouse -UN ROCHER-',
+           name_katakana:'クライミングアンドカフェ ウェアハウス アンロシェ',
+           name_alphabet:"Climbing&Cafe Warehouse -UN ROCHER-",
+           address:'秋田県鹿角市花輪字下タ町100',
+           latitude:'',
+           longitude:'')
+
+Gym.create(name:'ガラパカ クライミングジム',
+           name_katakana:'ガラパカ クライミングジム',
+           name_alphabet:"Garapaka Climbing Gym",
+           address:'秋田県秋田市八橋大畑1-3-7',
+           latitude:'',
+           longitude:'')
+
+#Yamagata
+
+
+
+
+
 
 
 Gym.create(name:'PUMP1 川口',
