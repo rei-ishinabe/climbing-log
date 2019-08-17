@@ -36,15 +36,15 @@
           <% end %>
         </div>
       </div>
-      <div class="mt-1 date_select_menu text-left">
-        <%= active_link_to '全期間', gym_path(@gym),  active: :exact, class:'date_select_menu' %>|
-        <%= active_link_to '今年', gym_path(@gym, from: Date.today.beginning_of_year, to: Date.today.end_of_year), active: :exact %>|
-        <%= active_link_to '今月', gym_path(@gym, from: Date.today.beginning_of_month, to: Date.today.end_of_month), active: :exact %>|
-        <%= active_link_to '今週', gym_path(@gym, from: Date.today.beginning_of_week, to: Date.today.end_of_week), active: :exact %>|
-        <%= active_link_to '今日', gym_path(@gym, from: Date.today, to: Date.today), active: :exact %>
-      </div>
-      <div class="text-left mb-1">
+      <div class="text-left mt-2 mb-1" style="font-size: 1.1rem;">
         <%= @from.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@from.wday]})") %> 〜 <%= @to.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@to.wday]})")  %>
+      </div>
+      <div class="btn-group btn-group-toggle d-flex mb-2">
+        <%= active_link_to '全期間', gym_path(@gym),  active: :exact, class:'date_select_menu', class:"btn btn-outline-primary btn-sm"  %>
+        <%= active_link_to '今年', gym_path(@gym, from: Date.today.beginning_of_year, to: Date.today.end_of_year), active: :exact, class:"btn btn-outline-primary btn-sm" %>
+        <%= active_link_to '今月', gym_path(@gym, from: Date.today.beginning_of_month, to: Date.today.end_of_month), active: :exact, class:"btn btn-outline-primary btn-sm"  %>
+        <%= active_link_to '今週', gym_path(@gym, from: Date.today.beginning_of_week, to: Date.today.end_of_week), active: :exact, class:"btn btn-outline-primary btn-sm"  %>
+        <%= active_link_to '今日', gym_path(@gym, from: Date.today, to: Date.today), active: :exact, class:"btn btn-outline-primary btn-sm"  %>
       </div>
       <div class="btn-group btn-group-toggle d-flex mb-3" data-toggle="buttons">
         <label class="btn btn-outline-primary btn-sm active">
