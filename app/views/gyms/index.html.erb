@@ -35,6 +35,7 @@
           </div>
         <% else %>
           <div>検索条件に合致するジムがみつかりませんでした。</div>
+          <div>検索条件を変更しても見つからない場合は、該当のジム名をinfo@climbing-log.comまでEメールにてお知らせください。</div>
           <% if current_user.admin? %>
             <%= link_to "新規ジム登録(管理者用)", new_gym_path, class:"btn btn-outline-primary btn-block my-3" %>
           <% end %>
