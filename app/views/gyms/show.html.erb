@@ -61,36 +61,16 @@
         <% @routes.each do |route| %>
           <div class="<%= route.sent ? 'sent' : 'unsent' %>">
             <div class="card my-2 p-1">
-              <div class="d-flex">
-<!-- hiding image updload for routes for now -->
-<!--                 <div>
-                  <% if route.image.blank? %>
-                    <%= link_to edit_route_path(route) do %>
-                      <%= image_tag 'no_image_logo.png', size:'80x80', class:'rounded mr-3' %>
-                    <% end %>
-                  <% else %>
-                    <%= cl_image_tag route.image, height: 80, width: 80, crop: :fill, class:"rounded mr-3" %>
-                  <% end %>
-                </div> -->
+              <div>
                 <div>
-                  <div>
-                    <span style="font-size: 1.1rem;">
-                      <%= Category.find_by(id:route.category_id).category %>
-                      <%= route.combined_grade %>
-                    </span>
-                    <%= route.route_type %>
-                    <%= route.route_name %>
-                    <%= link_to '詳細', route_path(route) %>
-                  </div>
-                  <div>
-                    <%= route.comment %>
-                  </div>
-                  <div>
-                    <%= route.latest_log_date if route.logs.exists? %>
-                    <%= route.best_status %>
-                    <%= route.logs.count %>トライ
-                  </div>
+                  <span style="font-size: 1.1rem;">
+                    <%= Category.find_by(id:route.category_id).category %>
+                    <%= route.combined_grade %>
+                  </span>
+                  <%= route.route_type %><%= route.route_name %><%= link_to '詳細', route_path(route) %>
                 </div>
+                <div><%= route.comment %></div>
+                <div><%= route.latest_log_date if route.logs.exists? %><%= route.best_status %><%= route.logs.count %>トライ</div>
               </div>
             </div>
           </div>
