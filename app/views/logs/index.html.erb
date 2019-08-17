@@ -56,150 +56,175 @@
         </div>
       </div>
 
-      <h5 class="mt-3 pl-1 mb-1">トライ数(日別)</h5>
-      <div class="mb-3">
-        <%= column_chart @logs.joins(:route).group_by_day(:date).count,
-            points: false,
-            colors: ["#167FFB", "#666"],
-            dataset: {borderWidth: 0},
-            library: {animation: {easing: 'easeOutQuad',"duration": 1000},
-                      scales: {xAxes: [{ticks: {padding: 8},
-                                        gridLines: {drawTicks: false}}],
-                               yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
-                              }
-                     },
-            suffix: "本",
-            height: "200px",
-            messages: {empty: "データがありません"} %>
+<!-- tab menu -->
+      <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="boulder-tab" data-toggle="tab" href="#boulder" role="tab" aria-controls="boulder" aria-selected="false">ボルダー</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="lead-tab" data-toggle="tab" href="#lead" role="tab" aria-controls="lead" aria-selected="false">リード</a>
+        </li>
+      </ul>
+
+
+
+<!-- tab contents start -->
+      <div class="tab-content" id="myTabContent">
+
+<!-- tab all -->
+        <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+          <h5 class="mt-3 pl-1 mb-1">トライ数(日別)</h5>
+          <div class="mb-3">
+            <%= column_chart @logs.joins(:route).group_by_day(:date).count,
+                points: false,
+                colors: ["#167FFB", "#666"],
+                dataset: {borderWidth: 0},
+                library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                          scales: {xAxes: [{ticks: {padding: 8},
+                                            gridLines: {drawTicks: false}}],
+                                   yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
+                                  }
+                         },
+                suffix: "本",
+                height: "200px",
+                messages: {empty: "データがありません"} %>
+          </div>
+        </div>
+
+<!-- tab boulder -->
+        <div class="tab-pane fade" id="boulder" role="tabpanel" aria-labelledby="boulder-tab">
+          <h5 class="mt-3 pl-1 mb-1">ボルダートライ数(日別)</h5>
+          <div class="mb-3">
+            <%= column_chart @logs.joins(:route).where('routes.category_id = ?', 1).group_by_day(:date).count,
+                points: false,
+                colors: ["#167FFB", "#666"],
+                dataset: {borderWidth: 0},
+                library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                          scales: {xAxes: [{ticks: {padding: 8},
+                                            gridLines: {drawTicks: false}}],
+                                   yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
+                                  }
+                         },
+                suffix: "本",
+                height: "200px",
+                messages: {empty: "データがありません"} %>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">ボルダー完登数(グレード別)</h5>
+          <% boulders_by_grade = {} %>
+            <% Grade.where(grade_type: 'ボルダー').each do |grade| %>
+            <% boulders_by_grade[grade.grade] = 0 %>
+          <% end %>
+          <% sents = @logs.joins(:route).joins(:grade).select('grades.grade').where('routes.category_id = ? AND logs.status_id < ?', 1, 4 ).group('grades.grade').count %>
+          <% boulders_by_grade =  boulders_by_grade.merge(sents) %>
+          <div class="mb-3">
+            <%= bar_chart boulders_by_grade,
+                points: false,
+                colors: ["#167FFB", "#666"],
+                dataset: {borderWidth: 0},
+                library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                          scales: {
+                            xAxes: [{ticks: {suggestedMax: 10, stepSize: 5, padding: 8}, gridLines: {drawTicks: false}}],
+                            yAxes: [{gridLines: {display:false}}]
+                            }
+                          },
+                suffix: "本",
+                height: "200px",
+                messages: {empty: "データがありません"} %>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">ボルダー最高グレード(日別)</h5>
+          <div>
+            <% best_boulder_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:date).order(:date).maximum('routes.grade_id') %>
+            <% @labels = best_boulder_grade_by_date.keys %>
+            <% @datas = best_boulder_grade_by_date.values %>
+            <canvas id="best_boulder_grade_by_date" width="400" height="150"></canvas>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">ボルダー最高グレード(タイプ別)</h5>
+          <div>
+            <% @best_grades = {'スラブ' => 0, '垂壁' => 0, '前傾壁' => 0, '強傾斜壁' => 0, 'ルーフ' => 0} %>
+            <% best_boulder_grade_by_type = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:route_type).maximum('routes.grade_id') %>
+            <% @best_grades = @best_grades.merge(best_boulder_grade_by_type) %>
+            <% @route_types = @best_grades.keys %>
+            <% @best_grades = @best_grades.values %>
+            <canvas id="best_boulder_grade_by_type" width="400" height="150"></canvas>
+          </div>
+        </div>
+
+<!-- tab lead -->
+        <div class="tab-pane fade" id="lead" role="tabpanel" aria-labelledby="lead-tab">
+          <h5 class="mt-3 pl-1 mb-1">リードトライ数(日別)</h5>
+          <div class="mb-3">
+            <%= column_chart @logs.joins(:route).where('routes.category_id = ?', 2).group_by_day(:date).count,
+                points: false,
+                colors: ["#167FFB", "#666"],
+                dataset: {borderWidth: 0},
+                library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                          scales: {xAxes: [{ticks: {padding: 8},
+                                            gridLines: {drawTicks: false}}],
+                                   yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
+                                  }
+                         },
+                suffix: "本",
+                height: "200px",
+                messages: {empty: "データがありません"} %>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">リード完登数</h5>
+          <% leads_by_grade = {} %>
+            <% Grade.where(grade_type: 'ルート').each do |grade| %>
+            <% leads_by_grade[grade.grade] = 0 %>
+          <% end %>
+          <% sents = @logs.joins(:route).joins(:grade).select('grades.grade').where('routes.category_id = ? AND logs.status_id < ?', 2, 4 ).group('grades.grade').count %>
+          <% leads_by_grade =  leads_by_grade.merge(sents) %>
+          <div class="mb-3">
+            <%= bar_chart leads_by_grade,
+                points: false,
+                colors: ["#167FFB", "#666"],
+                dataset: {borderWidth: 0},
+                library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                          scales: {
+                            xAxes: [{ticks: {suggestedMax: 10, stepSize: 5, padding: 8}, gridLines: {drawTicks: false}}],
+                            yAxes: [{gridLines: {display:false}}]
+                            }
+                          },
+                suffix: "本",
+                height: "200px",
+                messages: {empty: "データがありません"} %>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">リード最高グレード(日別)</h5>
+          <div>
+            <% best_lead_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:date).order(:date).maximum('routes.grade_id') %>
+            <% @labels_lead_by_grade = best_lead_grade_by_date.keys %>
+            <% @datas_lead_by_grade = best_lead_grade_by_date.values %>
+            <canvas id="best_lead_grade_by_date" width="400" height="150"></canvas>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">リード最高グレード(タイプ別)</h5>
+          <div>
+            <% @best_grades_lead = {'スラブ' => 14, '垂壁' => 14, '前傾壁' => 14, '強傾斜壁' => 14, 'ルーフ' => 14} %>
+            <% best_lead_grade_by_type = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:route_type).maximum('routes.grade_id') %>
+            <% @best_grades_lead = @best_grades_lead.merge(best_lead_grade_by_type) %>
+            <% @route_types_lead = @best_grades_lead.keys %>
+            <% @best_grades_lead = @best_grades_lead.values %>
+            <canvas id="best_lead_grade_by_type" width="400" height="150"></canvas>
+          </div>
+        </div>
       </div>
-
-
-      <h5 class="mt-3 pl-1 mb-1">ボルダートライ数(日別)</h5>
-      <div class="mb-3">
-        <%= column_chart @logs.joins(:route).where('routes.category_id = ?', 1).group_by_day(:date).count,
-            points: false,
-            colors: ["#167FFB", "#666"],
-            dataset: {borderWidth: 0},
-            library: {animation: {easing: 'easeOutQuad',"duration": 1000},
-                      scales: {xAxes: [{ticks: {padding: 8},
-                                        gridLines: {drawTicks: false}}],
-                               yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
-                              }
-                     },
-            suffix: "本",
-            height: "200px",
-            messages: {empty: "データがありません"} %>
-      </div>
-
-      <h5 class="mt-3 pl-1 mb-1">ボルダー完登数(グレード別)</h5>
-      <% boulders_by_grade = {} %>
-        <% Grade.where(grade_type: 'ボルダー').each do |grade| %>
-        <% boulders_by_grade[grade.grade] = 0 %>
-      <% end %>
-      <% sents = @logs.joins(:route).joins(:grade).select('grades.grade').where('routes.category_id = ? AND logs.status_id < ?', 1, 4 ).group('grades.grade').count %>
-      <% boulders_by_grade =  boulders_by_grade.merge(sents) %>
-      <div class="mb-3">
-        <%= bar_chart boulders_by_grade,
-            points: false,
-            colors: ["#167FFB", "#666"],
-            dataset: {borderWidth: 0},
-            library: {animation: {easing: 'easeOutQuad',"duration": 1000},
-                      scales: {
-                        xAxes: [{ticks: {suggestedMax: 10, stepSize: 5, padding: 8}, gridLines: {drawTicks: false}}],
-                        yAxes: [{gridLines: {display:false}}]
-                        }
-                      },
-            suffix: "本",
-            height: "200px",
-            messages: {empty: "データがありません"} %>
-      </div>
-
-
-
-      <h5 class="mt-3 pl-1 mb-1">ボルダー最高グレード(日別)</h5>
-      <div>
-        <% best_boulder_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:date).order(:date).maximum('routes.grade_id') %>
-        <% @labels = best_boulder_grade_by_date.keys %>
-        <% @datas = best_boulder_grade_by_date.values %>
-        <canvas id="best_boulder_grade_by_date" width="400" height="150"></canvas>
-      </div>
-
-      <h5 class="mt-3 pl-1 mb-1">ボルダー最高グレード(タイプ別)</h5>
-      <div>
-        <% @best_grades = {'スラブ' => 0, '垂壁' => 0, '前傾壁' => 0, '強傾斜壁' => 0, 'ルーフ' => 0} %>
-        <% best_boulder_grade_by_type = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:route_type).maximum('routes.grade_id') %>
-        <% @best_grades = @best_grades.merge(best_boulder_grade_by_type) %>
-        <% @route_types = @best_grades.keys %>
-        <% @best_grades = @best_grades.values %>
-        <canvas id="best_boulder_grade_by_type" width="400" height="150"></canvas>
-      </div>
-
-
-      <h5 class="mt-3 pl-1 mb-1">リードトライ数(日別)</h5>
-      <div class="mb-3">
-        <%= column_chart @logs.joins(:route).where('routes.category_id = ?', 2).group_by_day(:date).count,
-            points: false,
-            colors: ["#167FFB", "#666"],
-            dataset: {borderWidth: 0},
-            library: {animation: {easing: 'easeOutQuad',"duration": 1000},
-                      scales: {xAxes: [{ticks: {padding: 8},
-                                        gridLines: {drawTicks: false}}],
-                               yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
-                              }
-                     },
-            suffix: "本",
-            height: "200px",
-            messages: {empty: "データがありません"} %>
-      </div>
-
-      <h5 class="mt-3 pl-1 mb-1">リード完登数</h5>
-      <% leads_by_grade = {} %>
-        <% Grade.where(grade_type: 'ルート').each do |grade| %>
-        <% leads_by_grade[grade.grade] = 0 %>
-      <% end %>
-      <% sents = @logs.joins(:route).joins(:grade).select('grades.grade').where('routes.category_id = ? AND logs.status_id < ?', 2, 4 ).group('grades.grade').count %>
-      <% leads_by_grade =  leads_by_grade.merge(sents) %>
-      <div class="mb-3">
-        <%= bar_chart leads_by_grade,
-            points: false,
-            colors: ["#167FFB", "#666"],
-            dataset: {borderWidth: 0},
-            library: {animation: {easing: 'easeOutQuad',"duration": 1000},
-                      scales: {
-                        xAxes: [{ticks: {suggestedMax: 10, stepSize: 5, padding: 8}, gridLines: {drawTicks: false}}],
-                        yAxes: [{gridLines: {display:false}}]
-                        }
-                      },
-            suffix: "本",
-            height: "200px",
-            messages: {empty: "データがありません"} %>
-      </div>
-
-      <h5 class="mt-3 pl-1 mb-1">リード最高グレード(日別)</h5>
-      <div>
-        <% best_lead_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:date).order(:date).maximum('routes.grade_id') %>
-        <% @labels_lead_by_grade = best_lead_grade_by_date.keys %>
-        <% @datas_lead_by_grade = best_lead_grade_by_date.values %>
-        <canvas id="best_lead_grade_by_date" width="400" height="150"></canvas>
-      </div>
-
-      <h5 class="mt-3 pl-1 mb-1">リード最高グレード(タイプ別)</h5>
-      <div>
-        <% @best_grades_lead = {'スラブ' => 14, '垂壁' => 14, '前傾壁' => 14, '強傾斜壁' => 14, 'ルーフ' => 14} %>
-        <% best_lead_grade_by_type = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:route_type).maximum('routes.grade_id') %>
-        <% @best_grades_lead = @best_grades_lead.merge(best_lead_grade_by_type) %>
-        <% @route_types_lead = @best_grades_lead.keys %>
-        <% @best_grades_lead = @best_grades_lead.values %>
-        <canvas id="best_lead_grade_by_type" width="400" height="150"></canvas>
-      </div>
+<!-- tab contents end -->
 
     </div>
   </div>
 </div>
 
 <script>
-var ctx = document.getElementById("best_boulder_grade_by_date").getContext('2d');
-var best_boulder_grade_by_date = new Chart(ctx, {
+var chartA = document.getElementById("best_boulder_grade_by_date").getContext('2d');
+var best_boulder_grade_by_date = new Chart(chartA, {
     type: 'line',
     data: {
         labels: <%= @labels.to_json.html_safe %>,
@@ -276,8 +301,8 @@ var best_boulder_grade_by_date = new Chart(ctx, {
     }
 });
 
-var ctx2 = document.getElementById("best_boulder_grade_by_type").getContext('2d');
-var best_boulder_grade_by_type = new Chart(ctx2, {
+var chartB = document.getElementById("best_boulder_grade_by_type").getContext('2d');
+var best_boulder_grade_by_type = new Chart(chartB, {
     type: 'radar',
     data: {
         labels: <%= @route_types.to_json.html_safe %>,
@@ -341,8 +366,8 @@ var best_boulder_grade_by_type = new Chart(ctx2, {
     }
 });
 
-var ctx3 = document.getElementById("best_lead_grade_by_date").getContext('2d');
-var best_lead_grade_by_date = new Chart(ctx3, {
+var chartC = document.getElementById("best_lead_grade_by_date").getContext('2d');
+var best_lead_grade_by_date = new Chart(chartC, {
     type: 'line',
     data: {
         labels: <%= @labels_lead_by_grade.to_json.html_safe %>,
@@ -414,8 +439,8 @@ var best_lead_grade_by_date = new Chart(ctx3, {
 });
 
 
-var ctx4 = document.getElementById("best_lead_grade_by_type").getContext('2d');
-var best_boulder_grade_by_type = new Chart(ctx4, {
+var chartD = document.getElementById("best_lead_grade_by_type").getContext('2d');
+var best_boulder_grade_by_type = new Chart(chartD, {
     type: 'radar',
     data: {
         labels: <%= @route_types_lead.to_json.html_safe %>,
@@ -473,4 +498,5 @@ var best_boulder_grade_by_type = new Chart(ctx4, {
         }
     }
 });
+
 </script>
