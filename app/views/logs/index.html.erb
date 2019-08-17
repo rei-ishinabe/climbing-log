@@ -55,7 +55,26 @@
           <% end %>
         </div>
       </div>
-      <h5 class="mt-3 pl-1 mb-1">ボルダートライ本数(日別)</h5>
+
+      <h5 class="mt-3 pl-1 mb-1">トライ数(日別)</h5>
+      <div class="mb-3">
+        <%= column_chart @logs.joins(:route).group_by_day(:date).count,
+            points: false,
+            colors: ["#167FFB", "#666"],
+            dataset: {borderWidth: 0},
+            library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                      scales: {xAxes: [{ticks: {padding: 8},
+                                        gridLines: {drawTicks: false}}],
+                               yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
+                              }
+                     },
+            suffix: "本",
+            height: "200px",
+            messages: {empty: "データがありません"} %>
+      </div>
+
+
+      <h5 class="mt-3 pl-1 mb-1">ボルダートライ数(日別)</h5>
       <div class="mb-3">
         <%= column_chart @logs.joins(:route).where('routes.category_id = ?', 1).group_by_day(:date).count,
             points: false,
@@ -107,14 +126,16 @@
 
       <h5 class="mt-3 pl-1 mb-1">ボルダー最高グレード(タイプ別)</h5>
       <div>
+        <% @best_grades = {'スラブ' => 0, '垂壁' => 0, '前傾壁' => 0, '強傾斜壁' => 0, 'ルーフ' => 0} %>
         <% best_boulder_grade_by_type = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:route_type).maximum('routes.grade_id') %>
-        <% @route_types = best_boulder_grade_by_type.keys %>
-        <% @best_grades = best_boulder_grade_by_type.values %>
+        <% @best_grades = @best_grades.merge(best_boulder_grade_by_type) %>
+        <% @route_types = @best_grades.keys %>
+        <% @best_grades = @best_grades.values %>
         <canvas id="best_boulder_grade_by_type" width="400" height="150"></canvas>
       </div>
 
 
-      <h5 class="mt-3 pl-1 mb-1">リードトライ本数(日別)</h5>
+      <h5 class="mt-3 pl-1 mb-1">リードトライ数(日別)</h5>
       <div class="mb-3">
         <%= column_chart @logs.joins(:route).where('routes.category_id = ?', 2).group_by_day(:date).count,
             points: false,
@@ -154,22 +175,27 @@
             messages: {empty: "データがありません"} %>
       </div>
 
+      <h5 class="mt-3 pl-1 mb-1">リード最高グレード(日別)</h5>
+      <div>
+        <% best_lead_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:date).order(:date).maximum('routes.grade_id') %>
+        <% @labels_lead_by_grade = best_lead_grade_by_date.keys %>
+        <% @datas_lead_by_grade = best_lead_grade_by_date.values %>
+        <canvas id="best_lead_grade_by_date" width="400" height="150"></canvas>
+      </div>
+
       <h5 class="mt-3 pl-1 mb-1">リード最高グレード(タイプ別)</h5>
       <div>
+        <% @best_grades_lead = {'スラブ' => 14, '垂壁' => 14, '前傾壁' => 14, '強傾斜壁' => 14, 'ルーフ' => 14} %>
         <% best_lead_grade_by_type = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:route_type).maximum('routes.grade_id') %>
-        <% @lead_route_types = best_lead_grade_by_type.keys %>
-        <% @lead_best_grades = best_lead_grade_by_type.values %>
+        <% @best_grades_lead = @best_grades_lead.merge(best_lead_grade_by_type) %>
+        <% @route_types_lead = @best_grades_lead.keys %>
+        <% @best_grades_lead = @best_grades_lead.values %>
         <canvas id="best_lead_grade_by_type" width="400" height="150"></canvas>
       </div>
 
     </div>
   </div>
 </div>
-
-
-
-
-
 
 <script>
 var ctx = document.getElementById("best_boulder_grade_by_date").getContext('2d');
@@ -315,15 +341,87 @@ var best_boulder_grade_by_type = new Chart(ctx2, {
     }
 });
 
-
-var ctx3 = document.getElementById("best_lead_grade_by_type").getContext('2d');
-var best_boulder_grade_by_type = new Chart(ctx3, {
-    type: 'radar',
+var ctx3 = document.getElementById("best_lead_grade_by_date").getContext('2d');
+var best_lead_grade_by_date = new Chart(ctx3, {
+    type: 'line',
     data: {
-        labels: <%= @lead_route_types.to_json.html_safe %>,
+        labels: <%= @labels_lead_by_grade.to_json.html_safe %>,
         datasets: [{
             label: "グレード",
-            data: <%= @lead_best_grades.to_json.html_safe %>,
+            data: <%= @datas_lead_by_grade.to_json.html_safe %>,
+            backgroundColor: 'rgba(22, 127, 251, 0.6)',
+            borderColor: 'rgba(22, 127, 251, 0.6)',
+            fill: false
+        }]
+    },
+    options: {
+        title:  {
+          display: false,
+        },
+        legend: {
+          display: false
+        },
+        tooltips: {
+            // Disable the on-canvas tooltip
+            enabled: false
+        },
+        scales: {
+            xAxes: [{
+                type: 'time',
+                time: {minUnit: 'day',
+                       displayFormats: {
+                        day: 'YYYY-MM-DD'
+                        }
+                      },
+                distribution: 'linear',
+                gridLines: {display:false}
+            }],
+            yAxes: [{
+                ticks: {
+                    stepSize: 1,
+                    min: 14,
+                    max: 25,
+                    callback: function(value, index, values) {
+                        switch(value) {
+                          case 15:
+                            return '5.5';
+                          case 16:
+                            return '5.6';
+                          case 17:
+                            return '5.7';
+                          case 18:
+                            return '5.8';
+                          case 19:
+                            return '5.9';
+                          case 20:
+                            return '5.10';
+                          case 21:
+                            return '5.11';
+                          case 22:
+                            return '5.12';
+                          case 23:
+                            return '5.13';
+                          case 24:
+                            return '5.14';
+                          case 25:
+                            return '5.15';
+                        }
+                    }
+                }
+            }]
+        }
+    }
+});
+
+
+var ctx4 = document.getElementById("best_lead_grade_by_type").getContext('2d');
+var best_boulder_grade_by_type = new Chart(ctx4, {
+    type: 'radar',
+    data: {
+        labels: <%= @route_types_lead.to_json.html_safe %>,
+        datasets: [{
+            label: "グレード",
+            data: <%= @best_grades_lead.to_json.html_safe %>,
             backgroundColor: 'rgba(22, 127, 251, 0.6)',
             borderColor: 'rgba(22, 127, 251, 0.6)',
             fill: false
