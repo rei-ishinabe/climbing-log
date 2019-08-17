@@ -159,7 +159,7 @@
             <% best_boulder_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:date).order(:date).maximum('routes.grade_id') %>
             <% @labels = best_boulder_grade_by_date.keys %>
             <% @datas = best_boulder_grade_by_date.values %>
-            <canvas id="best_boulder_grade_by_date" width="400" height="200"></canvas>
+            <canvas id="best_boulder_grade_by_date" width="400" height="300"></canvas>
           </div>
 
           <h5 class="mt-3 pl-1 mb-1">ボルダー最高グレード(タイプ別)</h5>
@@ -169,7 +169,7 @@
             <% @best_grades = @best_grades.merge(best_boulder_grade_by_type) %>
             <% @route_types = @best_grades.keys %>
             <% @best_grades = @best_grades.values %>
-            <canvas id="best_boulder_grade_by_type" width="400" height="200"></canvas>
+            <canvas id="best_boulder_grade_by_type" width="400" height="300"></canvas>
           </div>
         </div>
 
@@ -220,7 +220,7 @@
             <% best_lead_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:date).order(:date).maximum('routes.grade_id') %>
             <% @labels_lead_by_grade = best_lead_grade_by_date.keys %>
             <% @datas_lead_by_grade = best_lead_grade_by_date.values %>
-            <canvas id="best_lead_grade_by_date" width="400" height="200"></canvas>
+            <canvas id="best_lead_grade_by_date" width="400" height="300"></canvas>
           </div>
 
           <h5 class="mt-3 pl-1 mb-1">リード最高グレード(タイプ別)</h5>
@@ -230,7 +230,7 @@
             <% @best_grades_lead = @best_grades_lead.merge(best_lead_grade_by_type) %>
             <% @route_types_lead = @best_grades_lead.keys %>
             <% @best_grades_lead = @best_grades_lead.values %>
-            <canvas id="best_lead_grade_by_type" width="400" height="200"></canvas>
+            <canvas id="best_lead_grade_by_type" width="400" height="300"></canvas>
           </div>
         </div>
       </div>
