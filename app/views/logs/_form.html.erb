@@ -3,7 +3,7 @@
     <div class="col-12 col-md-8">
       <%= link_to route_path(@route) do %>
         <div class="d-flex mb-3">
-          <div>
+<!--           <div>
             <% if @route.image.blank? %>
               <%= link_to edit_route_path(@route) do %>
                 <%= image_tag 'no_image_logo.png', size:'120x120', class:'rounded mr-3' %>
@@ -11,7 +11,7 @@
             <% else %>
               <%= cl_image_tag @route.image, height: 120, width: 120, crop: :fill, class:"rounded mr-3" %>
             <% end %>
-          </div>
+          </div> -->
           <div>
             <h4><%= link_to @route.gym.name, gym_path(@route.gym) %></h4>
             <div style="font-size: 1.1rem;">
@@ -44,57 +44,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  const category = document.getElementById("log_category");
-  const grade = document.getElementById("log_grade");
-  const subGrade = document.getElementById("log_sub_grade");
-  category.addEventListener("change",(event)=> {
-    const value = category.options[category.selectedIndex].value;
-    if (value === 'ボルダー') {
-      grade.innerHTML = "";
-      grade.insertAdjacentHTML('beforeend','<option>グレードを選択</option>');
-      grade.insertAdjacentHTML('beforeend',"<option value='9級'>9級</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='8級'>8級</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='7級'>7級</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='6級'>6級</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='5級'>5級</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='4級'>4級</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='3級'>3級</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='2級'>2級</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='1級'>1級</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='初段'>初段</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='2段'>2段</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='3段'>3段</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='4段'>4段</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='5段'>5段</option>");
-      subGrade.innerHTML = "";
-      subGrade.insertAdjacentHTML('beforeend','<option value="">サブグレード(オプション)</option>');
-      subGrade.insertAdjacentHTML('beforeend',"<option value='+'>+</option>");
-      subGrade.insertAdjacentHTML('beforeend',"<option value='-'>-</option>");
-    } else {
-      grade.innerHTML = "";
-      grade.insertAdjacentHTML('beforeend','<option>グレードを選択</option>');
-      grade.insertAdjacentHTML('beforeend',"<option value='5.5'>5.5</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='5.6'>5.6</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='5.7'>5.7</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='5.8'>5.8</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='5.9'>5.9</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='5.10'>5.10</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='5.11'>5.11</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='5.12'>5.12</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='5.13'>5.13</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='5.14'>5.14</option>");
-      grade.insertAdjacentHTML('beforeend',"<option value='5.15'>5.15</option>");
-      subGrade.innerHTML = "";
-      subGrade.insertAdjacentHTML('beforeend','<option value="">サブグレード(オプション)</option>');
-      subGrade.insertAdjacentHTML('beforeend',"<option value='a'>a</option>");
-      subGrade.insertAdjacentHTML('beforeend',"<option value='a/b'>a/b</option>");
-      subGrade.insertAdjacentHTML('beforeend',"<option value='b'>b</option>");
-      subGrade.insertAdjacentHTML('beforeend',"<option value='b/c'>b/c</option>");
-      subGrade.insertAdjacentHTML('beforeend',"<option value='c'>c</option>");
-      subGrade.insertAdjacentHTML('beforeend',"<option value='c/d'>c/d</option>");
-      subGrade.insertAdjacentHTML('beforeend',"<option value='d'>d</option>");
-    }
-  });
-</script>
