@@ -27,6 +27,8 @@ class GymsController < ApplicationController
     else
       if @routes.first.nil?
         @from = Date.today
+      elsif @routes.first.log_ids.empty?
+        @from = Date.today
       else
         @from = @routes.joins(:logs).select('routes.*, logs.date').order(date: 'ASC').first.date
       end
