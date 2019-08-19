@@ -1,9 +1,9 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
-      <h3 class="text-center">ジム検索/選択</h3>
+      <h4>ジム検索/選択</h4>
       <% if current_user.logs.exists? %>
-        <h4>最近訪問したジム</h4>
+        <h5>最近訪問したジム</h5>
         <% @last_five_gyms_visited.each do |gym| %>
           <div>
             <% visited_gym = Gym.find(gym[0]) %>

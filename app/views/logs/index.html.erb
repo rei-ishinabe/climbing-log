@@ -41,7 +41,6 @@
           <% unless boulder_best_log.nil? %>
             <%= link_to route_path(boulder_best_log.route) do %>
               <span style="font-size: 1.2rem;"><%= boulder_best_log.route.combined_grade %></span></%>
-              (<%= boulder_best_log.route.gym.name %>)
             <% end %>
           <% end %>
         </div>
@@ -50,7 +49,6 @@
           <% unless lead_best_log.nil? %>
             <%= link_to route_path(lead_best_log.route) do %>
               <span style="font-size: 1.2rem;"><%=lead_best_log.route.combined_grade %></span>
-              (<%= lead_best_log.route.gym.name %>)
             <% end %>
           <% end %>
         </div>

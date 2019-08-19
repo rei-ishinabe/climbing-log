@@ -50,6 +50,7 @@
       <% unless @route.id.nil? %>
         <%= link_to '課題を削除', route_path(@route), method: :delete, data: {confirm: "課題を削除すると、この課題のログもすべて削除されます。本当に削除しますか?"}, class:'btn btn-outline-warning btn-lg btn-block mb-3' %>
       <% end %>
+      <%= link_to '戻る', gym_path(@gym), class:'btn btn-outline-secondary btn-lg btn-block mb-3' %>
     </div>
   </div>
 </div>

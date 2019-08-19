@@ -63,11 +63,13 @@
             <div class="card my-2 p-1">
               <div>
                 <div>
-                  <span style="font-size: 1.1rem;">
-                    <%= Category.find_by(id:route.category_id).category %>
-                    <%= route.combined_grade %>
-                  </span>
-                  <%= route.route_type %><%= route.route_name %><%= link_to '詳細', route_path(route) %>
+                  <%= link_to route_path(route) do %>
+                    <span style="font-size: 1.1rem;">
+                      <%= Category.find_by(id:route.category_id).category %>
+                      <%= route.combined_grade %>
+                    </span>
+                    <%= route.route_type %><%= route.route_name %>
+                  <% end %>
                 </div>
                 <div><%= route.comment %></div>
                 <div><%= route.latest_log_date if route.logs.exists? %><%= route.best_status %><%= route.logs.count %>トライ</div>
