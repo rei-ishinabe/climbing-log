@@ -64,341 +64,538 @@ puts 'added route sub grades'
 
 puts 'adding gyms'
 Gym.delete_all
+Gym.create(name:"10 O'CLOCK BOULDERING SPACE",name_katakana:"テンオクロック ボルダリングスペース",name_alphabet:"10 O'CLOCK BOULDERING SPACE",address:"大阪府八尾市志紀町南1-52")
+Gym.create(name:"2172 bouldering park",name_katakana:"ニイイチナナニイ ボルダリングパーク",name_alphabet:"2172 bouldering park",address:"東京都福生市福生2172")
+Gym.create(name:"3RD WALLY BOULDERING",name_katakana:"サードウォーリーボルダリング",name_alphabet:"3RD WALLY BOULDERING",address:"神奈川県茅ヶ崎市本宿町2-32")
+Gym.create(name:"achieve",name_katakana:"アチーブ",name_alphabet:"achieve",address:"長野県伊那市福島 1675")
+Gym.create(name:"ACS88",name_katakana:"エーシーエスハチハチ",name_alphabet:"ACS88",address:"岐阜県多治見市昭和町88-2")
+Gym.create(name:"all fours GYM",name_katakana:"オールフォージム",name_alphabet:"all fours GYM",address:"神奈川県横浜市中区本牧原15-6グロブナースクエアB1")
+Gym.create(name:"APEXクライミングジム四谷三丁目店",name_katakana:"エイペックスクライミングジム ヨツヤサンチョウメテン",name_alphabet:"APEX Climbing Gym Yotsuya Sanchome",address:"東京都新宿区四谷3-13-24ミズキビル6・7F")
+Gym.create(name:"APEXクライミングジム 新宿店",name_katakana:"エイペックスクライミングジムシンジュクテン",name_alphabet:"APEX Climbing Gym Shinjuku",address:"東京都新宿区西新宿7-3-1 三光パークビル B1F")
+Gym.create(name:"B-PUMP TOKYO 秋葉原",name_katakana:"ビーパンプ トウキョウ アキハバラ",name_alphabet:"B-PUMP Tokyo Akihabara",address:"東京都文京区湯島1-1-8")
+Gym.create(name:"B-PUMP 横浜",name_katakana:"ビーパンプ ヨコハマ",name_alphabet:"B-PUMP Yokohama",address:"神奈川県横浜市西区平沼1-8-1")
+Gym.create(name:"B-PUMP 荻窪",name_katakana:"ビーパンプ オギクボ",name_alphabet:"B-PUMP Ogikubo",address:"東京都杉並区上荻1-24-10")
+Gym.create(name:"BANJAT BOULDERING",name_katakana:"バンジャットボルダリング",name_alphabet:"BANJAT BOULDERING",address:"沖縄県名護市大中4-5-15")
+Gym.create(name:"Bare Hands Climbing Gym",name_katakana:"ベアハンズクライミングジム",name_alphabet:"Bare Hands Climbing Gym",address:"福岡県福岡市西区横浜1-47-15")
+Gym.create(name:"Base Camp Tokyo 小竹向原",name_katakana:"ベースキャンプトウキョウコタケムカイハラ",name_alphabet:"Base Camp Tokyo Kotake Mukaihara",address:"東京都板橋区向原3-10-15")
+Gym.create(name:"Be born Climbing gym",name_katakana:"ビーボーンクライミングジム",name_alphabet:"Be born Climbing gym",address:"埼玉県越谷市南越谷4-16-13")
+Gym.create(name:"BEAR’S ROCK",name_katakana:"ベアーズロック",name_alphabet:"BEAR’S ROCK",address:"東京都葛飾区白鳥1-11-7 1F")
+Gym.create(name:"bee mee nee WaBo",name_katakana:"ビーミーニーワボ",name_alphabet:"bee mee nee WaBo",address:"和歌山県和歌山市井辺208-4 2F")
+Gym.create(name:"BERRY WALLクライミングジム",name_katakana:"ベリーウォールクライミングジム",name_alphabet:"BERRY WALL Climbing Gym",address:"栃木県真岡市台町2481 大塚倉庫内")
+Gym.create(name:"ベータクライミングジム",name_katakana:"ベータクライミングジム",name_alphabet:"BETA climbing gym",address:"東京都新宿区住吉町1-14")
+Gym.create(name:"Blue Bird BOULDERING GYM",name_katakana:"ブルーバードボルダリングジム",name_alphabet:"Blue Bird BOULDERING GYM",address:"群馬県太田市米沢町13")
+Gym.create(name:"BLUE CANYON",name_katakana:"ブルーキャニオン",name_alphabet:"BLUE CANYON",address:"静岡県富士市青葉町124")
+Gym.create(name:"Bon climbing gym",name_katakana:"ボン クライミング ジム",name_alphabet:"Bon climbing gym",address:"岡山県倉敷市連島町西之浦804-1")
+Gym.create(name:"BOSSAクライミングジム",name_katakana:"ボッサクライミングジム",name_alphabet:"BOSSA Climbing Gym",address:"兵庫県神戸市長田区川西通5-101-3 共栄ビル西館2F")
+Gym.create(name:"BOULCOM 川崎店",name_katakana:"ボルコム カワサキテン",name_alphabet:"BOULCOM Kawasaki",address:"神奈川県川崎市幸区南幸町2丁目19")
+Gym.create(name:"BOULCOM 新宿店",name_katakana:"ボルコム シンジュクテン",name_alphabet:"BOULCOM Shinjuku",address:"東京都渋谷区千駄ヶ谷5-29-7 B1F")
+Gym.create(name:"BOULCOM 東京店",name_katakana:"ボルコム トウキョウテン",name_alphabet:"BOULCOM Tokyo",address:"東京都千代田区内神1丁目13-1 豊島屋ビル地下2階")
+Gym.create(name:"Boulder Park Base Camp 飯能",name_katakana:"ボルダーパークベースキャンプ",name_alphabet:"Boulder Park Base Camp",address:"埼玉県飯能市緑町3-2")
+Gym.create(name:"BOULDER VILLAGE",name_katakana:"ボルダーヴィレッジ",name_alphabet:"BOULDER VILLAGE",address:"東京都中央区日本橋馬喰町1-8-4 第1松井ビル1F")
+Gym.create(name:"BoulderGarden SaBo",name_katakana:"ボルダリングガーデン サボ",name_alphabet:"BoulderGarden SaBo",address:"岡山県岡山市南区富浜町1-39")
+Gym.create(name:"Bouldering gym 2nd-Wally",name_katakana:"ボルダリングジム セカンド ウォーリー",name_alphabet:"Bouldering gym 2nd-Wally",address:"青森県八戸市石堂2-1-14")
+Gym.create(name:"Bouldering Gym Are",name_katakana:"ボルダリングジム アレ",name_alphabet:"Bouldering Gym Are",address:"富山県高岡市内免3-9-56")
+Gym.create(name:"bouldering gym BANANAZURI",name_katakana:"ボルダリングジム バナナズリ",name_alphabet:"bouldering gym BANANAZURI",address:"神奈川県逗子市新宿4-14-2")
+Gym.create(name:"BOULDERING GYM GRAPPA",name_katakana:"ボルダリングジム グラッパ",name_alphabet:"BOULDERING GYM GRAPPA",address:"山梨県甲斐市竜王1106-3")
+Gym.create(name:"Bouldering Gym LAUGH",name_katakana:"ボルダリングジム ラフ",name_alphabet:"Bouldering Gym LAUGH",address:"東京都新宿区上落合2-9-16")
+Gym.create(name:"Bouldering Gym Rockestra",name_katakana:"ボルダリングジム ロッケストラ",name_alphabet:"Bouldering Gym Rockestra",address:"兵庫県西宮市山口町名来1-13-32")
+Gym.create(name:"bouldering gym UNITY",name_katakana:"ボルダリングジム ユニティ",name_alphabet:"bouldering gym UNITY",address:"山口県下関市長府松小田本町15-6")
+Gym.create(name:"Bouldering House Sunny Side.",name_katakana:"ボルダリングハウス サニーサイド",name_alphabet:"Bouldering House Sunny Side.",address:"大分県大分市春日浦843-61")
+Gym.create(name:"Bouldering space BLEAU",name_katakana:"ボルダリングジム ブロー",name_alphabet:"Bouldering space BLEAU",address:"東京都杉並区高円寺南3-6-3")
+Gym.create(name:"bouldering space CRACKER",name_katakana:"ボルダリングスペース クラッカー",name_alphabet:"bouldering space CRACKER",address:"熊本県八代市鏡町内田541-1")
+Gym.create(name:"Bouldering Spot 9A",name_katakana:"ボルダリングスポット ナインエー",name_alphabet:"Bouldering Spot 9A",address:"山口県防府市植松207")
+Gym.create(name:"BOULDERING STUDIO PEKIPEKI 幕張新都心",name_katakana:"ボルダリングスタジオ ペキペキ マクハリシントシン",name_alphabet:"BOULDERING STUDIO PEKIPEKI Makuhari Shintoshin",address:"千葉県千葉市美浜区豊砂1-6アクティブモール スポーツオーソリティ1F")
+Gym.create(name:"bouldering Uluru",name_katakana:"ボルダリングウルル",name_alphabet:"bouldering Uluru",address:"宮崎県日向市向江町1-209－17")
+Gym.create(name:"Bouldering-gym Wally",name_katakana:"ボルダリングジム ウォーリー",name_alphabet:"Bouldering-gym Wally",address:"神奈川県藤沢市南藤沢10-2 ハギワラビル1F")
+Gym.create(name:"bouldering.house.358",name_katakana:"ボルダリングハウス サンゴーハチ",name_alphabet:"bouldering.house.358",address:"山形県山形市千歳1-15-43")
+Gym.create(name:"chock stone",name_katakana:"チョックストーン",name_alphabet:"chock stone",address:"大阪府富田林市甲田2-6-2")
+Gym.create(name:"CLARICA BoulderingPlace of Relaxation",name_katakana:"クラリカ ボルダリングプレース オブ リラクゼーション",name_alphabet:"CLARICA BoulderingPlace of Relaxation",address:"大阪府大阪市都島区中野町5-13 -4 桜宮リバーシティタワープラザアベニュー1F")
+Gym.create(name:"ClibmingBox FunC2 ",name_katakana:"クライミングボックス ファンク",name_alphabet:"ClibmingBox FunC2 ",address:"大阪府大阪市旭区清水1-18-18 米倉ビル2F")
+Gym.create(name:"Climb Park Base Camp 入間",name_katakana:"クライムパークベースキャンプ",name_alphabet:"Climb Park Base Camp",address:"埼玉県入間市東町7-1-7")
+Gym.create(name:"Climbing & Bouldering ズィーボックス",name_katakana:"クライミングアンドボルダリング ズィーボックス",name_alphabet:"Climbing and Bouldering Zi;BOX",address:"宮城県仙台市若林区荒井字畑中31-1")
+Gym.create(name:"CLIMBING BUM Climbing & Bouldering center",name_katakana:"クライミングバム クライミングアンドボルダリングセンター",name_alphabet:"CLIMBING BUM Climbing & Bouldering center",address:"大阪府大阪市中央区森ノ宮中央2-1-70 もりのみやキューズモールBASE1F")
+Gym.create(name:"Climbing Field Granite",name_katakana:"クライミングフィールドグラニット",name_alphabet:"Climbing Field Granite",address:"岐阜県多治見市旭ヶ丘10-6-57 山浜商店2F")
+Gym.create(name:"CLIMBING GYM & SHOP LABO山口店",name_katakana:"クライミングジムアンドショップ　ラボ ヤマグチテン",name_alphabet:"CLIMBING GYM & SHOP OD LABO Yamaguchi",address:"山口県山口市陶4634-4")
+Gym.create(name:"CLIMBING GYM & SHOP OD 八幡店",name_katakana:"クライミングジムアンドショップ　オーディー　ヤハタテン",name_alphabet:"CLIMBING GYM & SHOP OD Yahata",address:"福岡県北九州市八幡東区西本町1-8-7-2F")
+Gym.create(name:"CLIMBING GYM & SHOP OD 小倉店",name_katakana:"クライミングジムアンドショップ　オーディー　コクラテン",name_alphabet:"CLIMBING GYM & SHOP OD Kokura",address:"福岡県北九州市小倉南区曽根北町4-15")
+Gym.create(name:"CLIMBING GYM & SHOP OD 小倉駅店",name_katakana:"クライミングジムアンドショップ　オーディー　コクラエキマエテン",name_alphabet:"CLIMBING GYM & SHOP OD Kokura Ekimae",address:"福岡県北九州市小倉北区浅野1-1-1小倉駅新幹線口ルネサンス横")
+Gym.create(name:"CLIMBING GYM & SHOP OD1 宗像店",name_katakana:"クライミングジムアンドショップ　オーディー　ムナカタテン",name_alphabet:"CLIMBING GYM & SHOP OD Munakata",address:"福岡県宗像市石丸1-2-22")
+Gym.create(name:"climbing gym & yoga studio atman",name_katakana:"クライミングジムアンドヨガスタジオ アトマン",name_alphabet:"climbing gym & yoga studio atman",address:"京都府久世郡久御山町田井新荒見248")
+Gym.create(name:"CLIMBING GYM &SHOP LABO下松店",name_katakana:"クライミングジムアンドショップラボシモマツテン",name_alphabet:"CLIMBING GYM &SHOP LABO Shimomatsu",address:"山口県下松市大手町2-8-13")
+Gym.create(name:"Climbing Gym ADSUMMUM",name_katakana:"クライミングジム アドスムム",name_alphabet:"Climbing Gym ADSUMMUM",address:"京都府京都市中京区新京極通蛸薬師上ル中筋町490 京極72ビル3F")
+Gym.create(name:"Climbing Gym ADSUMMUM 西大路店",name_katakana:"クライミングジム アドスムム ニシオオジ",name_alphabet:"Climbing Gym ADSUMMUM Nishioji",address:"京都府京都市下京区七条御所ノ内北町69 インペリアル京都1F")
+Gym.create(name:"CLIMBING GYM BOULDERS",name_katakana:"クライミングジム ボルダーズ",name_alphabet:"CLIMBING GYM BOULDERS",address:"東京都足立区東保木間2-25-16")
+Gym.create(name:"Climbing Gym CLAPPLE",name_katakana:"クライミングジム クラップ",name_alphabet:"Climbing Gym CLAPPLE",address:"大阪府大阪市住吉区南住吉1-4-15 サコダビル1F")
+Gym.create(name:"CLIMBING GYM FULL TONES",name_katakana:"クライミングジム フルトーンズ",name_alphabet:"CLIMBING GYM FULL TONES",address:"三重県四日市市野田1-2-1")
+Gym.create(name:"Climbing gym NATURA",name_katakana:"クライミングジム ナトゥーラ",name_alphabet:"Climbing gym NATURA",address:"岐阜県関市栄町5-1-99")
+Gym.create(name:"CLIMBING GYM PURE GREEN",name_katakana:"クライミングジム ピュアグリーン",name_alphabet:"CLIMBING GYM PURE GREEN",address:"広島県広島市安佐北区可部南3-17-24")
+Gym.create(name:"Climbing Gym RANBO",name_katakana:"クライミングジム ランボー",name_alphabet:"Climbing Gym RANBO",address:"群馬県伊勢崎市三室町5580-3")
+Gym.create(name:"Climbing Gym TOBITO",name_katakana:"クライミングジム トビト",name_alphabet:"Climbing Gym TOBITO",address:"大阪府大阪市天王寺区南河堀町8-13 天王寺MIYO1F")
+Gym.create(name:"Climbing gym VERT",name_katakana:"クライミングジムヴァート",name_alphabet:"Climbing gym VERT",address:"埼玉県熊谷市原島664-1")
+Gym.create(name:"Climbing JAM",name_katakana:"クライミングジャム",name_alphabet:"Climbing JAM",address:"静岡県静岡市駿河区池田128-1")
+Gym.create(name:"Climbing JAM 2",name_katakana:"クライミングジャム ツー",name_alphabet:"Climbing JAM 2",address:"静岡県浜松市東区上西町1020-1 浜松プラザ フレスポ2F")
+Gym.create(name:"Climbing JAM S YAIZU",name_katakana:"クライミングジャムエスヤイズ",name_alphabet:"Climbing JAM S YAIZU",address:"静岡県焼津市小土489-1")
+Gym.create(name:"Climbing Park CRUNCH",name_katakana:"クライミングパーク クランチ",name_alphabet:"Climbing Park CRUNCH",address:"愛知県一宮市森本4-14-20")
+Gym.create(name:"Climbing Park Drop-in",name_katakana:"クライミングパークドロップイン",name_alphabet:"Climbing Park Drop-in",address:"福島県いわき市常磐関船町宮下4-4")
+Gym.create(name:"climbing park LUCLU",name_katakana:"クライミングパーク ルクル",name_alphabet:"climbing park LUCLU",address:"大阪府寝屋川市松屋町1-13")
+Gym.create(name:"Climbing Park Zig’s Rock",name_katakana:"クライミングパーク ジグズロック",name_alphabet:"Climbing Park Zig’s Rock",address:"長野県上田市住吉52-1")
+Gym.create(name:"Climbing Space Ledge",name_katakana:"クライミングスペース レッジ",name_alphabet:"Climbing Space Ledge",address:"神奈川県海老名市中野2-27-11")
+Gym.create(name:"climbing space Lism",name_katakana:"クライミングスペースリズム",name_alphabet:"climbing space Lism",address:"岡山県岡山市北区今2-3-27")
+Gym.create(name:"Climbing Space Volta",name_katakana:"クライミングスペース　ヴォルタ",name_alphabet:"Climbing Space Volta",address:"福岡県飯塚市小正903-17")
+Gym.create(name:"Climbing Spot ONE MOVE",name_katakana:"クライミングスポット ワンムーブ",name_alphabet:"Climbing Spot ONE MOVE",address:"岩手県盛岡市上鹿妻田貝13")
+Gym.create(name:"climbing spot まっくす",name_katakana:"クライミングスポットマックス",name_alphabet:"climbing spot Max",address:"神奈川県相模原市中央区小山2-3-15 ナクセスビルB1F")
+Gym.create(name:"Climbing&Café　McKINLEY",name_katakana:"クライミングアンドカフェ マッキンリー",name_alphabet:"Climbing&Café　McKINLEY",address:"宮城県名取市愛島郷1丁目1番地1")
+Gym.create(name:"Climbing&Cafe Warehouse -UN ROCHER-",name_katakana:"クライミングアンドカフェ ウェアハウス アンロシェ",name_alphabet:"Climbing&Cafe Warehouse -UN ROCHER-",address:"秋田県鹿角市花輪字下タ町100")
+Gym.create(name:"ClimbingGarden NOMAD",name_katakana:"クライミングガーデン ノマド",name_alphabet:"ClimbingGarden NOMAD",address:"福島県伊達郡桑折町大字上郡字堰土10-5")
+Gym.create(name:"ClimbingGym Allez!",name_katakana:"クライミングジム アレ",name_alphabet:"ClimbingGym Allez!",address:"高知県高知市葛島4-3-38")
+Gym.create(name:"ClimbingGym GIRI.GIRI",name_katakana:"クライミングジム ギリギリ",name_alphabet:"ClimbingGym GIRI.GIRI",address:"東京都西東京市西原町5-2-1")
+Gym.create(name:"ClimbingGym Nimbim",name_katakana:"クライミングジム ニンビン",name_alphabet:"ClimbingGym Nimbim",address:"岐阜県郡上市白鳥町向小駄良663-1")
+Gym.create(name:"Cloud Nine",name_katakana:"クラウドナイン",name_alphabet:"Cloud Nine",address:"新潟県長岡市宝1-3-22")
+Gym.create(name:"Crager’s奥州水沢",name_katakana:"クレイガーズ オウシュウミズサワ",name_alphabet:"Crager’s Oshu Mizusawa",address:"岩手県奥州市水沢区横町99")
+Gym.create(name:"CRAGクライミングジム",name_katakana:"クラッグクライミングジム",name_alphabet:"CRAG Climbing Gym",address:"静岡県浜松市浜北区中瀬1582-1")
+Gym.create(name:"craze 川口店",name_katakana:"クレイズ カワグチテン",name_alphabet:"craze Kawaguchi",address:"埼玉県川口市飯塚1-18-6")
+Gym.create(name:"Craze 越谷店",name_katakana:"クレイズ コシガヤテン",name_alphabet:"Craze Koshigaya",address:"埼玉県越谷市南荻島2696")
+Gym.create(name:"Cronico indoor climbing facility",name_katakana:"クロニコインドアクライミングファシリティ",name_alphabet:"Cronico indoor climbing facility",address:"大阪府豊中市大島町3-11-43")
+Gym.create(name:"D.Bouldering Hachioji",name_katakana:"ディーボルダリングツナシマ",name_alphabet:"D.Bouldering Hachioji",address:"東京都八王子市中町2-1 グランド東京ビル新館1F")
+Gym.create(name:"D.Bouldering Tsunashima",name_katakana:"ディーボルダリングハチオウジ",name_alphabet:"D.Bouldering Tsunashima",address:"神奈川県横浜市港北区綱島西2-2-22 パークノヴァ綱島202")
+Gym.create(name:"DIVERSE ROCK CLIMBING",name_katakana:"ダイバースロッククライミング",name_alphabet:"DIVERSE ROCK CLIMBING",address:"福島県福島市太平寺字一本柳73-2")
+Gym.create(name:"DOG WOOD Climbing Gym",name_katakana:"ドッグウッドクライミングジム",name_alphabet:"DOG WOOD Climbing Gym",address:"神奈川県川崎市高津区久地2-16 -1 久地ゴルフガーデン内")
+Gym.create(name:"Edge and Sofa Bouldering Park 松本",name_katakana:"エッジアンドソファボルダリングパークマツモト",name_alphabet:"Edge and Sofa BOULDERING PARK Matsumoto",address:"長野県松本市島内4179-1")
+Gym.create(name:"Edge and Sofa Bouldering Park 諏訪",name_katakana:"エッジアンドソファボルダリングパークスワ",name_alphabet:"Edge and SofaBouldering Park Suwa",address:"長野県諏訪市豊田240")
+Gym.create(name:"EIGHT-ROCK",name_katakana:"エイトロック",name_alphabet:"EIGHT-ROCK",address:"岐阜県飛騨市神岡町殿字山越447-1")
+Gym.create(name:"ESCALADE climbing gym",name_katakana:"エスカラードクライミングジム",name_alphabet:"ESCALADE climbing gym",address:"東京都新宿区西新宿7-5-20 新宿旭ビル")
+Gym.create(name:"Ever Free Climbing Gym",name_katakana:"エバーフリークライミングジム",name_alphabet:"Ever Free Climbing Gym",address:"東京都新宿区北新宿4-16-9 新関ビルB1")
+Gym.create(name:"Favour climbing&yoga&bodywork",name_katakana:"フェーバー クライミングアンドヨガアンドボディワーク",name_alphabet:"Favour climbing&yoga&bodywork",address:"福岡県福岡市早良区高取1-28-24")
+Gym.create(name:"FCS Arise",name_katakana:"エフシーエスアライズ",name_alphabet:"FCS Arise",address:"富山県富山市二口町4-7-1")
+Gym.create(name:"FCSウォール",name_katakana:"エフシーエスウォール",name_alphabet:"FCS Wall",address:"富山県下新川郡入善町墓ノ木445")
+Gym.create(name:"Fellows climbing",name_katakana:"フェローズ クライミング",name_alphabet:"Fellows climbing",address:"奈良県香芝市今泉648")
+Gym.create(name:"Fitness climbing LAGO",name_katakana:"フィットネスクライミングラーゴ",name_alphabet:"Fitness climbing LAGO",address:"東京都杉並区方南1-7-3")
+Gym.create(name:"FLASH",name_katakana:"フラッシュ",name_alphabet:"FLASH",address:"栃木県宇都宮市錦3-5-6")
+Gym.create(name:"FLAT BOULDERING",name_katakana:"フラットボルダリング",name_alphabet:"FLAT BOULDERING",address:"山形県山形市北町2-1-30")
+Gym.create(name:"FreeClimbing &Bouldering GYM サムズアップ",name_katakana:"フリークライミングアンドボルダリングサムズアップ",name_alphabet:"FreeClimbing &Bouldering GYM Thumbs up",address:"愛知県名古屋市中区富士見町8-8 OMCビルB1F")
+Gym.create(name:"FUKAYA CLIMBING VILLAGE",name_katakana:"フカヤクライミングヴィレッジ",name_alphabet:"FUKAYA CLIMBING VILLAGE",address:"埼玉県深谷市上柴町東3-13-16（深谷スポーツヴィレッジ内）")
+Gym.create(name:"FUKUOKA WESTSIDE CLIMBING MY WAY",name_katakana:"フクオカウェストサイドクライミングマイウェイ",name_alphabet:"FUKUOKA WESTSIDECLIMBING MY WAY",address:"福岡県福岡市西区横浜1-47-15")
+Gym.create(name:"Glacier Point",name_katakana:"グレーシャーポイント",name_alphabet:"Glacier Point",address:"兵庫県兵庫県姫路市玉手2丁目73－8")
+Gym.create(name:"goodboulderingグッぼる",name_katakana:"グッドボルダリンググッボル",name_alphabet:"goodboulderinggooboru",address:"滋賀県彦根市小泉町34-8")
+Gym.create(name:"GRANDWAZOO クライミングジム 大阪店",name_katakana:"グランドワズークライミングジムオオサカ",name_alphabet:"GRANDWAZOO Climbing Gym Osaka",address:"大阪府柏原市太平寺2-7-14")
+Gym.create(name:"GRANDWAZOOクライミングジム",name_katakana:"グランドワズークライミングジム",name_alphabet:"GRANDWAZOO Climbing Gym",address:"奈良県橿原市五井町255-4")
+Gym.create(name:"GRAVITY RESEARCH GINZA",name_katakana:"グラビティリサーチギンザ",name_alphabet:"GRAVITY RESEARCH GINZA",address:"東京都中央区銀座6-6-1 風月堂ビル6F")
+Gym.create(name:"GRAVITY RESEARCH HIMEJI",name_katakana:"グラビティリサーチヒメジ",name_alphabet:"GRAVITY RESEARCH HIMEJI",address:"兵庫県姫路市駅前町27 テラッソ姫路3F")
+Gym.create(name:"GRAVITY RESEARCH KISHIWADA",name_katakana:"グラビティリサーチキシワダ",name_alphabet:"GRAVITY RESEARCH KISHIWADA",address:"大阪府岸和田市港緑町3-1岸和田カンカンベイサイドモールWEST 1F")
+Gym.create(name:"GRAVITY RESEARCH KOBE",name_katakana:"グラビティリサーチコウベ",name_alphabet:"GRAVITY RESEARCH KOBE",address:"兵庫県神戸市中央区磯上通4-3-10 IPSX EAST1F")
+Gym.create(name:"GRAVITY RESEARCH KOKURA",name_katakana:"グラビティリサーチコクラ",name_alphabet:"GRAVITY RESEARCH KOKURA",address:"福岡県北九州市小倉北区紺屋町1-1 サンシャイン南国ビル1")
+Gym.create(name:"GRAVITY RESEARCH MIE",name_katakana:"グラビティリサーチミエ",name_alphabet:"GRAVITY RESEARCH MIE",address:"三重県四日市市諏訪栄町6-4スターアイランド3")
+Gym.create(name:"GRAVITY RESEARCH Mint Kobe",name_katakana:"グラビティリサーチミントコウベ",name_alphabet:"GRAVITY RESEARCH Mint Kobe",address:"兵庫県神戸市中央区雲井通7-1-1 M-INT神戸18F")
+Gym.create(name:"GRAVITY RESEARCH NAMBA",name_katakana:"グラビティリサーチナンバ",name_alphabet:"GRAVITY RESEARCH NAMBA",address:"大阪府大阪市中央区難波千日前12-35 SWINGヨシモトビル3F・4F")
+Gym.create(name:"GRAVITY RESEARCH NAMBA B",name_katakana:"グラビティリサーチナンバビー",name_alphabet:"GRAVITY RESEARCH NAMBA B",address:"大阪市浪速区難波中2丁目11-1")
+Gym.create(name:"GRAVITY RESEARCH NIIGATA",name_katakana:"グラビティリサーチニイガタ",name_alphabet:"GRAVITY RESEARCH NIIGATA",address:"新潟県新潟市江南区五月町2-7-22")
+Gym.create(name:"GRAVITY RESEARCH OKAYAMA",name_katakana:"グラビティリサーチオカヤマ",name_alphabet:"GRAVITY RESEARCH OKAYAMA",address:"岡山県岡山市北区本町6-36第一セントラルビル1・2F")
+Gym.create(name:"GRAVITY RESEARCH OMIYA",name_katakana:"グラビティリサーチオオミヤ",name_alphabet:"GRAVITY RESEARCH OMIYA",address:"埼玉県さいたま市大宮区宮町1-37")
+Gym.create(name:"GRAVITY RESEARCH TOKYO-BAY",name_katakana:"グラビティリサーチ トウキョウベイ",name_alphabet:"GRAVITY RESEARCH TOKYO-BAY",address:"千葉県船橋市浜町2-1-1ららぽーとTOKYO-BAY南館3F")
+Gym.create(name:"GRAVITY RESEARCH UMEDA",name_katakana:"グラビティリサーチウメダ",name_alphabet:"GRAVITY RESEARCH UMEDA",address:"大阪府大阪市北区大深町3-1グランフロント大阪ナレッジキャピタル 6F")
+Gym.create(name:"GRAVITY RESEARCH 札幌",name_katakana:"グラビティリサーチサッポロ",name_alphabet:"GRAVITY RESEARCH SAPPORO",address:"北海道札幌市中央区北2条東4丁目サッポロファクトリー1条館1F")
+Gym.create(name:"GRAVITY下北沢店",name_katakana:"グラビティシモキタザワ",name_alphabet:"GRAVITI SHIMOKITAZAWA",address:"東京都世田谷区北沢2-26-14 Cooビル2F")
+Gym.create(name:"GUTs WALL",name_katakana:"ガッツウォール",name_alphabet:"GUTs WALL",address:"北海道旭川市新星町3-1-95")
+Gym.create(name:"B'nuts 大崎古川店",name_katakana:"ビーナッツ オオサキフルカワテン",name_alphabet:"B'nuts Osaki Furukawa",address:"宮城県大崎市古川栄町14-14")
+Gym.create(name:"hangout",name_katakana:"ハングアウト",name_alphabet:"hangout",address:"東京都調布市菊野台1-40-3サホダコーポ第一1F")
+Gym.create(name:"HEADROCK CLIMBING GYM",name_katakana:"ヘッドロッククライミングジム",name_alphabet:"HEADROCK CLIMBING GYM",address:"東京都墨田区菊川1-10-10")
+Gym.create(name:"Heimat berg",name_katakana:"ハイマートベルク",name_alphabet:"Heimat berg",address:"兵庫県加古川市加古川町平野3-3")
+Gym.create(name:"High-Mount",name_katakana:"ハイマウント",name_alphabet:"High-Mount",address:"岐阜県高山市昭和町3-79-6")
+Gym.create(name:"HOMIE redbrick warehouse",name_katakana:"ホーミーレッドブリックウェアハウス",name_alphabet:"HOMIE redbrick warehouse",address:"北海道函館市入舟町1-22")
+Gym.create(name:"ISARA",name_katakana:"イサラ",name_alphabet:"ISARA",address:"東京都三鷹市牟礼4-18-25")
+Gym.create(name:"J&Sボルダリングジム恵比寿店",name_katakana:"ジェイアンドエスボルダリングジムエビス",name_alphabet:"J&S Bouldering Gym Ebisu",address:"東京都渋谷区東3-20-2 KIビルB1F")
+Gym.create(name:"JET SET",name_katakana:"ジェットセット",name_alphabet:"JET SET",address:"東京都立川市柏町4-60-17")
+Gym.create(name:"JOYWALL",name_katakana:"ジョイウォール",name_alphabet:"JOYWALL",address:"福岡県久留米市山川追分2-3-1")
+Gym.create(name:"Jungle Gym",name_katakana:"ジャングルジム",name_alphabet:"Jungle Gym",address:"福岡県みやま市瀬高町下庄754-1")
+Gym.create(name:"Junktion Climbing",name_katakana:"ジャンクションクライミング",name_alphabet:"Junktion Climbing",address:"神奈川県横浜市神奈川区東神奈川2-50-1")
+Gym.create(name:"KO-WALL三重店",name_katakana:"コーウォールミエテン",name_alphabet:"KO-WALL Mie",address:"三重県津市高茶屋小森町2892-69")
+Gym.create(name:"KO-WALL滋賀リード店",name_katakana:"コーウォールシガリードテン",name_alphabet:"KO-WALL Shiga Lead",address:"滋賀県栗東市霊仙寺3-2-37")
+Gym.create(name:"Lead クライミングジム",name_katakana:"リードクライミングジム",name_alphabet:"Lead Climbing Gym",address:"福岡県福岡市南区曰佐4-23-13")
+Gym.create(name:"LIMESTONE climbing club",name_katakana:"ライムストーン クライミングクラブ",name_alphabet:"LIMESTONE climbing club",address:"埼玉県入間郡三芳町竹間沢東17-1")
+Gym.create(name:"LOOK ROCK Bouldering Park",name_katakana:"ルックロックボルダリングパーク",name_alphabet:"LOOK ROCK Bouldering Park",address:"沖縄県沖縄市知花4-12-1 別館2F")
+Gym.create(name:"LOTUS CLIMBING GYM",name_katakana:"ロータスクライミングジム",name_alphabet:"LOTUS CLIMBING GYM",address:"千葉県千葉市中央区新千葉2-18-5-1F")
+Gym.create(name:"Luvrock bouldering spot",name_katakana:"ラブロック ボルダリングスポット",name_alphabet:"Luvrock bouldering spot",address:"大阪府大阪市住之江区御崎6-2-10")
+Gym.create(name:"MAHOROBA FOREST Bouldering space",name_katakana:"マホロバフォレストボルダリングスペース",name_alphabet:"MAHOROBA FOREST Bouldering space",address:"大阪府大阪市天王寺区筆ヶ崎町2-14")
+Gym.create(name:"MAMMUT BOULDERING GYM横浜",name_katakana:"マムートボルダリングジムヨコハマ",name_alphabet:"MAMMUT BOULDERING GYM Yokohama",address:"神奈川県横浜市中区山下町22SSKビル1F")
+Gym.create(name:"milnorte climbing club",name_katakana:"ミルノルテクライミングクラブ",name_alphabet:"milnorte climbing club",address:"京都府京都市北区紫野北花ノ坊町1 楽只市営住宅7棟 102号")
+Gym.create(name:"MINORITÉ ",name_katakana:"ミノリテ",name_alphabet:"MINORITÉ ",address:"大阪府大阪狭山市東野西2-827-1")
+Gym.create(name:"MONKEY POD climbing gym",name_katakana:"モンキーポッドクライミングジム",name_alphabet:"MONKEY POD climbing gym",address:"鳥取県米子市中島1-10-55")
+Gym.create(name:"MONO CLIMBING STUDIO",name_katakana:"モノクライミングスタジオ",name_alphabet:"MONO CLIMBING STUDIO",address:"福岡県福岡市博多区那珂3-27-27")
+Gym.create(name:"Monolithe",name_katakana:"モノリス",name_alphabet:"Monolithe",address:"埼玉県川越市山田1430-1")
+Gym.create(name:"MOVEMENT ClimbingSpace",name_katakana:"ムーブメント クライミングスペース",name_alphabet:"MOVEMENT ClimbingSpace",address:"福島県郡山市深沢1-4-20")
+Gym.create(name:"Mur d’escalade Varappe",name_katakana:"ミュール デスカラード ヴァラップ",name_alphabet:"Mur d’escalade Varappe",address:"福島県須賀川市館取町4")
+Gym.create(name:"NAC札幌クライミングジム",name_katakana:"ナックサッポロクライミングジム",name_alphabet:"NAC Sapporo Climbing Gym",address:"北海道札幌市白石区東札幌3条1-1-1 イーアス札幌Aタウン1F")
+Gym.create(name:"noah climbing&community",name_katakana:"ノアクライミングアンドコミュニティ",name_alphabet:"noah climbing&community",address:"京都府京都市伏見区竹田段川原町264")
+Gym.create(name:"NOBOROCK 大宮",name_katakana:"ノボロックオオミヤ",name_alphabet:"NOBOROCK Omiya",address:"埼玉県さいたま市大宮区仲町1-54-3ビジョナリーⅢ B1")
+Gym.create(name:"NOBOROCK 池袋",name_katakana:"ノボロックイケブクロ",name_alphabet:"NOBOROCK Ikebukuro",address:"東京都豊島区西池袋5-13-12MKビルB1")
+Gym.create(name:"NOBOROCK 渋谷",name_katakana:"ノボロックシブヤ",name_alphabet:"NOBOROCK Shibuya",address:"東京都渋谷区桜丘町9 桜丘町9-1ビアンクォードビルB1")
+Gym.create(name:"NOBOROCK 溝の口",name_katakana:"ノボロックミゾノクチ",name_alphabet:"NOBOROCK Mizonokuchi",address:"神奈川県川崎市高津区溝口2丁目10-22")
+Gym.create(name:"NOBOROCK 町田",name_katakana:"ノボロックマチダ",name_alphabet:"NOBOROCK Machida",address:"東京都町田市森野1-25-19 ワールドウィング町田3F")
+Gym.create(name:"OBUSE OPEN OASIS",name_katakana:"オブセオープンオアシス",name_alphabet:"OBUSE OPEN OASIS",address:"長野県上高井郡小布施町大島609-2")
+Gym.create(name:"OVERGROUND",name_katakana:"オーバーグラウンド",name_alphabet:"OVERGROUND",address:"埼玉県鴻巣市南1-14-7")
+Gym.create(name:"pb climbing",name_katakana:"ピービークライミング",name_alphabet:"pb climbing",address:"広島県広島市西区横川新町5-20")
+Gym.create(name:"pb climbing マリーナホップ店",name_katakana:"ピービークライミングマリーナホップテン",name_alphabet:"pb climbing Marinahop",address:"広島県広島市西区観音新町4-14-35マリーナホップ内")
+Gym.create(name:"PIGLET CLIMBING GYM",name_katakana:"ピグレットクライミングジム",name_alphabet:"PIGLET CLIMBING GYM",address:"東京都品川区平塚1-11-7 M's House 1F")
+Gym.create(name:"Play Mountain! 名古屋IC店",name_katakana:"プレイマウンテンナゴヤアイシーテン",name_alphabet:"Play Mountain Nagoya IC",address:"愛知県名古屋市守山区森孝3-1807")
+Gym.create(name:"Play Mountain! 岡崎店",name_katakana:"プレイマウンテンオカザキテン",name_alphabet:"Play Mountain Okazaki",address:"愛知県岡崎市大平町東上野34-1")
+Gym.create(name:"PlayMountain!今池店",name_katakana:"プレイマウンテンイマイケテン",name_alphabet:"Play Mountain Imaike",address:"愛知県名古屋市千種区今池1-6-4シンエーハイツ千種1F")
+Gym.create(name:"PUMP CLIMBER'S ACADEMY",name_katakana:"パンプクライマーズアカデミー",name_alphabet:"PUMP CLIMBER'S ACADEMY",address:"東京都新宿区新宿2-8-5 新宿第1ビル")
+Gym.create(name:"PUMP1 川口店",name_katakana:"パンプワン カワグチテン",name_alphabet:"PUMP1 Kawaguchi",address:"埼玉県川口市元郷2-3-12")
+Gym.create(name:"PUMP2川崎店",name_katakana:"パンプツーカワサキテン",name_alphabet:"PUMP2 Kawasaki",address:"神奈川県川崎市多摩区中野島2-9-30")
+Gym.create(name:"PUMP大阪店",name_katakana:"パンプオオサカテン",name_alphabet:"PUMP Osaka",address:"大阪府大阪市西淀川区中島1-13-23")
+Gym.create(name:"QRiMo",name_katakana:"キューリモ",name_alphabet:"QRiMo",address:"静岡県御前崎市池新田4359-68")
+Gym.create(name:"RAT青森ボルダー",name_katakana:"ラットアオモリボルダー",name_alphabet:"RAT Aomori Boulder",address:"青森県青森市牛館岡部13-1")
+Gym.create(name:"RED POINT",name_katakana:"レッドポイント",name_alphabet:"RED POINT",address:"北海道中川郡池田町大通4丁目11")
+Gym.create(name:"rock climbing gym KORU PIKI",name_katakana:"ロッククライミングジム　コルピキ",name_alphabet:"rock climbing gymKORU PIKI",address:"沖縄県宜野湾市伊佐4-6-10")
+Gym.create(name:"Rock Climbing 三鷹ジム",name_katakana:"ロッククライミングミタカジム",name_alphabet:"Rock Climbing Mitaka Gym",address:"東京都武蔵野市中町1-1-8HN28ビルB1F")
+Gym.create(name:"ROCK CUBE CLIMBING GYM",name_katakana:"ロックキューブクライミングジム",name_alphabet:"ROCK CUBE CLIMBING GYM",address:"埼玉県越谷市南越谷1-15-1南越谷ラクーン4F")
+Gym.create(name:"Rock Garden Kobe",name_katakana:"ロックガーデンコウベ",name_alphabet:"Rock Garden Kobe",address:"兵庫県神戸市中央区波止場町6-8 篠崎倉庫1F")
+Gym.create(name:"Rock You!",name_katakana:"ロックユー",name_alphabet:"Rock You!",address:"新潟県新潟市東区上木戸1-8-12")
+Gym.create(name:"Rock・Gym Horie.",name_katakana:"ロックジムホリエ",name_alphabet:"Rock・Gym Horie.",address:"長野県松本市寿中1-17-9")
+Gym.create(name:"Rock&Wall 辻堂店",name_katakana:"ロックバンドウォールツジドウ",name_alphabet:"Rock&Wall Tsujido",address:"神奈川県藤沢市辻堂神台2-2-2 ココテラス湘南1F")
+Gym.create(name:"RockDrunker",name_katakana:"ロックドランカー",name_alphabet:"RockDrunker",address:"愛知県豊田市上野町4-1-4")
+Gym.create(name:"ROCKMATE",name_katakana:"ロックメイト",name_alphabet:"ROCKMATE",address:"大阪府大阪市福島区福島7-4-9プレステル福島1F")
+Gym.create(name:"rocks BOULDERING GYM",name_katakana:"ロックス ボルダリング ジム",name_alphabet:"rocks BOULDERING GYM",address:"岡山県岡山市北区辰巳6-104")
+Gym.create(name:"rocks CLIMBING GYM",name_katakana:"ロックス クライミング ジム",name_alphabet:"rocks CLIMBING GYM",address:"岡山県倉敷市平田261-2")
+Gym.create(name:"SKYBOX",name_katakana:"スカイボックス",name_alphabet:"SKYBOX",address:"大阪府岸和田市八阪町1-2-5")
+Gym.create(name:"SMOOTHIE BOULDERING GYM",name_katakana:"スムージーボルダリングジム",name_alphabet:"SMOOTHIE BOULDERING GYM",address:"宮崎県宮崎市島之内7061")
+Gym.create(name:"soleilナカガイクライミングジム",name_katakana:"ソレイユナカガイクライミングジム",name_alphabet:"soleil Nakagai Climbing Gym",address:"大阪府大阪市都島区東野田町1-5-1 Kぶらっと2F")
+Gym.create(name:"SPEEDY",name_katakana:"スピーディ",name_alphabet:"SPEEDY",address:"神奈川県横浜市戸塚区品濃町554-5")
+Gym.create(name:"Step BOULDERING",name_katakana:"ステップボルダリング",name_alphabet:"Step BOULDERING",address:"石川県小松市長崎町4-37")
+Gym.create(name:"STUMP CLIMBING",name_katakana:"スタンプクライミング",name_alphabet:"STUMP CLIMBING",address:"福岡県筑紫郡那珂川町片縄東1-26-3")
+Gym.create(name:"SUNCUL",name_katakana:"サンカル",name_alphabet:"SUNCUL",address:"栃木県宇都宮市今泉3-12-31")
+Gym.create(name:"Sunny Dipper Climbing",name_katakana:"サニーディッパークライミング",name_alphabet:"Sunny Dipper Climbing",address:"三重県度会郡玉城町井倉115-2 No.5")
+Gym.create(name:"SunnySpace岩んちゅ 豊川店",name_katakana:"サニースペースイワンチュトヨカワテン",name_alphabet:"SunnySpace Iwanchu Toyokawa",address:"愛知県豊川市大橋町3-156-1")
+Gym.create(name:"SunnySpace岩んちゅ 豊橋店",name_katakana:"サニースペースイワンチュトヨハシテン",name_alphabet:"SunnySpace Iwanchu Toyohashi",address:"愛知県豊橋市大岩町小山塚26−１")
+Gym.create(name:"SWENクライミングウォール",name_katakana:"スウェンクライミングウォール",name_alphabet:"SWEN Climbing Wall",address:"静岡県駿東郡清水町玉川24-1(サントムーン柿田川SC敷地内)")
+Gym.create(name:"T-RoX Bouldering Gym.",name_katakana:"ティーロックス ボルダリングジム",name_alphabet:"T-RoX Bouldering Gym.",address:"栃木県矢板市富田446-15")
+Gym.create(name:"T-WALL 新橋店",name_katakana:"ティーウォールシンバシ",name_alphabet:"T-wall Shimbashi",address:"東京都港区西新橋2-39-3SVAX西新橋ビルディングB1F")
+Gym.create(name:"T-WALL大岡山店",name_katakana:"ティーウォールオオオカヤマテン",name_alphabet:"T-wall Ookayama",address:"東京都大田区北千束1-59-3")
+Gym.create(name:"T-WALL東村山店",name_katakana:"ティーウォールヒガシムラヤマテン",name_alphabet:"T-wall Higashimurayama",address:"東京都東村山市本町2-7-1")
+Gym.create(name:"T-WALL江戸川橋店",name_katakana:"ティーウォールエドガワバシテン",name_alphabet:"T-wall Edogawabashi",address:"東京都文京区水道2-5-23")
+Gym.create(name:"T-WALL錦糸町店",name_katakana:"ティーウォールキンシチョウ",name_alphabet:"T-wall Kinshicho",address:"東京都江東区毛利2-10-12")
+Gym.create(name:"teal climbing",name_katakana:"ティールクライミング",name_alphabet:"teal climbing",address:"愛知県刈谷市小垣江町本郷下24-7")
+Gym.create(name:"The Factory",name_katakana:"ザ ファクトリー",name_alphabet:"The Factory",address:"東京都板橋区常盤台1-36-14ヒュッテGM常盤台１F")
+Gym.create(name:"THE NORTH FACE/ClimbingJAM 名古屋店",name_katakana:"ザノースフェースクライミングジャムナゴヤテン",name_alphabet:"THE NORTH FACE Climbing JAM Nagoya",address:"愛知県名古屋市中区栄3-27-1 SAKAE PLACE 3F")
+Gym.create(name:"The Ranch",name_katakana:"ザ ランチ",name_alphabet:"The Ranch",address:"熊本県熊本市南区平田1-8-12")
+Gym.create(name:"THE STONE SESSION JAZZYSPORT",name_katakana:"ザ ストーンセッション ジャジースポート",name_alphabet:"THE STONE SESSION JAZZYSPORT",address:"岩手県盛岡市厨川5-13-48-4")
+Gym.create(name:"THE UNION PARK",name_katakana:"ザ ユニオンパーク",name_alphabet:"THE UNION PARK",address:"千葉県市川市鬼高3-32-12")
+Gym.create(name:"THREE PEAKS",name_katakana:"スリーピークス",name_alphabet:"THREE PEAKS",address:"埼玉県本庄市児玉町金屋1198-1")
+Gym.create(name:"TRAIL ROCK",name_katakana:"トレイルロック",name_alphabet:"TRAIL ROCK",address:"福島県郡山市富久山町福原字上台26-1")
+Gym.create(name:"travis - bouldering studio",name_katakana:"トラヴィスボルダリングスタジオ",name_alphabet:"travis - bouldering studio",address:"大阪府枚方市岡本町2-22 枚方デパートメントビル6Ｆ")
+Gym.create(name:"TRICK STARクライミングジム",name_katakana:"トリックスタークライミングジム",name_alphabet:"TRICK STAR Climbing Gym",address:"埼玉県飯能市柳町2-2")
+Gym.create(name:"TRIPOD",name_katakana:"トライポッド",name_alphabet:"TRIPOD",address:"石川県野々市市横宮町13-15")
+Gym.create(name:"Ultimate club",name_katakana:"ウルティメットクラブ",name_alphabet:"Ultimate club",address:"長野県上伊那郡箕輪町松島8020-6")
+Gym.create(name:"UNDER GROUND",name_katakana:"アンダーグラウンド",name_alphabet:"UNDER GROUND",address:"東京都北区東十条3-1-14ライフエールマンションB1F")
+Gym.create(name:"VILLARS climbing",name_katakana:"ヴィラールクライミング",name_alphabet:"VILLARS climbing",address:"東京都品川区北品川2-21-7villars品川ビル１F")
+Gym.create(name:"VOLNY",name_katakana:"ヴォルニー",name_alphabet:"VOLNY",address:"東京都武蔵野市吉祥寺北町1-18-3")
+Gym.create(name:"WAGOMU Climbing Gym",name_katakana:"ワゴムクライミングジム",name_alphabet:"WAGOMU Climbing Gym",address:"兵庫県神戸市長田区菅原通7丁目41‐1 ゴールドウッズシューズタウンビル503")
+Gym.create(name:"WEST ROCK 府中店",name_katakana:"ウェストロックフチュウテン",name_alphabet:"WEST ROCK Fuchu",address:"東京都府中市分梅町5-9-1")
+Gym.create(name:"WEST ROCK 調布店",name_katakana:"ウェストロックチョウフテン",name_alphabet:"WEST ROCK Chofu",address:"東京都調布市富士見町1-20-3")
+Gym.create(name:"Whipper Snapper Gym",name_katakana:"ウィッパースナッパージム",name_alphabet:"Whipper Snapper Gym",address:"北海道札幌市手稲区新発寒5条1-5-26")
+Gym.create(name:"X-WALL",name_katakana:"エックスウォール",name_alphabet:"X-WALL",address:"岐阜県羽島郡岐南町徳田西1-100")
+Gym.create(name:"YJ Rock Climbing GYM",name_katakana:"ワイジェイ ロッククライミングジム",name_alphabet:"YJ Rock Climbing GYM",address:"東京都荒川区東日暮里3-23-13 真下1F")
+Gym.create(name:"ZU-THÔNES 「ズットン」元塩店",name_katakana:"ズットンモトシオテン",name_alphabet:"ZU-THÔNES Motoshio",address:"愛知県名古屋市南区元塩町2-7-1")
+Gym.create(name:"ZU-THÔNES 「ズットン」平和が丘店",name_katakana:"ズットンヘイワガオカテン",name_alphabet:"ZU-THÔNES Heiwagaoka",address:"愛知県名古屋市名東区平和が丘2-219")
+Gym.create(name:"ZU-THÔNES 「ズットン」浅間店",name_katakana:"ズットンアサマテン",name_alphabet:"ZU-THÔNES Asama",address:"愛知県名古屋市西区城西2-11-13")
+Gym.create(name:"アーバンクライミングクラブ カワセミ",name_katakana:"アーバンクライミングクラブ カワセミ",name_alphabet:"Urban Climbing Kawasemi",address:"大阪府大阪市北区曽根崎2-2- 15 KDX東梅田ビルB1F")
+Gym.create(name:"イボルブ ファクトリー",name_katakana:"イボルブ ファクトリー",name_alphabet:"Evolv Factory",address:"愛知県豊田市河合町6-93")
+Gym.create(name:"インパクト久留米",name_katakana:"インパクトクルメ",name_alphabet:"Impact Kurume",address:"福岡県久留米市東合川8-5-33")
+Gym.create(name:"インパクト佐賀",name_katakana:"インパクトサガ",name_alphabet:"Impact Saga",address:"佐賀県佐賀市鍋島4-4-12")
+Gym.create(name:"うみかぜクライミングパーク Sea Monkey(Z)",name_katakana:"ウミカゼクライミングパーク　シーモンキー ゼッド",name_alphabet:"Umikaze Climbing Park Sea Monkey Z",address:"宮城県石巻市貞山1-9-25")
+Gym.create(name:"エナジークライミングジム春日部店",name_katakana:"エナジークライミングジムカスカベテン",name_alphabet:"Energy Climbing Gym Kasukabe",address:"埼玉県春日部市栄町1-451")
+Gym.create(name:"エナジークライミングジム柏店",name_katakana:"エナジークライミングジムカシワテン",name_alphabet:"Energy Climbing Gym Kashiwa",address:"千葉県柏市明原1-2-4")
+Gym.create(name:"エナジークライミングジム浦和店",name_katakana:"エナジークライミングジムウラワテン",name_alphabet:"Energy Climbing Gym Urawa",address:"埼玉県さいたま市南区鹿手袋3-25-8")
+Gym.create(name:"エナジークライミングジム高田馬場店",name_katakana:"エナジークライミングジムタカダノババテン",name_alphabet:"Energy Climbing Gym Takadanobaba",address:"東京都新宿区高田馬場4-9-9早稲田13時ホールビル1Ｆ")
+Gym.create(name:"おもしろっく",name_katakana:"オモシロック",name_alphabet:"Omoshirock",address:"三重県桑名市和泉ホの割518")
+Gym.create(name:"オレンジ ボルダリング スペース",name_katakana:"オレンジ ボルダリング スペース",name_alphabet:"Orange Bouldering Space",address:"広島県福山市横尾町2-19-9")
+Gym.create(name:"カクタスクライミングパーク",name_katakana:"カクタスクライミングパーク",name_alphabet:"Cactus Climbing Park",address:"愛知県豊橋市関屋町138")
+Gym.create(name:"カクタスクライミングパーク2 神野新田店",name_katakana:"カクタスクライミングパークジンノシンデンチョウテン",name_alphabet:"Cactus Climbing Park 2 Jinnoshindencho",address:"愛知県豊橋市神野新田町字ヲノ割37-1")
+Gym.create(name:"カラーズクライミングジム",name_katakana:"カラーズクライミングジム",name_alphabet:"Colors Climbing Gym ",address:"滋賀県草津市野路9-7-22")
+Gym.create(name:"ガラパカ クライミングジム",name_katakana:"ガラパカ クライミングジム",name_alphabet:"Garapaka Climbing Gym",address:"秋田県秋田市八橋大畑1-3-7")
+Gym.create(name:"ガンマウォール熊本",name_katakana:"ガンマウォール クマモト",name_alphabet:"Gamma Wall Kumamoto",address:"熊本県熊本市東区小山2-25-38")
+Gym.create(name:"キオラブロズクライミングジム＆ショップ",name_katakana:"キオラブロズクライミングジム＆ショップ",name_alphabet:"Kiaorabros Climbing Gym & Shop",address:"兵庫県明石市小久保5-17-23")
+Gym.create(name:"キロニコボルダーパーク",name_katakana:"キロニコボルダーパーク",name_alphabet:"Kironico Bouldering Park",address:"鹿児島県鹿児島市谷山港3-4-11")
+Gym.create(name:"クエール・クライミングジム",name_katakana:"クエール・クライミングジム",name_alphabet:"Quail Climgin Gym",address:"東京都練馬区早宮2-26-19")
+Gym.create(name:"クライミング ウィステリア",name_katakana:"クライミング ウィステリア",name_alphabet:"Climbing Wisteria",address:"神奈川県小田原市東町4-4-10")
+Gym.create(name:"クライミング・パークカルチェロッシュ",name_katakana:"クライミング・パークカルチェロッシュ",name_alphabet:"Climbing Park Quartier Roche",address:"千葉県松戸市二ツ木1782-4")
+Gym.create(name:"クライミング&エアリアルヨガ Bosque",name_katakana:"クライミングアンドエアリアルヨガ ボスク",name_alphabet:"Climbing & Aerial Yoga Bosque",address:"愛知県稲沢市治郎丸中町103-2")
+Gym.create(name:"クライミング＆コンディショニング TRIP",name_katakana:"クライミングアンドコンディショニング トリップ",name_alphabet:"Climbing & Conditioning TRIP",address:"埼玉県坂戸市泉町2-4-1")
+Gym.create(name:"クライミング★ノボリバ",name_katakana:"クライミング ノボリバ",name_alphabet:"Climbing Noboriba",address:"長野県千曲市中514-1")
+Gym.create(name:"クライミングウォールテン",name_katakana:"クライミングウォールテン",name_alphabet:"Climbing Wall Ten",address:"富山県富山市中大久保108-2")
+Gym.create(name:"クライミングガレージペンタゴン",name_katakana:"クライミングガレージペンタゴン",name_alphabet:"Climging Garage Pentagon",address:"三重県鈴鹿市池田町750-2")
+Gym.create(name:"クライミングクラブボンクラージュ",name_katakana:"クライミングクラブボンクラージュ",name_alphabet:"Climbing Club Bon courage",address:"岐阜県恵那市大井町2087-244")
+Gym.create(name:"クライミングジム BOLZ",name_katakana:"クライミングジム ボルズ",name_alphabet:"CLIMBING GYM BOLZ",address:"宮城県仙台市宮城野区萩野町2-18-10")
+Gym.create(name:"クライミングジム Bumpy",name_katakana:"クライミングジムバンピー",name_alphabet:"Climbing Gym Bumpy",address:"愛知県春日井市東野町西3-10-27")
+Gym.create(name:"クライミングジム CAFE",name_katakana:"クライミングジム カフェ",name_alphabet:"Climbing Gym CAFE",address:"群馬県伊勢崎市宮子町3475-4")
+Gym.create(name:"クライミングジム HANDJAM",name_katakana:"クライミングジム ハンドジャム",name_alphabet:"Climbing Gym Hand Jam",address:"長野県塩尻市広丘野村1787-78")
+Gym.create(name:"クライミングジム Krimp",name_katakana:"クライミングジム クリンプ",name_alphabet:"Climbing Gym Krimp",address:"東京都大田区蒲田3-14-15 ロイヤルプラザB1F")
+Gym.create(name:"クライミングジム NANASHINO",name_katakana:"クライミングジム ナナシノ",name_alphabet:"Climbing Gym NANASHINO",address:"福島県郡山市大槻町字小割林1-1")
+Gym.create(name:"クライミングジム NICO",name_katakana:"クライミングジムニコ",name_alphabet:"Climbing Gym NICO",address:"東京都墨田区本所1-9-7")
+Gym.create(name:"クライミングジム ON THE ROCK",name_katakana:"クライミングジムオンザロック",name_alphabet:"Climbing Gym On The Rock",address:"石川県金沢市黒田1-140")
+Gym.create(name:"クライミングジム PEAK’N",name_katakana:"クライミングジムピークン",name_alphabet:"Climbing Gym  PEAK’N",address:"愛知県春日井市知多町2-101")
+Gym.create(name:"クライミングジム PROB",name_katakana:"クライミングジム　プロブ",name_alphabet:"Climbing Gym PROB",address:"栃木県佐野市富岡町1291")
+Gym.create(name:"クライミングジム Rec's 代々木",name_katakana:"クライミングジム レックス ヨヨギ",name_alphabet:"Climbing Gym Rec's Yoyogi",address:"東京都渋谷区千駄ヶ谷4-30-3代々木TRビルB1F")
+Gym.create(name:"クライミングジム RockBeans",name_katakana:"クライミングジムロックビーンズ",name_alphabet:"Climbing Gym  RockBeans",address:"東京都八王子市寺町22")
+Gym.create(name:"クライミングジム SLOTH",name_katakana:"クライミングジムスロース",name_alphabet:"Climbing Gym SLOTH",address:"神奈川県平塚市河内224-1")
+Gym.create(name:"クライミングジム TOPS",name_katakana:"クライミングジムトップス",name_alphabet:"Climbing Gym TOPS",address:"岐阜県下呂市少ヶ野244-9")
+Gym.create(name:"クライミングジム アークダスト",name_katakana:"クライミングジム アークダスト",name_alphabet:"Climbing Gym Ark Dust",address:"東京都豊島区巣鴨3-19-22 ガーデンハウス神宮寺1F")
+Gym.create(name:"クライミングジム アラジン",name_katakana:"クライミングジム アラジン",name_alphabet:"Climbing Gym  Aladdin",address:"神奈川県横浜市鶴見区朝日町1-39")
+Gym.create(name:"クライミングジム インテンス",name_katakana:"クライミングジム インテンス",name_alphabet:"Climbing Gym Intense",address:"宮崎県延岡市伊達町2-53")
+Gym.create(name:"クライミングジム エイム",name_katakana:"クライミングジム エイム",name_alphabet:"Climbing Gym Aim",address:"愛知県名古屋市天白区池場1-1110")
+Gym.create(name:"クライミングジム オズ",name_katakana:"クライミングジム オズ",name_alphabet:"Climbing Gym Oz",address:"群馬県太田市内ヶ島町1127-3")
+Gym.create(name:"クライミングジム オンサイト（岩根山荘)",name_katakana:"クライミングジムオンサイト イワネサンソウ",name_alphabet:"Climbing Gym  Onsight Iwanesansou",address:"長野県南佐久郡川上村川端下547-129")
+Gym.create(name:"クライミングジム ガレーラ",name_katakana:"クライミングジム ガレーラ",name_alphabet:"Climbing Gym  Galera",address:"大阪府大阪市大正区三軒家東2-9-30")
+Gym.create(name:"クライミングジム クオーレ イオン名古屋みなと店",name_katakana:"クライミングジムクオーレイオンナゴヤミナトテン",name_alphabet:"Climbing Gym  Cuore Aeon Nagoya Minato",address:"愛知県名古屋市港区品川町2-1-6 イオンモール名古屋みなと シネマ棟1F")
+Gym.create(name:"クライミングジム クオーレ 中川店",name_katakana:"クライミングジムクオーレナカガワテン",name_alphabet:"Climbing Gym  Cuore Nakagawa",address:"愛知県名古屋市中川区八神町4-17")
+Gym.create(name:"クライミングジム ケルン",name_katakana:"クライミングジム ケルン",name_alphabet:"Climbing Gym  Cairn",address:"京都府京都市下京区堀川高辻西入富永町690 古川ビル1F")
+Gym.create(name:"クライミングジム シエスタ",name_katakana:"クライミングジム シエスタ",name_alphabet:"Climbing Gym  Siesta",address:"大阪府東大阪市吉田下島7-43")
+Gym.create(name:"クライミングジム ゼロ さいたま店",name_katakana:"クライミングジム ゼロ サイタマ",name_alphabet:"Climbing Gym Zero Saitama",address:"埼玉県北足立郡伊奈町小室5362-3")
+Gym.create(name:"クライミングジム ゼロ 伊勢崎店",name_katakana:"クライミングジム ゼロ イセザキテン",name_alphabet:"Climbing Gym Zero Isezaki",address:"群馬県伊勢崎市中町710")
+Gym.create(name:"クライミングジム ゼロ 宇都宮店",name_katakana:"クライミングジム ゼロ ウツノミヤ",name_alphabet:"Climbing Gym Zero Utsunomiya",address:"栃木県宇都宮市平出町3726-1")
+Gym.create(name:"クライミングジム ドリュー",name_katakana:"クライミングジム ドリュー",name_alphabet:"Climbing Gym  Dru",address:"大阪府東大阪市西石切町3-5-8")
+Gym.create(name:"クライミングジム ノースロック",name_katakana:"クライミングジム ノースロック",name_alphabet:"Climbing Gym North Rock",address:"青森県三戸郡階上町蒼前東2-9-1851")
+Gym.create(name:"クライミングジム ノボリコ",name_katakana:"クライミングジム ノボリコ",name_alphabet:"Climbing Gym Noboriko",address:"奈良県奈良市三条添川町1-4")
+Gym.create(name:"クライミングジム ピークカンパニー",name_katakana:"クライミングジム ピークカンパニー",name_alphabet:"Climbing Gym Peak Company",address:"福島県いわき市中央台飯野４-1MEGAドン・キホーテLAPARKいわき店WEST棟")
+Gym.create(name:"クライミングジム ビーナッツ",name_katakana:"クライミングジム ビーナッツ",name_alphabet:"Climbing Gym B'nuts",address:"宮城県仙台市青葉区国分町3-3-5 リスズビル1F")
+Gym.create(name:"クライミングジム ビーンズ",name_katakana:"クライミングジム ビーンズ",name_alphabet:"Climbing Gym Beans",address:"千葉県市原市村上2335")
+Gym.create(name:"クライミングジム ヒグラシ長堀橋店",name_katakana:"クライミングジム ヒグラシナガホリバシテン",name_alphabet:"Climbing Gym Higurashi Nagahoribashi",address:"大阪府大阪市中央区南船場2-2-28 順慶ビル6F")
+Gym.create(name:"クライミングジム ボルダTO9",name_katakana:"クライミングジム ボルダティーオーキュー",name_alphabet:"Climbing Gym  Boulder TO9",address:"愛知県新城市字屋敷17-1")
+Gym.create(name:"クライミングジム マル",name_katakana:"クライミングジム マル",name_alphabet:"Climbing Gym Maru",address:"埼玉県川口市戸塚鋏町1-6")
+Gym.create(name:"クライミングジム モンテ",name_katakana:"クライミングジム モンテ",name_alphabet:"Climbing Gym Monter",address:"三重県員弁郡東員町六把野新田494番地")
+Gym.create(name:"クライミングジム ライズ",name_katakana:"クライミングジム ライズ",name_alphabet:"Climbing Gym  Rise",address:"神奈川県横浜市戸塚区上倉田町479-2 東横ビル上倉田地下1F")
+Gym.create(name:"クライミングジム リバー宮崎",name_katakana:"クライミングジム リバーミヤザキ",name_alphabet:"Climbing Gym River Miyazaki",address:"宮崎県宮崎市大字恒久5326-2")
+Gym.create(name:"クライミングジム ルカ・ラ・ガーム",name_katakana:"クライミングジム ルカ・ラ・ガーム",name_alphabet:"Climbing Gym  RUKA RA GHAAM",address:"京都府長岡京市友岡西畑16-1")
+Gym.create(name:"クライミングジム ロッキン",name_katakana:"クライミングジム ロッキン",name_alphabet:"Climbing Gym ROCKY'N",address:"栃木県宇都宮市岩原町657-6")
+Gym.create(name:"クライミングジム・MABOO",name_katakana:"クライミングジムマブー",name_alphabet:"Climbing Gym ・MABOO",address:"東京都武蔵村山市伊奈平1-72-1")
+Gym.create(name:"クライミングジム・インフィニティ",name_katakana:"クライミングジム・インフィニティ",name_alphabet:"Climbing Gym Infinity",address:"千葉県鎌ヶ谷市西佐津間1-24-26")
+Gym.create(name:"クライミングジム・ウォールストリート",name_katakana:"クライミングジム・ウォールストリート",name_alphabet:"Climbing Gym Wall Street",address:"群馬県前橋市鳥羽町149-3")
+Gym.create(name:"クライミングジム・ヒグラシ堺北花田店",name_katakana:"クライミングジムヒグラシサカイキタハナダテン",name_alphabet:"Climbing Gym Higurashi Sakaikitahanada",address:"大阪府堺市北区北花田町3-45-5")
+Gym.create(name:"クライミングジム＆ショップ UP Climbing Gym",name_katakana:"クライミングジムアンドショップアップクライミングジム",name_alphabet:"Climbing Gym &Shop UP Climbing Gym",address:"和歌山県岩出市備前40-3")
+Gym.create(name:"クライミングジム＆ヨガスタジオ PLAY",name_katakana:"クライミングジムアンドヨガスタジオプレイ",name_alphabet:"Climbing Gym & Yoga Studio PLAY",address:"東京都昭島市田中町610-4")
+Gym.create(name:"クライミングジムActiv-A",name_katakana:"クライミングジムアクティバ",name_alphabet:"Climbing Gym Activ-A",address:"山梨県山梨市上神内川1429-3")
+Gym.create(name:"クライミングジムBUBU 四日市店",name_katakana:"クライミングジムブブヨッカイチテン",name_alphabet:"Climbing Gym BUBU Yokkaichi",address:"三重県四日市市新正4-7-15")
+Gym.create(name:"クライミングジムBUBU 大垣店",name_katakana:"クライミングジムブブオオガキテン",name_alphabet:"Climbing Gym BUBU Ogaki",address:"岐阜県大垣市小泉町118")
+Gym.create(name:"クライミングジムBUBU 岐阜店",name_katakana:"クライミングジムブブギフテン",name_alphabet:"Climbing Gym BUBU Gifu",address:"岐阜県岐阜市柳津町丸野1-41")
+Gym.create(name:"クライミングジムBUBU岐阜西店",name_katakana:"クライミングジムギフニシテン",name_alphabet:"Climbing Gym BUBU Gifunishi",address:"岐阜県瑞穂市生津天王町1-99-2")
+Gym.create(name:"クライミングジムBumpy岐阜店",name_katakana:"クライミングジムバンピーギフテン",name_alphabet:"Climbing Gym Bumpy Gifu",address:"岐阜県岐阜市日野南9-3-2")
+Gym.create(name:"クライミングジムCAMP4",name_katakana:"クライミングジムキャンプフォー",name_alphabet:"Climibing Gym CAMP4",address:"新潟県新潟市東区松島1-4-32")
+Gym.create(name:"クライミングジムCELL",name_katakana:"クライミングジムセル",name_alphabet:"Climbin Gym CELL",address:"東京都世田谷区経堂1-23-3")
+Gym.create(name:"クライミングジムCoCoRock",name_katakana:"クライミングジムココロック",name_alphabet:"Climbing Gym CoCoRock",address:"埼玉県新座市野火止8-8-13")
+Gym.create(name:"クライミングジムDanDan",name_katakana:"クライミングジムダンダン",name_alphabet:"Climbing Gym DanDan",address:"愛媛県今治市立花町2-3-16")
+Gym.create(name:"クライミングジムDio",name_katakana:"クライミングジムディオ",name_alphabet:"Climbing Gym Dio",address:"愛知県半田市瑞穂町3-8-3")
+Gym.create(name:"クライミングジムGAN'S",name_katakana:"クライミングジム ガンズ",name_alphabet:"Climbing Gym GAN'S",address:"栃木県那須塩原市太夫塚 1-195")
+Gym.create(name:"クライミングジムgugu！",name_katakana:"クライミングジムググ",name_alphabet:"Climbing Gym gugu",address:"東京都国立市中1-17-27関口第三ビルB1F")
+Gym.create(name:"クライミングジムHANG DOG",name_katakana:"クライミングジムハングドッグ",name_alphabet:"Climbing Gym HANG DOG",address:"長野県長野市川合新田962-2")
+Gym.create(name:"クライミングジムM-Wall",name_katakana:"クライミングジムエムウォール",name_alphabet:"Climbing Gym M-Wall",address:"島根県松江市上本庄町391-12")
+Gym.create(name:"クライミングジムNOSE 三郷店",name_katakana:"クライミングジムノーズミサトテン",name_alphabet:"Climbing Gym Nose Misato",address:"埼玉県三郷市仁蔵285-3")
+Gym.create(name:"クライミングジムNOSE 町田店",name_katakana:"クライミングジムノーズマチダテン",name_alphabet:"Climbing Gym NOSE Machida",address:"東京都町田市南つくし野3-1-3CKすずかけ台1F・2F")
+Gym.create(name:"クライミングジムNOSE相模原店",name_katakana:"クライミングジムノーズサガミハラテン",name_alphabet:"Climbing Gym NOSE Sagamihara",address:"神奈川県相模原市緑区川尻1521-1")
+Gym.create(name:"クライミングジムPOCKET",name_katakana:"クライミングジムポケット",name_alphabet:"Climbing Gym POCKET",address:"神奈川県川崎市中原区下小田中3-4-4")
+Gym.create(name:"クライミングジムR&F",name_katakana:"クライミングジムアールアンドエフ",name_alphabet:"Climbing Gym R&F",address:"岐阜県各務原市各務おがせ町9-382-2")
+Gym.create(name:"クライミングジムROCKLANDS",name_katakana:"クライミングジム ロックランズ",name_alphabet:"Climbing Gym Rock Lands",address:"東京都江戸川区東葛西5-27-16")
+Gym.create(name:"クライミングジムSPIDER",name_katakana:"クライミングジムスパイダー",name_alphabet:"Climbing Gym SPIDER",address:"東京都港区南麻布1-3-16 岩崎ビル1階")
+Gym.create(name:"クライミングジムVAC",name_katakana:"クライミングジムバーチ",name_alphabet:"Climbing Gym VAC",address:"東京都八王子市散田町3-17-11NSビルB1F")
+Gym.create(name:"クライミングジムあをがき",name_katakana:"クライミングジムアヲガキ",name_alphabet:"Climbing Gym Aogaki",address:"奈良県大和郡山市馬司町569-1")
+Gym.create(name:"クライミングジムウォルラス",name_katakana:"クライミングジムウォルラス",name_alphabet:"Climbing Gym Walrus",address:"埼玉県久喜市鷲宮3-4-20")
+Gym.create(name:"クライミングジムキオラブロズ トティ",name_katakana:"クライミングジムキオラブロズ トティ",name_alphabet:"Climbing Gym Kiaora Bros TOTI",address:"徳島県徳島市南沖洲5-7-65")
+Gym.create(name:"クライミングジムキャニオン",name_katakana:"クライミングジムキャニオン",name_alphabet:"Climbing Gym Canyon",address:"三重県三重郡朝日町大字柿468-1")
+Gym.create(name:"クライミングジムグーフィー",name_katakana:"クライミングジムグーフィー",name_alphabet:"Climbing Gym GooFee",address:"群馬県高崎市八千代町3-9-15")
+Gym.create(name:"クライミングジムサイファー",name_katakana:"クライミングジムサイファー",name_alphabet:"Climbing Gym Cipher",address:"神奈川県足柄上郡松田町松田惣領1007-1")
+Gym.create(name:"クライミングジムジェイウォール",name_katakana:"クライミングジムジェイウォール",name_alphabet:"Climbing Gym Jwall",address:"神奈川県藤沢市下土棚1708")
+Gym.create(name:"クライミングジムシエスタ 高井田店",name_katakana:"クライミングジムシエスタタカイドテン",name_alphabet:"Climbing Gym Siesta Takaida",address:"大阪府東大阪市西堤西3-34")
+Gym.create(name:"クライミングジムソレイユ",name_katakana:"クライミングジムソレイユ",name_alphabet:"Climbing Gym Soleil",address:"愛知県長久手市熊田313番地")
+Gym.create(name:"クライミングジムハン2",name_katakana:"クライミングジムハンツー",name_alphabet:"Climbing Gym Han2",address:"神奈川県厚木市関口166-1")
+Gym.create(name:"クライミングジムピラニア富士吉田店",name_katakana:"クライミングジムピラニアフジヨシダテン",name_alphabet:"Climbing Gym Pirania Fujiyoshida",address:"山梨県富士吉田市上吉田4235-1")
+Gym.create(name:"クライミングジムピラニア石和店",name_katakana:"クライミングジムピラニアイサワテン",name_alphabet:"Climbing Gym Pirania Isawa",address:"山梨県笛吹市石和町井戸336-2")
+Gym.create(name:"クライミングジムプロジェクト",name_katakana:"クライミングジムプロジェクト",name_alphabet:"Climbing Gym Project",address:"神奈川県横浜市都筑区佐江戸町417")
+Gym.create(name:"クライミングジムリバー 福岡大野城店",name_katakana:"クライミングジムリバーフクオカオオノジョウテン",name_alphabet:"Climbing Gym River Fukuoka Onojo",address:"福岡県大野城市御笠川1-10-10")
+Gym.create(name:"クライミングジムロシェ・マキシマ",name_katakana:"クライミングジムロシェ・マキシマ",name_alphabet:"Climbing Gym Rocher Makishima",address:"京都府宇治市槇島町落合138-4")
+Gym.create(name:"クライミングジムロシェ桃山",name_katakana:"クライミングジムロシェモモヤマ",name_alphabet:"Climbing Gym Rocher Momoyama",address:"京都府伏見区銀座町3-323")
+Gym.create(name:"クライミングジムロックフィールド",name_katakana:"クライミングジムロックフィールド",name_alphabet:"Climbing Gym Rock Field",address:"神奈川県小田原市国府津2-6-17")
+Gym.create(name:"クライミングジム天",name_katakana:"クライミングジムテン",name_alphabet:"Climbing Gym Ten",address:"山梨県中央市西花輪1415-10")
+Gym.create(name:"クライミングジム攀 1号店",name_katakana:"クライミングジムハンイチゴウテン",name_alphabet:"Climbing Gym Han Ichigoten",address:"神奈川県高座郡寒川町宮山3718-1")
+Gym.create(name:"クライミングジム猿吉",name_katakana:"クライミングジムサルヨシ",name_alphabet:"Climbing Gym Saruyoshi",address:"千葉県東金市家徳288-1")
+Gym.create(name:"クライミングジム自由人",name_katakana:"クライミングジムジユウジン",name_alphabet:"Climbing Gym Jiyujin",address:"愛知県日進市浅田町茶園15-1")
+Gym.create(name:"クライミングスクール・ジム J&S駒沢",name_katakana:"クライミングスクール ジム ジェイアンドエス コマザワ",name_alphabet:"Climbing School and Gym J&S Komazawa",address:"東京都世田谷区駒沢2-11-5 New Value 駒沢ビル 8F")
+Gym.create(name:"クライミングスクール・ジムJ&S池袋",name_katakana:"クライミングスクール ジム ジェイアンドエス イケブクロ",name_alphabet:"Climbing School and Gym J&S Ikebukuro",address:"東京都豊島区南池袋1-7-20大同ビルB1F")
+Gym.create(name:"クライミングスタジオカメロパルダリス",name_katakana:"クライミングスタジオカメロパルダリス",name_alphabet:"Climbing Studio Camelo Pardalis",address:"東京都昭島市東町3-4-11")
+Gym.create(name:"クライミングストリートB★SPOT",name_katakana:"クライミングストリートビースポット",name_alphabet:"Climbing Street B SPOT",address:"静岡県浜松市中区高丘東1-2-19")
+Gym.create(name:"クライミングスペース BOLD",name_katakana:"クライミングスペースボールド",name_alphabet:"Climging Space BOLD",address:"大阪府大阪市北区大淀南1-2-11")
+Gym.create(name:"クライミングスポットボルダランド",name_katakana:"クライミングスポットボルダランド",name_alphabet:"Climging Spot Boulderland",address:"愛知県長久手市菅池167イオンモール長久手内")
+Gym.create(name:"クライミングセンターART WALL",name_katakana:"クライミングセンターアートウォール",name_alphabet:"Climbing Center ART WALL",address:"長野県長野市真島町川合189-1")
+Gym.create(name:"クライミングパークストーン・マジック",name_katakana:"クライミングパークストーン・マジック",name_alphabet:"Climbing Park Stone Magic",address:"神奈川県相模原市中央区共和3-10-20")
+Gym.create(name:"クライミングパーク東広島",name_katakana:"クライミングパークヒガシヒロシマ",name_alphabet:"Climbing Park Higashi Hiroshima",address:"広島県東広島市西条町御園宇6950-1")
+Gym.create(name:"クライミングパーク菊南",name_katakana:"クライミングパーク キクナン",name_alphabet:"Climbing Park Kikunan",address:"熊本県熊本市北区鶴羽田3-10-1")
+Gym.create(name:"クライミングバム 横浜店",name_katakana:"クライミングバムヨコハマテン",name_alphabet:"Climbing Bum Yokohama",address:"神奈川県横浜市都筑区中川中央1-25-1 ノースポートモールB1F")
+Gym.create(name:"クライミングフロントカランバ",name_katakana:"クライミングフロントカランバ",name_alphabet:"Climbing Front Caramba",address:"東京都西多摩郡瑞穂町長岡長谷部264")
+Gym.create(name:"クライミングホームUNO ",name_katakana:"クライミングホームウノ",name_alphabet:"Climbing Home UNO",address:"三重県四日市市三ツ谷東町7-12")
+Gym.create(name:"クライミングボックス キューブ",name_katakana:"クライミングボックス キューブ",name_alphabet:"Climbing Box Cube",address:"愛知県名古屋市北区丸新町304")
+Gym.create(name:"クライミング飛鳥",name_katakana:"クライミングアスカ",name_alphabet:"Climbing Asuka",address:"千葉県千葉市中央区南生実町56-7")
+Gym.create(name:"クライムセンターCERO",name_katakana:"クライムセンターセロ",name_alphabet:"Climb Center CERO",address:"広島県安芸郡府中町茂陰1-13-46")
+Gym.create(name:"クラックス京都",name_katakana:"クラックスキョウト",name_alphabet:"Crux Kyoto",address:"京都府京都市南区東九条西岩本町10-2 B1")
+Gym.create(name:"クラックス大阪",name_katakana:"クラックスオオサカ",name_alphabet:"Crux Osaka",address:"大阪府吹田市広芝町16-9")
+Gym.create(name:"クラムボン クライミング",name_katakana:"クラムボン クライミング",name_alphabet:"Clambon Climbing",address:"岩手県北上市村崎野14-457-4 2F")
+Gym.create(name:"グリーンアロー イオンモール船橋",name_katakana:"グリーンアロー イオンモール フナバシ",name_alphabet:"Green Arrow Aeon mall Funabashi",address:"千葉県船橋市山手1-1-8 イオンモール船橋2F")
+Gym.create(name:"グリーンアロー ベイフロント蘇我店",name_katakana:"グリーンアロー ベイフロント ソガテン",name_alphabet:"Green Arrow Bay Front Soga",address:"千葉県千葉市中央区川崎町57-5")
+Gym.create(name:"グリーンアロー ボルダリングパーク モラージュ柏店",name_katakana:"グリーンアロー ボルダリングパーク モラージュカシワテン",name_alphabet:"Green Arrow Bouldering Park Mallage Kashiwa",address:"千葉県柏市大山台2-3 モラージュ柏2F")
+Gym.create(name:"グリーンアロー八千代店",name_katakana:"グリーンアローヤチヨテン",name_alphabet:"Green Arrow Yachiyo",address:"千葉県八千代市大和田新田312-19")
+Gym.create(name:"グリーンアロー妙典店",name_katakana:"グリーンアローミョウデンテン",name_alphabet:"Green Arrow Myoden",address:"千葉県市川市妙典3-4-6")
+Gym.create(name:"グリーンアロー新小岩店",name_katakana:"グリーンアローシンコイワテン",name_alphabet:"Green Arrow Shin Koiwa",address:"東京都江戸川区中央4-15-13")
+Gym.create(name:"グリーンアロー津田沼店",name_katakana:"グリーンアロー ツダヌマ",name_alphabet:"Green Arrow Tsudanuma",address:"千葉県船橋市前原西2-39-8")
+Gym.create(name:"グリーンアロー海浜幕張店",name_katakana:"グリーンアローカイヒンマクハリテン",name_alphabet:"Green Arrow Kaihin Makuhari",address:"千葉県千葉市美浜区ひび野2-4 プレナ幕張3F")
+Gym.create(name:"グリムロック クライミングジム",name_katakana:"グリムロック クライミングジム",name_alphabet:"Grimrock Climbing Gym",address:"神奈川県横浜市都筑区大丸23-7")
+Gym.create(name:"グレイス クライミングジム高石店",name_katakana:"グレイス クライミングジムタカイシテン",name_alphabet:"Grace Climbing Gym Takaishi",address:"大阪府高石市綾園6-21-13")
+Gym.create(name:"グレイスプラスクライミングジム泉佐野店",name_katakana:"グレイスプラスクライミングジムイズミサノテン",name_alphabet:"Grace Climbing Gym Izumisano",address:"大阪府泉佐野市下瓦屋3-13-10")
+Gym.create(name:"クロスポイント",name_katakana:"クロスポイント",name_alphabet:"xpoint",address:"愛媛県四国中央市寒川町2777-1")
+Gym.create(name:"コーラルロック",name_katakana:"コーラルロック",name_alphabet:"Coral Rock",address:"沖縄県中頭郡北中城村仲順369-2")
+Gym.create(name:"コナミスポーツクラブ池袋",name_katakana:"コナミスポーツクラブイケブクロ",name_alphabet:"Konami Sport Club Ikebukuro",address:"東京都豊島区東池袋3-1-4 サンシャインシティ文化会館5F")
+Gym.create(name:"サニーロック富士",name_katakana:"サニーロックフジ",name_alphabet:"Sunny Rock Fuji",address:"静岡県富士市天間902-4")
+Gym.create(name:"サニーロック沼津",name_katakana:"サニーロックヌマヅ",name_alphabet:"Sunny Rock Numazu",address:"静岡県沼津市宮前町7-17")
+Gym.create(name:"サンヨークライミングジム",name_katakana:"サンヨークライミングジム",name_alphabet:"Sanyo Climbing Gym",address:"大阪府岸和田市下松町703-4")
+Gym.create(name:"シグナルクライミングジム",name_katakana:"シグナルクライミングジム",name_alphabet:"Signal Climbing Gym",address:"北海道札幌市西区西町南12丁目1-41")
+Gym.create(name:"ジップロック",name_katakana:"ジップロック",name_alphabet:"ZIP ROCK",address:"福岡県糟屋郡粕屋町阿惠443-2")
+Gym.create(name:"シティロックジム大和郡山店",name_katakana:"シティロックジムヤマトコオリヤマテン",name_alphabet:"Cityrock Gym Yamato Koriyama",address:"奈良県大和郡山市田中町913-1")
+Gym.create(name:"シティロックジム大阪店",name_katakana:"シティロックジムオオサカテン",name_alphabet:"CItyrock Gym Osaka",address:"大阪府大阪市淀川区田川北2-3-35")
+Gym.create(name:"ジャムセッション三鷹",name_katakana:"ジャムセッションミタカ",name_alphabet:"Jam Session Mitaka",address:"東京都三鷹市上連雀2-2-5 ポリフォニー三鷹ビル2F")
+Gym.create(name:"スカイピアあだたらアクティブパーク",name_katakana:"スカイピアアダダラアクティブパーク",name_alphabet:"Skypia Adatara Active Park",address:"福島県二本松市上葉木坂2-3")
+Gym.create(name:"スクエアクライミングセンター",name_katakana:"スクエアクライミングセンター",name_alphabet:"Square Climbing Center",address:"静岡県浜松市東区中田町449")
+Gym.create(name:"スハラ クライミングジム西宮",name_katakana:"スハラクライミングジムニシノミヤ",name_alphabet:"Suhara Climbing Gym Nishinomiya",address:"兵庫県西宮市神祇官町1-19")
+Gym.create(name:"スハラクライミングジム宝塚店",name_katakana:"スハラクライミングジムタカラヅカテン",name_alphabet:"Suhara Climbing Gym Takarazuka",address:"兵庫県宝塚市旭町1-7-17")
+Gym.create(name:"スハラクライミングジム池田",name_katakana:"スハラクライミングジムイケダ",name_alphabet:"Suhara Climbing Gym Ikeda",address:"大阪府池田市城南1-9-26")
+Gym.create(name:"スポーツクライミングジム エキサイティング三茶",name_katakana:"スポーツクライミングジム エキサイティングサンチャ",name_alphabet:"Sport Climbing Gym Exciting Sancha",address:"東京都世田谷区三軒茶屋2-14-8 ファッションビル第二 3Ｆ")
+Gym.create(name:"スポーツクライミングジム ボルダサイズ 川西能勢口店",name_katakana:"スポーツクライミングジム ボルダサイズカワニシノセグチテン",name_alphabet:"Sport Climbing Gym Boludercize Kawanishi Nose",address:"兵庫県川西市火打1-22-16南")
+Gym.create(name:"スポーツクライミングジム レインボークリフ",name_katakana:"スポーツクライミングジム レインボークリフ",name_alphabet:"Sport Climbing Gym Rainbow Cliff",address:"北海道札幌市白石区東札幌2条2-3-26")
+Gym.create(name:"スポーツクライミングジム十勝",name_katakana:"スポーツクライミングジムトカチ",name_alphabet:"Sport Climbing Gym Tokachi",address:"北海道中川郡幕別町字依田523-3")
+Gym.create(name:"スポーツクラブ ヴィテンののいち",name_katakana:"スポーツクラブ ヴィテンノノイチ",name_alphabet:"Sport Club V10 Nonoichi",address:"石川県野々市市横宮町67-1")
+Gym.create(name:"スポドリ！",name_katakana:"スポドリ！",name_alphabet:"Spo Dori",address:"東京都文京区後楽1-3-61東京ドームシティ内 黄色いビル3F")
+Gym.create(name:"タイタンウォール クライミングジム",name_katakana:"タイタンウォール クライミングジム",name_alphabet:"Titan Wall Climbing Gym",address:"和歌山県和歌山市新雑賀町24")
+Gym.create(name:"ドーンクライミングジム",name_katakana:"ドーンクライミングジム",name_alphabet:"Dawn Climbing Gym",address:"兵庫県尼崎市塚口本町6-12-7")
+Gym.create(name:"ドラセナ",name_katakana:"ドラセナ",name_alphabet:"Dracaena",address:"東京都板橋区小豆沢4-7-3-1F")
+Gym.create(name:"トリプルB 鈴鹿店",name_katakana:"トリプルビースズカテン",name_alphabet:"Triple B Suzuka",address:"三重県鈴鹿市安塚町1350-32")
+Gym.create(name:"ナカガイクライミングジム堺：深井",name_katakana:"ナカガイクライミングジムサカイフカイ",name_alphabet:"Nakagai Climbing Gym Sakai Fukai",address:"大阪府堺市中区土師町4-3-14")
+Gym.create(name:"ナカガイクライミングジム堺：白鷺",name_katakana:"ナカガイクライミングジムサカイシラサギ",name_alphabet:"Nakagai Climbing Gym Sakai Shirasagi",address:"大阪府堺市北区中百舌鳥町6-1040-69")
+Gym.create(name:"ナカガイクライミングジム摂津",name_katakana:"ナカガイクライミングジムセッツ",name_alphabet:"Nakagai Climbing Gym Settsu",address:"大阪府摂津市鳥飼新町2-2-55")
+Gym.create(name:"ナカガイクライミングジム高槻",name_katakana:"ナカガイクライミングジムタカツキ",name_alphabet:"Nakagai Climbing Gym Takatsuki",address:"大阪府高槻市大畑町14-3")
+Gym.create(name:"ノースケイブジム",name_katakana:"ノースケイブジム",name_alphabet:"North Cave Gym",address:"北海道札幌市東区北27条東20丁目")
+Gym.create(name:"ノースパークビル ボルダリングジム",name_katakana:"ノースパークビル ボルダリングジム",name_alphabet:"North Park Building Bouldering Gym",address:"東京都板橋区板橋4-12-6 ノースパークビル1F")
+Gym.create(name:"バランススポーツジムambox",name_katakana:"バランススポーツジム エーエムボックス",name_alphabet:"Balance Sport Gym Ambox",address:"千葉県茂原市早野1977-1 101")
+Gym.create(name:"ビークス クライミングスタジオ",name_katakana:"ビークス クライミングスタジオ",name_alphabet:"Beaks Climbing Studio",address:"千葉県千葉市中央区本千葉町2-5 今関ビル3F")
+Gym.create(name:"ビッグロック日吉店",name_katakana:"ビッグロックヒヨシテン",name_alphabet:"BIGROCK Hiyoshi",address:"神奈川県横浜市港北区日吉7-18-21")
+Gym.create(name:"ビッグロック京急鶴見店",name_katakana:"ビッグロックケイキュウツルミテン",name_alphabet:"BIGROCK Keikyu Tsurumi",address:"神奈川県横浜市鶴見区鶴見中央1-29-3")
+Gym.create(name:"ピッコロッチャ ",name_katakana:"ピッコロッチャ ",name_alphabet:"Picco+Roccia",address:"愛知県安城市里町大道寺8-11")
+Gym.create(name:"ぴなくる2 刈谷店",name_katakana:"ピナクルツーカリヤテン",name_alphabet:"Pinnacle2 Kariya",address:"愛知県刈谷市東刈谷町1-9-6")
+Gym.create(name:"ぴなくる2 安城店 ",name_katakana:"ピナクルツーアンジョウテン",name_alphabet:"Pinnacle2 Anjo",address:"愛知県安城市和泉町大海古2-15")
+Gym.create(name:"ぴなくる2 栄店",name_katakana:"ピナクルツーサカエテン",name_alphabet:"Pinnacle2 Sakae",address:"愛知県名古屋市中区栄5-25-17")
+Gym.create(name:"ぴなくる2 豊田店",name_katakana:"ピナクルツートヨダテン",name_alphabet:"Pinnacle2 Toyoda",address:"愛知県豊田市本地町2-70")
+Gym.create(name:"ぴなくる2リソラ大府店",name_katakana:"ピナクルツーリソラオオブテン",name_alphabet:"Pinnacle2 Resora Obu",address:"愛知県大府市柊山町1-1-98 2F")
+Gym.create(name:"ピナクルロックジム横浜店",name_katakana:"ピナクルロックジムヨコハマテン",name_alphabet:"Pinnacle Rock Gym Yokohama",address:"神奈川県横浜市都筑区中川中央1-25-1 ノースポートモールB1F")
+Gym.create(name:"フィッシュ＆バード 東陽町",name_katakana:"フィッシュアンドバードトウヨウチョウ",name_alphabet:"Fish and Bird Toyocho",address:"東京都江東区東陽7-4-12")
+Gym.create(name:"フィッシュ＆バード 二子玉川",name_katakana:"フィッシュアンドバードフタゴタマガワ",name_alphabet:"Fish and Bird Futagotamagawa",address:"東京都世田谷区玉川2-24-1キュープラザ二子玉川B1")
+Gym.create(name:"フィッツクライミングジム",name_katakana:"フィッツクライミングジム",name_alphabet:"Fitz Climbing Gym",address:"東京都町田市大蔵町208-1")
+Gym.create(name:"フィットネスジム＆サロン NINA",name_katakana:"フィットネスジムアンドサロンニナ",name_alphabet:"Fitness Gym & Salon NINA",address:"広島県広島市中区基町6-78 パセーラ5F")
+Gym.create(name:"プラネットクライミングジム袋井店",name_katakana:"プラネットクライミングジムフクロイテン",name_alphabet:"Planet Climbing Gym Fukuroi",address:"静岡県袋井市堀越5-20-8")
+Gym.create(name:"プラネットクライミングジム静岡店",name_katakana:"プラネットクライミングジムシズオカテン",name_alphabet:"Planet Climbing Gym Shizuoka",address:"静岡県静岡市駿河区下川原6-5-35")
+Gym.create(name:"ブラボークライミング福岡天神",name_katakana:"ブラボークライミングフクオカテンジン",name_alphabet:"Bravo Climbing Fukuoka Tenjin",address:"福岡県福岡市中央区大名1-6-8-1F")
+Gym.create(name:"ブラボークライミング福岡西",name_katakana:"ブラボークライミングフクオカニシ",name_alphabet:"Bravo Climbing Fukuoka Nishi",address:"福岡県福岡市西区内浜1-7-3 ウエストコート姪浜2F")
+Gym.create(name:"ブラボークライミング長崎",name_katakana:"ブラボークライミングナガサキ",name_alphabet:"Bravo Climbing Nagasaki",address:"長崎県長崎市大黒町11-13-1F")
+Gym.create(name:"フリークライミング ジャンダルム",name_katakana:"フリークライミング ジャンダルム",name_alphabet:"Free Climbing Gendarme",address:"福島県いわき市常磐西郷町落合292")
+Gym.create(name:"フリークライミングジム ゲッコー",name_katakana:"フリークライミングジム ゲッコー",name_alphabet:"Free Climbing Gym Gecko",address:"富山県富山市野々上287-1")
+Gym.create(name:"フリークライミングジム ラットウォール",name_katakana:"フリークライミングジム ラットウォール",name_alphabet:"Free Climbing Gym RAT Wall",address:"青森県弘前市外崎2-6-9")
+Gym.create(name:"フリーズケイブボルダリングジム丹波店",name_katakana:"フリーズケイブボルダリングジムタンバテン",name_alphabet:"Freeze Cave Bouldering Gym Tamba",address:"兵庫県丹波市氷上町市辺823")
+Gym.create(name:"フリーズケイブボルダリングジム舞鶴店",name_katakana:"フリーズケイブボルダリングジムマイヅルテン",name_alphabet:"Freeze Cave Bouldering Gym Maizuru",address:"兵庫県舞鶴市小倉222-8-1")
+Gym.create(name:"ぼるだ〜本舗",name_katakana:"ボルダーホンポ",name_alphabet:"Boulder Hompo",address:"愛知県小牧市間々本町195")
+Gym.create(name:"ボルダー天国",name_katakana:"ボルダーテンゴク",name_alphabet:"Boulder TENGOKU",address:"熊本県熊本市中央区黒髪1-10-20")
+Gym.create(name:"ボルダリングサイトビースリー春日部",name_katakana:"ボルダリングサイトビースリーカスカベ",name_alphabet:"Bouldering Site B3 Kasukabe",address:"埼玉県春日部市樋堀374-15")
+Gym.create(name:"ボルダリングジム 8GRADE",name_katakana:"ボルダリングジムエイトグレード",name_alphabet:"Bouldering Gym 8GRADE",address:"新潟県新潟市西区内野西1-13-1")
+Gym.create(name:"ボルダリングジム bigfoot 福岡店",name_katakana:"ボルダリングジム ビッグフット フクオカテン",name_alphabet:"Bouldering Gym bigfoot Fukuoka",address:"福岡県福岡市博多区中洲3-7-24 ゲイツビル7F")
+Gym.create(name:"ボルダリングジム bigfoot小倉店",name_katakana:"ボルダリングジムビックフットコクラテン",name_alphabet:"Bouldering Gym bigfoot Kokura ",address:"福岡県北九州市小倉北区紺屋町1-1 サンシャイン南国ビル1F")
+Gym.create(name:"ボルダリングジム BolBol ",name_katakana:"ボルダリングジムボルボル",name_alphabet:"Bouldering Gym BolBol",address:"神奈川県相模原市緑区橋本4-9-28")
+Gym.create(name:"ボルダリングジム hoa-hoa",name_katakana:"ボルダリングジム ホアホア",name_alphabet:"Bouldering Gym hoa-hoa",address:"福岡県福岡市博多区東比恵2-19-5 1F")
+Gym.create(name:"ボルダリングジム J&S中野",name_katakana:"ボルダリングジムジェイアンドエスナカノ",name_alphabet:"Bouldering Gym J&S Nakano",address:"東京都中野区新井1-31-6高山ビル1F")
+Gym.create(name:"ボルダリングジム K-Climb",name_katakana:"ボルダリングジムケークライム",name_alphabet:"Bouldering Gym K-Climb",address:"島根県松江市向島町184 向島テニスセンタープラザ内")
+Gym.create(name:"ボルダリングジム KO-WALL滋賀店",name_katakana:"ボルダリングジムコーウォールシガテン",name_alphabet:"Bouldering Gym KO-WALL Shiga",address:"滋賀県栗東市小柿2-8-2")
+Gym.create(name:"ボルダリングジム Lamp",name_katakana:"ボルダリングジムランプ",name_alphabet:"Bouldering Gym Lamp",address:"神奈川県厚木市中町4-4-15-B1")
+Gym.create(name:"ボルダリングジム Lamp+",name_katakana:"ボルダリングジムランププラス",name_alphabet:"Bouldering Gym Lamp+",address:"神奈川県厚木市愛甲3-10-1")
+Gym.create(name:"ボルダリングジム roca",name_katakana:"ボルダリングジムロカ",name_alphabet:"Bouldering Gym roca",address:"大阪府大阪市中央区久太郎町3-1-22 OSKビル5F ペントハウス")
+Gym.create(name:"ボルダリングジム ROCK UP",name_katakana:"ボルダリングジムロックアップ",name_alphabet:"Bouldering Gym ROCK UP",address:"鹿児島県霧島市隼人町住吉151-1")
+Gym.create(name:"ボルダリングジム VraiCiel",name_katakana:"ボルダリングジム ブライシエル",name_alphabet:"Bouldering Gym VraiCiel",address:"静岡県浜松市南区東若林町1506")
+Gym.create(name:"ボルダリングジム ZIGZAG",name_katakana:"ボルダリングジムジグザグ",name_alphabet:"Bouldering Gym ZIGZAG",address:"神奈川県横須賀市安浦町2-11本橋ビル1F")
+Gym.create(name:"ボルダリングジム アルトプエンテ",name_katakana:"ボルダリングジム アルトプエンテ",name_alphabet:"Bouldering Gym Alto Puente",address:"岐阜県岐阜市北鶉4-13")
+Gym.create(name:"ボルダリングジム エクストリーム",name_katakana:"ボルダリングジム エクストリーム",name_alphabet:"Bouldering Gym Extreme",address:"北海道函館市亀田町8−44")
+Gym.create(name:"ボルダリングジム キイストーン",name_katakana:"ボルダリングジム キイストーン",name_alphabet:"Bouldering Gym Key Stone",address:"山形県酒田市両羽町3-9")
+Gym.create(name:"ボルダリングジム キイストーン三川",name_katakana:"ボルダリングジム キイストーンミカワ",name_alphabet:"Bouldering Gym Key Stone Mikawa",address:"山形県東田川郡三川町猪子字和田庫126-1イオンモール三川内")
+Gym.create(name:"ボルダリングジム グラニー南流山",name_katakana:"ボルダリングジム グラニーミナミナガレヤマ",name_alphabet:"Bouldering Gym Granny Minami Nagareyama",address:"千葉県流山市南流山6-8-7")
+Gym.create(name:"ボルダリングジム グラニー東上野店",name_katakana:"ボルダリングジム グラニーヒガシウエノテン",name_alphabet:"Bouldering Gym Granny Higashi Ueno",address:"東京都台東区東上野6-7-3-1F")
+Gym.create(name:"ボルダリングジム クレスト",name_katakana:"ボルダリングジム クレスト",name_alphabet:"Bouldering Gym Crest",address:"東京都立川市錦町1-12-18 錦町ビル1Ｆ")
+Gym.create(name:"ボルダリングジム スコーミッシュ ",name_katakana:"ボルダリングジム スコーミッシュ ",name_alphabet:"Bouldering Gym SQUAMISH",address:"大阪府守口市大久保町5-46-17コスモス大久保1")
+Gym.create(name:"ボルダリングジム トップアウト",name_katakana:"ボルダリングジム トップアウト",name_alphabet:"Bouldering Gym Top Out",address:"沖縄県石垣市字登野城639-2")
+Gym.create(name:"ボルダリングジム ハンピ",name_katakana:"ボルダリングジム ハンピ",name_alphabet:"Bouldering Gym Hampi",address:"三重県多気郡明和町志貴1211-5")
+Gym.create(name:"ボルダリングジム ボルバカ 2",name_katakana:"ボルダリングジムボルバカ 2",name_alphabet:"Bouldering Gym BOULBAKA 2",address:"沖縄県浦添市当山1-1-5")
+Gym.create(name:"ボルダリングジム 空の向こうへ四足歩行",name_katakana:"ボルダリングジムソラノムコウヘヨンソクホコウ",name_alphabet:"Bouldering Gym Soranomukouhe Yonsokuhokou",address:"東京都港区白金台5-14-1 白金台アパートメントB1")
+Gym.create(name:"ボルダリングジムJOY 福岡店",name_katakana:"ボルダリングジム ジョイ フクオカテン",name_alphabet:"Bouldering Gym JOY Fukuoka",address:"福岡県福岡市早良区弥生2-4-6")
+Gym.create(name:"ボルダリングジムMushRooming",name_katakana:"ボルダリングジムマッシュルーミング",name_alphabet:"Bouldering Gym MushRooming",address:"大阪府大阪市北区天神橋7-12-14 グレーシィ天神橋103")
+Gym.create(name:"ボルダリングジムハンピ 鈴鹿店",name_katakana:"ボルダリングジムハンピスズカテン",name_alphabet:"Bouldering Gym Hampi Suzuka",address:"三重県鈴鹿市矢橋2-9")
+Gym.create(name:"ボルダリングジムボルバカ",name_katakana:"ボルダリングジムボルバカ",name_alphabet:"Bouldering Gym BOULBAKA",address:"沖縄県那覇市天久882")
+Gym.create(name:"ボルダリングジムランピッド",name_katakana:"ボルダリングジムランピッド",name_alphabet:"Bouldering Gym Rampid",address:"愛媛県松山市姫原3-9-10")
+Gym.create(name:"ボルダリングジム登攀道場",name_katakana:"ボルダリングジムトハンドウジョウ",name_alphabet:"Bouldering Gym Tohan Dojo",address:"千葉県千葉市中央区松波2-10-1")
+Gym.create(name:"ボルダリングスタジオ 833WALL",name_katakana:"ボルダリングスタジオ ハチサンサンウォール",name_alphabet:"Bouldering Studio 833WALL",address:"長崎県東彼杵郡波佐見町井石郷2187−4")
+Gym.create(name:"ボルダリングスタジオボラーレ・エスカラーダ",name_katakana:"ボルダリングスタジオボラーレ・エスカラーダ",name_alphabet:"Bouldering Studio Volare Escalada",address:"兵庫県尼崎市東園田町4-107-3-102 トムズハウス")
+Gym.create(name:"ボルダリングステージ be colorful 西宮北口",name_katakana:"ボルダリングステージビーカラフルニシノミヤキタグチ",name_alphabet:"Bouldering Stage be colorful Nishinomiya Kitaguchi",address:"兵庫県西宮市長田町1-27")
+Gym.create(name:"ボルダリングスペース H",name_katakana:"ボルダリングスペースエイチ",name_alphabet:"Bouldering Space H",address:"栃木県小山市若木町3-5-17")
+Gym.create(name:"ボルダリングスペースBaRock",name_katakana:"ボルダリングスペースバロック",name_alphabet:"Bouldering Space BaRock",address:"兵庫県尼崎市武庫之荘東1-17-6")
+Gym.create(name:"ボルダリングスペースHAT",name_katakana:"ボルダリングスペースハット",name_alphabet:"Bouldering Space HAT",address:"神奈川県大和市大和東3-2-15")
+Gym.create(name:"ボルダリングスペースココペリ",name_katakana:"ボルダリングスペースココペリ",name_alphabet:"Bouldering Space Kokopelli",address:"広島県福山市曙町1-2-14")
+Gym.create(name:"ボルダリングハウスノット",name_katakana:"ボルダリングハウスノット",name_alphabet:"Bouldering House KNOT",address:"愛知県名古屋市西区那古野１丁目35-13")
+Gym.create(name:"ボルダリングボックスアース",name_katakana:"ボルダリングボックスアース",name_alphabet:"Bouldering Box Earth",address:"大分県大分市仲西町2-7-23")
+Gym.create(name:"ボルダリングライフ",name_katakana:"ボルダリングライフ",name_alphabet:"Bouldering life",address:"兵庫県姫路市白浜町甲402-33")
+Gym.create(name:"ホワイトロック",name_katakana:"ホワイトロック",name_alphabet:"White Rock",address:"群馬県高崎市上佐野町330")
+Gym.create(name:"マウンテンクリフ",name_katakana:"マウンテンクリフ",name_alphabet:"Mountain Cliff",address:"栃木県足利市芳町45-1")
+Gym.create(name:"ミズノスポーツプラザ神戸和田岬",name_katakana:"ミズノスポーツプラザコウベワダミサキ",name_alphabet:"Mizuno Sport Plaza Kobewadamisaki",address:"兵庫県神戸市兵庫区上庄通1-1-53")
+Gym.create(name:"モーメント・アーバンクライミングスペース",name_katakana:"モーメント・アーバンクライミングスペース",name_alphabet:"Moment Urban Climbing Space",address:"宮城県仙台市泉区将監3-2-18")
+Gym.create(name:"モンベル六甲店",name_katakana:"モンベルロッコウテン",name_alphabet:"Montbell Rokko",address:"兵庫県神戸市灘区桜口町1-1-7")
+Gym.create(name:"ライノ＆バード",name_katakana:"ライノアンドバード",name_alphabet:"Rhino and Bird",address:"東京都荒川区西日暮里2-56-3")
+Gym.create(name:"ラリーグラス長丘",name_katakana:"ラリーグラスナガオカ",name_alphabet:"Raliguras Nagaoka",address:"福岡県福岡市南区長丘1-4-1")
+Gym.create(name:"ランナウト",name_katakana:"ランナウト",name_alphabet:"Runout",address:"東京都国分寺市西恋ヶ窪1-43-7")
+Gym.create(name:"リッジラインボルダリングジム",name_katakana:"リッジラインボルダリングジム",name_alphabet:"Ridgeline Bouldering Gym",address:"富山県富山市上冨居3-10-52")
+Gym.create(name:"リトルフォレスト",name_katakana:"リトルフォレスト",name_alphabet:"Little Forest",address:"新潟県五泉市寺沢3-5-37")
+Gym.create(name:"ルトラルトラ クライムパーク",name_katakana:"ルトラルトラ クライムパーク",name_alphabet:"Lutra Lutra climb park",address:"埼玉県深谷市萱場6-30")
+Gym.create(name:"レッドクリフ クライミングジム",name_katakana:"レッドクリフ クライミングジム",name_alphabet:"Red Cliff Climbing Gym",address:"兵庫県加古川市加古川町河原368")
+Gym.create(name:"レベルテン クライミングクラブ",name_katakana:"レベルテン クライミングクラブ",name_alphabet:"Level Ten Climbing Club",address:"大阪府大阪市東住吉区今林2-1-14")
+Gym.create(name:"ロストキャニオン",name_katakana:"ロストキャニオン",name_alphabet:"Lost Canyon",address:"栃木県宇都宮市横田新町12-3")
+Gym.create(name:"ロッキーボルダリングジム つくば阿見店",name_katakana:"ロッキーボルダリングジム ツクバアミテン",name_alphabet:"Rocky Bouldering Gym Tsukuba Ami",address:"茨城県稲敷郡阿見町本郷3-1-1")
+Gym.create(name:"ロッキーボルダリングジム 印西店",name_katakana:"ロッキーボルダリングジム インザイテン",name_alphabet:"Rocky Bouldering Gym Inzai",address:"千葉県印西市原1-2 BIGHOPモール棟2F")
+Gym.create(name:"ロッキーボルダリングジム 品川店",name_katakana:"ロッキーボルダリングジム シナガワテン",name_alphabet:"Rocky Bouldering Gym Shinagawa",address:"東京都港区港南5-4-38松岡品川埠頭ビル103")
+Gym.create(name:"ロッキーボルダリングジム 新宿曙橋店",name_katakana:"ロッキーボルダリングジム シンジュクアケボノバシテン",name_alphabet:"Rocky Bouldering Gym Shinjuku Akebonobashi",address:"東京都新宿区市谷台町14-6　信川ハイツB1")
+Gym.create(name:"ロッキーボルダリングジム 船橋店",name_katakana:"ロッキーボルダリングジム フナバシテン",name_alphabet:"Rocky Bouldering Gym Funabashi",address:"千葉県船橋市海神町2-225-1")
+Gym.create(name:"ロッククライミングジムZEN センター南店",name_katakana:"ロック クライミングジムゼンセンターミナミテン",name_alphabet:"Rock Climbing Gym ZEN Center Minami",address:"神奈川県横浜市都筑区茅ヶ崎中央53-1 コーナン港北センター南モール2F スポーツオーソリティ港北センター南店内")
+Gym.create(name:"ロックオンクライミングジム",name_katakana:"ロックオンクライミングジム",name_alphabet:"Rock On Climbing Gym",address:"大阪府八尾市渋川町5-5-30")
+Gym.create(name:"ロッククライミングジム ZEN 新横浜店",name_katakana:"ロック クライミングジムゼンシンヨコハマテン",name_alphabet:"Rock Climbing Gym ZEN Shinyokohama",address:"神奈川県横浜市港北区新羽町576-1")
+Gym.create(name:"ロッククライミングジムZEN 川崎店",name_katakana:"ロック クライミングジムゼンカワサキテン",name_alphabet:"Rock Climbing Gym ZEN Kawasaki",address:"神奈川県川崎市川崎区南町16-7かわさきスカイビルB1F")
+Gym.create(name:"ロッククライミングジムZEN 百合ヶ丘店",name_katakana:"ロック クライミングジムゼンユリガオカテン",name_alphabet:"Rock Climbing Gym ZEN Yurigaoka",address:"神奈川県川崎市麻生区高石1-22-5 2F")
+Gym.create(name:"ロッククラフト 小山店",name_katakana:"ロッククラフトオヤマテン",name_alphabet:"Rock Craft Oyama",address:"栃木県小山市粟宮1006-2")
+Gym.create(name:"ロッククラフト川越",name_katakana:"ロッククラフトカワゴエ",name_alphabet:"Rock Craft Kawagoe",address:"埼玉県川越市脇田町32-3三豊ゴム川越ビル1F")
+Gym.create(name:"ロックジム破天荒",name_katakana:"ロックジムハテンコウ",name_alphabet:"Rock Gym Hatenko",address:"愛知県名古屋市緑区鳴海町山腰25")
+Gym.create(name:"ロックスケイプ ボルダリングジム",name_katakana:"ロックスケイプ ボルダリングジム",name_alphabet:"Rock Scape Bouldering Gym",address:"福井県福井市西開発4-701")
+Gym.create(name:"ロマノフ",name_katakana:"ロマノフ",name_alphabet:"ROMANOV",address:"福島県喜多方市清水台2-72")
+Gym.create(name:"三ツ峠グリーンセンターすこやか交流館アーク",name_katakana:"ミツトウゲグリーンセンタースコヤカコウリュウカンアーク",name_alphabet:"Mitsutoge Green Center Sukoyaka Koryukan Ark",address:"山梨県南都留郡西桂町下暮地1900")
+Gym.create(name:"佐久平ロッククライミングセンター",name_katakana:"サクダイラロッククライミングセンター",name_alphabet:"Sakudaira Rock Climbing Center",address:"長野県佐久市平賀1570-3")
+Gym.create(name:"千ヶ滝ボルダリングテラス",name_katakana:"センガタキボルダリングテラス",name_alphabet:"Sengataki Bouldering Terrasse",address:"長野県北佐久郡軽井沢町長倉字坂下2146-1350")
+Gym.create(name:"壁家-KABEYA-",name_katakana:"カベヤ",name_alphabet:"Kabeya",address:"神奈川県川崎市川崎区堀之内町9-8 B1F")
+Gym.create(name:"壬生町町民総合運動場 体育館内ボルダリングウォール",name_katakana:"ミブチョウチョウミンソウゴウウンドウジョウタイイクカンナイボルダリングウォール",name_alphabet:"Mibucho Chomin Sogo Undojo Taiikukannai Boludering Wall",address:"栃木県下都賀郡壬生町壬生甲3828")
+Gym.create(name:"大分クライミングジムDAIBU",name_katakana:"オオイタクライミングジム ダイブ",name_alphabet:"Oita Climbing Gym DAIBU",address:"大分県大分市小池原898")
+Gym.create(name:"愛媛クライミングジム iTTE",name_katakana:"エヒメクライミングジムイッテ",name_alphabet:"Ehime Climbing Gym iTTE",address:"愛媛県松山市若葉町2-6")
+Gym.create(name:"火の玉Wall",name_katakana:"ヒノタマウォール",name_alphabet:"Hinotama Wall",address:"兵庫県加古川市平岡町高畑353-9")
+Gym.create(name:"登處八丁堀",name_katakana:"ノボリドコロハッチョウボリ",name_alphabet:"Noboridokoro Hacchobori",address:"東京都中央区新川2-6-8YHビルB1F")
+Gym.create(name:"福山クライミングジムSORA",name_katakana:"フクヤマクライミングジムソラ",name_alphabet:"Fukuyama Climbing Gym SORA",address:"広島県福山市加茂町上加茂254-1")
+Gym.create(name:"金沢クライミングウォール",name_katakana:"カナザワクライミングウォール",name_alphabet:"Kanazawa Climbing Wall",address:"石川県金沢市芳斉1-6-5")
+Gym.create(name:"香川クライミングジム iTTE",name_katakana:"カガワクライミングジムイッテ",name_alphabet:"Kagawa Climbing Gym iTTe",address:"香川県高松市上天神町272-3")
+Gym.create(name:"高知クライミングジムストーンラブ",name_katakana:"コウチクライミングジムストーンラブ",name_alphabet:"Kochi Climbing Gym Stone Love",address:"高知県高知市南川添18-30")
+Gym.create(name:"魚動",name_katakana:"ギョドウ",name_alphabet:"Gyodo",address:"岐阜県各務原市須衛町4-274-1")
+Gym.create(name:"魚動クライミングジム2一宮",name_katakana:"ギョドウクライミングツーイチノミヤ",name_alphabet:"Gyodo Climbing Gym 2 Ichinomiya",address:"愛知県一宮市水附町43-1")
 
-# Hokkaido
-Gym.create(name:'シグナルクライミングジム',
-           name_katakana:'シグナルクライミングジム',
-           name_alphabet:'Signal Climbing Gym',
-           address:'北海道札幌市西区西町南12丁目1-41',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'RED POINT',
-           name_katakana:'レッドポイント',
-           name_alphabet:'RED POINT',
-           address:'北海道中川郡池田町大通4丁目11',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'HOMIE redbrick warehouse',
-           name_katakana:'ホーミーレッドブリックウェアハウス',
-           name_alphabet:'HOMIE redbrick warehouse',
-           address:'北海道函館市入舟町1-22',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'GRAVITY RESEARCH 札幌',
-           name_katakana:'グラビティリサーチサッポロ',
-           name_alphabet:'GRAVITY RESEARCH SAPPORO',
-           address:'北海道札幌市中央区北2条東4丁目サッポロファクトリー1条館1F',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'Whipper Snapper Gym',
-           name_katakana:'ウィッパースナッパージム',
-           name_alphabet:'Whipper Snapper Gym',
-           address:'北海道札幌市手稲区新発寒5条1-5-26',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'ボルダリングジム エクストリーム',
-           name_katakana:'ボルダリングジム エクストリーム',
-           name_alphabet:'Bouldering Gym Extreme',
-           address:'北海道函館市亀田町8−44',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'GUTs WALL',
-           name_katakana:'ガッツウォール',
-           name_alphabet:'GUTs WALL',
-           address:'北海道旭川市新星町3-1-95',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'スポーツクライミングジム十勝',
-           name_katakana:'スポーツクライミングジムトカチ',
-           name_alphabet:'Sport Climbing Gym Tokachi',
-           address:'北海道中川郡幕別町字依田523-3',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'NAC札幌クライミングジム',
-           name_katakana:'ナックサッポロクライミングジム',
-           name_alphabet:'NAC Sapporo Climbing Gym',
-           address:'北海道札幌市白石区東札幌3条1-1-1 イーアス札幌Aタウン1F',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'ノースケイブジム',
-           name_katakana:'ノースケイブジム',
-           name_alphabet:'North Cave Gym',
-           address:'北海道札幌市東区北27条東20丁目',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'スポーツクライミングジム レインボークリフ',
-           name_katakana:'スポーツクライミングジム レインボークリフ',
-           name_alphabet:'Sport Climbing Gym Rainbow Cliff',
-           address:'北海道札幌市白石区東札幌2条2-3-26',
-           latitude:'',
-           longitude:'')
-
-# Aomori
-Gym.create(name:'クライミングジム ノースロック',
-           name_katakana:'クライミングジム ノースロック',
-           name_alphabet:'Climbing Gym North Rock',
-           address:'青森県三戸郡階上町蒼前東2-9-1851',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'Bouldering gym 2nd-Wally',
-           name_katakana:'ボルダリングジム セカンド ウォーリー',
-           name_alphabet:'Bouldering gym 2nd-Wally',
-           address:'青森県八戸市石堂2-1-14',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'RAT青森ボルダー',
-           name_katakana:'ラットアオモリボルダー',
-           name_alphabet:'RAT Aomori Boulder',
-           address:'青森県青森市牛館岡部13-1',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'フリークライミングジム ラットウォール',
-           name_katakana:'フリークライミングジム ラットウォール',
-           name_alphabet:'Free Climbing Gym RAT Wall',
-           address:'青森県弘前市外崎2-6-9',
-           latitude:'',
-           longitude:'')
-
-# Iwate
-Gym.create(name:'Crager’s奥州水沢',
-           name_katakana:'クレイガーズ オウシュウミズサワ',
-           name_alphabet:'Crager’s Oshu Mizusawa',
-           address:'岩手県奥州市水沢区横町99',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'クラムボン クライミング',
-           name_katakana:'クラムボン クライミング',
-           name_alphabet:'Clambon Climbing',
-           address:'岩手県北上市村崎野14-457-4 2F',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'THE STONE SESSION JAZZYSPORT',
-           name_katakana:'ザ ストーンセッション ジャジースポート',
-           name_alphabet:'THE STONE SESSION JAZZYSPORT',
-           address:'岩手県盛岡市厨川5-13-48-4',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'Climbing Spot ONE MOVE',
-           name_katakana:'クライミングスポット ワンムーブ',
-           name_alphabet:'Climbing Spot ONE MOVE',
-           address:'岩手県盛岡市上鹿妻田貝13',
-           latitude:'',
-           longitude:'')
-
-#Miyagi
-Gym.create(name:'Climbing&Café　McKINLEY',
-           name_katakana:'クライミングアンドカフェ マッキンリー',
-           name_alphabet:'Climbing&Café　McKINLEY',
-           address:'宮城県名取市愛島郷1丁目1番地1',
-           latitude:'',
-           longitude:'')
-Gym.create(name "B'nuts 大崎古川店",
-           name_katakana:'ビーナッツ オオサキフルカワテン',
-           name_alphabet:"B'nuts Osaki Furukawa",
-           address:'宮城県大崎市古川栄町14-14',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'クライミングジム BOLZ',
-           name_katakana:'クライミングジム ボルズ',
-           name_alphabet:'CLIMBING GYM BOLZ',
-           address:'宮城県仙台市宮城野区萩野町2-18-10',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'モーメント・アーバンクライミングスペース',
-           name_katakana:'モーメント・アーバンクライミングスペース',
-           name_alphabet:'Moment Urban Climbing Space',
-           address:'宮城県仙台市泉区将監3-2-18',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'うみかぜクライミングパーク Sea Monkey(Z)',
-           name_katakana:'ウミカゼクライミングパーク　シーモンキー ゼッド',
-           name_alphabet:'Umikaze Climbing Park Sea Monkey Z',
-           address:'宮城県石巻市貞山1-9-25',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'Climbing & Bouldering ズィーボックス',
-           name_katakana:'クライミングアンドボルダリング ズィーボックス',
-           name_alphabet:'Climbing and Bouldering Zi;BOX',
-           address:'宮城県仙台市若林区荒井字畑中31-1',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'クライミングジム ビーナッツ',
-           name_katakana:'クライミングジム ビーナッツ',
-           name_alphabet:"Climbing Gym B'nuts",
-           address:'宮城県仙台市青葉区国分町3-3-5 リスズビル1F',
-           latitude:'',
-           longitude:'')
-
-#Akita
-Gym.create(name:'Climbing&Cafe Warehouse -UN ROCHER-',
-           name_katakana:'クライミングアンドカフェ ウェアハウス アンロシェ',
-           name_alphabet:"Climbing&Cafe Warehouse -UN ROCHER-",
-           address:'秋田県鹿角市花輪字下タ町100',
-           latitude:'',
-           longitude:'')
-
-Gym.create(name:'ガラパカ クライミングジム',
-           name_katakana:'ガラパカ クライミングジム',
-           name_alphabet:"Garapaka Climbing Gym",
-           address:'秋田県秋田市八橋大畑1-3-7',
-           latitude:'',
-           longitude:'')
-
-#Yamagata
-Gym.create(name:'bouldering.house.358',
-           name_katakana:'ボルダリングハウス サンゴーハチ',
-           name_alphabet:"bouldering.house.358",
-           address:'山形県山形市千歳1-15-43',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'FLAT BOULDERING',
-           name_katakana:'フラットボルダリング',
-           name_alphabet:"FLAT BOULDERING",
-           address:'山形県山形市北町2-1-30',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'ボルダリングジム キイストーン',
-           name_katakana:'Bouldering Gym Key Stone',
-           name_alphabet:"ボルダリングジム キイストーン",
-           address:'山形県酒田市両羽町3-9',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'ボルダリングジム キイストーン三川',
-           name_katakana:'Bouldering Gym Key Stone Mikawa',
-           name_alphabet:"ボルダリングジム キイストーン三川",
-           address:'山形県東田川郡三川町猪子字和田庫126-1イオンモール三川内',
-           latitude:'',
-           longitude:'')
-
-#Fukushima
-
-
-
-
-
-
-
-Gym.create(name:'PUMP1 川口',
-           name_katakana:'パンプ1 カワグチ',
-           name_alphabet:'PUMP1 Kawaguchi',
-           address:'埼玉県川口市元郷2-3-12',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'PUMP2 川崎',
-           name_katakana:'パンプ2 カワサキ',
-           name_alphabet:'PUMP2 Kawasaki',
-           address:'神奈川県川崎市多摩区中野島2-9-30',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'PUMP 大阪',
-           name_katakana:'パンプ オオサカ',
-           name_alphabet:'PUMP Osaka',
-           address:'大阪府大阪市西淀川区中島1-13-23',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'B-PUMP TOKYO 秋葉原',
-           name_katakana:'ビーパンプ トウキョウ アキハバラ',
-           name_alphabet:'B-PUMP TOKYO AKIHABARA',
-           address:'東京都文京区湯島1-1-8',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'B-PUMP 荻窪',
-           name_katakana:'ビーパンプ オギクボ',
-           name_alphabet:'B-PUMP OGIKUBO',
-           address:'東京都杉並区上荻1-10-12 荻窪東亜会館3F',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'B-PUMP 横浜',
-           name_katakana:'ビーパンプ ヨコハマ',
-           name_alphabet:'B-PUMP YOKOHAMA',
-           address:'神奈川県横浜市西区平沼1-8-1  ',
-           latitude:'',
-           longitude:'')
-Gym.create(name:"PUMP CLIMBER'S ACADEMY 新宿",
-           name_katakana:'パンプクライマーズアカデミー シンジュク',
-           name_alphabet:"PUMP CLIMBER'S ACADEMY SHINJUKU",
-           address:'東京都新宿区新宿2-8-5 新宿第1ビル',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'ROCKY 新宿曙橋',
-           name_katakana:'ロッキー シンジュクアケボノバシ',
-           name_alphabet:'Rocky Shinjuku Akebonobashi',
-           address:'東京都新宿区市谷台町14-6　信川ハイツB1',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'ROCKY 品川',
-           name_katakana:'ロッキー シナガワ',
-           name_alphabet:'Rocky Shinagawa',
-           address:'東京都港区港南5-4-38　松岡品川埠頭ビル103',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'ROCKY 印西',
-           name_katakana:'ロッキー インザイ',
-           name_alphabet:'Rocky Inzai',
-           address:'千葉県印西市原1-2BIGHOPモール棟 2F',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'ROCKY つくば阿見',
-           name_katakana:'ロッキー ツクバアミ',
-           name_alphabet:'Rocky Tsukuba Ami',
-           address:'茨城県稲敷郡阿見町本郷3-1-1',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'ROCKY 船橋',
-           name_katakana:'ロッキー フナバシ',
-           name_alphabet:'Rocky Funabashi',
-           address:'千葉県船橋市海神町2-225-1',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'NOBOROCK 渋谷',
-           name_katakana:'ノボロック シブヤ',
-           name_alphabet:'NOBOROCK Shibuya',
-           address:'東京都渋谷区桜丘町9 桜丘町9-1ビアンクォードビルB1',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'NOBOROCK 池袋',
-           name_katakana:'ノボロック イケブクロ',
-           name_alphabet:'NOBOROCK Ikebukuro',
-           address:'東京都豊島区西池袋5-13-12MKビルB1',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'NOBOROCK 町田',
-           name_katakana:'ノボロック マチダ',
-           name_alphabet:'NOBOROCK Machida',
-           address:'東京都町田市森野 1-25-19 3F',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'NOBOROCK 溝の口',
-           name_katakana:'ノボロック ミゾノクチ',
-           name_alphabet:'NOBOROCK Mizonokuchi',
-           address:'神奈川県川崎市高津区溝口2丁目10-22',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'NOBOROCK 大宮',
-           name_katakana:'ノボロック オオミヤ',
-           name_alphabet:'NOBOROCK Omiya',
-           address:'埼玉県さいたま市大宮区仲町1-54-3 ビジョナリーⅢ B1',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'Base Camp 入間',
-           name_katakana:'ベースキャンプ イルマ',
-           name_alphabet:'Base Camp Iruma',
-           address:'埼玉県入間市東町7-1-7',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'Base Camp Tokyo 小竹向原',
-           name_katakana:'ベースキャンプ トウキョウ コタケムカイハラ',
-           name_alphabet:'Base Camp Tokyo Kotake Mukaihara',
-           address:'東京都板橋区向原3-10-15',
-           latitude:'',
-           longitude:'')
-Gym.create(name:'Base Camp 飯能',
-           name_katakana:'ベースキャンプ ハンノウ',
-           name_alphabet:'Base Camp Hanno',
-           address:'埼玉県飯能市緑町3-2',
-           latitude:'',
-           longitude:'')
 puts 'added gyms'
+
 
 puts 'adding statuses'
 Status.delete_all
@@ -413,11 +610,6 @@ Status.create(status:'途中敗退', order: 6)
 Status.create(status:'トライ中', order: 7)
 puts 'added statuses'
 
-puts 'adding users'
-User.delete_all
-User.create(email: 'admin@test.com', password: 'test1234', admin: true)
-User.create(email: 'test@test.com', password: 'test1234')
-puts 'added users'
 
 
 
