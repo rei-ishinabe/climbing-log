@@ -30,7 +30,7 @@
         <%= f.input :status_id,
                label: false,
               prompt: 'ステータスを選択',
-          collection: Status.all,
+          collection: Status.all.order(id: 'ASC'),
           label_method: :status,
           value_method: :id %>
         <%= f.input :comment,
