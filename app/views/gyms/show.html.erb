@@ -1,10 +1,12 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 mb-5 pb-3">
-      <h4><%= @gym.name %></h4>
-      <% if current_user.admin %>
-        <%= link_to 'ジム情報変更', edit_gym_path(@gym) %>
-      <% end %>
+      <div class='d-flex align-items-center'>
+        <h4><%= @gym.name %></h4>
+        <% if current_user.admin %>
+          <%= link_to '編集', edit_gym_path(@gym) %>
+        <% end %>
+      </div>
       <div class="card px-2 py-1 mt-1">
         <div>最終訪問日：
           <%= @gym.last_visit_date(current_user) %>
