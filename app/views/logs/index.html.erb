@@ -30,27 +30,36 @@
 
 
       <div class="card px-2 pt-1 pb-0 mt-1">
-        <div>完登本数：
-          <span style="font-size: 1.2rem;"><%= @logs.where('status_id < ?', 4).count %></span>
-        </div>
-        <div>クライミング日数：
-          <span style="font-size: 1.2rem;"><%= @logs.count('DISTINCT date') if @logs.exists? %></span></%>
-        </div>
-        <div>ボルダー最高グレード：
-          <% boulder_best_log =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id < ?', 1, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
-          <% unless boulder_best_log.nil? %>
-            <%= link_to route_path(boulder_best_log.route) do %>
-              <span style="font-size: 1.2rem;"><%= boulder_best_log.route.combined_grade %></span></%>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="mb-1">リード最高グレード：
-          <% lead_best_log =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id < ?', 2, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
-          <% unless lead_best_log.nil? %>
-            <%= link_to route_path(lead_best_log.route) do %>
-              <span style="font-size: 1.2rem;"><%=lead_best_log.route.combined_grade %></span>
-            <% end %>
-          <% end %>
+        <div class="d-flex">
+          <div class="flex-fill">
+            <div>完登本数：
+              <span style="font-size: 1.2rem;"><%= @logs.where('status_id < ?', 4).count %></span>
+            </div>
+            <div>
+              <div class="mt-1">ボルダー最高グレード</div>
+              <% boulder_best_log =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id < ?', 1, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
+              <% unless boulder_best_log.nil? %>
+                <%= link_to route_path(boulder_best_log.route) do %>
+                  <span style="font-size: 1.2rem;"><%= boulder_best_log.route.combined_grade %></span></%>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="flex-fill">
+            <div>クライミング日数
+              <span style="font-size: 1.2rem;"><%= @logs.count('DISTINCT date') if @logs.exists? %></span></%>
+            </div>
+            <div class="mt-1">
+              <div>リード最高グレード</div>
+              <% lead_best_log =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id < ?', 2, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
+              <% unless lead_best_log.nil? %>
+                <%= link_to route_path(lead_best_log.route) do %>
+                  <span style="font-size: 1.2rem;"><%=lead_best_log.route.combined_grade %></span>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -76,19 +85,29 @@
         <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
           <h5 class="mt-3 pl-1 mb-1">合計トライ本数(日別)</h5>
           <div class="mb-3">
-            <%= column_chart @logs.joins(:route).joins(:gym).group_by_day(:date).count,
+            <% boulder = @logs.joins(:route).where('category_id = 1').group_by_day(:date).count %>
+            <% lead = @logs.joins(:route).where('category_id = 2').group_by_day(:date).count %>
+            <% toprope = @logs.joins(:route).where('category_id = 3').group_by_day(:date).count %>
+            <% nagamono = @logs.joins(:route).where('category_id = 4').group_by_day(:date).count %>
+
+            <%= column_chart [
+              { name: 'ボルダー', data: lead },
+              { name: 'リード', data: lead },
+              { name: 'トップロープ', data: toprope },
+              { name: 'ナガモノ', data: nagamono },
+            ],
                 points: false,
-                colors: ["#167FFB", "#666"],
                 dataset: {borderWidth: 0},
                 library: {animation: {easing: 'easeOutQuad',"duration": 1000},
                           scales: {xAxes: [{ticks: {padding: 8},
-                                            gridLines: {drawTicks: false}}],
-                                   yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
+                                                    gridLines: {drawTicks: false},
+                                                    stacked: true }],
+                                   yAxes: [{ticks: {suggestedMax: 15, stepSize: 5},
+                                                    gridLines: {display:false},
+                                                    stacked: true }]
                                   }
                          },
-                suffix: "本",
-                height: "200px",
-                messages: {empty: "データがありません"} %>
+                suffix: "本" %>
           </div>
 
           <h5 class="mt-3 pl-1 mb-1">クライミング日数(ジム別)</h5>
@@ -96,7 +115,6 @@
             <% visits_by_gym = @logs.joins(:gym).group(:name).count('DISTINCT date').sort_by{ |_, v| -v } %>
             <%= bar_chart visits_by_gym,
                 points: false,
-                colors: ["#167FFB", "#666"],
                 dataset: {borderWidth: 0},
                 library: {animation: {easing: 'easeOutQuad',"duration": 1000},
                           scales: {xAxes: [{ticks: {padding: 8, stepSize: 1},
@@ -104,9 +122,7 @@
                                    yAxes: [{gridLines: {display:false}}]
                                   }
                          },
-                suffix: "日",
-                height: "200px",
-                messages: {empty: "データがありません"} %>
+                suffix: "日" %>
           </div>
         </div>
 
@@ -116,7 +132,6 @@
           <div class="mb-3">
             <%= column_chart @logs.joins(:route).where('routes.category_id = ?', 1).group_by_day(:date).count,
                 points: false,
-                colors: ["#167FFB", "#666"],
                 dataset: {borderWidth: 0},
                 library: {animation: {easing: 'easeOutQuad',"duration": 1000},
                           scales: {xAxes: [{ticks: {padding: 8},
@@ -124,9 +139,7 @@
                                    yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
                                   }
                          },
-                suffix: "本",
-                height: "200px",
-                messages: {empty: "データがありません"} %>
+                suffix: "本" %>
           </div>
 
           <h5 class="mt-3 pl-1 mb-1">ボルダー完登数(グレード別)</h5>
@@ -147,9 +160,7 @@
                             yAxes: [{gridLines: {display:false}}]
                             }
                           },
-                suffix: "本",
-                height: "200px",
-                messages: {empty: "データがありません"} %>
+                suffix: "本" %>
           </div>
 
           <h5 class="mt-3 pl-1 mb-1">ボルダー最高グレード(日別)</h5>
@@ -185,9 +196,7 @@
                                    yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
                                   }
                          },
-                suffix: "本",
-                height: "200px",
-                messages: {empty: "データがありません"} %>
+                suffix: "本" %>
           </div>
 
           <h5 class="mt-3 pl-1 mb-1">リード完登数</h5>
@@ -208,9 +217,7 @@
                             yAxes: [{gridLines: {display:false}}]
                             }
                           },
-                suffix: "本",
-                height: "200px",
-                messages: {empty: "データがありません"} %>
+                suffix: "本" %>
           </div>
 
           <h5 class="mt-3 pl-1 mb-1">リード最高グレード(日別)</h5>
