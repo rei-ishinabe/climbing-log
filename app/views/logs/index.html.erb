@@ -91,7 +91,7 @@
             <% nagamono = @logs.joins(:route).where('category_id = 4').group_by_day(:date).count %>
 
             <%= column_chart [
-              { name: 'ボルダー', data: lead },
+              { name: 'ボルダー', data: boulder },
               { name: 'リード', data: lead },
               { name: 'トップロープ', data: toprope },
               { name: 'ナガモノ', data: nagamono },
