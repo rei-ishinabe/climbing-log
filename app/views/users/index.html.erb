@@ -1,0 +1,15 @@
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <h4>ランキング</h4>
+      <% @users.each do |user| %>
+        <div>
+          ニックネーム：<%= user.nickname %>
+          累計トライ数：<%= user.logs.count %>
+          is_public：<%= user.is_public %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
