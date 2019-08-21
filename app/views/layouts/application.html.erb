@@ -3,24 +3,29 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>クラログ</title>
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
+
+      <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:title" content="<%= meta_title %>">
+    <meta name="twitter:description" content="<%= meta_description %>">
+    <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:image:src" content="<%= meta_image %>">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
     <%= favicon_link_tag('favicon.png') %>
-    <meta name="keywords" content="クライミング, ボルダリング, climbing, bouldering, 記録, ログ, 管理">
-    <meta name="description" content="クラログαはボルダリングジム、クライミングジムで登った記録をカンタンに保存・管理できるツールです。登った本数やグレードの推移などもひと目で確認できます。">
-    <meta name="robots" content="all">
-    <meta property="og:title" content="ボルダリングジム、クライミングジムで登った記録をカンタンに保存・管理">
-    <meta property="og:type" content="website">
-    <meta property="og:url"
-       content="https://www.climbing-log.com">
-    <meta property="og:site_name" content="クラログ">
-    <meta property="og:description"
-       content="クラログはボルダリングジム、クライミングジムで登った記録をカンタンに保存・管理できるツールです。登った本数やグレードの推移などもひと目で確認できます。">
-    <meta property="og:image:secure_url"
-       content="https://www.climbing-log.com/assets/climbing-log-image.jpg">
     <%= javascript_include_tag 'application' %>
   </head>
   <body>
