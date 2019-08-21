@@ -17,7 +17,11 @@ class ApplicationController < ActionController::Base
   # end
 
   def after_sign_in_path_for(resource)
-    root_path
+    if current_user.logs.exists?
+      logs_path
+    else
+      root_path
+    end
   end
 
 
