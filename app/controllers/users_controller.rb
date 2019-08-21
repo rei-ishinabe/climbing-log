@@ -5,5 +5,6 @@ class UsersController < ApplicationController
     else
       @users = policy_scope(User).all.where('is_public = ?', true)
     end
+    authorize @users
   end
 end
