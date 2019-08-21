@@ -47,7 +47,7 @@
           </div>
 
           <div class="flex-fill">
-            <div>クライミング日数
+            <div>クライミング日数：
               <span style="font-size: 1.2rem;"><%= @logs.count('DISTINCT date') if @logs.exists? %></span></%>
             </div>
             <div class="mt-1">
