@@ -8,4 +8,8 @@ class UserPolicy < ApplicationPolicy
   def index?
     true
   end
+
+  def show?
+    record == user || record.is_public  || user.admin
+  end
 end

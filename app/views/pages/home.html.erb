@@ -17,7 +17,7 @@
             </span>
           </div>
           <%= link_to 'ジム検索/選択', gyms_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
-          <%= link_to 'ダッシュボード', logs_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
+          <%= link_to 'ダッシュボード', user_path(current_user), class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
           <%= link_to 'アカウント設定', edit_user_registration_path, class:'btn btn-primary btn-lg btn-block p-3 my-3' %>
         <% else %>
           <div>クラログはボルダリングジム、クライミングジムで登った記録をカンタンに保存・管理できるツールです。登った本数やグレードの推移などもひと目で確認できます。</div>

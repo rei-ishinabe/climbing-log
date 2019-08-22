@@ -1,0 +1,565 @@
+<div class="container mt-3 ">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <div class="d-flex mb-1 align-items-center">
+      <% if @user.image.blank? && @user == current_user %>
+        <%= link_to edit_user_registration_path do %>
+          <%= image_tag 'no_profile_image_logo.png', size:'40x40', class:'rounded-circle mr-3' %>
+        <% end %>
+      <% elsif @user.image.blank? %>
+        <%= image_tag 'no_profile_image_logo.png', size:'40x40', class:'rounded-circle mr-3' %>
+      <% else %>
+        <%= cl_image_tag @user.image, height: 40, width: 40, crop: :fill, class:'rounded-circle mr-3' %>
+      <% end %>
+        <div>
+          <h4 class="mb-0">
+            <% if @user.nickname.blank? %>
+              <%= link_to 'ニックネーム未設定', edit_user_registration_path %>さん
+            <% else %>
+              <%= @user.nickname %>
+            <% end %>さんのクラログ
+          </h4>
+        </div>
+      </div>
+      <div class="text-left mb-1"  style="font-size: 15px;">
+        <%= @from.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@from.wday]})") %> 〜 <%= @to.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@to.wday]})")  %>
+      </div>
+      <div class="btn-group btn-group-toggle d-flex mb-2">
+          <%= active_link_to '全期間', user_path(@user), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '今年', user_path(@user, from: Date.today.beginning_of_year, to: Date.today.end_of_year), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '今月', user_path(@user, from: Date.today.beginning_of_month, to: Date.today.end_of_month), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '今週', user_path(@user, from: Date.today.beginning_of_week, to: Date.today.end_of_week), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '今日', user_path(@user, from: Date.today, to: Date.today), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+      </div>
+
+
+      <div class="card px-2 pt-1 pb-0 mt-1">
+        <div class="d-flex">
+          <div class="flex-fill">
+            完登本数：<span style="font-size: 1.2rem;"><%= @logs.where('status_id < ?', 4).count %></span>
+          </div>
+          <div class="flex-fill">
+              クライミング日数：<span style="font-size: 1.2rem;"><%= @logs.count('DISTINCT date') if @logs.exists? %></span></%>
+          </div>
+        </div>
+
+
+        <div class="d-md-flex">
+          <div class="my-1 flex-fill">ボルダー最高グレード
+            <div>
+              <% boulder_best_os =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 1, 1).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
+              <% unless boulder_best_os.nil? %>
+                OS<%= link_to_if @user == current_user, route_path(boulder_best_os.route) do %>
+                  <span style="font-size: 1.2rem;"><%= boulder_best_os.route.combined_grade %></span></%>
+                <% end %>
+              <% end %>
+              <% boulder_best_fl =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 1, 2).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
+              <% unless boulder_best_fl.nil? %>
+                FL<%= link_to_if @user == current_user, route_path(boulder_best_fl.route) do %>
+                  <span style="font-size: 1.2rem;"><%= boulder_best_fl.route.combined_grade %></span></%>
+                <% end %>
+              <% end %>
+              <% boulder_best_sent =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 1, 3).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
+              <% unless boulder_best_sent.nil? %>
+                完登<%= link_to_if @user == current_user, route_path(boulder_best_sent.route) do %>
+                  <span style="font-size: 1.2rem;"><%= boulder_best_sent.route.combined_grade %></span></%>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+
+          <div class="my-1 flex-fill">
+            <div>リード最高グレード
+              <div>
+                <% lead_best_os =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 2, 1).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
+                <% unless lead_best_os.nil? %>
+                  OS<%= link_to_if @user == current_user, route_path(lead_best_os.route) do %>
+                    <span style="font-size: 1.2rem;"><%=lead_best_os.route.combined_grade %></span>
+                  <% end %>
+                <% end %>
+                <% lead_best_fl =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 2, 2).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
+                <% unless lead_best_fl.nil? %>
+                  FL<%= link_to_if @user == current_user, route_path(lead_best_fl.route) do %>
+                    <span style="font-size: 1.2rem;"><%=lead_best_fl.route.combined_grade %></span>
+                  <% end %>
+                <% end %>
+                <% lead_best_rp =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 2, 3).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
+                <% unless lead_best_rp.nil? %>
+                  RP<%= link_to_if @user == current_user, route_path(lead_best_rp.route) do %>
+                    <span style="font-size: 1.2rem;"><%=lead_best_rp.route.combined_grade %></span>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+<!-- tab menu -->
+      <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="boulder-tab" data-toggle="tab" href="#boulder" role="tab" aria-controls="boulder" aria-selected="false">ボルダー</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="lead-tab" data-toggle="tab" href="#lead" role="tab" aria-controls="lead" aria-selected="false">リード</a>
+        </li>
+      </ul>
+
+
+
+<!-- tab contents start -->
+      <div class="tab-content" id="myTabContent">
+
+<!-- tab all -->
+        <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+          <h5 class="mt-3 pl-1 mb-1">合計トライ本数(日別)</h5>
+          <div class="mb-3">
+            <% boulder = @logs.joins(:route).where('category_id = 1').group_by_day(:date).count %>
+            <% lead = @logs.joins(:route).where('category_id = 2').group_by_day(:date).count %>
+            <% toprope = @logs.joins(:route).where('category_id = 3').group_by_day(:date).count %>
+            <% nagamono = @logs.joins(:route).where('category_id = 4').group_by_day(:date).count %>
+
+            <%= column_chart [
+              { name: 'ボルダー', data: boulder },
+              { name: 'リード', data: lead },
+              { name: 'トップロープ', data: toprope },
+              { name: 'ナガモノ', data: nagamono },
+            ],
+                points: false,
+                dataset: {borderWidth: 0},
+                library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                          scales: {xAxes: [{ticks: {padding: 8},
+                                                    gridLines: {drawTicks: false},
+                                                    stacked: true }],
+                                   yAxes: [{ticks: {suggestedMax: 15, stepSize: 5},
+                                                    gridLines: {display:false},
+                                                    stacked: true }]
+                                  },
+                          legend: {
+                                display: true,
+                                labels: {
+                                    boxWidth: 10,
+                                    }
+                                  }
+                         },
+                suffix: "本" %>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">クライミング日数(ジム別)</h5>
+          <div class="mb-3">
+            <% visits_by_gym = @logs.joins(:gym).group(:name).count('DISTINCT date').sort_by{ |_, v| -v } %>
+            <%= bar_chart visits_by_gym,
+                points: false,
+                dataset: {borderWidth: 0},
+                library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                          scales: {xAxes: [{ticks: {padding: 8, stepSize: 1},
+                                            gridLines: {drawTicks: false}}],
+                                   yAxes: [{gridLines: {display:false}}]
+                                  }
+                         },
+                suffix: "日" %>
+          </div>
+        </div>
+
+<!-- tab boulder -->
+        <div class="tab-pane fade" id="boulder" role="tabpanel" aria-labelledby="boulder-tab">
+          <h5 class="mt-3 pl-1 mb-1">ボルダートライ数(日別)</h5>
+          <div class="mb-3">
+            <%= column_chart @logs.joins(:route).where('routes.category_id = ?', 1).group_by_day(:date).count,
+                points: false,
+                dataset: {borderWidth: 0},
+                library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                          scales: {xAxes: [{ticks: {padding: 8},
+                                            gridLines: {drawTicks: false}}],
+                                   yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
+                                  }
+                         },
+                suffix: "本" %>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">ボルダー完登数(グレード別)</h5>
+          <% boulders_by_grade = {} %>
+            <% Grade.where(grade_type: 'ボルダー').each do |grade| %>
+            <% boulders_by_grade[grade.grade] = 0 %>
+          <% end %>
+          <% sents = @logs.joins(:route).joins(:grade).select('grades.grade').where('routes.category_id = ? AND logs.status_id < ?', 1, 4 ).group('grades.grade').count %>
+          <% boulders_by_grade =  boulders_by_grade.merge(sents) %>
+          <div class="mb-3">
+            <%= bar_chart boulders_by_grade,
+                points: false,
+                colors: ["#167FFB", "#666"],
+                dataset: {borderWidth: 0},
+                library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                          scales: {
+                            xAxes: [{ticks: {suggestedMax: 10, stepSize: 5, padding: 8}, gridLines: {drawTicks: false}}],
+                            yAxes: [{gridLines: {display:false}}]
+                            }
+                          },
+                suffix: "本" %>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">ボルダー最高グレード(日別)</h5>
+          <div>
+            <% best_boulder_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:date).order(:date).maximum('routes.grade_id') %>
+            <% @labels = best_boulder_grade_by_date.keys %>
+            <% @datas = best_boulder_grade_by_date.values %>
+            <canvas id="best_boulder_grade_by_date" width="400" height="300"></canvas>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">ボルダー最高グレード(タイプ別)</h5>
+          <div>
+            <% @best_grades = {'スラブ' => 0, '垂壁' => 0, '前傾壁' => 0, '強傾斜壁' => 0, 'ルーフ' => 0} %>
+            <% best_boulder_grade_by_type = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:route_type).maximum('routes.grade_id') %>
+            <% @best_grades = @best_grades.merge(best_boulder_grade_by_type) %>
+            <% @route_types = @best_grades.keys %>
+            <% @best_grades = @best_grades.values %>
+            <canvas id="best_boulder_grade_by_type" width="400" height="300"></canvas>
+          </div>
+        </div>
+
+<!-- tab lead -->
+        <div class="tab-pane fade" id="lead" role="tabpanel" aria-labelledby="lead-tab">
+          <h5 class="mt-3 pl-1 mb-1">リードトライ数(日別)</h5>
+          <div class="mb-3">
+            <%= column_chart @logs.joins(:route).where('routes.category_id = ?', 2).group_by_day(:date).count,
+                points: false,
+                colors: ["#167FFB", "#666"],
+                dataset: {borderWidth: 0},
+                library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                          scales: {xAxes: [{ticks: {padding: 8},
+                                            gridLines: {drawTicks: false}}],
+                                   yAxes: [{ticks: {suggestedMax: 15, stepSize: 5}, gridLines: {display:false}}]
+                                  }
+                         },
+                suffix: "本" %>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">リード完登数</h5>
+          <% leads_by_grade = {} %>
+            <% Grade.where(grade_type: 'ルート').each do |grade| %>
+            <% leads_by_grade[grade.grade] = 0 %>
+          <% end %>
+          <% sents = @logs.joins(:route).joins(:grade).select('grades.grade').where('routes.category_id = ? AND logs.status_id < ?', 2, 4 ).group('grades.grade').count %>
+          <% leads_by_grade =  leads_by_grade.merge(sents) %>
+          <div class="mb-3">
+            <%= bar_chart leads_by_grade,
+                points: false,
+                colors: ["#167FFB", "#666"],
+                dataset: {borderWidth: 0},
+                library: {animation: {easing: 'easeOutQuad',"duration": 1000},
+                          scales: {
+                            xAxes: [{ticks: {suggestedMax: 10, stepSize: 5, padding: 8}, gridLines: {drawTicks: false}}],
+                            yAxes: [{gridLines: {display:false}}]
+                            }
+                          },
+                suffix: "本" %>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">リード最高グレード(日別)</h5>
+          <div>
+            <% best_lead_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:date).order(:date).maximum('routes.grade_id') %>
+            <% @labels_lead_by_grade = best_lead_grade_by_date.keys %>
+            <% @datas_lead_by_grade = best_lead_grade_by_date.values %>
+            <canvas id="best_lead_grade_by_date" width="400" height="300"></canvas>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">リード最高グレード(タイプ別)</h5>
+          <div>
+            <% @best_grades_lead = {'スラブ' => 14, '垂壁' => 14, '前傾壁' => 14, '強傾斜壁' => 14, 'ルーフ' => 14} %>
+            <% best_lead_grade_by_type = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:route_type).maximum('routes.grade_id') %>
+            <% @best_grades_lead = @best_grades_lead.merge(best_lead_grade_by_type) %>
+            <% @route_types_lead = @best_grades_lead.keys %>
+            <% @best_grades_lead = @best_grades_lead.values %>
+            <canvas id="best_lead_grade_by_type" width="400" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+<!-- tab contents end -->
+
+    </div>
+  </div>
+</div>
+
+<script>
+var chartA = document.getElementById("best_boulder_grade_by_date").getContext('2d');
+var best_boulder_grade_by_date = new Chart(chartA, {
+    type: 'line',
+    data: {
+        labels: <%= @labels.to_json.html_safe %>,
+        datasets: [{
+            label: "グレード",
+            data: <%= @datas.to_json.html_safe %>,
+            backgroundColor: 'rgba(22, 127, 251, 0.6)',
+            borderColor: 'rgba(22, 127, 251, 0.6)',
+            fill: false
+        }]
+    },
+    options: {
+        title:  {
+          display: false,
+        },
+        legend: {
+          display: false
+        },
+        tooltips: {
+            // Disable the on-canvas tooltip
+            enabled: false
+        },
+        scales: {
+            xAxes: [{
+                type: 'time',
+                time: {minUnit: 'day',
+                       displayFormats: {
+                        day: 'YYYY-MM-DD'
+                        }
+                      },
+                distribution: 'linear',
+                gridLines: {display:false}
+            }],
+            yAxes: [{
+                ticks: {
+                    stepSize: 1,
+                    min: 0,
+                    max: 15,
+                    callback: function(value, index, values) {
+                        switch(value) {
+                          case 1:
+                            return '9級';
+                          case 2:
+                            return '8級';
+                          case 3:
+                            return '7級';
+                          case 4:
+                            return '6級';
+                          case 5:
+                            return '5級';
+                          case 6:
+                            return '4級';
+                          case 7:
+                            return '3級';
+                          case 8:
+                            return '2級';
+                          case 9:
+                            return '1級';
+                          case 10:
+                            return '初段';
+                          case 11:
+                            return '2段';
+                          case 12:
+                            return '3段';
+                          case 13:
+                            return '4段';
+                          case 14:
+                            return '5段';
+                        }
+                    }
+                }
+            }]
+        }
+    }
+});
+
+var chartB = document.getElementById("best_boulder_grade_by_type").getContext('2d');
+var best_boulder_grade_by_type = new Chart(chartB, {
+    type: 'radar',
+    data: {
+        labels: <%= @route_types.to_json.html_safe %>,
+        datasets: [{
+            label: "グレード",
+            data: <%= @best_grades.to_json.html_safe %>,
+            backgroundColor: 'rgba(22, 127, 251, 0.6)',
+            borderColor: 'rgba(22, 127, 251, 0.6)',
+            fill: false
+        }]
+    },
+    options: {
+        title:  {
+          display: false,
+        },
+        legend: {
+          display: false
+        },
+        tooltips: {
+            // Disable the on-canvas tooltip
+            enabled: false
+        },
+        scale: {
+            ticks: {
+                beginAtZero: true,
+                max: 14,
+                callback: function(tick) {
+                  switch(tick) {
+                          case 1:
+                            return '9級';
+                          case 2:
+                            return '8級';
+                          case 3:
+                            return '7級';
+                          case 4:
+                            return '6級';
+                          case 5:
+                            return '5級';
+                          case 6:
+                            return '4級';
+                          case 7:
+                            return '3級';
+                          case 8:
+                            return '2級';
+                          case 9:
+                            return '1級';
+                          case 10:
+                            return '初段';
+                          case 11:
+                            return '2段';
+                          case 12:
+                            return '3段';
+                          case 13:
+                            return '4段';
+                          case 14:
+                            return '5段';
+                        }
+                }
+            }
+        }
+    }
+});
+
+var chartC = document.getElementById("best_lead_grade_by_date").getContext('2d');
+var best_lead_grade_by_date = new Chart(chartC, {
+    type: 'line',
+    data: {
+        labels: <%= @labels_lead_by_grade.to_json.html_safe %>,
+        datasets: [{
+            label: "グレード",
+            data: <%= @datas_lead_by_grade.to_json.html_safe %>,
+            backgroundColor: 'rgba(22, 127, 251, 0.6)',
+            borderColor: 'rgba(22, 127, 251, 0.6)',
+            fill: false
+        }]
+    },
+    options: {
+        title:  {
+          display: false,
+        },
+        legend: {
+          display: false
+        },
+        tooltips: {
+            // Disable the on-canvas tooltip
+            enabled: false
+        },
+        scales: {
+            xAxes: [{
+                type: 'time',
+                time: {minUnit: 'day',
+                       displayFormats: {
+                        day: 'YYYY-MM-DD'
+                        }
+                      },
+                distribution: 'linear',
+                gridLines: {display:false}
+            }],
+            yAxes: [{
+                ticks: {
+                    stepSize: 1,
+                    min: 14,
+                    max: 25,
+                    callback: function(value, index, values) {
+                        switch(value) {
+                          case 15:
+                            return '5.5';
+                          case 16:
+                            return '5.6';
+                          case 17:
+                            return '5.7';
+                          case 18:
+                            return '5.8';
+                          case 19:
+                            return '5.9';
+                          case 20:
+                            return '5.10';
+                          case 21:
+                            return '5.11';
+                          case 22:
+                            return '5.12';
+                          case 23:
+                            return '5.13';
+                          case 24:
+                            return '5.14';
+                          case 25:
+                            return '5.15';
+                        }
+                    }
+                }
+            }]
+        }
+    }
+});
+
+
+var chartD = document.getElementById("best_lead_grade_by_type").getContext('2d');
+var best_boulder_grade_by_type = new Chart(chartD, {
+    type: 'radar',
+    data: {
+        labels: <%= @route_types_lead.to_json.html_safe %>,
+        datasets: [{
+            label: "グレード",
+            data: <%= @best_grades_lead.to_json.html_safe %>,
+            backgroundColor: 'rgba(22, 127, 251, 0.6)',
+            borderColor: 'rgba(22, 127, 251, 0.6)',
+            fill: false
+        }]
+    },
+    options: {
+        title:  {
+          display: false,
+        },
+        legend: {
+          display: false
+        },
+        tooltips: {
+            // Disable the on-canvas tooltip
+            enabled: false
+        },
+        scale: {
+            ticks: {
+                beginAtZero: true,
+                min: 14,
+                max: 25,
+                callback: function(tick) {
+                  switch(tick) {
+                          case 15:
+                            return '5.5';
+                          case 16:
+                            return '5.6';
+                          case 17:
+                            return '5.7';
+                          case 18:
+                            return '5.8';
+                          case 19:
+                            return '5.9';
+                          case 20:
+                            return '5.10';
+                          case 21:
+                            return '5.11';
+                          case 22:
+                            return '5.12';
+                          case 23:
+                            return '5.13';
+                          case 24:
+                            return '5.14';
+                          case 25:
+                            return '5.15';
+                        }
+                }
+            }
+        }
+    }
+});
+
+</script>
