@@ -3,25 +3,25 @@
     <div class="col-12 col-md-10 mb-5">
       <div class="my-3">クラログαはボルダリングジム、クライミングジムで登った記録をカンタンに保存・管理できるツールです。登った本数やグレードの推移などもひと目で確認できます。</div>
       <h4 class="mt-2 mb-2">使い方</h4>
-      <div class="card p-2 mb-3">
-        <h5><i class="fas fa-search"></i> Step 1 - ジムを検索/選択 </h5>
-        <div>登録されている日本全国のジムを、ジム名や住所で検索して選択します。</div>
-      </div>
-      <div class="card p-1 mb-3">
-        <h5><i class="fas fa-plus-circle"></i> Step 2 - 課題を登録 </h5>
-        <div>課題名やグレードなどを登録します。</div>
-      </div>
-      <div class="card p-1 mb-3">
-        <h5><i class="fas fa-tasks"></i> Step 3 - ログを追加 </h5>
-        <div>登録した課題に、トライしたログを追加します。</div>
-      </div>
-       <div class="card p-1 mb-3">
-        <h5><i class="fas fa-chart-line"></i> Step 4 - ダッシュボードを確認 </h5>
-        <div>いつ何本登ったか、最高グレードがどう推移したか？などのデータをひと目で確認できます。</div>
-      </div>
-      <% unless user_signed_in? %>
-        <a class="btn btn-primary btn-block btn-lg mb-5" href="/users/sign_up">いますぐアカウント登録(無料)</a>
-      <% end %>
+        <div class="card p-2 mb-3">
+          <h5><i class="fas fa-search"></i> Step 1 - ジムを検索/選択 </h5>
+          <div>登録されている日本全国のジムを、ジム名や住所で検索して選択します。</div>
+        </div>
+        <div class="card p-1 mb-3">
+          <h5><i class="fas fa-plus-circle"></i> Step 2 - 課題を登録 </h5>
+          <div>課題名やグレードなどを登録します。</div>
+        </div>
+        <div class="card p-1 mb-3">
+          <h5><i class="fas fa-tasks"></i> Step 3 - ログを追加 </h5>
+          <div>登録した課題に、トライしたログを追加します。</div>
+        </div>
+         <div class="card p-1 mb-3">
+          <h5><i class="fas fa-chart-line"></i> Step 4 - ダッシュボードを確認 </h5>
+          <div>いつ何本登ったか、最高グレードがどう推移したか？などのデータをひと目で確認できます。</div>
+        </div>
+        <% unless user_signed_in? %>
+          <a class="btn btn-primary btn-block btn-lg mb-5" href="/users/sign_up">いますぐアカウント登録(無料)</a>
+        <% end %>
     </div>
   </div>
 </div>
