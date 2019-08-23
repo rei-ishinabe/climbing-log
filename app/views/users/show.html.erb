@@ -49,20 +49,35 @@
             <div>
               <% boulder_best_os =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 1, 1).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
               <% unless boulder_best_os.nil? %>
-                OS<%= link_to route_path(boulder_best_os.route) do %>
-                  <span style="font-size: 1.2rem;"><%= boulder_best_os.route.combined_grade %></span></%>
+                OS
+                <% if @user == current_user %>
+                  <%= link_to route_path(boulder_best_os.route) do %>
+                    <span style="font-size: 1.2rem;"><%= boulder_best_os.route.combined_grade %></span>
+                  <% end %>
+                <% else %>
+                    <span style="font-size: 1.2rem;"><%= boulder_best_os.route.combined_grade %></span>
                 <% end %>
               <% end %>
               <% boulder_best_fl =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 1, 2).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
               <% unless boulder_best_fl.nil? %>
-                FL<%= link_to route_path(boulder_best_fl.route) do %>
-                  <span style="font-size: 1.2rem;"><%= boulder_best_fl.route.combined_grade %></span></%>
+                FL
+                <% if @user == current_user %>
+                  <%= link_to route_path(boulder_best_fl.route) do %>
+                    <span style="font-size: 1.2rem;"><%= boulder_best_fl.route.combined_grade %></span>
+                  <% end %>
+                <% else %>
+                    <span style="font-size: 1.2rem;"><%= boulder_best_fl.route.combined_grade %></span>
                 <% end %>
               <% end %>
               <% boulder_best_sent =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 1, 3).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
               <% unless boulder_best_sent.nil? %>
-                完登<%= link_to route_path(boulder_best_sent.route) do %>
-                  <span style="font-size: 1.2rem;"><%= boulder_best_sent.route.combined_grade %></span></%>
+                完登
+                <% if @user == current_user %>
+                  <%= link_to route_path(boulder_best_sent.route) do %>
+                    <span style="font-size: 1.2rem;"><%= boulder_best_sent.route.combined_grade %></span>
+                  <% end %>
+                <% else %>
+                  <span style="font-size: 1.2rem;"><%= boulder_best_sent.route.combined_grade %></span>
                 <% end %>
               <% end %>
             </div>
@@ -74,19 +89,34 @@
               <div>
                 <% lead_best_os =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 2, 1).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
                 <% unless lead_best_os.nil? %>
-                  OS<%= link_to route_path(lead_best_os.route) do %>
+                  OS
+                  <% if @user == current_user %>
+                    <%= link_to route_path(lead_best_os.route) do %>
+                      <span style="font-size: 1.2rem;"><%=lead_best_os.route.combined_grade %></span>
+                    <% end %>
+                  <% else %>
                     <span style="font-size: 1.2rem;"><%=lead_best_os.route.combined_grade %></span>
                   <% end %>
                 <% end %>
                 <% lead_best_fl =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 2, 2).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
                 <% unless lead_best_fl.nil? %>
-                  FL<%= link_to route_path(lead_best_fl.route) do %>
-                    <span style="font-size: 1.2rem;"><%=lead_best_fl.route.combined_grade %></span>
+                  FL
+                  <% if @user == current_user %>
+                    <%= link_to route_path(lead_best_fl.route) do %>
+                      <span style="font-size: 1.2rem;"><%=lead_best_fl.route.combined_grade %></span>
+                    <% end %>
+                  <% else %>
+                      <span style="font-size: 1.2rem;"><%=lead_best_fl.route.combined_grade %></span>
                   <% end %>
                 <% end %>
                 <% lead_best_rp =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 2, 3).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists? %>
                 <% unless lead_best_rp.nil? %>
-                  RP<%= link_to route_path(lead_best_rp.route) do %>
+                  RP
+                  <% if @user == current_user %>
+                    <%= link_to route_path(lead_best_rp.route) do %>
+                      <span style="font-size: 1.2rem;"><%=lead_best_rp.route.combined_grade %></span>
+                    <% end %>
+                  <% else %>
                     <span style="font-size: 1.2rem;"><%=lead_best_rp.route.combined_grade %></span>
                   <% end %>
                 <% end %>
