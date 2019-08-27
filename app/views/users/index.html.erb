@@ -3,6 +3,16 @@
     <div class="col-12 col-md-8">
       <h4>合計本数ランキング</h4>
       <p>ランキングは <%= link_to 'アカウント設定', edit_user_registration_path %> でプロフィールを公開している場合のみ表示されます</p>
+      <div class="text-left mb-1"  style="font-size: 15px;">
+        <%= @from.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@from.wday]})") %> 〜 <%= @to.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@to.wday]})")  %>
+      </div>
+      <div class="btn-group btn-group-toggle d-flex mb-2">
+          <%= active_link_to '全期間', users_path, active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '今年', users_path(from: Date.today.beginning_of_year, to: Date.today.end_of_year), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '今月', users_path(from: Date.today.beginning_of_month, to: Date.today.end_of_month), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '今週', users_path(from: Date.today.beginning_of_week, to: Date.today.end_of_week), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '今日', users_path(from: Date.today, to: Date.today), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+      </div>
       <% @users.each do |user| %>
         <%= link_to user_path(user) do %>
           <div class="card my-2 d-flex">

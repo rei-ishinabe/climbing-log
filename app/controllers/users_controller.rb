@@ -1,9 +1,21 @@
 class UsersController < ApplicationController
   def index
-    if current_user.admin
-      @users = policy_scope(User).all.joins(:logs).group('users.id').order('count(user_id) desc')
+    if params[:from].nil?
+      @from = Log.all.order(date: 'ASC').first.date
     else
-      @users = policy_scope(User).all.where('is_public = ?', true).joins(:logs).group('users.id').order('count(user_id) desc')
+      @from = params[:from].to_date
+    end
+
+    if params[:to].nil?
+      @to = Date.today
+    else
+      @to = params[:to].to_date
+    end
+
+    if current_user.admin
+      @users = policy_scope(User).all.joins(:logs).where('logs.date BETWEEN ? AND ?', @from, @to).group('users.id').order('count(user_id) desc')
+    else
+      @users = policy_scope(User).all.joins(:logs).where('logs.date BETWEEN ? AND ? AND is_public = ?', @from, @to, true).group('users.id').order('count(user_id) desc')
     end
     authorize @users
   end
@@ -12,21 +24,23 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize @user
 
-    @from = params[:from].to_date unless params[:from].nil?
-    @to = params[:to].to_date unless params[:to].nil?
-    unless @from.nil? | @to.nil?
-      @logs = Log.all.joins(:route).where('logs.date BETWEEN ? AND ? AND routes.user_id = ?', @from, @to, @user.id)
-    else
-      @logs = Log.all.joins(:route).where('routes.user_id = ?', @user.id)
-      if @logs.first.nil?
-        @from = Date.today
+    if params[:from].nil?
+      if @user.logs.exists?
+        @from = @user.logs.order(date: 'ASC').first.date
       else
-        @from = @logs.order(date: 'ASC').first.date
+        @from = Date.today
       end
-      @to = Date.today
+    else
+      @from = params[:from].to_date
     end
 
+    if params[:to].nil?
+      @to = Date.today
+    else
+      @to = params[:to].to_date
+    end
 
+    @logs = Log.all.joins(:route).where('logs.date BETWEEN ? AND ? AND routes.user_id = ?', @from, @to, @user.id)
 
   end
 end
