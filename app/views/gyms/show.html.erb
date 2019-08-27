@@ -7,6 +7,8 @@
           <%= link_to '編集', edit_gym_path(@gym) %>
         <% end %>
       </div>
+
+<!-- summary -->
       <div class="card px-2 py-1 mt-1">
         <div>最終訪問日：
           <%= @gym.last_visit_date(current_user) %>
@@ -17,9 +19,6 @@
             <% sent_count += 1 if route.sent %>
           <% end %>
           <%= sent_count %>
-        </div>
-        <div>累計訪問日数：
-          <%= @gym.routes.joins(:logs).where('user_id = ?', current_user).count('DISTINCT date') if @gym.routes.exists? %>
         </div>
         <div>ボルダー最高グレード：
           <% boulder =  @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 1, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
@@ -38,9 +37,13 @@
           <% end %>
         </div>
       </div>
+
+<!-- dates -->
       <div class="text-left mt-2 mb-1" style="font-size: 15px;">
         <%= @from.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@from.wday]})") %> 〜 <%= @to.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@to.wday]})")  %>
       </div>
+
+<!-- Period selector  -->
       <div class="btn-group btn-group-toggle d-flex mb-2">
         <%= active_link_to '全期間', gym_path(@gym),  active: :exact, class:"btn btn-outline-primary btn-sm"  %>
         <%= active_link_to '今年', gym_path(@gym, from: Date.today.beginning_of_year, to: Date.today.end_of_year), active: :exact, class:"btn btn-outline-primary btn-sm" %>
@@ -48,7 +51,9 @@
         <%= active_link_to '今週', gym_path(@gym, from: Date.today.beginning_of_week, to: Date.today.end_of_week), active: :exact, class:"btn btn-outline-primary btn-sm"  %>
         <%= active_link_to '今日', gym_path(@gym, from: Date.today, to: Date.today), active: :exact, class:"btn btn-outline-primary btn-sm"  %>
       </div>
-      <div class="btn-group btn-group-toggle d-flex mb-3" data-toggle="buttons">
+
+<!-- Status selector -->
+      <div class="btn-group btn-group-toggle d-flex mb-2" data-toggle="buttons">
         <label class="btn btn-outline-primary btn-sm active">
           <input type="radio" name="options" id="showAll" autocomplete="off" checked class="flex-fill"> All
         </label>
@@ -59,10 +64,32 @@
           <input type="radio" name="options" id="unsentsOnly" autocomplete="off" class="flex-fill"> 未完登分のみ
         </label>
       </div>
+
+<!-- Category selector -->
+      <div class="btn-group btn-group-toggle d-flex mb-3" data-toggle="buttons">
+        <label class="btn btn-outline-primary btn-sm active">
+          <input type="radio" name="options" id="allCategory" autocomplete="off" checked class="flex-fill"> All
+        </label>
+        <label class="btn btn-outline-primary btn-sm">
+          <input type="radio" name="options" id="boulderOnly" autocomplete="off" class="flex-fill"> ボルダー
+        </label>
+        <label class="btn btn-outline-primary btn-sm">
+          <input type="radio" name="options" id="leadOnly" autocomplete="off" class="flex-fill"> リード
+        </label>
+        <label class="btn btn-outline-primary btn-sm">
+          <input type="radio" name="options" id="topropeOnly" autocomplete="off" class="flex-fill"> トップロープ
+        </label>
+        <label class="btn btn-outline-primary btn-sm">
+          <input type="radio" name="options" id="nagamonoOnly" autocomplete="off" class="flex-fill"> ナガモノ
+        </label>
+      </div>
+
+
+<!-- Results -->
       <div>
         <% @routes.each do |route| %>
           <div class="<%= route.sent ? 'sent' : 'unsent' %>">
-            <div class="card my-2 p-1">
+            <div class="card my-2 p-1 category<%= route.category_id %>">
               <div>
                 <div>
                   <%= link_to route_path(route) do %>
@@ -94,9 +121,21 @@
 <script>
   const sents = document.querySelectorAll('.sent');
   const unsents = document.querySelectorAll('.unsent');
+  const boulders = document.querySelectorAll('.category1');
+  const leads = document.querySelectorAll('.category2');
+  const topropes = document.querySelectorAll('.category3');
+  const nagamonos = document.querySelectorAll('.category4');
+
   const showAll = document.getElementById('showAll');
   const sentsOnly = document.getElementById('sentsOnly');
   const unsentsOnly = document.getElementById('unsentsOnly');
+
+  const allCategory = document.getElementById('allCategory');
+  const boulderOnly = document.getElementById('boulderOnly');
+  const leadOnly = document.getElementById('leadOnly');
+  const topropeOnly = document.getElementById('topropeOnly');
+  const nagamonoOnly = document.getElementById('nagamonoOnly');
+
   showAll.addEventListener('focus',(event) => {
     sents.forEach((sent) => {
       sent.classList.remove('d-none');
@@ -121,5 +160,82 @@
       unsent.classList.remove('d-none');
     });
   });
+
+  allCategory.addEventListener('focus',(event) => {
+    boulders.forEach((boulder) => {
+      boulder.classList.remove('d-none');
+    });
+    leads.forEach((lead) => {
+      lead.classList.remove('d-none');
+    });
+    topropes.forEach((toprope) => {
+      toprope.classList.remove('d-none');
+    });
+    nagamonos.forEach((nagamono) => {
+      nagamono.classList.remove('d-none');
+    });
+  });
+
+  boulderOnly.addEventListener('focus',(event) => {
+    boulders.forEach((boulder) => {
+      boulder.classList.remove('d-none');
+    });
+    leads.forEach((lead) => {
+      lead.classList.add('d-none');
+    });
+    topropes.forEach((toprope) => {
+      toprope.classList.add('d-none');
+    });
+    nagamonos.forEach((nagamono) => {
+      nagamono.classList.add('d-none');
+    });
+  });
+
+  leadOnly.addEventListener('focus',(event) => {
+    boulders.forEach((boulder) => {
+      boulder.classList.add('d-none');
+    });
+    leads.forEach((lead) => {
+      lead.classList.remove('d-none');
+    });
+    topropes.forEach((toprope) => {
+      toprope.classList.add('d-none');
+    });
+    nagamonos.forEach((nagamono) => {
+      nagamono.classList.add('d-none');
+    });
+  });
+
+  topropeOnly.addEventListener('focus',(event) => {
+    boulders.forEach((boulder) => {
+      boulder.classList.add('d-none');
+    });
+    leads.forEach((lead) => {
+      lead.classList.add('d-none');
+    });
+    topropes.forEach((toprope) => {
+      toprope.classList.remove('d-none');
+    });
+    nagamonos.forEach((nagamono) => {
+      nagamono.classList.add('d-none');
+    });
+  });
+
+  nagamonoOnly.addEventListener('focus',(event) => {
+    boulders.forEach((boulder) => {
+      boulder.classList.add('d-none');
+    });
+    leads.forEach((lead) => {
+      lead.classList.add('d-none');
+    });
+    topropes.forEach((toprope) => {
+      toprope.classList.add('d-none');
+    });
+    nagamonos.forEach((nagamono) => {
+      nagamono.classList.remove('d-none');
+    });
+  });
+
+
 </script>
 
