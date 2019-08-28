@@ -62,6 +62,17 @@ class LogsController < ApplicationController
     end
   end
 
+  def duplicate
+    @log = Log.find(params[:id])
+    @new_log = @log.dup
+    authorize @new_log
+    if @new_log.save
+      redirect_to route_path(@new_log.route)
+    else
+      redirect_to route_path(@log.route)
+    end
+  end
+
   private
 
   def log_params

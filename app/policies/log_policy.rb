@@ -16,4 +16,8 @@ class LogPolicy < ApplicationPolicy
   def destroy?
     record.route.user == user || user.admin?
   end
+
+  def duplicate?
+    record.route.user
+  end
 end

@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     resources :logs, only: [:new, :create, :edit, :update]
   end
   resources :routes, only: [:index, :show, :destroy]
-  resources :logs, only: [:index, :destroy]
-
-
+  resources :logs, only: [:index, :destroy] do
+    member do
+      get 'duplicate'
+    end
+  end
 end

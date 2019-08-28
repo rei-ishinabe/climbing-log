@@ -36,11 +36,14 @@
             <div class="card p-1 my-1">
               <div class="d-flex justify-content-between align-items-center">
                 <div>
+                  <%= link_to edit_route_log_path(log.route, log) do %>
                   <span style="font-size: 1.1rem"><%= log.date %></span>
                   <%= Status.find_by(id:log.status_id).status %>
+                  <% end %>
                 </div>
                 <div>
-                  <%= link_to '編集', edit_route_log_path(log.route, log) %>
+                  <%= link_to '複製', duplicate_log_path(log) %>
+                  <%= link_to '削除', log_path(log), method: :delete %>
                 </div>
               </div>
               <div>
