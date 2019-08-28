@@ -45,7 +45,7 @@
                   <%= link_to duplicate_log_path(log) do %>
                     <i class="far fa-copy"></i>
                   <% end %>
-                  <%= link_to log_path(log), method: :delete do %>
+                  <%= link_to log_path(log), method: :delete, data: {confirm: "本当に削除しますか?"} do %>
                     <i class="far fa-trash-alt"></i>
                   <% end %>
                 </div>
