@@ -34,25 +34,26 @@
         <% if @route.logs.exists? %>
           <% @route.logs.order(date: 'DESC').each do |log| %>
             <div class="card p-1 my-1">
-              <div class="d-flex justify-content-between align-items-center">
+
                 <div>
                   <%= link_to edit_route_log_path(log.route, log) do %>
                   <span style="font-size: 1.1rem"><%= log.date %></span>
                   <%= Status.find_by(id:log.status_id).status %>
                   <% end %>
                 </div>
-                <div>
-                  <%= link_to duplicate_log_path(log) do %>
-                    <i class="far fa-copy"></i>
-                  <% end %>
-                  <%= link_to log_path(log), method: :delete, data: {confirm: "本当に削除しますか?"} do %>
-                    <i class="far fa-trash-alt"></i>
-                  <% end %>
-                </div>
-              </div>
               <div>
                 <%= log.comment %>
               </div>
+              <div class="text-right">
+                <%= link_to duplicate_log_path(log) do %>
+                  <i class="far fa-copy"></i>
+                <% end %>
+                <%= link_to log_path(log), method: :delete, data: {confirm: "本当に削除しますか?"} do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              </div>
+
+
             </div>
           <% end %>
         <% else %>
