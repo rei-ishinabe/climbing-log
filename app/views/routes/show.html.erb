@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container mt-3 px-2">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
       <div>
@@ -42,8 +42,12 @@
                   <% end %>
                 </div>
                 <div>
-                  <%= link_to '複製', duplicate_log_path(log) %>
-                  <%= link_to '削除', log_path(log), method: :delete %>
+                  <%= link_to duplicate_log_path(log) do %>
+                    <i class="far fa-copy"></i>
+                  <% end %>
+                  <%= link_to log_path(log), method: :delete do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
                 </div>
               </div>
               <div>
