@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  get 'areas/index'
+  get 'areas/show'
+  get 'areas/new'
+  get 'areas/edit'
   get 'users/index'
   devise_for :users
   resources :users, only: [:index, :show]
   root to: 'pages#home'
   get '/about/', to: 'pages#about'
   get '/terms/', to: 'pages#terms'
+  resources :areas
   resources :gyms do
     resources :routes, only: [:new, :create, :edit, :update]
   end

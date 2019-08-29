@@ -1,0 +1,16 @@
+<div class="container mt-3 px-2">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <%= simple_form_for @area do |f| %>
+        <%= f.input :area_name, label: false, placeholder: 'エリア名' %>
+        <%= f.input :area_name_katakana, label: false, placeholder: 'エリア名(カタカナ)' %>
+        <%= f.input :area_name_alphabet, label: false, placeholder: 'エリア名(アルファベット)' %>
+        <%= f.input :region, label: false, placeholder: '地域' %>
+        <%= f.input :prefecture, label: false, placeholder: '都道府県' %>
+        <%= f.input :latitude, label: false, placeholder: '緯度' %>
+        <%= f.input :longitude, label: false, placeholder: '経度' %>
+        <%= f.submit '登録', class:'btn btn-primary btn-block' %>
+      <% end %>
+    </div>
+  </div>
+</div>
