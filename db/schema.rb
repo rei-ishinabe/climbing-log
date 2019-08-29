@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_03_135940) do
+ActiveRecord::Schema.define(version: 2019_08_29_034047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "areas", force: :cascade do |t|
+    t.string "area_name"
+    t.string "area_name_katakana"
+    t.string "area_name_alphabet"
+    t.string "region"
+    t.string "prefecture"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "category"
@@ -53,6 +65,44 @@ ActiveRecord::Schema.define(version: 2019_08_03_135940) do
     t.index ["status_id"], name: "index_logs_on_status_id"
   end
 
+  create_table "od_logs", force: :cascade do |t|
+    t.datetime "date"
+    t.string "comment"
+    t.bigint "status_id"
+    t.bigint "od_route_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["od_route_id"], name: "index_od_logs_on_od_route_id"
+    t.index ["status_id"], name: "index_od_logs_on_status_id"
+    t.index ["user_id"], name: "index_od_logs_on_user_id"
+  end
+
+  create_table "od_route_reviews", force: :cascade do |t|
+    t.string "comment"
+    t.integer "rating"
+    t.bigint "user_id"
+    t.bigint "od_route_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["od_route_id"], name: "index_od_route_reviews_on_od_route_id"
+    t.index ["user_id"], name: "index_od_route_reviews_on_user_id"
+  end
+
+  create_table "od_routes", force: :cascade do |t|
+    t.string "route_name"
+    t.string "route_name_katakana"
+    t.string "route_name_alphabet"
+    t.bigint "grade_id"
+    t.bigint "sub_grade_id"
+    t.bigint "sub_area_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grade_id"], name: "index_od_routes_on_grade_id"
+    t.index ["sub_area_id"], name: "index_od_routes_on_sub_area_id"
+    t.index ["sub_grade_id"], name: "index_od_routes_on_sub_grade_id"
+  end
+
   create_table "routes", force: :cascade do |t|
     t.string "route_type"
     t.string "image"
@@ -77,6 +127,16 @@ ActiveRecord::Schema.define(version: 2019_08_03_135940) do
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sub_areas", force: :cascade do |t|
+    t.string "sub_area_name"
+    t.string "sub_area_name_katakana"
+    t.string "sub_area_name_alphabet"
+    t.bigint "area_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_sub_areas_on_area_id"
   end
 
   create_table "sub_grades", force: :cascade do |t|
@@ -105,9 +165,18 @@ ActiveRecord::Schema.define(version: 2019_08_03_135940) do
 
   add_foreign_key "logs", "routes"
   add_foreign_key "logs", "statuses"
+  add_foreign_key "od_logs", "od_routes"
+  add_foreign_key "od_logs", "statuses"
+  add_foreign_key "od_logs", "users"
+  add_foreign_key "od_route_reviews", "od_routes"
+  add_foreign_key "od_route_reviews", "users"
+  add_foreign_key "od_routes", "grades"
+  add_foreign_key "od_routes", "sub_areas"
+  add_foreign_key "od_routes", "sub_grades"
   add_foreign_key "routes", "categories"
   add_foreign_key "routes", "grades"
   add_foreign_key "routes", "gyms"
   add_foreign_key "routes", "sub_grades"
   add_foreign_key "routes", "users"
+  add_foreign_key "sub_areas", "areas"
 end
