@@ -7,6 +7,7 @@ class AreasController < ApplicationController
   end
 
   def show
+    @sub_areas = @area.sub_areas
   end
 
   def new

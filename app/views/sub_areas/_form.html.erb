@@ -1,0 +1,23 @@
+<div class="container mt-3  px-2">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <h4><%= link_to @area.area_name, area_path(@area) %></h4>
+      <%= simple_form_for [@area, @sub_area] do |f| %>
+        <%= f.input :sub_area_name,
+               label: false,
+         placeholder: 'サブエリア名' %>
+        <%= f.input :sub_area_name_katakana,
+               label: false,
+         placeholder: 'サブエリア名(カタカナ)' %>
+        <%= f.input :sub_area_name_alphabet,
+               label: false,
+         placeholder: 'サブエリア名(アルファベット)' %>
+        <%= f.submit '登録', class:'btn btn-primary btn-lg btn-block mb-3' %>
+      <% end %>
+      <% unless @sub_area.id.nil? %>
+        <%= link_to 'サブエリアを削除', sub_area_path(@sub_area), method: :delete, data: {confirm: "本当に削除しますか?"}, class:'btn btn-outline-warning btn-lg btn-block mb-3' %>
+      <% end %>
+      <%= link_to '戻る', area_path(@area), class:'btn btn-outline-secondary btn-lg btn-block mb-3' %>
+    </div>
+  </div>
+</div>

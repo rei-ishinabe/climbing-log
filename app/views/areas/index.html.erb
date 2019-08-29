@@ -1,2 +1,19 @@
-<h1>Areas#index</h1>
-<p>Find me in app/views/areas/index.html.erb</p>
+<div class="container mt-3 px-2">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 mb-5 pb-3">
+      <h4>岩場一覧</h4>
+      <div>
+        <% @areas.each do |area| %>
+          <%= link_to area_path(area) do %>
+            <div>
+              <span style="font-size: 1.2em"><%= area.area_name %></span>
+            </div>
+          <% end %>
+        <% end %>
+      <% if current_user.admin? %>
+        <%= link_to "新規エリア登録(管理者用)", new_area_path, class:"btn btn-outline-primary btn-block my-3" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,19 @@
 <div class="container mt-3 px-2">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 mb-5 pb-3">
-      <div class='d-flex align-items-center'>
-        <h4><%= @area.area_name %></h4>
+      <h4><%= @area.area_name %></h4>
+      <div>
+        <% @sub_areas.each do |sub_area| %>
+          <%= link_to area_sub_area_path(sub_area) do %>
+            <div>
+              <span style="font-size: 1.2em"><%= sub_area.sub_area_name %></span>
+            </div>
+          <% end %>
+        <% end %>
       </div>
+      <% if current_user.admin? %>
+        <%= link_to "新規サブエリア登録(管理者用)", new_area_sub_area_path(@area), class:"btn btn-outline-primary btn-block my-3" %>
+      <% end %>
     </div>
   </div>
 </div>
