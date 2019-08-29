@@ -1,0 +1,32 @@
+<div class="container mt-3  px-2">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <h4><%= @sub_area.sub_area_name %></h4>
+      <%= simple_form_for [@sub_area, @od_route] do |f| %>
+        <%= f.input :route_name,
+               label: false,
+         placeholder: 'ルート名' %>
+        <%= f.input :route_name_katakana,
+               label: false,
+         placeholder: 'ルート名(カタカナ)' %>
+        <%= f.input :route_name_alphabet,
+               label: false,
+         placeholder: 'ルート名(アルファベット)' %>
+        <%= f.input :grade_id,
+               label: false,
+              prompt: 'グレードを選択',
+          collection: Grade.all,
+          label_method: :grade,
+          value_method: :id %>
+       <%= f.input :sub_grade_id,
+               label: false,
+              prompt: 'サブグレードを選択(任意)',
+          collection: SubGrade.all,
+          label_method: :sub_grade,
+          value_method: :id %>
+        <%= f.submit '登録', class:'btn btn-primary btn-lg btn-block mb-3' %>
+      <% end %>
+      <%= link_to '戻る', sub_area_path(@sub_area), class:'btn btn-outline-secondary btn-lg btn-block mb-3' %>
+    </div>
+  </div>
+</div>

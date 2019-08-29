@@ -7,7 +7,7 @@
       </div>
       <div>
         <% @sub_areas.each do |sub_area| %>
-          <%= link_to area_sub_area_path(sub_area) do %>
+          <%= link_to sub_area_path(sub_area) do %>
             <div>
               <span style="font-size: 1.2em"><%= sub_area.sub_area_name %></span>
             </div>

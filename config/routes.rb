@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   get '/about/', to: 'pages#about'
   get '/terms/', to: 'pages#terms'
   resources :areas do
-    resources :sub_areas, only: [:show, :new, :create, :edit, :update]
+    resources :sub_areas, only: [:new, :create, :edit, :update]
   end
-  resources :sub_areas, only: [:destroy]
+  resources :sub_areas, only: [:show, :destroy] do
+    resources :od_routes, only: [:new, :create, :edit, :update]
+  end
   resources :gyms do
     resources :routes, only: [:new, :create, :edit, :update]
   end
