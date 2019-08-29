@@ -23,6 +23,18 @@ class SubAreasController < ApplicationController
     end
   end
 
+  def edit
+    @area = @sub_area.area
+  end
+
+  def update
+
+  end
+
+  def destroy
+
+  end
+
   private
 
   def set_sub_area
