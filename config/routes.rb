@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :sub_areas, only: [:show, :destroy] do
     resources :od_routes, only: [:new, :create, :edit, :update]
   end
+  resources :od_routes, only: [:show, :destroy]
   resources :gyms do
     resources :routes, only: [:new, :create, :edit, :update]
   end

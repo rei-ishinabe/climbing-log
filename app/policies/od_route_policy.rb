@@ -5,7 +5,13 @@ class OdRoutePolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
+
   def create?
     user.admin?
   end
+
+
 end

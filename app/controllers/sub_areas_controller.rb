@@ -3,6 +3,7 @@ class SubAreasController < ApplicationController
 
   def show
     @area = @sub_area.area
+    @od_routes = @sub_area.od_routes
   end
 
   def new
