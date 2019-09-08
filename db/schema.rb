@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_034047) do
+ActiveRecord::Schema.define(version: 2019_09_01_021000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_08_29_034047) do
   end
 
   create_table "od_logs", force: :cascade do |t|
-    t.datetime "date"
+    t.date "date"
     t.string "comment"
     t.bigint "status_id"
     t.bigint "od_route_id"

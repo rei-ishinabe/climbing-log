@@ -1,2 +1,48 @@
-<h1>OdRoutes#show</h1>
-<p>Find me in app/views/od_routes/show.html.erb</p>
+<div class="container mt-3 px-2">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <h4>
+        <%= @od_route.area.area_name %>
+        <%= @od_route.sub_area.sub_area_name %>
+      </h4>
+      <div>
+        <span style='font-size: 1.2rem;'><%= @od_route.route_name %></span>
+        <%= @od_route.combined_grade %>
+      </div>
+      <div>
+       <% if @od_route.od_logs.exists? %>
+          <% @od_route.od_logs.order(date: 'DESC').each do |od_log| %>
+            <div class="card p-1 my-1">
+
+                <div>
+                  <%= link_to edit_od_route_od_log_path(od_log.od_route, od_log) do %>
+                  <span style="font-size: 1.1rem"><%= od_log.date %></span>
+                  <%= Status.find_by(id:od_log.status_id).status %>
+                  <% end %>
+                </div>
+              <div>
+                <%= od_log.comment %>
+              </div>
+              <div class="text-right">
+                <%= link_to od_log_path(od_log), method: :delete, data: {confirm: "本当に削除しますか?"} do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              </div>
+
+
+            </div>
+          <% end %>
+        <% else %>
+          ログがまだ登録されていません
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container fixed-bottom">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <%= link_to 'ログを追加', new_od_route_od_log_path(@od_route), class:'btn btn-primary btn-block btn-lg my-3' %>
+    </div>
+  </div>
+</div>

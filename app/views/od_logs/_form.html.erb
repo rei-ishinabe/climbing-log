@@ -1,0 +1,35 @@
+<div class="container mt-3 px-2">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <%= link_to od_route_path(@od_route) do %>
+        <div class="d-flex mb-3">
+          <div>
+            <h4><%= @od_route.area.area_name %><%= @od_route.sub_area.sub_area_name %> </h4>
+            <div style="font-size: 1.1rem;">
+              <%= @od_route.combined_grade %>
+            </div>
+            <div>
+              <%= @od_route.route_name %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%= simple_form_for [@od_route, @od_log] do |f| %>
+        <%= f.input :date, label: false %>
+        <%= f.input :status_id,
+               label: false,
+              prompt: 'ステータスを選択',
+          collection: Status.all.order(id: 'ASC'),
+          label_method: :status,
+          value_method: :id %>
+        <%= f.input :comment,
+               label: false,
+         placeholder: 'コメント(オプション)' %>
+        <%= f.submit 'ログを登録', class:'btn btn-primary btn-lg btn-block mb-3' %>
+      <% end %>
+      <% unless @od_log.id.nil? %>
+        <%= link_to 'ログを削除', od_log_path(@od_log), method: :delete, data: {confirm: "本当に削除しますか?"}, class:'btn btn-outline-warning btn-lg btn-block mb-3' %>
+      <% end %>
+    </div>
+  </div>
+</div>
