@@ -29,6 +29,27 @@ class OdRoutesController < ApplicationController
   end
 
   def edit
+    @sub_area = @od_route.sub_area
+  end
+
+  def update
+    @sub_area = SubArea.find(params[:sub_area_id])
+    @od_route = OdRoute.new(od_route_params)
+    authorize @od_route
+    @od_route.sub_area = @sub_area
+    if @od_route.update(od_route_params)
+      redirect_to od_route_path(@od_route)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @od_route.destroy
+      redirect_to sub_area_path(@od_route.sub_area)
+    else
+      render :show
+    end
   end
 
   private
@@ -39,7 +60,7 @@ class OdRoutesController < ApplicationController
   end
 
   def od_route_params
-    params.require(:od_route).permit(:route_name, :route_name_katakana, :route_name_alphabet, :grade_id, :sub_grade_id, :sub_area_id)
+    params.require(:od_route).permit(:route_name, :route_name_katakana, :route_name_alphabet, :grade_id, :sub_grade_id, :sub_area_id, :category_id)
   end
 
 end

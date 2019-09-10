@@ -24,7 +24,16 @@
           collection: SubGrade.all,
           label_method: :sub_grade,
           value_method: :id %>
+        <%= f.input :category_id,
+               label: false,
+              prompt: 'カテゴリーを選択',
+          collection: Category.all,
+          label_method: :category,
+          value_method: :id %>
         <%= f.submit '登録', class:'btn btn-primary btn-lg btn-block mb-3' %>
+      <% end %>
+      <% unless @od_route.id.nil? %>
+        <%= link_to '課題を削除', od_route_path(@od_route), method: :delete, data: {confirm: "課題を削除すると、この課題のログもすべて削除されます。本当に削除しますか?"}, class:'btn btn-outline-warning btn-lg btn-block mb-3' %>
       <% end %>
       <%= link_to '戻る', sub_area_path(@sub_area), class:'btn btn-outline-secondary btn-lg btn-block mb-3' %>
     </div>

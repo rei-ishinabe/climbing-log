@@ -2,6 +2,7 @@ class OdRoute < ApplicationRecord
   belongs_to :grade
   belongs_to :sub_grade
   belongs_to :sub_area
+  belongs_to :category
   has_many :od_logs
   has_one :area, through: :sub_area
 

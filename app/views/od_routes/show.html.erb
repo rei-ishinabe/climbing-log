@@ -8,6 +8,7 @@
       <div>
         <span style='font-size: 1.2rem;'><%= @od_route.route_name %></span>
         <%= @od_route.combined_grade %>
+        <%= link_to '編集', edit_od_route_path(@od_route) %>
       </div>
       <div>
        <% if @od_route.od_logs.exists? %>

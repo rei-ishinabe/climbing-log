@@ -10,6 +10,14 @@ class OdRoutePolicy < ApplicationPolicy
   end
 
   def create?
+    true
+  end
+
+  def update?
+    user.admin?
+  end
+
+  def destroy?
     user.admin?
   end
 

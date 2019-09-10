@@ -3,7 +3,7 @@ class SubAreasController < ApplicationController
 
   def show
     @area = @sub_area.area
-    @od_routes = @sub_area.od_routes
+    @od_routes = @sub_area.od_routes.order(grade_id: 'ASC').order(sub_grade_id: 'ASC')
   end
 
   def new
@@ -33,7 +33,11 @@ class SubAreasController < ApplicationController
   end
 
   def destroy
-
+    if @sub_area.destroy
+      redirect_to area_path(@area)
+    else
+      render :edit
+    end
   end
 
   private

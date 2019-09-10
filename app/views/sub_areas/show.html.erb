@@ -7,15 +7,18 @@
       </div>
       <div>
         <% @od_routes.each do |od_route| %>
-          <%= link_to od_route_path(od_route) do %>
-            <div>
-              <span style="font-size: 1.2em"><%= od_route.route_name %></span>
-            </div>
-          <% end %>
+          <div class="card my-2 p-1 ">
+            <%= link_to od_route_path(od_route) do %>
+              <div>
+                <span style="font-size: 1.2em"><%= od_route.route_name %></span> <%= od_route.combined_grade %>
+              </div>
+            <% end %>
+            <div><%= od_route.od_logs.count %>トライ</div>
+          </div>
         <% end %>
       </div>
       <% if current_user.admin? %>
-        <%= link_to "新規ルート登録(管理者用)", new_sub_area_od_route_path(@sub_area), class:"btn btn-outline-primary btn-block my-3" %>
+        <%= link_to "新規ルート登録", new_sub_area_od_route_path(@sub_area), class:"btn btn-outline-primary btn-block my-3" %>
       <% end %>
     </div>
   </div>

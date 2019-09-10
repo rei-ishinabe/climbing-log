@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_01_021000) do
+ActiveRecord::Schema.define(version: 2019_09_10_055349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(version: 2019_09_01_021000) do
     t.bigint "sub_area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_od_routes_on_category_id"
     t.index ["grade_id"], name: "index_od_routes_on_grade_id"
     t.index ["sub_area_id"], name: "index_od_routes_on_sub_area_id"
     t.index ["sub_grade_id"], name: "index_od_routes_on_sub_grade_id"
@@ -170,6 +172,7 @@ ActiveRecord::Schema.define(version: 2019_09_01_021000) do
   add_foreign_key "od_logs", "users"
   add_foreign_key "od_route_reviews", "od_routes"
   add_foreign_key "od_route_reviews", "users"
+  add_foreign_key "od_routes", "categories"
   add_foreign_key "od_routes", "grades"
   add_foreign_key "od_routes", "sub_areas"
   add_foreign_key "od_routes", "sub_grades"
