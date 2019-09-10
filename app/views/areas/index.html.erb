@@ -1,12 +1,13 @@
 <div class="container mt-3 px-2">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 mb-5 pb-3">
-      <h4>岩場一覧</h4>
+      <h4>エリア一覧</h4>
       <div>
         <% @areas.each do |area| %>
           <%= link_to area_path(area) do %>
             <div>
-              <span style="font-size: 1.2em"><%= area.area_name %></span>
+              <span style="font-size: 1.2em"><%= area.area_name %></span> - <%= area.prefecture %>
+
             </div>
           <% end %>
         <% end %>
