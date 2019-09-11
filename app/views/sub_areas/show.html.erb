@@ -2,8 +2,18 @@
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 mb-5 pb-3">
       <div class="d-flex align-items-center">
-        <h4><%= @area.area_name %> - <%= @sub_area.sub_area_name %> </h4>&nbsp;
-        <%= link_to '編集', edit_area_sub_area_path(@area, @sub_area) %>
+        <div class="mb-2">
+          <%= link_to 'エリア一覧', areas_path %> >
+          <%= link_to area_path(@area) do %>
+            <%= @area.area_name %>
+          <% end %> >
+          <span  style="font-size: 1.2em" >
+            <%= @sub_area.sub_area_name %>
+          </span>
+          <% if current_user.admin? %>
+            &nbsp;<%= link_to '編集', edit_area_sub_area_path(@area, @sub_area) %>
+          <% end %>
+        </div>
       </div>
       <div>
         <% @od_routes.each do |od_route| %>
@@ -17,9 +27,7 @@
           </div>
         <% end %>
       </div>
-      <% if current_user.admin? %>
-        <%= link_to "新規ルート登録", new_sub_area_od_route_path(@sub_area), class:"btn btn-outline-primary btn-block my-3" %>
-      <% end %>
+      <%= link_to "新規ルート/課題登録", new_sub_area_od_route_path(@sub_area), class:"btn btn-outline-primary btn-block my-3" %>
     </div>
   </div>
 </div>

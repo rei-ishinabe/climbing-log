@@ -23,7 +23,10 @@
          %>
 <!--         <%= f.input :latitude, label: false, placeholder: '緯度' %>
         <%= f.input :longitude, label: false, placeholder: '経度' %> -->
-        <%= f.submit '登録', class:'btn btn-primary btn-block' %>
+        <%= f.submit '登録', class:'btn btn-primary btn-block mb-3' %>
+      <% end %>
+      <% unless @area.id.nil? %>
+        <%= link_to 'エリアを削除', area_path(@area), method: :delete, data: {confirm: "本当に削除しますか?"}, class:'btn btn-outline-warning btn-block mb-3' %>
       <% end %>
     </div>
   </div>

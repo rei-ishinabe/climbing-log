@@ -29,6 +29,29 @@ class OdLogsController < ApplicationController
   end
 
   def edit
+    @od_route = @od_log.od_route
+  end
+
+  def update
+    @od_route = OdRoute.find(params[:od_route_id])
+    @od_log = OdLog.new(od_log_params)
+    authorize @od_log
+    @od_log.od_route = @od_route
+    @od_log.user = current_user
+    if @od_log.update(od_log_params)
+      redirect_to od_route_path(@od_route)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @od_route = @od_log.od_route
+    if @od_log.destroy
+      redirect_to od_route_path(@od_route)
+    else
+      render :show
+    end
   end
 
   def set_od_log

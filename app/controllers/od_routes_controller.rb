@@ -6,6 +6,8 @@ class OdRoutesController < ApplicationController
   end
 
   def show
+    @sub_area = @od_route.sub_area
+    @area = @sub_area.area
   end
 
   def new

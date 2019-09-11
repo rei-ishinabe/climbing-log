@@ -1,7 +1,11 @@
 <div class="container mt-3 px-2">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 mb-5 pb-3">
-      <h4>エリア一覧</h4>
+      <div class="mb-2">
+        <span  style="font-size: 1.2em" >
+          エリア一覧
+        </span>
+      </div>
       <div>
         <% @areas.each do |area| %>
           <%= link_to area_path(area) do %>
@@ -11,9 +15,7 @@
             </div>
           <% end %>
         <% end %>
-      <% if current_user.admin? %>
         <%= link_to "新規エリア登録", new_area_path, class:"btn btn-outline-primary btn-block my-3" %>
-      <% end %>
       </div>
     </div>
   </div>

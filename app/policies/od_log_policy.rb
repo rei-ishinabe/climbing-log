@@ -10,10 +10,10 @@ class OdLogPolicy < ApplicationPolicy
   end
 
   def update?
-    record.route.user == user || user.admin?
+    record.user == user || user.admin?
   end
 
   def destroy?
-    record.route.user == user || user.admin?
+    record.user == user || user.admin?
   end
 end
