@@ -32,18 +32,17 @@
           <%= active_link_to '今日', user_path(@user, from: Date.today, to: Date.today), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
       </div>
 
-
-      <div class="card px-2 pt-1 pb-0 mt-1">
+<!-- インドア -->
+      <div class="card px-2 pt-1 pb-0 mt-1 mb-2">
+        <div style="font-size: 1.1rem;">ジム</div>
         <div class="d-flex">
           <div class="flex-fill">
             完登本数：<span style="font-size: 1.2rem;"><%= @logs.where('status_id < ?', 4).count %></span>
           </div>
           <div class="flex-fill">
-              クライミング日数：<span style="font-size: 1.2rem;"><%= @logs.count('DISTINCT date') if @logs.exists? %></span></%>
+            クライミング日数：<span style="font-size: 1.2rem;"><%= @logs.count('DISTINCT date') if @logs.exists? %></span></%>
           </div>
         </div>
-
-
         <div class="d-md-flex">
           <div class="my-1 flex-fill">ボルダー最高グレード
             <div>
@@ -127,16 +126,111 @@
 
       </div>
 
+<!-- アウトドア -->
+      <% if @od_logs.exists? %>
+        <div class="card px-2 pt-1 pb-0 mt-1">
+          <div style="font-size: 1.1rem;">岩場</div>
+          <div class="d-flex">
+            <div class="flex-fill">
+              完登本数：<span style="font-size: 1.2rem;"><%= @od_logs.where('status_id < ?', 4).count %></span>
+            </div>
+            <div class="flex-fill">
+              クライミング日数：<span style="font-size: 1.2rem;"><%= @od_logs.count('DISTINCT date') if @od_logs.exists? %></span></%>
+            </div>
+          </div>
+          <div class="d-md-flex">
+            <div class="my-1 flex-fill">ボルダー最高グレード
+              <div>
+                <% boulder_best_os =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 1, 1).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists? %>
+                <% unless boulder_best_os.nil? %>
+                  OS
+                  <% if @user == current_user %>
+                    <%= link_to route_path(boulder_best_os.od_route) do %>
+                      <span style="font-size: 1.2rem;"><%= boulder_best_os.od_route.combined_grade %></span>
+                    <% end %>
+                  <% else %>
+                      <span style="font-size: 1.2rem;"><%= boulder_best_os.od_route.combined_grade %></span>
+                  <% end %>
+                <% end %>
+                <% boulder_best_fl =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 1, 2).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists? %>
+                <% unless boulder_best_fl.nil? %>
+                  FL
+                  <% if @user == current_user %>
+                    <%= link_to od_route_path(boulder_best_fl.od_route) do %>
+                      <span style="font-size: 1.2rem;"><%= boulder_best_fl.od_route.combined_grade %></span>
+                    <% end %>
+                  <% else %>
+                      <span style="font-size: 1.2rem;"><%= boulder_best_fl.od_route.combined_grade %></span>
+                  <% end %>
+                <% end %>
+                <% boulder_best_sent =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 1, 3).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists? %>
+                <% unless boulder_best_sent.nil? %>
+                  完登
+                  <% if @user == current_user %>
+                    <%= link_to od_route_path(boulder_best_sent.od_route) do %>
+                      <span style="font-size: 1.2rem;"><%= boulder_best_sent.od_route.combined_grade %></span>
+                    <% end %>
+                  <% else %>
+                    <span style="font-size: 1.2rem;"><%= boulder_best_sent.od_route.combined_grade %></span>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+
+
+            <div class="my-1 flex-fill">
+              <div>リード最高グレード
+                <div>
+                  <% lead_best_os = @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 2, 1).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists? %>
+                  <% unless lead_best_os.nil? %>
+                    OS
+                    <% if @user == current_user %>
+                      <%= link_to od_route_path(lead_best_os.od_route) do %>
+                        <span style="font-size: 1.2rem;"><%=lead_best_os.od_route.combined_grade %></span>
+                      <% end %>
+                    <% else %>
+                      <span style="font-size: 1.2rem;"><%=lead_best_os.od_route.combined_grade %></span>
+                    <% end %>
+                  <% end %>
+                  <% lead_best_fl =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 2, 2).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists? %>
+                  <% unless lead_best_fl.nil? %>
+                    FL
+                    <% if @user == current_user %>
+                      <%= link_to od_route_path(lead_best_fl.od_route) do %>
+                        <span style="font-size: 1.2rem;"><%=lead_best_fl.od_route.combined_grade %></span>
+                      <% end %>
+                    <% else %>
+                        <span style="font-size: 1.2rem;"><%=lead_best_fl.od_route.combined_grade %></span>
+                    <% end %>
+                  <% end %>
+                  <% lead_best_rp =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 2, 3).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists? %>
+                  <% unless lead_best_rp.nil? %>
+                    RP
+                    <% if @user == current_user %>
+                      <%= link_to od_route_path(lead_best_rp.od_route) do %>
+                        <span style="font-size: 1.2rem;"><%=lead_best_rp.od_route.combined_grade %></span>
+                      <% end %>
+                    <% else %>
+                      <span style="font-size: 1.2rem;"><%=lead_best_rp.od_route.combined_grade %></span>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
 <!-- tab menu -->
-      <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+      <ul class="nav nav-tabs mt-2" id="myTab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="boulder-tab" data-toggle="tab" href="#boulder" role="tab" aria-controls="boulder" aria-selected="false">ボルダー</a>
+          <a class="nav-link" id="boulder-tab" data-toggle="tab" href="#boulder" role="tab" aria-controls="boulder" aria-selected="false">ボルダー(ジム)</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="lead-tab" data-toggle="tab" href="#lead" role="tab" aria-controls="lead" aria-selected="false">リード</a>
+          <a class="nav-link" id="lead-tab" data-toggle="tab" href="#lead" role="tab" aria-controls="lead" aria-selected="false">リード(ジム)</a>
         </li>
       </ul>
 
@@ -149,18 +243,18 @@
         <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
           <h5 class="mt-3 pl-1 mb-1">合計トライ本数(日別)</h5>
           <div class="mb-3">
-            <% firstdate = @logs.order(:date).first.date if @logs.exists? %>
-            <% lastdate = @logs.order(:date).last.date if @logs.exists? %>
-            <% boulder = @logs.joins(:route).where('category_id = 1').group_by_day(:date, range: (firstdate..lastdate unless firstdate.nil? && lastdate.nil? )).count %>
-            <% lead = @logs.joins(:route).where('category_id = 2').group_by_day(:date, range: (firstdate..lastdate unless firstdate.nil? && lastdate.nil? )).count %>
-            <% toprope = @logs.joins(:route).where('category_id = 3').group_by_day(:date, range: (firstdate..lastdate unless firstdate.nil? && lastdate.nil? )).count %>
-            <% nagamono = @logs.joins(:route).where('category_id = 4').group_by_day(:date, range: (firstdate..lastdate unless firstdate.nil? && lastdate.nil? )).count %>
+            <% firstdate = [(@logs.order(:date).first.date if @logs.exists?), (@od_logs.order(:date).first.date if @od_logs.exists?)].compact.min  %>
+            <% lastdate = [(@logs.order(:date).last.date if @logs.exists?), (@od_logs.order(:date).last.date if @od_logs.exists?)].compact.min %>
+            <% in_boulder = @logs.joins(:route).where('category_id IN (1, 4)').group_by_day(:date, range: (firstdate..lastdate unless firstdate.nil? && lastdate.nil? )).count %>
+            <% in_route = @logs.joins(:route).where('category_id IN (2, 3)').group_by_day(:date, range: (firstdate..lastdate unless firstdate.nil? && lastdate.nil? )).count %>
+            <% od_boulder = @od_logs.joins(:od_route).where('category_id IN (1, 4)').group_by_day(:date, range: (firstdate..lastdate unless firstdate.nil? && lastdate.nil? )).count %>
+            <% od_route = @od_logs.joins(:od_route).where('category_id IN (2, 4)').group_by_day(:date, range: (firstdate..lastdate unless firstdate.nil? && lastdate.nil? )).count %>
 
             <%= column_chart [
-              { name: 'ボルダー', data: boulder },
-              { name: 'リード', data: lead },
-              { name: 'トップロープ', data: toprope },
-              { name: 'ナガモノ', data: nagamono },
+              { name: 'ボルダー(ジム)', data: in_boulder },
+              { name: 'ルート(ジム)', data: in_route },
+              { name: 'ボルダー(岩場)', data: od_boulder },
+              { name: 'ルート(岩場)', data: od_route }
             ],
                 points: false,
                 dataset: {borderWidth: 0},
@@ -182,10 +276,12 @@
                 suffix: "本" %>
           </div>
 
-          <h5 class="mt-3 pl-1 mb-1">クライミング日数(ジム別)</h5>
+          <h5 class="mt-3 pl-1 mb-1">クライミング日数(ジム/岩場別)</h5>
           <div class="mb-3">
-            <% visits_by_gym = @logs.joins(:gym).group(:name).count('DISTINCT date').sort_by{ |_, v| -v } %>
-            <%= bar_chart visits_by_gym,
+            <% visits_by_gym = @logs.joins(:gym).group(:name).count('DISTINCT date') %>
+            <% visits_by_area = @od_logs.joins(od_route: { sub_area: :area} ).group(:area_name).count('DISTINCT date')%>
+            <% visits = visits_by_gym.merge(visits_by_area).sort_by{ |_, v| -v } %>
+            <%= bar_chart visits,
                 points: false,
                 dataset: {borderWidth: 0},
                 library: {animation: {easing: 'easeOutQuad',"duration": 1000},

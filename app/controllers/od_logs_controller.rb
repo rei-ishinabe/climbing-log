@@ -33,13 +33,8 @@ class OdLogsController < ApplicationController
   end
 
   def update
-    @od_route = OdRoute.find(params[:od_route_id])
-    @od_log = OdLog.new(od_log_params)
-    authorize @od_log
-    @od_log.od_route = @od_route
-    @od_log.user = current_user
     if @od_log.update(od_log_params)
-      redirect_to od_route_path(@od_route)
+      redirect_to od_route_path(@od_log.od_route)
     else
       render :edit
     end

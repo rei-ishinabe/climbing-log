@@ -35,10 +35,6 @@ class OdRoutesController < ApplicationController
   end
 
   def update
-    @sub_area = SubArea.find(params[:sub_area_id])
-    @od_route = OdRoute.new(od_route_params)
-    authorize @od_route
-    @od_route.sub_area = @sub_area
     if @od_route.update(od_route_params)
       redirect_to od_route_path(@od_route)
     else

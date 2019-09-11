@@ -25,8 +25,12 @@ class UsersController < ApplicationController
     authorize @user
 
     if params[:from].nil?
-      if @user.logs.exists?
+      if @user.logs.exists? && @user.od_logs.exists?
+        @from = [@user.logs.order(date: 'ASC').first.date, @user.od_logs.order(date: 'ASC').first.date].min
+      elsif @user.logs.exists?
         @from = @user.logs.order(date: 'ASC').first.date
+      elsif @user.od_logs.exists?
+        @from = @user.od_logs.order(date: 'ASC').first.date
       else
         @from = Date.today
       end
@@ -41,6 +45,7 @@ class UsersController < ApplicationController
     end
 
     @logs = Log.all.joins(:route).where('logs.date BETWEEN ? AND ? AND routes.user_id = ?', @from, @to, @user.id)
+    @od_logs = OdLog.where('od_logs.date BETWEEN ? AND ? AND od_logs.user_id = ?', @from, @to, @user.id)
 
   end
 end

@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :routes
+  has_many :od_logs
   has_many :logs, through: :routes
   has_many :gyms, through: :routes
   validates :email, presence: true, uniqueness: true
