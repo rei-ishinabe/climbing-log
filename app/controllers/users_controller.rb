@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
 
     if current_user.admin
-      @users = policy_scope(User).all.joins(:logs).where('logs.date BETWEEN ? AND ?', @from, @to).group('users.id').order('count(user_id) desc')
+      @users = policy_scope(User).all.joins(:logs).where('logs.date BETWEEN ? AND ? and logs.status_id < ?', @from, @to, 4).group('users.id').order('count(user_id) desc')
     else
       @users = policy_scope(User).all.joins(:logs).where('logs.date BETWEEN ? AND ? AND is_public = ?', @from, @to, true).group('users.id').order('count(user_id) desc')
     end
