@@ -1,7 +1,7 @@
 <div class="container mt-3 px-2">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
-      <h4>合計本数ランキング</h4>
+      <h4>合計本数ランキング(ジム)</h4>
       <p>ランキングは <%= link_to 'アカウント設定', edit_user_registration_path %> でプロフィールを公開している場合のみ表示されます</p>
       <div class="text-left mb-1"  style="font-size: 15px;">
         <%= @from.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@from.wday]})") %> 〜 <%= @to.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@to.wday]})")  %>
@@ -29,7 +29,7 @@
                   <span style="font-size: 1.2rem"><%= user.nickname.blank? ? 'ニックネーム未設定' : user.nickname %></span>さん
                 </div>
                 <div>
-                  合計トライ本数: <span style="font-size: 1.2rem"><%= user.logs.where('logs.date BETWEEN ? AND ?', @from, @to).count %></span>
+                  合計完登本数: <span style="font-size: 1.2rem"><%= user.logs.where('logs.date BETWEEN ? AND ? AND status_id < ?', @from, @to, 4).count %></span>
                 </div>
                 <div>
                   <% best_boulder = user.routes.joins(:logs).where('routes.category_id = ? AND logs.status_id < ? AND logs.date BETWEEN ? AND ?' , 1, 4, @from, @to).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first %>
