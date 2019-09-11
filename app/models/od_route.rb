@@ -17,4 +17,14 @@ class OdRoute < ApplicationRecord
     "#{Grade.find_by(id: grade_id).grade}#{SubGrade.find_by(id: sub_grade_id).sub_grade.to_s unless sub_grade_id.nil?}"
   end
 
+  def latest_log_date
+    od_logs.order(date: 'DESC').first.date
+  end
+
+  def best_status
+    if od_logs.exists?
+      Status.find_by(id: od_logs.order(status_id: 'ASC').first.status_id).status
+    end
+  end
+
 end
