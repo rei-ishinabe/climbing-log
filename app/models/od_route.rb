@@ -18,7 +18,7 @@ class OdRoute < ApplicationRecord
   end
 
   def latest_log_date
-    od_logs.order(date: 'DESC').first.date
+    od_logs.first.date
   end
 
   def best_status

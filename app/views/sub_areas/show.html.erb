@@ -23,7 +23,13 @@
                 <span style="font-size: 1.2em"><%= od_route.route_name %></span> <%= od_route.combined_grade %>
               </div>
             <% end %>
-            <div><%= od_route.latest_log_date if od_route.od_logs.exists? %> <%= od_route.best_status %> <%= od_route.od_logs.count %>トライ</div>
+            <div>
+              <% if od_route.od_logs.where('od_logs.user_id = ?', current_user.id).exists? %>
+                <%= od_route.od_logs.where('od_logs.user_id = ?', current_user.id).order(date: 'DESC').first.date  %>
+                <%= Status.find_by(id: od_logs.where('od_logs.user_id = ?', current_user.id).order(status_id: 'ASC').first.status_id).status%>
+                <%= od_route.od_logs.where('od_logs.user_id = ?', current_user.id).count %>トライ
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>

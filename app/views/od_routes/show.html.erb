@@ -20,8 +20,8 @@
         <%= @od_route.combined_grade %>
       </div>
       <div>
-       <% if @od_route.od_logs.exists? %>
-          <% @od_route.od_logs.order(date: 'DESC').each do |od_log| %>
+       <% if @od_logs.exists? %>
+          <% @od_logs.order(date: 'DESC').each do |od_log| %>
             <div class="card p-1 my-1">
 
                 <div>

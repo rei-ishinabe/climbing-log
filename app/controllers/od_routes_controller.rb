@@ -2,12 +2,13 @@ class OdRoutesController < ApplicationController
   before_action :set_od_route, only: [:show, :edit, :update, :destroy]
 
   def index
-    @od_routes = policy_scope(OdRoute).all.where('od_routes.user_id = ?', current_user.id)
+    @od_routes = policy_scope(OdRoute).all
   end
 
   def show
     @sub_area = @od_route.sub_area
     @area = @sub_area.area
+    @od_logs = @od_route.od_logs.where('od_logs.user_id = ?', current_user.id)
   end
 
   def new
