@@ -9,6 +9,10 @@ class LogPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    record.route.user == user || user.admin?
+  end
+
   def update?
     record.route.user == user || user.admin?
   end

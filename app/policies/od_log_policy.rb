@@ -9,6 +9,10 @@ class OdLogPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    record.user == user || user.admin?
+  end
+
   def update?
     record.user == user || user.admin?
   end
