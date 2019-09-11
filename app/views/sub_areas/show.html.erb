@@ -26,7 +26,7 @@
             <div>
               <% if od_route.od_logs.where('od_logs.user_id = ?', current_user.id).exists? %>
                 <%= od_route.od_logs.where('od_logs.user_id = ?', current_user.id).order(date: 'DESC').first.date  %>
-                <%= Status.find_by(id: od_logs.where('od_logs.user_id = ?', current_user.id).order(status_id: 'ASC').first.status_id).status%>
+                <%= Status.find_by(id: od_route.od_logs.where('od_logs.user_id = ?', current_user.id).order(status_id: 'ASC').first.status_id).status%>
                 <%= od_route.od_logs.where('od_logs.user_id = ?', current_user.id).count %>トライ
               <% end %>
             </div>
