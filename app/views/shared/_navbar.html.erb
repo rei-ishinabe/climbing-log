@@ -17,9 +17,11 @@
         <li class="nav-item">
           <%= active_link_to "ジム検索/選択", gyms_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= active_link_to "岩場検索/選択", areas_path, class: "nav-link" %>
-        </li>
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <%= active_link_to "岩場検索/選択", areas_path, class: "nav-link" %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= active_link_to "ダッシュボード", user_path(current_user), class: "nav-link" %>
         </li>
