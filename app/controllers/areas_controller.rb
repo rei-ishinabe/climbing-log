@@ -3,7 +3,7 @@ class AreasController < ApplicationController
 
 
   def index
-    @areas = policy_scope(Area).all
+    @areas = policy_scope(Area).all.order(prefecture: 'DESC')
   end
 
   def show

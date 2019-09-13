@@ -21,8 +21,9 @@
           <%= f.input :image_cache, as: :hidden %>
         </div>
 
-        <%= f.input :is_public,
-                    label: 'プロフィールを公開する' %>
+        <%= f.input :privacy_setting,
+                    collection: [['非公開', 0], ['クラログユーザーにのみ公開', 1], ['全員に公開(クラログ会員以外も閲覧可', 2]],
+                    label: 'クラログ/プロフィール公開設定' %>
         <%= f.input :password,
                     label: false,
                     placeholder: '新しいパスワード(変更する場合のみ)',
