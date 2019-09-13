@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     if params[:from].nil?
-      @from = Log.all.order(date: 'ASC').first.date
+      @from = [Log.all.order(date: 'ASC').first.date, OdLog.all.order(date: 'ASC').first.date].compact.min
     else
       @from = params[:from].to_date
     end
