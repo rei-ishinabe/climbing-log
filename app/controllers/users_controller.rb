@@ -22,9 +22,13 @@ class UsersController < ApplicationController
         users_hash[user] += user.logs.where('logs.date BETWEEN ? AND ? AND logs.status_id < ?', @from, @to, 4).count
         users_hash[user] += user.od_logs.where('od_logs.date BETWEEN ? AND ? AND od_logs.status_id < ?', @from, @to, 4).count
       end
-      @users = users_hash.sort_by{ |_, v| -v }.map do |item|
-        item[0]
+      @users = []
+      users_hash.sort_by{ |_, v| -v }.each do |item|
+        if item[1] > 0
+          @users << item[0]
+        end
       end
+      @users
     else
       @users = policy_scope(User).where('is_public = ?', true)
       authorize @users
@@ -34,9 +38,13 @@ class UsersController < ApplicationController
         users_hash[user] += user.logs.where('logs.date BETWEEN ? AND ? AND logs.status_id < ?', @from, @to, 4).count
         users_hash[user] += user.od_logs.where('od_logs.date BETWEEN ? AND ? AND od_logs.status_id < ?', @from, @to, 4).count
       end
-      @users = users_hash.sort_by{ |_, v| -v }.map do |item|
-        item[0]
+      @users = []
+      users_hash.sort_by{ |_, v| -v }.each do |item|
+        if item[1] > 0
+          @users << item[0]
+        end
       end
+      @users
     end
 
   end
