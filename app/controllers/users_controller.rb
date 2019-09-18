@@ -14,11 +14,31 @@ class UsersController < ApplicationController
     end
 
     if current_user.admin
-      @users = policy_scope(User).all.joins(:logs).where('logs.date BETWEEN ? AND ? AND logs.status_id < ?', @from, @to, 4).group('users.id').order('count(user_id) desc')
+      @users = policy_scope(User).all
+      authorize @users
+      users_hash = {}
+      @users.each do |user|
+        users_hash[user] = 0
+        users_hash[user] += user.logs.where('logs.date BETWEEN ? AND ? AND logs.status_id < ?', @from, @to, 4).count
+        users_hash[user] += user.od_logs.where('od_logs.date BETWEEN ? AND ? AND od_logs.status_id < ?', @from, @to, 4).count
+      end
+      @users = users_hash.sort_by{ |_, v| -v }.map do |item|
+        item[0]
+      end
     else
-      @users = policy_scope(User).all.joins(:logs).where('logs.date BETWEEN ? AND ? AND logs.status_id < ? AND is_public = ?', @from, @to, 4, true).group('users.id').order('count(user_id) desc')
+      @users = policy_scope(User).where('is_public = ?', true)
+      authorize @users
+      users_hash = {}
+      @users.each do |user|
+        users_hash[user] = 0
+        users_hash[user] += user.logs.where('logs.date BETWEEN ? AND ? AND logs.status_id < ?', @from, @to, 4).count
+        users_hash[user] += user.od_logs.where('od_logs.date BETWEEN ? AND ? AND od_logs.status_id < ?', @from, @to, 4).count
+      end
+      @users = users_hash.sort_by{ |_, v| -v }.map do |item|
+        item[0]
+      end
     end
-    authorize @users
+
   end
 
   def show
