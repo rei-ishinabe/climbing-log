@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_13_122339) do
+ActiveRecord::Schema.define(version: 2019_09_20_044700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(version: 2019_09_13_122339) do
     t.bigint "od_route_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "privacy_setting", default: 0
+    t.string "image"
     t.index ["od_route_id"], name: "index_od_route_reviews_on_od_route_id"
     t.index ["user_id"], name: "index_od_route_reviews_on_user_id"
   end
@@ -161,7 +163,7 @@ ActiveRecord::Schema.define(version: 2019_09_13_122339) do
     t.string "nickname"
     t.string "image"
     t.boolean "is_public", default: false
-    t.string "privacy_setting", default: "0"
+    t.integer "privacy_setting", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
