@@ -9,6 +9,7 @@ class OdRoutesController < ApplicationController
     @sub_area = @od_route.sub_area
     @area = @sub_area.area
     @od_logs = @od_route.od_logs.where('od_logs.user_id = ?', current_user.id)
+    @od_route_reviews = @od_route.od_route_reviews.where('od_route_reviews.user_id = ? OR od_route_reviews.privacy_setting > ?', current_user.id, 0)
   end
 
   def new

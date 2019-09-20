@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   resources :od_routes, only: [:show, :destroy, :edit] do
     resources :od_logs, only: [:new, :create, :edit, :update]
+    resources :od_route_reviews, only: [:new, :create, :edit, :update, :destroy]
   end
   resources :od_logs, only: [:index, :destroy]
 

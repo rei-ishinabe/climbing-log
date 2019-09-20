@@ -1,0 +1,44 @@
+<div class="container mt-3 px-2">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <%= link_to od_route_path(@od_route) do %>
+        <div class="d-flex mb-3">
+          <div>
+            <h4><%= @od_route.area.area_name %><%= @od_route.sub_area.sub_area_name %> </h4>
+            <div style="font-size: 1.1rem;">
+              <%= @od_route.combined_grade %>
+            </div>
+            <div>
+              <%= @od_route.route_name %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%= simple_form_for [@od_route, @od_route_review] do |f| %>
+        <div class="d-flex mb-3 align-items-center">
+          <% if @od_route_review.image.blank? %>
+            <%= image_tag 'no_image_logo.png', size:'200x200', class:'rounded mr-3' %>
+          <% else %>
+            <%= cl_image_tag @od_route_review.image, height: 200, width: 200, crop: :fill, class:"rounded mr-3" %>
+          <% end %>
+            <%= f.input :image, label: false %>
+            <%= f.input :image_cache, as: :hidden %>
+        </div>
+        <%= f.input :comment,
+               label: 'レビューコメント',
+                  as: :text,
+         placeholder: '(最大255文字まで)' %>
+        <%= f.input :rating,
+               label: '星評価',
+               collection: 1..5 %>
+        <%= f.input :privacy_setting,
+               label: '公開設定',
+          collection: [['非公開', 0], ['クラログユーザーにのみ公開', 1], ['全員に公開(クラログ会員以外も閲覧可', 2]]%>
+        <%= f.submit 'レビューを登録', class:'btn btn-primary btn-lg btn-block mb-3' %>
+      <% end %>
+      <% unless @od_route_review.id.nil? %>
+        <%= link_to 'レビューを削除', od_route_od_route_review_path(@od_route, @od_route_review), method: :delete, data: {confirm: "本当に削除しますか?"}, class:'btn btn-outline-warning btn-lg btn-block mb-3' %>
+      <% end %>
+    </div>
+  </div>
+</div>

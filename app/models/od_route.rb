@@ -3,6 +3,7 @@ class OdRoute < ApplicationRecord
   belongs_to :sub_area
   belongs_to :category
   has_many :od_logs
+  has_many :od_route_reviews
   has_one :area, through: :sub_area
   validates :route_name, presence: true, uniqueness: { scope: :sub_area,
     message: "同一サブエリア内に同じ名前の課題が存在します", case_sensitive: false }

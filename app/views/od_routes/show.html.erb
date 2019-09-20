@@ -8,19 +8,56 @@
         <% end %> >
         <%= link_to sub_area_path(@sub_area) do %>
           <%= @sub_area.sub_area_name %>
-        <% end %> >
-        <span  style="font-size: 1.2em" >
+        <% end %>
+      </div>
+      <div>
+        <span  style="font-size: 1.3em" >
           <%= @od_route.route_name %>
         </span>
+          <%= @od_route.category.category %> <%= @od_route.combined_grade %>
         <% if current_user.admin? %>
           &nbsp;<%= link_to '編集', edit_od_route_path(@od_route) %>
         <% end %>
-        </div>
-      <div>
-        <%= @od_route.combined_grade %>
       </div>
       <div>
-       <% if @od_logs.exists? %>
+        <% if @od_route_reviews.exists? %>
+          <% @od_route_reviews.each do |od_route_review| %>
+            <div class="card my-2">
+              <div class="d-flex align-items-center">
+                <div>
+                  <% if od_route_review.image.blank? %>
+                    <%= image_tag 'no_image_logo.png', size:'80x80', class:'rounded mr-3' %>
+                  <% else %>
+                    <%= cl_image_tag od_route_review.image, height: 80, width: 80, crop: :fill, class:'rounded mr-3' %>
+                  <% end %>
+                </div>
+                <div>
+                  <div>
+                    <% od_route_review.rating.times do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                  </div>
+                  <div>
+                    <%= od_route_review.comment %>
+                  </div>
+                  <div>
+                    by <%= od_route_review.user.nickname %>さん
+                    <% if od_route_review.user == current_user %>
+                      <%= link_to '編集', edit_od_route_od_route_review_path(@od_route, od_route_review) %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <% if @od_route.od_route_reviews.where('od_route_reviews.user_id = ?', current_user.id).count == 0 %>
+          <%= link_to 'レビューを書く', new_od_route_od_route_review_path(@od_route)  %>
+        <% end %>
+      </div>
+      <div>
+        <h5 class="mt-5">ログ</h5>
+        <% if @od_logs.exists? %>
           <% @od_logs.order(date: 'DESC').each do |od_log| %>
             <div class="card p-1 my-1">
 

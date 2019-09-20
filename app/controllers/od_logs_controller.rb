@@ -49,6 +49,8 @@ class OdLogsController < ApplicationController
     end
   end
 
+  private
+
   def set_od_log
     @od_log = OdLog.find(params[:id])
     authorize @od_log
