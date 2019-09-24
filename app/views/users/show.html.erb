@@ -311,9 +311,11 @@
           </div>
 
           <h5 class="mt-3 pl-1 mb-1">ボルダー完登数(グレード別)</h5>
+          <% best_boulder_grade = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).maximum('routes.grade_id') %>
+          <% best_boulder_grade = 0 if best_boulder_grade.nil? %>
           <% boulders_by_grade = {} %>
             <% Grade.where(grade_type: 'ボルダー').each do |grade| %>
-            <% boulders_by_grade[grade.grade] = 0 %>
+            <% boulders_by_grade[grade.grade] = 0 if grade.id <= best_boulder_grade + 2 %>
           <% end %>
           <% sents = @logs.joins(:route).joins(:grade).select('grades.grade').where('routes.category_id = ? AND logs.status_id < ?', 1, 4 ).group('grades.grade').count %>
           <% boulders_by_grade =  boulders_by_grade.merge(sents) %>
@@ -414,6 +416,8 @@
 </div>
 
 <script>
+
+// charts for boulder tab
 var chartA = document.getElementById("best_boulder_grade_by_date").getContext('2d');
 var best_boulder_grade_by_date = new Chart(chartA, {
     type: 'line',
@@ -453,7 +457,7 @@ var best_boulder_grade_by_date = new Chart(chartA, {
                 ticks: {
                     stepSize: 1,
                     min: 0,
-                    max: 15,
+                    max: <%= best_boulder_grade.nil? ? 2  : best_boulder_grade + 2 %>,
                     callback: function(value, index, values) {
                         switch(value) {
                           case 1:
@@ -519,7 +523,8 @@ var best_boulder_grade_by_type = new Chart(chartB, {
         scale: {
             ticks: {
                 beginAtZero: true,
-                max: 14,
+                stepSize: 1,
+                max: <%= best_boulder_grade.nil? ? 2  : best_boulder_grade + 2 %>,
                 callback: function(tick) {
                   switch(tick) {
                           case 1:
@@ -550,6 +555,8 @@ var best_boulder_grade_by_type = new Chart(chartB, {
                             return '4段';
                           case 14:
                             return '5段';
+                          case 15:
+                            return '6段';
                         }
                 }
             }
@@ -557,6 +564,7 @@ var best_boulder_grade_by_type = new Chart(chartB, {
     }
 });
 
+// charts for lead tab
 var chartC = document.getElementById("best_lead_grade_by_date").getContext('2d');
 var best_lead_grade_by_date = new Chart(chartC, {
     type: 'line',
