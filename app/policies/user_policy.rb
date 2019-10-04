@@ -10,6 +10,10 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    record == user || record.is_public || user.admin
+    if user.nil?
+      return true if record.privacy_setting == 2
+    else
+      return true if record == user || user.admin || record.privacy_setting >= 1
+    end
   end
 end

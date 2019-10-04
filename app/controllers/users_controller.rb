@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show]
 
   def index
     if params[:from].nil?
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
       end
       @users
     else
-      @users = policy_scope(User).where('is_public = ?', true)
+      @users = policy_scope(User).where('privacy_setting >= ?', 1)
       authorize @users
       users_hash = {}
       @users.each do |user|
