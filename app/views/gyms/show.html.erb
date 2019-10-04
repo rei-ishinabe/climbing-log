@@ -89,7 +89,7 @@
       <div>
         <% @routes.each do |route| %>
           <div class="<%= route.sent ? 'sent' : 'unsent' %>">
-            <div class="card my-2 p-1 category<%= route.category_id %>">
+            <div class="card my-2 p-1 category<%= route.category_id %>" style="background-color: <%= route.sent ? 'rgba(200,247,225,0.2)' : 'rgba(230,126,34,0.1)' %>;">
               <div>
                 <%= link_to route_path(route) do %>
                   <span style="font-size: 1.1rem;">
