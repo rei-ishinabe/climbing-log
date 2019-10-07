@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       end
       @users
     else
-      @users = policy_scope(User).where('privacy_setting >= ?', 1)
+      @users = policy_scope(User).where('is_public= ?', true)
       authorize @users
       users_hash = {}
       @users.each do |user|
