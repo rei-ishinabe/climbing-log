@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.logs.exists?
-      user_path(current_user)
+      user_path(current_user.hash_string)
     else
       root_path
     end

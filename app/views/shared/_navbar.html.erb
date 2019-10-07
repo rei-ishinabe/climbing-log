@@ -21,7 +21,7 @@
           <%= active_link_to "岩場検索/選択", areas_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= active_link_to "ダッシュボード", user_path(current_user), class: "nav-link" %>
+          <%= active_link_to "ダッシュボード", "/users/#{current_user.hash_string}", class: "nav-link" %>
         </li>
         <li>
           <%= active_link_to "ランキング", users_path(from: Date.today.beginning_of_month, to: Date.today.end_of_month), active: :exact, class:"nav-link" %>
