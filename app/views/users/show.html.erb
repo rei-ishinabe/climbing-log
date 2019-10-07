@@ -25,11 +25,11 @@
         <%= @from.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@from.wday]})") %> 〜 <%= @to.strftime("%Y年%m月%d日(#{%w(日 月 火 水 木 金 土)[@to.wday]})")  %>
       </div>
       <div class="btn-group btn-group-toggle d-flex mb-2">
-          <%= active_link_to '全期間', user_path(@user), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
-          <%= active_link_to '今年', user_path(@user, from: Date.today.beginning_of_year, to: Date.today.end_of_year), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
-          <%= active_link_to '今月', user_path(@user, from: Date.today.beginning_of_month, to: Date.today.end_of_month), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
-          <%= active_link_to '今週', user_path(@user, from: Date.today.beginning_of_week, to: Date.today.end_of_week), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
-          <%= active_link_to '今日', user_path(@user, from: Date.today, to: Date.today), active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '全期間', "/users/#{current_user.hash_string}", active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '今年', "/users/#{current_user.hash_string}?from=#{Date.today.beginning_of_year}&to=#{Date.today.end_of_year}", active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '今月', "/users/#{current_user.hash_string}?from=#{Date.today.beginning_of_month}&to=#{Date.today.end_of_month}", active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '今週', "/users/#{current_user.hash_string}?from=#{Date.today.beginning_of_week}&to=#{Date.today.end_of_week}", active: :exact, class:"btn btn-outline-primary btn-sm"   %>
+          <%= active_link_to '今日', "/users/#{current_user.hash_string}?from=#{Date.today}&to=#{Date.today}", active: :exact, class:"btn btn-outline-primary btn-sm"   %>
       </div>
 
 <!-- インドア -->
