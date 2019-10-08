@@ -11,14 +11,21 @@
       <% else %>
         <%= cl_image_tag @user.image, height: 40, width: 40, crop: :fill, class:'rounded-circle mr-3' %>
       <% end %>
-        <div>
-          <h4 class="mb-0">
-            <% if @user.nickname.blank? %>
-              <%= link_to 'ニックネーム未設定', edit_user_registration_path %>さん
-            <% else %>
-              <%= @user.nickname %>
-            <% end %>さんのクラログ
-          </h4>
+        <div  class="d-flex align-items-center">
+          <div>
+            <h4 class="mb-0 mr-3">
+              <% if @user.nickname.blank? %>
+                <%= link_to 'ニックネーム未設定', edit_user_registration_path %>さん
+              <% else %>
+                <%= @user.nickname %>
+              <% end %>さんのクラログ
+            </h4>
+          </div>
+          <% if @user == current_user && @user.privacy_setting == 2 %>
+            <div>
+              <button class="clipboard-btn btn btn-outline-primary btn-sm py-0 " data-clipboard-text="<%= request.url %>" onclick="clickEvent()"><i class="fas fa-link"></i> 共有用URLをコピー</button>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="text-left mb-1"  style="font-size: 15px;">
@@ -697,5 +704,9 @@ var best_boulder_grade_by_type = new Chart(chartD, {
         }
     }
 });
+
+function clickEvent() {
+    alert('共有用URLをクリップボードにコピーしました');
+}
 
 </script>
