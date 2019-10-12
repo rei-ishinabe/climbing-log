@@ -358,15 +358,22 @@
 
           <h5 class="mt-3 pl-1 mb-1">ボルダー最高グレード(日別)</h5>
           <div>
-            <!-- インドアボルダー用データ -->
+            <!-- インドアボルダー用元データ -->
             <% best_boulder_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).group(:date).order(:date).maximum('routes.grade_id') %>
-            <% @labels = best_boulder_grade_by_date.keys %>
-            <% @datas = best_boulder_grade_by_date.values %>
 
-            <!-- アウトドアボルダー用データ -->
+            <!-- アウトドアボルダー用元データ -->
             <% best_od_boulder_grade_by_date = @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 1, 4).group(:date).order(:date).maximum('od_routes.grade_id') %>
-            <% @od_labels = best_od_boulder_grade_by_date.keys %>
-            <% @od_datas = best_od_boulder_grade_by_date.values %>
+
+            <!-- ラベル用データ -->
+            <% labels_hash = {} %>
+            <% best_boulder_grade_by_date.merge(best_od_boulder_grade_by_date).each do |k, v|  %>
+              <% labels_hash[k] = nil  %>
+            <% end %>
+            <% @labels = labels_hash.keys %>
+
+            <!-- チャート用データ -->
+            <% @datas = labels_hash.merge(best_boulder_grade_by_date).values %>
+            <% @od_datas = labels_hash.merge(best_od_boulder_grade_by_date).values %>
 
             <canvas id="best_boulder_grade_by_date" width="400" height="300"></canvas>
           </div>
@@ -453,20 +460,31 @@ var best_boulder_grade_by_date = new Chart(chartA, {
     type: 'line',
     data: {
         labels: <%= @labels.to_json.html_safe %>,
-        datasets: [{
-            label: "グレード",
+        datasets: [
+          {
+            label: "ジム",
             data: <%= @datas.to_json.html_safe %>,
-            backgroundColor: 'rgba(22, 127, 251, 0.6)',
-            borderColor: 'rgba(22, 127, 251, 0.6)',
-            fill: false
-        }]
+            backgroundColor: 'rgba(22, 127, 251, 0.5)',
+            borderColor: 'rgba(22, 127, 251, 0.5)',
+            fill: false,
+            spanGaps: true
+          },
+          {
+            label: "岩場",
+            data: <%= @od_datas.to_json.html_safe %>,
+            backgroundColor: 'rgba(106, 113, 232, 0.5)',
+            borderColor:  'rgba(106, 113, 232, 0.5)',
+            fill: false,
+            spanGaps: true
+          }
+        ]
     },
     options: {
         title:  {
           display: false,
         },
         legend: {
-          display: false
+          display: true
         },
         tooltips: {
             // Disable the on-canvas tooltip
