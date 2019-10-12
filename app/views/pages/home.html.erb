@@ -53,40 +53,43 @@
   <div class="container mt-3  px-2 ">
     <div class="row justify-content-center">
       <div class="col-12 col-md-8">
-        <div class="my-5" style="font-size: 1.1rem;">クラログはボルダリングジム、クライミングジムや自然の岩場で登った記録をオンラインでカンタンに保存・管理・共有できるツールです。登った本数やグレードの推移などもひと目で確認できます。
+        <div class="card py-2 mt-4 mb-3" style="background-color: rgba(65,154,136, 0.7)">
+          <h3 class="text-center">クラログとは</h3>
+        </div>
+        <div class="my-3" style="font-size: 1.1rem;">クラログはボルダリングジム、クライミングジムや自然の岩場で登った記録をオンラインでカンタンに保存・管理・共有できるツールです。登った本数やグレードの推移などもひと目で確認できます。
         </div>
         <div class="px-1">
           <a href="http://www.climbing-log.com/users/81822d7fb5fcdaffcef1117f79a72d0bb41624a3">
-            <%= image_tag("sample_screen.jpg", class:"img-fluid rounded shadow mb-3") %>
+            <%= image_tag("sample_screen.jpg", class:"img-fluid rounded shadow mb-4") %>
           </a>
           <a class="btn btn-outline-primary btn-block mb-5" href="http://www.climbing-log.com/users/81822d7fb5fcdaffcef1117f79a72d0bb41624a3">サンプル画面をみる</a>
         </div>
 
-        <div class="card py-2 mb-5" style="background-color: rgba(217,168,72, 0.7)">
+        <div class="card py-2 mb-4" style="background-color: rgba(217,168,72, 0.7)">
           <h3 class="text-center">使い方</h3>
         </div>
 
         <h4 class="text-center mt-4 mb-3">ジムで登った記録をつける</h4>
         <div class="card px-2 py-3 mb-2 text-center" >
           <h5><i class="fas fa-search"></i> Step 1 - ジムを検索/選択 </h5>
-          <div class="mb-3">登録されている日本全国のジムを、ジム名や住所で検索して選択します。</div>
+          <div class="mb-3">登録されている500以上の日本全国のジムの中から検索/選択します。</div>
           <h5><i class="fas fa-plus-circle"></i> Step 2 - 課題を登録 </h5>
           <div class="mb-3">課題名やグレードなどを登録します。</div>
           <h5><i class="fas fa-tasks"></i> Step 3 - ログを追加 </h5>
-          <div>登録した課題に、トライしたログを追加します。</div>
+          <div>トライした回数や結果、コメントなどを登録します。</div>
         </div>
 
-        <h4 class="text-center mt-5 mb-3">岩場で登った記録をつける</h4>
+        <h4 class="text-center mt-4 mb-3">岩場で登った記録をつける</h4>
         <div class="card px-2 py-3 mb-2 text-center ">
           <h5><i class="fas fa-search"></i> Step 1 - エリア、サブエリアを選択 </h5>
-          <div class="mb-3">岩場のエリア、サブエリアを選択します。該当のエリア、サブエリアが未登録の場合は、新規で登録をします。</div>
+          <div class="mb-3">岩場のエリア、サブエリアを選択もしくは新規で登録をします。</div>
           <h5><i class="fas fa-plus-circle"></i> Step 2 - 課題やルートを選択 </h5>
-          <div class="mb-3">課題やルートを選択します。該当の課題やルート未登録の場合は、新規で登録をします。</div>
+          <div class="mb-3">課題やルートを選択もしくは新規で登録をします。</div>
           <h5><i class="fas fa-tasks"></i> Step 3 - ログを追加 </h5>
-          <div>選択した課題やルートに、トライしたログを追加します。</div>
+          <div>トライした回数や結果、コメントなどを登録します。</div>
         </div>
 
-        <h4 class="text-center mt-5 mb-3">登った記録をチェックする</h4>
+        <h4 class="text-center mt-4 mb-3">登った記録をチェック・共有する</h4>
         <div class="card px-2 py-3 mb-3">
           <h5><i class="fas fa-chart-line"></i> Step 1 - ダッシュボード </h5>
           <div class="mb-3">いつ何本登ったか、最高グレードがどう推移したか？などのデータを確認できます。<a href="http://www.climbing-log.com/users/81822d7fb5fcdaffcef1117f79a72d0bb41624a3"><i class="fas fa-external-link-alt"></i> サンプル</a></div>
@@ -95,10 +98,7 @@
         </div>
 
         <div class="mb-5">
-          <a class="btn btn-primary btn-block btn-lg mb-5" href="/users/sign_up">クラログを試してみる</a>
-        </div>
-        <div class="m-5">
-
+          <a class="btn btn-primary btn-block btn-lg mb-5" href="/users/sign_up">いますぐクラログを試してみる</a>
         </div>
       </div>
     </div>
