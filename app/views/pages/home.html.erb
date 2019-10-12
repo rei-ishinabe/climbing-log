@@ -41,13 +41,27 @@
     </div>
   </div>
 <% else %>
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0)), url(<%= asset_path 'bouldering-climber-climbing-9606.jpg' %>);">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0)), url(<%= asset_path 'banner_indoor.jpg' %>);">
     <div class="container text-center">
       <h1 style="font-size: 48px;" class="mb-3">クラログ</h1>
       <h2 class="mb-3">登る、記録する、うまくなる！</h2>
       <p class="mb-3">ジムで登った記録も、岩場で登った記録もまとめて管理</p>
       <p><a class="btn btn-primary btn-block btn-lg" href="/users/sign_up">アカウント登録(無料)</a></p>
       <p><a href="/users/sign_in" style="font-size: 16px; color: white;">ログイン</a></p>
+    </div>
+  </div>
+  <div class="container mt-3  px-2 ">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8">
+        <div class="my-3">クラログはボルダリングジム、クライミングジムや自然の岩場で登った記録をカンタンに保存・管理・共有できるツールです。登った本数やグレードの推移などもひと目で確認できます。
+        </div>
+        <div class="px-5">
+          <a href="http://www.climbing-log.com/users/81822d7fb5fcdaffcef1117f79a72d0bb41624a3">
+            <%= image_tag("sample_screen.jpg", class:"img-fluid rounded shadow mb-3") %>
+          </a>
+          <a class="btn btn-outline-primary btn-sm btn-block mb-5" href="http://www.climbing-log.com/users/81822d7fb5fcdaffcef1117f79a72d0bb41624a3">サンプル画面をみる</a>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

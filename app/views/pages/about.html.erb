@@ -1,44 +1,45 @@
 <div class="container  px-2">
   <div class="row justify-content-center">
     <div class="col-12 col-md-10 mb-5">
-      <div class="my-3">クラログはボルダリングジム、クライミングジムや自然の岩場で登った記録をカンタンに保存・管理できるツールです。登った本数やグレードの推移などもひと目で確認できます。</div>
-      <h4 class="text-center mt-2 mb-2">ジムで登ったログを記録するには？</h4>
-        <div class="card p-2 mb-3">
+      <h4 class="text-center mt-5 mb-3">ジムで登った記録をつける</h4>
+        <div class="card p-2 mb-2">
           <h5><i class="fas fa-search"></i> Step 1 - ジムを検索/選択 </h5>
           <div>登録されている日本全国のジムを、ジム名や住所で検索して選択します。</div>
         </div>
-        <div class="card p-1 mb-3">
+        <div class="card p-2 mb-2">
           <h5><i class="fas fa-plus-circle"></i> Step 2 - 課題を登録 </h5>
           <div>課題名やグレードなどを登録します。</div>
         </div>
-        <div class="card p-1 mb-3">
+        <div class="card p-2 mb-2">
           <h5><i class="fas fa-tasks"></i> Step 3 - ログを追加 </h5>
           <div>登録した課題に、トライしたログを追加します。</div>
         </div>
-        <div class="card p-1 mb-4">
-          <h5><i class="fas fa-chart-line"></i> Step 4 - ダッシュボードを確認 </h5>
-          <div>いつ何本登ったか、最高グレードがどう推移したか？などのデータをひと目で確認できます。</div>
-        </div>
-      <h4 class="text-center mt-3 mb-3">岩場で登ったログを記録するには？</h4>
+      <h4 class="text-center mt-5 mb-3">岩場で登った記録をつける</h4>
         <div class="card p-2 mb-2">
           <h5><i class="fas fa-search"></i> Step 1 - エリア、サブエリアを選択 </h5>
           <div>岩場のエリア、サブエリアを選択します。該当のエリア、サブエリアが未登録の場合は、新規で登録をします。</div>
         </div>
-        <div class="card p-1 mb-2">
+        <div class="card p-2 mb-2">
           <h5><i class="fas fa-plus-circle"></i> Step 2 - 課題やルートを選択 </h5>
           <div>課題やルートを選択します。該当の課題やルート未登録の場合は、新規で登録をします。</div>
         </div>
-        <div class="card p-1 mb-2">
+        <div class="card p-2 mb-2">
           <h5><i class="fas fa-tasks"></i> Step 3 - ログを追加 </h5>
           <div>選択した課題やルートに、トライしたログを追加します。</div>
         </div>
-        <div class="card p-1 mb-4">
-          <h5><i class="fas fa-chart-line"></i> Step 4 - ダッシュボードを確認 </h5>
-          <div>いつ何本登ったか、最高グレードがどう推移したか？などのデータをひと目で確認できます。</div>
+
+      <h4 class="text-center mt-5 mb-3">登った記録をチェックする</h4>
+        <div class="card p-2 mb-2">
+          <h5><i class="fas fa-chart-line"></i> Step 1 - ダッシュボード </h5>
+          <div>ダッシュボードを開くと、いつ何本登ったか、最高グレードがどう推移したか？などのデータを確認できます。</div>
+        </div>
+        <div class="card p-2 mb-5">
+          <h5><i class="fas fa-link"></i> Step 2 - リンクを共有 </h5>
+          <div>クラログを公開設定にすれば、SNSやEメールなどで自分のクラログを友だちと共有できます。</div>
         </div>
 
         <% unless user_signed_in? %>
-          <a class="btn btn-primary btn-block btn-lg mb-5" href="/users/sign_up">いますぐアカウント登録(無料)</a>
+          <a class="btn btn-primary btn-block btn-lg mb-5" href="/users/sign_up">アカウントを登録して試してみる(無料)</a>
         <% end %>
     </div>
   </div>
