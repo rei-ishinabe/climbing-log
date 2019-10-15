@@ -60,7 +60,7 @@ class OdRoutesController < ApplicationController
   end
 
   def od_route_params
-    params.require(:od_route).permit(:route_name, :route_name_katakana, :route_name_alphabet, :grade_id, :sub_grade_id, :sub_area_id, :category_id)
+    params.require(:od_route).permit(:route_name, :route_name_katakana, :route_name_alphabet, :grade_id, :sub_grade_id, :sub_area_id, :category_id, :route_type)
   end
 
 end

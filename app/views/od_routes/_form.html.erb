@@ -18,12 +18,16 @@
           collection: Grade.all,
           label_method: :grade,
           value_method: :id %>
-       <%= f.input :sub_grade_id,
+        <%= f.input :sub_grade_id,
                label: false,
               prompt: 'サブグレードを選択(任意)',
           collection: SubGrade.all,
           label_method: :sub_grade,
           value_method: :id %>
+        <%= f.input :route_type,
+               label: false,
+              prompt: 'タイプを選択',
+          collection: ['スラブ', '垂壁', '前傾壁', '強傾斜壁', 'ルーフ'] %>
         <%= f.input :category_id,
                label: false,
               prompt: 'カテゴリーを選択',
