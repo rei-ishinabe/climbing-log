@@ -398,7 +398,7 @@
           </div>
 
 
-          <h5 class="mt-3 pl-1 mb-1">完登課題TOP 5(ジム)</h5>
+          <h5 class="mt-3 pl-1 mb-1">完登課題 TOP 5(ジム)</h5>
           <div class="mb-4">
             <% boulders_sent = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).order('routes.grade_id DESC').order('routes.sub_grade_id DESC').order(date: :DESC).first(5) %>
             <% boulders_sent.each do |boulder_sent| %>
@@ -416,7 +416,7 @@
             <% end %>
           </div>
 
-          <h5 class="mt-3 pl-1 mb-1">完登課題TOP 5(岩場)</h5>
+          <h5 class="mt-3 pl-1 mb-1">完登課題 TOP 5(岩場)</h5>
           <div class="mb-4">
             <% od_boulders_sent = @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 1, 4).order('od_routes.grade_id DESC').order('od_routes.sub_grade_id DESC').order(date: :DESC).first(5) %>
             <% od_boulders_sent.each do |od_boulder_sent| %>
