@@ -25,6 +25,15 @@ class OdRoutesController < ApplicationController
     @od_route = OdRoute.new(od_route_params)
     authorize @od_route
     @od_route.sub_area = @sub_area
+    if @od_route.grade_id < 20
+      @od_route.grade_for_chart = 20 - (@od_route.grade_id.to_f - 19) * 0.25
+    else
+      if @od_route.sub_grade_id.nil?
+          @od_route.grade_for_chart = @od_route.grade_id.to_f +0.375
+      else
+        @od_route.grade_for_chart = @od_route.grade_id.to_f + (@od_route.sub_grade_id.to_f - 2) * 0.125
+      end
+    end
     if @od_route.save
       redirect_to sub_area_path(@sub_area)
     else
@@ -38,6 +47,16 @@ class OdRoutesController < ApplicationController
 
   def update
     if @od_route.update(od_route_params)
+      if @od_route.grade_id < 20
+        @od_route.grade_for_chart = 20 - (@od_route.grade_id.to_f - 19) * 0.25
+      else
+        if @od_route.sub_grade_id.nil?
+            @od_route.grade_for_chart = @od_route.grade_id.to_f +0.375
+        else
+          @od_route.grade_for_chart = @od_route.grade_id.to_f + (@od_route.sub_grade_id.to_f - 2) * 0.125
+        end
+      end
+      @od_route.save
       redirect_to od_route_path(@od_route)
     else
       render :edit

@@ -225,7 +225,7 @@
           <a class="nav-link" id="boulder-tab" data-toggle="tab" href="#boulder" role="tab" aria-controls="boulder" aria-selected="false">ボルダー</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="lead-tab" data-toggle="tab" href="#lead" role="tab" aria-controls="lead" aria-selected="false">リード(ジム)</a>
+          <a class="nav-link" id="lead-tab" data-toggle="tab" href="#lead" role="tab" aria-controls="lead" aria-selected="false">リード</a>
         </li>
       </ul>
 
@@ -501,11 +501,20 @@
 
           <h5 class="mt-3 pl-1 mb-1">リード最高グレード(タイプ別)</h5>
           <div>
-            <% @best_grades_lead = {'スラブ' => nil, '垂壁' => nil, '前傾壁' => nil, '強傾斜壁' => nil, 'ルーフ' => nil} %>
+            <!-- ジム用元データ -->
+            <% best_lead_grades = {'スラブ' => nil, '垂壁' => nil, '前傾壁' => nil, '強傾斜壁' => nil, 'ルーフ' => nil} %>
             <% best_lead_grade_by_type = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:route_type).maximum('routes.grade_for_chart') %>
-            <% @best_grades_lead = @best_grades_lead.merge(best_lead_grade_by_type) %>
-            <% @route_types_lead = @best_grades_lead.keys %>
-            <% @best_grades_lead = @best_grades_lead.values %>
+            <% best_lead_grades = best_lead_grades.merge(best_lead_grade_by_type) %>
+
+            <!-- 岩場用元データ -->
+            <% best_od_lead_grades = {'スラブ/緩傾斜壁' => nil, '垂壁' => nil, '前傾壁' => nil, '強傾斜壁' => nil, 'ルーフ' => nil} %>
+            <% best_od_lead_grade_by_type = @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 2, 4).group(:route_type).maximum('od_routes.grade_for_chart') %>
+            <% best_od_lead_grades = best_od_lead_grades.merge(best_od_lead_grade_by_type) %>
+
+            <!-- チャート用データ -->
+            <% lead_route_types = best_lead_grades.keys %>
+            <% best_lead_grades = best_lead_grades.values %>
+            <% best_od_lead_grades = best_od_lead_grades.values %>
             <canvas id="best_lead_grade_by_type" width="400" height="300"></canvas>
           </div>
 
@@ -845,21 +854,30 @@ var chartD = document.getElementById("best_lead_grade_by_type").getContext('2d')
 var best_boulder_grade_by_type = new Chart(chartD, {
     type: 'radar',
     data: {
-        labels: <%= @route_types_lead.to_json.html_safe %>,
-        datasets: [{
-            label: "グレード",
-            data: <%= @best_grades_lead.to_json.html_safe %>,
+        labels: <%= lead_route_types.to_json.html_safe %>,
+        datasets: [
+          {
+            label: "ジム",
+            data: <%= best_lead_grades.to_json.html_safe %>,
             backgroundColor: 'rgba(22, 127, 251, 0.6)',
             borderColor: 'rgba(22, 127, 251, 0.6)',
             fill: false
-        }]
+          },
+          {
+            label: "岩場",
+            data: <%= best_od_lead_grades.to_json.html_safe %>,
+            backgroundColor: 'rgba(106, 113, 232, 0.5)',
+            borderColor:  'rgba(106, 113, 232, 0.5)',
+            fill: false
+          }
+        ]
     },
     options: {
         title:  {
           display: false,
         },
         legend: {
-          display: false
+          display: true
         },
         tooltips: {
             // Disable the on-canvas tooltip

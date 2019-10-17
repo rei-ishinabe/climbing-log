@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_050027) do
+ActiveRecord::Schema.define(version: 2019_10_17_132333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_050027) do
     t.datetime "updated_at", null: false
     t.bigint "category_id"
     t.string "route_type"
+    t.float "grade_for_chart"
     t.index ["category_id"], name: "index_od_routes_on_category_id"
     t.index ["grade_id"], name: "index_od_routes_on_grade_id"
     t.index ["sub_area_id"], name: "index_od_routes_on_sub_area_id"
