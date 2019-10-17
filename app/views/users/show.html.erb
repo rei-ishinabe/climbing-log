@@ -354,7 +354,7 @@
 
             <!-- ラベル用データ -->
             <% labels_hash = {} %>
-            <% best_boulder_grade_by_date.merge(best_od_boulder_grade_by_date).each do |k, v|  %>
+            <% best_boulder_grade_by_date.merge(best_od_boulder_grade_by_date).sort.each do |k, v|  %>
               <% labels_hash[k] = nil  %>
             <% end %>
             <% @labels = labels_hash.keys %>
@@ -443,16 +443,30 @@
           </div>
 
           <h5 class="mt-3 pl-1 mb-1">リード完登数</h5>
+          <!-- インドアリード用データ -->
+          <% best_lead_grade = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).maximum('routes.grade_id') %>
+          <% best_lead_grade = 0 if best_lead_grade.nil? %>
           <% leads_by_grade = {} %>
             <% Grade.where(grade_type: 'ルート').each do |grade| %>
-            <% leads_by_grade[grade.grade] = 0 %>
+            <% leads_by_grade[grade.grade] = 0 if grade.id <= best_lead_grade + 1 %>
           <% end %>
           <% sents = @logs.joins(:route).joins(:grade).select('grades.grade').where('routes.category_id = ? AND logs.status_id < ?', 2, 4 ).group('grades.grade').count %>
           <% leads_by_grade =  leads_by_grade.merge(sents) %>
+
+          <!-- アウトドアリード用データ -->
+          <% best_od_lead_grade = @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 2, 4).maximum('od_routes.grade_id') %>
+          <% best_od_lead_grade = 0 if best_od_lead_grade.nil? %>
+          <% od_leads_by_grade = {} %>
+            <% Grade.where(grade_type: 'ルート').each do |grade| %>
+            <% od_leads_by_grade[grade.grade] = 0 if grade.id <= best_od_lead_grade + 1 %>
+          <% end %>
+          <% od_sents = @od_logs.joins(:od_route).joins(:grade).select('grades.grade').where('od_routes.category_id = ? AND od_logs.status_id < ?', 2, 4 ).group('grades.grade').count %>
+          <% od_leads_by_grade =  od_leads_by_grade.merge(od_sents) %>
+
           <div class="mb-3">
-            <%= bar_chart leads_by_grade,
+            <%= bar_chart [{name: 'ジム', data: leads_by_grade},
+                           {name: '岩場', data: od_leads_by_grade}],
                 points: false,
-                colors: ["#167FFB", "#666"],
                 dataset: {borderWidth: 0},
                 library: {animation: {easing: 'easeOutQuad',"duration": 1000},
                           scales: {
@@ -465,9 +479,23 @@
 
           <h5 class="mt-3 pl-1 mb-1">リード最高グレード(日別)</h5>
           <div>
-            <% best_lead_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:date).order(:date).maximum('routes.grade_for_chart') %>
-            <% @labels_lead_by_grade = best_lead_grade_by_date.keys %>
-            <% @datas_lead_by_grade = best_lead_grade_by_date.values %>
+            <!-- インドアリード用元データ -->
+            <% best_lead_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:date).order(:date).maximum('routes.grade_id') %>
+
+            <!-- アウトドアリード用元データ -->
+            <% best_od_lead_grade_by_date = @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 2, 4).group(:date).order(:date).maximum('od_routes.grade_id') %>
+
+            <!-- ラベル用データ -->
+            <% lead_labels_hash = {} %>
+            <% best_lead_grade_by_date.merge(best_od_lead_grade_by_date).sort.each do |k, v|  %>
+              <% lead_labels_hash[k] = nil  %>
+            <% end %>
+            <% @lead_labels = lead_labels_hash.keys %>
+
+            <!-- チャート用データ -->
+            <% @lead_datas = lead_labels_hash.merge(best_lead_grade_by_date).values %>
+            <% @od_lead_datas = lead_labels_hash.merge(best_od_lead_grade_by_date).values %>
+
             <canvas id="best_lead_grade_by_date" width="400" height="300"></canvas>
           </div>
 
@@ -697,21 +725,32 @@ var chartC = document.getElementById("best_lead_grade_by_date").getContext('2d')
 var best_lead_grade_by_date = new Chart(chartC, {
     type: 'line',
     data: {
-        labels: <%= @labels_lead_by_grade.to_json.html_safe %>,
-        datasets: [{
-            label: "グレード",
-            data: <%= @datas_lead_by_grade.to_json.html_safe %>,
-            backgroundColor: 'rgba(22, 127, 251, 0.6)',
-            borderColor: 'rgba(22, 127, 251, 0.6)',
-            fill: false
-        }]
+        labels: <%= @lead_labels.to_json.html_safe %>,
+        datasets: [
+          {
+            label: "ジム",
+            data: <%= @lead_datas.to_json.html_safe %>,
+            backgroundColor: 'rgba(22, 127, 251, 0.5)',
+            borderColor: 'rgba(22, 127, 251, 0.5)',
+            fill: false,
+            spanGaps: true
+          },
+          {
+            label: "岩場",
+            data: <%= @od_lead_datas.to_json.html_safe %>,
+            backgroundColor: 'rgba(106, 113, 232, 0.5)',
+            borderColor:  'rgba(106, 113, 232, 0.5)',
+            fill: false,
+            spanGaps: true
+          }
+        ]
     },
     options: {
         title:  {
           display: false,
         },
         legend: {
-          display: false
+          display: true
         },
         tooltips: {
             // Disable the on-canvas tooltip
