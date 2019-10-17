@@ -97,10 +97,10 @@ class UsersController < ApplicationController
     @od_lead_best_rp =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 2, 3).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists?
     @od_lead_best =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id < ?', 2, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists?
 
-    @best_boulder_grade = [@boulder_best.grade.id, @od_boulder_best.grade.id].max
-    @lowest_boulder_grade = [@boulder_best.grade.id, @od_boulder_best.grade.id].min
+    @best_boulder_grade = [@boulder_best.nil? ? 0 : @boulder_best.grade.id, @od_boulder_best.nil? ? 0 : @od_boulder_best.grade.id].max
+    @lowest_boulder_grade = [@boulder_best.nil? ? 99 : @boulder_best.grade.id, @od_boulder_best.nil? ? 99 : @od_boulder_best.grade.id].min
 
-    @best_lead_grade = [@lead_best.grade.id, @od_lead_best.grade.id].max
-    @lowest_lead_grade = [@lead_best.grade.id, @od_lead_best.grade.id].min
+    @best_lead_grade = [@lead_best.nil? ? 0 : @lead_best.grade.id, @od_lead_best.nil? ? 0 : @od_lead_best.grade.id].max
+    @lowest_lead_grade = [@lead_best.nil? ? 99 : @lead_best.grade.id, @od_lead_best.nil? ? 99 : @od_lead_best.grade.id].min
   end
 end
