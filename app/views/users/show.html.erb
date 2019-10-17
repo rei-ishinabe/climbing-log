@@ -490,11 +490,11 @@
             <% best_lead_grade_by_date.merge(best_od_lead_grade_by_date).sort.each do |k, v|  %>
               <% lead_labels_hash[k] = nil  %>
             <% end %>
-            <%= @lead_labels = lead_labels_hash.keys %>
+            <% @lead_labels = lead_labels_hash.keys %>
 
             <!-- チャート用データ -->
-            <%= @lead_datas = lead_labels_hash.merge(best_lead_grade_by_date).values %>
-            <%= @od_lead_datas = lead_labels_hash.merge(best_od_lead_grade_by_date).values %>
+            <% @lead_datas = lead_labels_hash.merge(best_lead_grade_by_date).values %>
+            <% @od_lead_datas = lead_labels_hash.merge(best_od_lead_grade_by_date).values %>
 
             <canvas id="best_lead_grade_by_date" width="400" height="300"></canvas>
           </div>
