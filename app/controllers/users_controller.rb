@@ -77,5 +77,30 @@ class UsersController < ApplicationController
     @logs = Log.all.joins(:route).where('logs.date BETWEEN ? AND ? AND routes.user_id = ?', @from, @to, @user.id)
     @od_logs = OdLog.where('od_logs.date BETWEEN ? AND ? AND od_logs.user_id = ?', @from, @to, @user.id)
 
+    @boulder_best_os =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 1, 1).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists?
+    @boulder_best_fl =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 1, 2).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists?
+    @boulder_best_sent =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 1, 3).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists?
+    @boulder_best =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id < ?', 1, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists?
+
+    @lead_best_os =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 2, 1).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists?
+    @lead_best_fl =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 2, 2).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists?
+    @lead_best_rp =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id = ?', 2, 3).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists?
+    @lead_best =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id < ?', 2, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists?
+
+    @od_boulder_best_os =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 1, 1).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists?
+    @od_boulder_best_fl =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 1, 2).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists?
+    @od_boulder_best_sent =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 1, 3).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists?
+    @od_boulder_best =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id < ?', 1, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists?
+
+    @od_lead_best_os = @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 2, 1).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists?
+    @od_lead_best_fl =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 2, 2).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists?
+    @od_lead_best_rp =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id = ?', 2, 3).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists?
+    @od_lead_best =  @od_logs.joins(:od_route).where('od_routes.category_id = ? and od_logs.status_id < ?', 2, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @od_logs.exists?
+
+    @best_boulder_grade = [@boulder_best.grade.id, @od_boulder_best.grade.id].max
+    @lowest_boulder_grade = [@boulder_best.grade.id, @od_boulder_best.grade.id].min
+
+    @best_lead_grade = [@lead_best.grade.id, @od_lead_best.grade.id].max
+    @lowest_lead_grade = [@lead_best.grade.id, @od_lead_best.grade.id].min
   end
 end
