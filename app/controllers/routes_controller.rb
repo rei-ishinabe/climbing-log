@@ -20,6 +20,11 @@ class RoutesController < ApplicationController
     authorize @route
     @route.gym = @gym
     @route.user = current_user
+    if @route.sub_grade_id.nil?
+     @route.grade_for_chart = @route.grade_id.to_f
+    else
+     @route.grade_for_chart = @route.grade_id.to_f + (@route.sub_grade_id.to_f / 7).round(3)
+    end
     if @route.save
       redirect_to new_route_log_path(@route)
     else
@@ -35,6 +40,12 @@ class RoutesController < ApplicationController
 
   def update
     if @route.update(route_params)
+      if @route.sub_grade_id.nil?
+        @route.grade_for_chart = @route.grade_id.to_f
+      else
+        @route.grade_for_chart = @route.grade_id.to_f + (@route.sub_grade_id.to_f / 7).round(3)
+      end
+      @route.save
       redirect_to gym_path(@gym)
     else
       render :edit

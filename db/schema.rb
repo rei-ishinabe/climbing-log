@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_15_035055) do
+ActiveRecord::Schema.define(version: 2019_10_17_050027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_035055) do
     t.bigint "gym_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "grade_for_chart"
     t.index ["category_id"], name: "index_routes_on_category_id"
     t.index ["grade_id"], name: "index_routes_on_grade_id"
     t.index ["gym_id"], name: "index_routes_on_gym_id"
