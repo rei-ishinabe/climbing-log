@@ -1,4 +1,5 @@
 class GymsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :set_gym, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -9,8 +10,10 @@ class GymsController < ApplicationController
       @gyms = policy_scope(Gym).order(:name).page(params[:page]).per(20)
     end
 
-    @last_five_gyms_visited = current_user.logs.joins(:route).select('routes.gym_id').group('routes.gym_id').maximum('logs.date').sort_by{|gym_id, date| date}.reverse.first(5)
-  end
+    if user_signed_in?
+      @last_five_gyms_visited = current_user.logs.joins(:route).select('routes.gym_id').group('routes.gym_id').maximum('logs.date').sort_by{|gym_id, date| date}.reverse.first(5)
+    end
+ end
 
   def show
     @markers =

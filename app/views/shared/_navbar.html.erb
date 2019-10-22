@@ -34,6 +34,15 @@
         </li>
       <% else %>
         <li class="nav-item">
+          <%= active_link_to "ホーム", root_path, active: :exact, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= active_link_to "ジム検索/選択", gyms_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= active_link_to "岩場検索/選択", areas_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
           <%= active_link_to "アカウント登録(無料)", new_user_registration_path, class: "nav-link" %>
         </li>
         <li class="nav-item">

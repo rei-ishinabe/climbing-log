@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
       <h4>ジム検索/選択</h4>
-      <% if current_user.logs.exists? %>
+      <% if user_signed_in? && current_user.logs.exists? %>
         <h5>最近訪問したジム</h5>
         <% @last_five_gyms_visited.each do |gym| %>
           <div>
