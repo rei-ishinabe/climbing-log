@@ -4,7 +4,7 @@
       <div class="mb-2">
         <%= link_to 'エリア一覧', areas_path %> >
         <span  style="font-size: 1.2em" ><%= @area.area_name %></span>
-        <% if current_user.admin? %>
+        <% if user_signed_in? && current_user.admin? %>
           &nbsp;<%= link_to '編集', edit_area_path(@area) %>
         <% end %>
       </div>

@@ -10,7 +10,7 @@
           <span  style="font-size: 1.2em" >
             <%= @sub_area.sub_area_name %>
           </span>
-          <% if current_user.admin? %>
+          <% if user_signed_in? && current_user.admin? %>
             &nbsp;<%= link_to '編集', edit_area_sub_area_path(@area, @sub_area) %>
           <% end %>
         </div>
@@ -24,7 +24,7 @@
               </div>
             <% end %>
             <div>
-              <% if od_route.od_logs.where('od_logs.user_id = ?', current_user.id).exists? %>
+              <% if user_signed_in? && od_route.od_logs.where('od_logs.user_id = ?', current_user.id).exists? %>
                 <%= od_route.od_logs.where('od_logs.user_id = ?', current_user.id).order(date: 'DESC').first.date  %>
                 <%= Status.find_by(id: od_route.od_logs.where('od_logs.user_id = ?', current_user.id).order(status_id: 'ASC').first.status_id).status%>
                 <%= od_route.od_logs.where('od_logs.user_id = ?', current_user.id).count %>トライ

@@ -1,4 +1,5 @@
 class SubAreasController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show]
   before_action :set_sub_area, only: [:show, :edit, :update, :destroy]
 
   def show

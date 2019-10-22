@@ -15,7 +15,7 @@
           <%= @od_route.route_name %>
         </span>
           <%= @od_route.category.category %> <%= @od_route.combined_grade %>
-        <% if current_user.admin? %>
+        <% if user_signed_in? && current_user.admin? %>
           &nbsp;<%= link_to '編集', edit_od_route_path(@od_route) %>
         <% end %>
       </div>
@@ -51,38 +51,38 @@
             </div>
           <% end %>
         <% end %>
-        <% if @od_route.od_route_reviews.where('od_route_reviews.user_id = ?', current_user.id).count == 0 %>
+        <% if user_signed_in? && @od_route.od_route_reviews.where('od_route_reviews.user_id = ?', current_user.id).count == 0 %>
           <%= link_to 'レビューを書く', new_od_route_od_route_review_path(@od_route)  %>
         <% end %>
       </div>
-      <div>
-        <h5 class="mt-3">ログ</h5>
-        <% if @od_logs.exists? %>
-          <% @od_logs.order(date: 'DESC').each do |od_log| %>
-            <div class="card p-1 my-1">
+      <% if user_signed_in? %>
+        <div>
+          <h5 class="mt-3">ログ</h5>
+          <% if @od_logs.exists? %>
+            <% @od_logs.order(date: 'DESC').each do |od_log| %>
+              <div class="card p-1 my-1">
 
+                  <div>
+                    <%= link_to edit_od_route_od_log_path(od_log.od_route, od_log) do %>
+                    <span style="font-size: 1.1rem"><%= od_log.date %></span>
+                    <%= Status.find_by(id:od_log.status_id).status %>
+                    <% end %>
+                  </div>
                 <div>
-                  <%= link_to edit_od_route_od_log_path(od_log.od_route, od_log) do %>
-                  <span style="font-size: 1.1rem"><%= od_log.date %></span>
-                  <%= Status.find_by(id:od_log.status_id).status %>
+                  <%= od_log.comment %>
+                </div>
+                <div class="text-right">
+                  <%= link_to od_log_path(od_log), method: :delete, data: {confirm: "本当に削除しますか?"} do %>
+                    <i class="far fa-trash-alt"></i>
                   <% end %>
                 </div>
-              <div>
-                <%= od_log.comment %>
               </div>
-              <div class="text-right">
-                <%= link_to od_log_path(od_log), method: :delete, data: {confirm: "本当に削除しますか?"} do %>
-                  <i class="far fa-trash-alt"></i>
-                <% end %>
-              </div>
-
-
-            </div>
+            <% end %>
+          <% else %>
+            ログがまだ登録されていません
           <% end %>
-        <% else %>
-          ログがまだ登録されていません
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
