@@ -33,10 +33,14 @@ class GymsController < ApplicationController
       elsif @routes.first.log_ids.empty?
         @from = Date.today
       else
-        @from = @routes.joins(:logs).select('routes.*, logs.date').order(date: 'ASC').first.date
+        @from = Log.joins(:route).where('routes.user_id = ?', current_user.id).order(date: 'ASC').first.date
       end
       @to = Date.today
     end
+
+    @logs = Log.all.joins(:route).where('logs.date BETWEEN ? AND ? AND routes.user_id = ? AND routes.gym_id  = ?', @from, @to, current_user.id, @gym.id)
+    @boulder_best =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id < ?', 1, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists?
+    @lead_best =  @logs.joins(:route).where('routes.category_id = ? and logs.status_id < ?', 2, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').order(date: 'DESC').first if @logs.exists?
   end
 
   def new

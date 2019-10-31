@@ -13,26 +13,23 @@
         <div>最終訪問日：
           <%= @gym.last_visit_date(current_user) %>
         </div>
-        <div>完登本数：
-          <% sent_count = 0 %>
-          <% @gym.routes.where('user_id = ?', current_user).each do |route| %>
-            <% sent_count += 1 if route.sent %>
-          <% end %>
-          <%= sent_count %>
+        <div>
+          トライ本数： <%= @logs.count %>
+        </div>
+        <div>
+          完登本数： <%= @logs.where('status_id < ?', 4).count %>
         </div>
         <div>ボルダー最高グレード：
-          <% boulder =  @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 1, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
-          <% unless boulder.nil? %>
-            <%= link_to route_path(boulder) do %>
-              <%= "#{boulder.combined_grade} (#{boulder.logs.where('status_id < ?', 4).first.date})" unless boulder.nil?  %>
+          <% unless @boulder_best.nil? %>
+            <%= link_to route_path(@boulder_best.route) do %>
+              <%= "#{@boulder_best.route.combined_grade} (#{@boulder_best.route.logs.where('status_id < ?', 4).first.date})" unless @boulder_best.route.nil?  %>
             <% end %>
           <% end %>
           </div>
         <div class="mb-1">リード最高グレード：
-          <% lead = @gym.routes.joins(:logs).where('user_id = ? and category_id = ? and logs.status_id < ?', current_user, 2, 4).order(grade_id: 'DESC').order(sub_grade_id: 'DESC').first if @gym.routes.exists? %>
-          <% unless lead.nil? %>
-            <%= link_to route_path(lead) do %>
-              <%= "#{lead.combined_grade} (#{lead.logs.where('status_id < ?', 4).first.date})"%>
+          <% unless @lead_best.nil? %>
+            <%= link_to route_path(@lead_best.route) do %>
+              <%= "#{@lead_best.route.combined_grade} (#{@lead_best.route.logs.where('status_id < ?', 4).first.date})"%>
             <% end %>
           <% end %>
         </div>
