@@ -1,28 +1,38 @@
 <div class="container mt-3 px-2">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 mb-5 pb-3">
-      <div class="mb-2">
-        <span  style="font-size: 1.2em" >
-          エリア一覧
-        </span>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">エリア名</th>
+              <th scope="col">地域</th>
+              <th scope="col">登録サブエリア数</th>
+              <th scope="col">登録ルート数</th>
+            </tr>
+          </thead>
+          <% @areas.each do |area| %>
+            <tr>
+              <td><%= link_to area.area_name, area_path(area) %></td>
+              <td>
+                <% if area.country == "JP" %>
+                  <%= area.prefecture %>
+                <% elsif area.country.nil? %>
+                  <%= '国名未選択' %>
+                <% else %>
+                  <%= ISO3166::Country[area.country].translations[I18n.locale.to_s] %>
+                <% end %>
+              </td>
+              <td><%= area.sub_areas.count %></td>
+              <td><%= area.od_routes.count %></td>
+            </tr>
+          <% end %>
+        </table>
       </div>
       <div>
-        <% @areas.each do |area| %>
-          <%= link_to area_path(area) do %>
-            <div>
-              <span style="font-size: 1.2em"><%= area.area_name %></span> -
-              <% if area.country == "JP" %>
-                <%= area.prefecture %>
-              <% elsif area.country.nil? %>
-                <%= '国名未選択' %>
-              <% else %>
-                <%= ISO3166::Country[area.country].translations[I18n.locale.to_s] %>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %>
-        <%= link_to "新規エリア登録", new_area_path, class:"btn btn-outline-primary btn-block my-3" %>
+       <%= link_to "新規エリア登録", new_area_path, class:"btn btn-outline-primary btn-block my-3" %>
       </div>
+
     </div>
   </div>
 </div>
