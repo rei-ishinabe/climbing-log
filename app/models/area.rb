@@ -5,8 +5,6 @@ class Area < ApplicationRecord
     message: "同一都道府県内に同じ名前のエリアが存在します", case_sensitive: false }
   validates :area_name_katakana, presence: true, uniqueness: { scope: :prefecture,
     message: "同一都道府県内に同じ名前のエリアが存在します", case_sensitive: false }
-  validates :area_name_alphabet, presence: true, uniqueness: { scope: :prefecture,
-    message: "同一都道府県内に同じ名前のエリアが存在します", case_sensitive: false }
   validates :region, presence: true
   validates :prefecture, presence: true
 end

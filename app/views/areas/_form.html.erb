@@ -4,7 +4,6 @@
       <%= simple_form_for @area do |f| %>
         <%= f.input :area_name, label: false, placeholder: 'エリア名' %>
         <%= f.input :area_name_katakana, label: false, placeholder: 'エリア名(カタカナ)' %>
-        <%= f.input :area_name_alphabet, label: false, placeholder: 'エリア名(アルファベット)' %>
         <%= f.input :region, label: false, prompt: '地域を選択',
           collection: [
             ['北海道', '北海道'],

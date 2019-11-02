@@ -9,8 +9,6 @@ class OdRoute < ApplicationRecord
     message: "同一サブエリア内に同じ名前の課題が存在します", case_sensitive: false }
   validates :route_name_katakana, presence: true, uniqueness: { scope: :sub_area,
     message: "同一サブエリア内に同じ名前の課題が存在します", case_sensitive: false }
-  validates :route_name_alphabet, presence: true, uniqueness: { scope: :sub_area,
-    message: "同一サブエリア内に同じ名前の課題が存在します", case_sensitive: false }
   validates :category_id, presence: true
   validates :grade_id, presence: true
   validates :route_type, presence: true
