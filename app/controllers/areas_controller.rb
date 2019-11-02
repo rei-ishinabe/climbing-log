@@ -53,6 +53,6 @@ class AreasController < ApplicationController
   end
 
   def area_params
-    params.require(:area).permit(:area_name, :area_name_katakana, :area_name_alphabet, :region, :prefecture, :latitude, :longitude)
+    params.require(:area).permit(:area_name, :area_name_katakana, :area_name_alphabet, :country, :region, :prefecture, :latitude, :longitude)
   end
 end

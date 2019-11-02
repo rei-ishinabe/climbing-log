@@ -17,6 +17,7 @@ gem 'carrierwave', '~> 1.2'
 gem "chartkick"
 gem 'cloudinary', '~> 1.9.1'
 gem 'clipboard-rails'
+gem 'country_select', '~> 4.0'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'geocoder'
 gem 'groupdate'

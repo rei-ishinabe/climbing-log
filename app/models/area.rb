@@ -7,4 +7,5 @@ class Area < ApplicationRecord
     message: "同一都道府県内に同じ名前のエリアが存在します", case_sensitive: false }
   validates :region, presence: true
   validates :prefecture, presence: true
+  validates :country, presence: true
 end
