@@ -20,7 +20,7 @@
                 <% elsif area.country.nil? %>
                   <%= '国名未選択' %>
                 <% else %>
-                  <%= ISO3166::Country[area.country].translations[I18n.locale.to_s] %>
+                  <%= area.country_name %>
                 <% end %>
               </td>
               <td><%= area.sub_areas.count %></td>
