@@ -416,7 +416,7 @@
                   </span>
                   <%= od_boulder_sent.od_route.route_type %> <%= od_boulder_sent.od_route.route_name %>
                 </div>
-                <div><%= od_boulder_sent.od_route.latest_log_date if od_boulder_sent.od_route.od_logs.exists? %> <%= od_boulder_sent.od_route.best_status %> <%= od_boulder_sent.od_route.od_logs.count %>トライ</div>
+                <div><%= od_boulder_sent.od_route.latest_log_date if od_boulder_sent.od_route.od_logs.exists? %> <%= Status.find_by(id: od_boulder_sent.status_id).status %> <%= od_boulder_sent.od_route.od_logs.count %>トライ</div>
               </div>
             <% end %>
           </div>
@@ -548,7 +548,7 @@
                   </span>
                   <%= od_lead_sent.od_route.route_type %> <%= od_lead_sent.od_route.route_name %>
                 </div>
-                <div><%= od_lead_sent.od_route.latest_log_date if od_lead_sent.od_route.od_logs.exists? %> <%= od_lead_sent.od_route.best_status %> <%= od_lead_sent.od_route.od_logs.where('od_logs.user_id = ?', @user.id).count %>トライ</div>
+                <div><%= od_lead_sent.od_route.latest_log_date if od_lead_sent.od_route.od_logs.exists? %> <%= Status.find_by(id: od_lead_sent.status_id).status %> <%= od_lead_sent.od_route.od_logs.where('od_logs.user_id = ?', @user.id).count %>トライ</div>
               </div>
             <% end %>
           </div>
