@@ -548,7 +548,7 @@
                   </span>
                   <%= od_lead_sent.od_route.route_type %> <%= od_lead_sent.od_route.route_name %>
                 </div>
-                <div><%= od_lead_sent.od_route.latest_log_date if od_lead_sent.od_route.od_logs.exists? %> <%= od_lead_sent.od_route.best_status %> <%= od_lead_sent.od_route.od_logs.count %>トライ</div>
+                <div><%= od_lead_sent.od_route.latest_log_date if od_lead_sent.od_route.od_logs.exists? %> <%= od_lead_sent.od_route.best_status %> <%= od_lead_sent.od_route.od_logs.where('od_logs.user_id = ?', @user.id).count %>トライ</div>
               </div>
             <% end %>
           </div>
