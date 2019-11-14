@@ -483,8 +483,6 @@
             <% best_lead_grade_by_date = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).group(:date).order(:date).maximum('routes.grade_for_chart') %>
 
             <!-- アウトドアリード用元データ -->
-            <% @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 2, 4).each do |od_log| %>
-            <% end %>
             <% best_od_lead_grade_by_date = @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 2, 4).group(:date).order(:date).maximum('od_routes.grade_for_chart') %>
 
             <!-- ラベル用データ -->
