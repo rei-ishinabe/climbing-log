@@ -484,7 +484,6 @@
 
             <!-- アウトドアリード用元データ -->
             <% @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 2, 4).each do |od_log| %>
-              user_id:< od_log.user_id %>, date:<%= od_log.date %>, status:<%= od_log.status_id %>, grade: <%= od_log.od_route.grade_for_chart %>
             <% end %>
             <% best_od_lead_grade_by_date = @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 2, 4).group(:date).order(:date).maximum('od_routes.grade_for_chart') %>
 
