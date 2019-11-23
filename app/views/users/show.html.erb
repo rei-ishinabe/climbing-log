@@ -287,10 +287,7 @@
                          },
                 suffix: "日" %>
           </div>
-        </div>
 
-<!-- tab boulder -->
-        <div class="tab-pane fade" id="boulder" role="tabpanel" aria-labelledby="boulder-tab">
           <h5 class="mt-3 pl-1 mb-1">ボルダートライ数(日別)</h5>
           <div class="mb-3">
             <%= column_chart  [
@@ -385,46 +382,6 @@
             <canvas id="best_boulder_grade_by_type" width="400" height="300"></canvas>
           </div>
 
-
-          <h5 class="mt-3 pl-1 mb-1">完登課題 TOP 5(ジム)</h5>
-          <div class="mb-4">
-            <% boulders_sent = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).order('routes.grade_id DESC').order('routes.sub_grade_id DESC').order(date: :DESC).first(5) %>
-            <% boulders_sent.each do |boulder_sent| %>
-              <div class="card my-2 p-1" style="background-color: rgba(200,247,225,0.2)" >
-                <div>
-                  <span style="font-size: 1.1rem;">
-                    <%= boulder_sent.gym.name %>
-                    <%= boulder_sent.route.combined_grade %>
-                  </span>
-                  <%= boulder_sent.route.route_type %> <%= boulder_sent.route.route_name %>
-                </div>
-                <div><%= boulder_sent.route.comment %></div>
-                <div><%= boulder_sent.route.latest_log_date if boulder_sent.route.logs.exists? %> <%= boulder_sent.route.best_status %> <%= boulder_sent.route.logs.count %>トライ</div>
-              </div>
-            <% end %>
-          </div>
-
-          <h5 class="mt-3 pl-1 mb-1">完登課題 TOP 5(岩場)</h5>
-          <div class="mb-4">
-            <% od_boulders_sent = @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 1, 4).order('od_routes.grade_id DESC').order('od_routes.sub_grade_id DESC').order(date: :DESC).first(5) %>
-            <% od_boulders_sent.each do |od_boulder_sent| %>
-              <div class="card my-2 p-1" style="background-color: rgba(200,247,225,0.2)" >
-                <div>
-                  <span style="font-size: 1.1rem;">
-                    <%= od_boulder_sent.area.area_name %>
-                    <%= od_boulder_sent.od_route.combined_grade %>
-                  </span>
-                  <%= od_boulder_sent.od_route.route_type %> <%= od_boulder_sent.od_route.route_name %>
-                </div>
-                <div><%= od_boulder_sent.od_route.latest_log_date if od_boulder_sent.od_route.od_logs.exists? %> <%= Status.find_by(id: od_boulder_sent.status_id).status %> <%= od_boulder_sent.od_route.od_logs.count %>トライ</div>
-              </div>
-            <% end %>
-          </div>
-
-        </div>
-
-<!-- tab lead -->
-        <div class="tab-pane fade" id="lead" role="tabpanel" aria-labelledby="lead-tab">
           <h5 class="mt-3 pl-1 mb-1">リードトライ数(日別)</h5>
           <div class="mb-3">
             <%= column_chart  [
@@ -517,10 +474,56 @@
             <% best_od_lead_grades = best_od_lead_grades.values %>
             <canvas id="best_lead_grade_by_type" width="400" height="300"></canvas>
           </div>
+        </div>
 
-          <h5 class="mt-3 pl-1 mb-1">完登課題 TOP 5(ジム)</h5>
+<!-- tab boulder -->
+        <div class="tab-pane fade" id="boulder" role="tabpanel" aria-labelledby="boulder-tab">
+
+
+          <h5 class="mt-3 pl-1 mb-1">完登課題(ジム)</h5>
           <div class="mb-4">
-            <% leads_sent = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).order('routes.grade_id DESC').order('routes.sub_grade_id DESC').order(date: :DESC).first(5) %>
+            <% boulders_sent = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 1, 4).order('routes.grade_id DESC').order('routes.sub_grade_id DESC').order(date: :DESC) %>
+            <% boulders_sent.each do |boulder_sent| %>
+              <div class="card my-2 p-1" style="background-color: rgba(200,247,225,0.2)" >
+                <div>
+                  <span style="font-size: 1.1rem;">
+                    <%= boulder_sent.gym.name %>
+                    <%= boulder_sent.route.combined_grade %>
+                  </span>
+                  <%= boulder_sent.route.route_type %> <%= boulder_sent.route.route_name %>
+                </div>
+                <div><%= boulder_sent.route.comment %></div>
+                <div><%= boulder_sent.route.latest_log_date if boulder_sent.route.logs.exists? %> <%= boulder_sent.route.best_status %> <%= boulder_sent.route.logs.count %>トライ</div>
+              </div>
+            <% end %>
+          </div>
+
+          <h5 class="mt-3 pl-1 mb-1">完登課題(岩場)</h5>
+          <div class="mb-4">
+            <% od_boulders_sent = @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 1, 4).order('od_routes.grade_id DESC').order('od_routes.sub_grade_id DESC').order(date: :DESC) %>
+            <% od_boulders_sent.each do |od_boulder_sent| %>
+              <div class="card my-2 p-1" style="background-color: rgba(200,247,225,0.2)" >
+                <div>
+                  <span style="font-size: 1.1rem;">
+                    <%= od_boulder_sent.area.area_name %>
+                    <%= od_boulder_sent.od_route.combined_grade %>
+                  </span>
+                  <%= od_boulder_sent.od_route.route_type %> <%= od_boulder_sent.od_route.route_name %>
+                </div>
+                <div><%= od_boulder_sent.od_route.latest_log_date if od_boulder_sent.od_route.od_logs.exists? %> <%= Status.find_by(id: od_boulder_sent.status_id).status %> <%= od_boulder_sent.od_route.od_logs.count %>トライ</div>
+              </div>
+            <% end %>
+          </div>
+
+        </div>
+
+<!-- tab lead -->
+        <div class="tab-pane fade" id="lead" role="tabpanel" aria-labelledby="lead-tab">
+
+
+          <h5 class="mt-3 pl-1 mb-1">完登課題(ジム)</h5>
+          <div class="mb-4">
+            <% leads_sent = @logs.joins(:route).where('routes.category_id = ? AND logs.status_id < ?', 2, 4).order('routes.grade_id DESC').order('routes.sub_grade_id DESC').order(date: :DESC) %>
             <% leads_sent.each do |lead_sent| %>
               <div class="card my-2 p-1" style="background-color: rgba(200,247,225,0.2)" >
                 <div>
@@ -536,9 +539,9 @@
             <% end %>
           </div>
 
-          <h5 class="mt-3 pl-1 mb-1">完登課題 TOP 5(岩場)</h5>
+          <h5 class="mt-3 pl-1 mb-1">完登課題(岩場)</h5>
           <div class="mb-4">
-            <% od_leads_sent = @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 2, 4).order('od_routes.grade_id DESC').order('od_routes.sub_grade_id DESC').order(date: :DESC).first(5) %>
+            <% od_leads_sent = @od_logs.joins(:od_route).where('od_routes.category_id = ? AND od_logs.status_id < ?', 2, 4).order('od_routes.grade_id DESC').order('od_routes.sub_grade_id DESC').order(date: :DESC) %>
             <% od_leads_sent.each do |od_lead_sent| %>
               <div class="card my-2 p-1" style="background-color: rgba(200,247,225,0.2)" >
                 <div>
