@@ -9,13 +9,26 @@
         <% end %>
       </div>
       <div>
-        <% @sub_areas.each do |sub_area| %>
-          <%= link_to sub_area_path(sub_area) do %>
-            <div>
-              <span style="font-size: 1.2em"><%= sub_area.sub_area_name %></span>
-            </div>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">サブエリア名</th>
+              <th scope="col">登録ルート数</th>
+            </tr>
+          </thead>
+          <% @sub_areas.each do |sub_area| %>
+            <tr>
+              <td>
+                <%= link_to sub_area_path(sub_area) do %>
+                <span style="font-size: 1.2em"><%= sub_area.sub_area_name %></span>
+                <% end %>
+              </td>
+              <td>
+               <%= sub_area.od_routes.count %>
+              </td>
+            </tr>
           <% end %>
-        <% end %>
+        </table>
       </div>
       <%= link_to "新規サブエリア登録", new_area_sub_area_path(@area), class:"btn btn-outline-primary btn-block my-3" %>
     </div>
