@@ -23,7 +23,7 @@
           </div>
           <% if @user == current_user && @user.privacy_setting == 2 %>
             <div>
-              <button class="clipboard-btn btn btn-outline-primary btn-sm py-0 " data-clipboard-text="<%= request.url %>" onclick="clickEvent()"><i class="fas fa-link"></i> 共有用URLをコピー</button>
+              <button class="clipboard-btn btn btn-outline-primary btn-sm py-0 " data-clipboard-text="<%= short_url(request.url) %>" onclick="clickEvent()"><i class="fas fa-link"></i> 共有用URLをコピー</button>
             </div>
           <% end %>
         </div>

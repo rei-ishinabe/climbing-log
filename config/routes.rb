@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/about/', to: 'pages#about'
   get '/terms/', to: 'pages#terms'
   get '/update/', to: 'pages#update'
+  get '/s/:id' => 'shortener/shortened_urls#show'
 
   resources :areas do
     resources :sub_areas, only: [:new, :create, :edit, :update]
