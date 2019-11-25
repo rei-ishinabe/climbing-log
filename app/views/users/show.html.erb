@@ -505,10 +505,19 @@
               <div class="card my-2 p-1" style="background-color: rgba(200,247,225,0.2)" >
                 <div>
                   <span style="font-size: 1.1rem;">
-                    <%= od_boulder_sent.area.area_name %>
-                    <%= od_boulder_sent.od_route.combined_grade %>
+                    <%= link_to od_route_path(od_boulder_sent.od_route) do %>
+                      <%= od_boulder_sent.od_route.route_name %>
+                      <%= od_boulder_sent.od_route.combined_grade %>
+                    <% end %>
                   </span>
-                  <%= od_boulder_sent.od_route.route_type %> <%= od_boulder_sent.od_route.route_name %>
+                  <%= od_boulder_sent.od_route.route_type %>
+                  <%= link_to area_path(od_boulder_sent.area) do %>
+                    <%= od_boulder_sent.area.area_name %>
+                  <% end %>
+
+                  <%= link_to sub_area_path(od_boulder_sent.sub_area) do %>
+                    <%= od_boulder_sent.sub_area.sub_area_name %>
+                  <% end %>
                 </div>
                 <div><%= od_boulder_sent.od_route.latest_log_date if od_boulder_sent.od_route.od_logs.exists? %> <%= Status.find_by(id: od_boulder_sent.status_id).status %> <%= od_boulder_sent.od_route.od_logs.count %>トライ</div>
               </div>
@@ -546,10 +555,19 @@
               <div class="card my-2 p-1" style="background-color: rgba(200,247,225,0.2)" >
                 <div>
                   <span style="font-size: 1.1rem;">
-                    <%= od_lead_sent.area.area_name %>
-                    <%= od_lead_sent.od_route.combined_grade %>
+                    <%= link_to od_route_path(od_lead_sent.od_route) do %>
+                      <%= od_lead_sent.od_route.route_name %>
+                      <%= od_lead_sent.od_route.combined_grade %>
+                    <% end %>
                   </span>
-                  <%= od_lead_sent.od_route.route_type %> <%= od_lead_sent.od_route.route_name %>
+                  <%= od_lead_sent.od_route.route_type %>
+                  <%= link_to area_path(od_lead_sent.area) do %>
+                    <%= od_lead_sent.area.area_name %>
+                  <% end %>
+
+                  <%= link_to sub_area_path(od_lead_sent.sub_area) do %>
+                    <%= od_lead_sent.sub_area.sub_area_name %>
+                  <% end %>
                 </div>
                 <div><%= od_lead_sent.od_route.latest_log_date if od_lead_sent.od_route.od_logs.exists? %> <%= Status.find_by(id: od_lead_sent.status_id).status %> <%= od_lead_sent.od_route.od_logs.where('od_logs.user_id = ?', @user.id).count %>トライ</div>
               </div>

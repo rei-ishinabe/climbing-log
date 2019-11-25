@@ -4,4 +4,5 @@ class OdLog < ApplicationRecord
   has_one :grade, through: :od_route
   belongs_to :user
   has_one :area, through: :od_route
+  has_one :sub_area, through: :od_route
 end
