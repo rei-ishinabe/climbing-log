@@ -7,7 +7,7 @@
     "chart.js": "^2.8.0",
     "chartkick": "^3.1.1",
     "esm": "^3.2.25",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "lodash": "^4.17.15",
     "lodash.template": "^4.5.0",
     "mapbox-gl": "^1.0.0",
