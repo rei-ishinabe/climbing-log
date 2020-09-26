@@ -30,13 +30,14 @@ class RoutesController < ApplicationController
       end
     end
     if @route.save
-      redirect_to new_route_log_path(@route)
+      redirect_to route_path(@route)
     else
       render :new
     end
   end
 
   def show
+    @log = Log.new
   end
 
   def edit

@@ -28,11 +28,29 @@
             <div>
               <%= @route.comment %>
             </div>
+            <div>
+              <%= @route.latest_log_date if @route.logs.exists? %> <%= @route.best_status %> <%= @route.logs.count %>トライ
+            </div>
           </div>
+        </div>
+        <div>
+          <%= simple_form_for [@route, @log] do |f| %>
+            <%= f.input :date, label: false %>
+            <%= f.input :status_id,
+                   label: false,
+                  prompt: 'ステータスを選択',
+              collection: Status.all.order(id: 'ASC'),
+              label_method: :status,
+              value_method: :id %>
+            <%= f.input :comment,
+                   label: false,
+             placeholder: 'コメント(オプション)' %>
+            <%= f.submit 'ログを追加', class:'btn btn-primary btn-lg btn-block mb-3' %>
+          <% end %>
         </div>
         <% if @route.logs.exists? %>
           <% @route.logs.order(date: 'DESC').each do |log| %>
-            <div class="card p-1 my-1">
+            <div class="card p-1 my-3">
 
                 <div>
                   <%= link_to edit_route_log_path(log.route, log) do %>
@@ -59,13 +77,6 @@
           ログがまだ登録されていません
         <% end %>
       </div>
-    </div>
-  </div>
-</div>
-<div class="container fixed-bottom">
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-8">
-      <%= link_to 'ログを追加', new_route_log_path(@route), class:'btn btn-primary btn-block btn-lg my-3' %>
     </div>
   </div>
 </div>
